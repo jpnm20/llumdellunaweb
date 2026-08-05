@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamientos y Precios | Llum de Lluna</title>
+    <meta name="description" content="Descubre nuestra carta de servicios y tratamientos de estética. Precios transparentes en masajes, limpiezas faciales, pedicura y manicura en Barcelona.">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- CABECERA (HEADER MODULAR) -->
+    <div id="header-placeholder"></div>
+
+    <!-- CABECERA DE LA PÁGINA -->
+    <section class="page-header">
+        <div class="container">
+            <span class="hero-subtitle">Nuestra Carta de Servicios</span>
+            <h1 class="hero-title" style="font-size: 3rem;">Tratamientos & Tarifas</h1>
+            <p style="max-width: 600px; margin: var(--spacing-sm) auto 0;">Ofrecemos soluciones personalizadas para el cuidado de tu rostro, cuerpo y uñas. Pulsa sobre cada categoría para desplegar los tratamientos y tarifas correspondientes.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE TRATAMIENTOS INTERACTIVOS -->
+    <section class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            
+            <!-- Botones de Filtrado -->
+            <div class="filters-container">
+                <button class="btn filter-btn active" data-filter="all">Todos</button>
+                <button class="btn filter-btn" data-filter="facial">Facial</button>
+                <button class="btn filter-btn" data-filter="corporal">Bienestar & Corporal</button>
+                <button class="btn filter-btn" data-filter="unas">Manicura & Pedicura</button>
+            </div>
+
+            <!-- CONTENEDOR DE ACORDEONES -->
+            <div class="treatments-accordion-container">
+                
+                <!-- GRUPO 1: FACIAL -->
+                <div class="treatment-group" data-category="facial">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title">Rituales Faciales</h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Higiene Facial Profunda Oxigenante</span>
+                                <span class="treatment-desc">Limpieza profunda con vapor, extracción, exfoliación enzimática, mascarilla purificante y masaje calmante.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">45€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Ritual Luna Nueva (Luminosidad Vitamina C)</span>
+                                <span class="treatment-desc">Tratamiento antioxidante para pieles apagadas. Incluye peeling ultrasónico, ampolla de Vitamina C pura y masaje con rodillo de cuarzo.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">75 min</span>
+                                <span class="treatment-price">60€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Tratamiento Hydra-Peel Pro</span>
+                                <span class="treatment-desc">Peeling e hidratación profunda con tecnología de succión de impurezas e infusión de sérums de ácido hialurónico.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">50 min</span>
+                                <span class="treatment-price">65€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Kobido: Masaje Lifting Japonés</span>
+                                <span class="treatment-desc">Terapia neuro-sensorial que tonifica la musculatura facial, drena toxinas y atenúa líneas de expresión de forma natural.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">45 min</span>
+                                <span class="treatment-price">50€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRUPO 2: CORPORAL -->
+                <div class="treatment-group" data-category="corporal">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title">Masajes & Corporales</h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Masaje Relajante Moonlight</span>
+                                <span class="treatment-desc">Masaje de cuerpo entero con aceites calientes de lavanda y jazmín para aliviar el estrés y promover el descanso.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">55€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Masaje Descontracturante Localizado</span>
+                                <span class="treatment-desc">Enfoque intenso en espalda, cuello y hombros para liberar tensiones musculares acumuladas.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">45 min</span>
+                                <span class="treatment-price">45€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Exfoliación Corporal con Hidratación Extra</span>
+                                <span class="treatment-desc">Renovación celular con sales marinas orgánicas y masaje posterior con manteca de karité caliente.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">50 min</span>
+                                <span class="treatment-price">50€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Drenaje Linfático Manual (Método Vodder)</span>
+                                <span class="treatment-desc">Técnica suave y rítmica ideal para piernas cansadas, retención de líquidos o procesos post-operatorios.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">58€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRUPO 3: UÑAS -->
+                <div class="treatment-group" data-category="unas">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title">Manicura & Pedicura</h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Express Express Semipermanente</span>
+                                <span class="treatment-desc">Limpieza express de cutículas, limado de uñas y esmaltado semipermanente de larga duración con base reforzada.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Spa Completa Llum de Lluna</span>
+                                <span class="treatment-desc">Tratamiento completo: exfoliación orgánica de manos, limado, cutículas, masaje relajante y esmaltado semipermanente.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">35€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pedicura Completa Spa con Torno</span>
+                                <span class="treatment-desc">Eliminación de durezas con torno, exfoliación, tratamiento de cutículas y uñas, masaje podal nutritivo y esmaltado.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">42€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Retirar Esmaltado Semipermanente (de otro centro)</span>
+                                <span class="treatment-desc">Retirado cuidadoso con torno o acetona cosmética sin dañar la queratina de la uña, incluye base hidratante.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">15 min</span>
+                                <span class="treatment-price">8€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NOTA ADICIONAL -->
+            <div class="text-center" style="margin-top: var(--spacing-xl); background-color: var(--color-bg-tertiary); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); border: 1px dashed rgba(197, 168, 128, 0.2);">
+                <h4 style="font-family: var(--font-subtitle); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-accent); font-weight: 600; margin-bottom: var(--spacing-xs);">¿Tienes dudas sobre qué tratamiento elegir?</h4>
+                <p style="font-size: 0.9rem; margin-bottom: var(--spacing-md);">Realizamos un diagnóstico de piel y asesoramiento totalmente gratuito antes de empezar tu sesión para asegurar el mejor resultado.</p>
+                <a href="index.html#contacto" class="btn btn-primary">Reservar Cita Ahora</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (MODULAR) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts JS -->
+    <script src="js/main.js"></script>
+    <script src="js/tratamientos.js"></script>
+</body>
+</html>

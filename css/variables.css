@@ -1,0 +1,119 @@
+/* css/variables.css */
+:root {
+    /* Paleta de Colores "Moonlight" / Estética Elegante */
+    --color-bg-primary: #FAF8F5;
+    /* Crema suave y relajante */
+    --color-bg-secondary: #FFFFFF;
+    /* Blanco puro para tarjetas y bloques */
+    --color-bg-tertiary: #F3ECE6;
+    /* Arena muy suave para contrastes */
+
+    --color-primary: #C5A880;
+    /* Champán / Oro sofisticado */
+    --color-primary-hover: #B4966E;
+    /* Oro ligeramente más oscuro para hovers */
+    --color-primary-light: #F0E8DC;
+    /* Oro pastel para fondos de botones suaves */
+
+    --color-secondary: #E8D3C9;
+    /* Rosa empolvado / Nude cálido */
+    --color-secondary-light: #F6EEEA;
+    /* Rosa pastel extremadamente suave */
+    --color-secondary-hover: #D7BFAF;
+    /* Rosa empolvado medio */
+
+    --color-accent: #8E7A68;
+    /* Taupe / Gris terroso para acentos refinados */
+
+    --color-text-dark: #2C2C2C;
+    /* Antracita para una lectura súper cómoda */
+    --color-text-muted: #6B6B6B;
+    /* Gris medio para descripciones y subtítulos */
+    --color-text-light: #909090;
+    /* Gris claro para detalles secundarios */
+    --color-text-white: #FFFFFF;
+    /* Blanco puro para textos sobre fondo oscuro */
+
+    --color-success: #6E8E75;
+    /* Verde musgo suave para confirmaciones */
+    --color-error: #D68C8C;
+    /* Rosa viejo fuerte para avisos de error */
+
+    /* Gradientes Metálicos para Logo y Título */
+    --gold-gradient: linear-gradient(135deg, #A2792D 0%, #E5C158 20%, #FFF3D1 40%, #B38728 65%, #F8E299 80%, #7A5313 100%);
+    --rose-gold-gradient: linear-gradient(135deg, #A45C49 0%, #E8A897 30%, #FDF0EC 50%, #BA6E5B 75%, #843C2A 100%);
+
+    /* Tipografía */
+    --font-title: 'Cormorant Garamond', serif;
+    /* Serif ultra elegante para títulos */
+    --font-subtitle: 'Montserrat', sans-serif;
+    /* Sans-serif limpia para subtítulos destacados */
+    --font-body: 'Montserrat', sans-serif;
+    /* Sans-serif súper legible para texto corrido */
+
+    /* Espaciados globales */
+    --spacing-xs: 0.25rem;
+    /* 4px */
+    --spacing-sm: 0.5rem;
+    /* 8px */
+    --spacing-md: 1rem;
+    /* 16px */
+    --spacing-lg: 2rem;
+    /* 32px */
+    --spacing-xl: 4rem;
+    /* 64px */
+    --spacing-xxl: 6rem;
+    /* 96px */
+
+    /* Bordes y Sombras */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --border-radius-full: 9999px;
+
+    --color-border-card: #D5C4AC; /* Borde beige/dorado bien marcado y visible */
+
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.07);
+    --shadow-md: 0 8px 24px rgba(197, 168, 128, 0.16);
+    --shadow-lg: 0 16px 40px rgba(197, 168, 128, 0.22);
+
+    /* Layout */
+    --container-width: 1200px;
+    --header-height: 80px;
+    --color-bg-header: rgba(250, 248, 245, 0.95);
+
+    /* Transiciones */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-fast: all 0.2s ease;
+}
+
+/* TEMA OSCURO (VERDE SALVIA SUAVE / BEIGE & CHAMPÁN) */
+[data-theme="dark"] {
+    --color-bg-primary: #344A41;      /* Verde salvia suave refinado (basado en la imagen) */
+    --color-bg-secondary: #3E564C;    /* Verde jade medio elegante para tarjetas y bloques */
+    --color-bg-tertiary: #2C3E37;     /* Verde bosque suave para footers y contrastes */
+    --color-bg-header: rgba(52, 74, 65, 0.95); /* Header translúcido a juego */
+
+    --color-border-card: #567266;     /* Borde bien contrastado en tema oscuro */
+
+    --color-primary: #DBC8AD;         /* Beige / Champán cálido elegante (sin amarillos) */
+    --color-primary-hover: #E8D9C3;   /* Beige más claro y brillante para hover */
+    --color-primary-light: rgba(219, 200, 173, 0.2); /* Sombra/fondo pastel beige */
+
+    --color-secondary: #E3BBAF;       /* Cobre empolvado / Rosa nude suave */
+    --color-secondary-light: rgba(227, 187, 175, 0.2);
+    --color-secondary-hover: #EED0C7;
+
+    --color-accent: #C2D6CC;          /* Menta verdoso pastel */
+
+    --color-text-dark: #FAF8F5;       /* Blanco crema de alta legibilidad */
+    --color-text-muted: #D3E0D9;      /* Verde salvia ultra claro para textos secundarios */
+    --color-text-light: #B4C7BD;      /* Texto de menor jerarquía */
+    --color-text-white: #FFFFFF;
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.18);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.35);
+
+    --gold-gradient: linear-gradient(135deg, #E6D4B8 0%, #FAF0E4 30%, #DBC8AD 60%, #E6D4B8 100%);
+}
