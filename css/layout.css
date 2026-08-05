@@ -113,7 +113,7 @@
 }
 
 /* Animación de línea elegante */
-.nav-link::after {
+.nav-link:not(.btn)::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -124,8 +124,8 @@
     transition: var(--transition-smooth);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link:not(.btn):hover::after,
+.nav-link:not(.btn).active::after {
     width: 100%;
 }
 
