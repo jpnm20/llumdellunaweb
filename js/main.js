@@ -41,12 +41,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+    // Identificar la página actual
+    const currentPath = window.location.pathname;
+    let page = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    if (!page) page = 'index.html';
+    const isHomePage = (page === 'index.html');
+
     // 2. Cabecera Fija con Scroll (Sticky Header)
     const header = document.getElementById('header');
     
     if (header) {
+        if (isHomePage) {
+            header.classList.add('auto-hide');
+        }
+
         const handleScroll = () => {
-            if (window.scrollY > 120) {
+            const threshold = isHomePage ? 120 : 20;
+            if (window.scrollY > threshold) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -58,10 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // 3. Marcar enlace activo según la página actual
-    const currentPath = window.location.pathname;
-    let page = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-    if (!page) page = 'index.html';
-    
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
