@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 4000);
     };
 
-    // 5. Manejo del Formulario de Contacto en Inicio (Envío a llumdellunaesteticagestion@gmail.com)
+    // 5. Manejo del Formulario de Contacto en Inicio (Envío a llumdellunaestetica@gmail.com)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             try {
                 const formData = new FormData(contactForm);
-                const response = await fetch('https://formsubmit.co/ajax/llumdellunaesteticagestion@gmail.com', {
+                const response = await fetch('https://formsubmit.co/ajax/llumdellunaestetica@gmail.com', {
                     method: 'POST',
                     headers: { 
                         'Accept': 'application/json'
