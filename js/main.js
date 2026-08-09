@@ -107,16 +107,45 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 4000);
     };
 
-    // 5. Manejo del Formulario de Contacto en Inicio
+    // 5. Manejo del Formulario de Contacto en Inicio (Envío a llumdellunaesteticagestion@gmail.com)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const nameInput = document.getElementById('name');
-            const clientName = nameInput ? nameInput.value.trim() : '';
+            const submitBtn = contactForm.querySelector('#submitBtn') || contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'Enviar Solicitud';
             
-            showToast(`¡Gracias ${clientName ? clientName : ''}! Hemos recibido tu solicitud de cita. Te contactaremos pronto.`, true);
-            contactForm.reset();
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Enviando solicitud...';
+            }
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch('https://formsubmit.co/ajax/llumdellunaesteticagestion@gmail.com', {
+                    method: 'POST',
+                    headers: { 
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const clientName = document.getElementById('name')?.value.trim() || '';
+                    showToast(`¡Gracias ${clientName ? clientName : ''}! Tu solicitud ha sido enviada con éxito. Te contactaremos pronto.`, true);
+                    contactForm.reset();
+                } else {
+                    showToast('Ocurrió un error al enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.', false);
+                }
+            } catch (err) {
+                console.error('Error enviando formulario:', err);
+                showToast('No se pudo enviar el mensaje. Comprueba tu conexión o contáctanos por teléfono.', false);
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+            }
         });
     }
 

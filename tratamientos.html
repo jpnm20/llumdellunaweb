@@ -6,7 +6,7 @@
     <title>Tratamientos y Precios | Llum de Lluna</title>
     <meta name="description" content="Descubre nuestra carta de servicios y tratamientos de estética. Precios transparentes en masajes, limpiezas faciales, pedicura y manicura en L'Eliana (Valencia).">
     <!-- Favicon / Icono de Pestaña -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="icon" type="image/png" href="images/logo verde.png">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -26,20 +26,21 @@
     <!-- SECCIÓN DE TRATAMIENTOS INTERACTIVOS -->
     <section class="section-padding">
         <div class="container" style="max-width: 800px;">
-            
-            <!-- Botones de Filtrado -->
+                   <!-- Botones de Filtrado -->
             <div class="filters-container">
                 <button class="btn filter-btn active" data-filter="all">Todos</button>
                 <button class="btn filter-btn" data-filter="facial">Facial</button>
                 <button class="btn filter-btn" data-filter="corporal">Bienestar & Corporal</button>
                 <button class="btn filter-btn" data-filter="unas">Manicura & Pedicura</button>
+                <button class="btn filter-btn" data-filter="cera">Depilación Cera</button>
+                <button class="btn filter-btn" data-filter="ipl">Depilación IPL</button>
             </div>
 
             <!-- CONTENEDOR DE ACORDEONES -->
             <div class="treatments-accordion-container">
                 
                 <!-- GRUPO 1: FACIAL -->
-                <div class="treatment-group" data-category="facial">
+                <div class="treatment-group" data-category="facial" id="facial">
                     <div class="treatment-group-header">
                         <h2 class="treatment-group-title">Tratamientos Faciales</h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -49,54 +50,21 @@
                     <div class="treatment-list">
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Higiene Facial Profunda Oxigenante</span>
-                                <span class="treatment-desc">Limpieza profunda con vapor, extracción, exfoliación enzimática, mascarilla purificante y masaje calmante.</span>
+                                <span class="treatment-name">Ritual Facial Renovador & Nutritivo Profundo</span>
+                                <span class="treatment-desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
                             </div>
                             <div class="treatment-price-duration">
                                 <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">45€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Ritual Luna Nueva (Luminosidad Vitamina C)</span>
-                                <span class="treatment-desc">Tratamiento antioxidante para pieles apagadas. Incluye peeling ultrasónico, ampolla de Vitamina C pura y masaje con rodillo de cuarzo.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">75 min</span>
                                 <span class="treatment-price">60€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Tratamiento Hydra-Peel Pro</span>
-                                <span class="treatment-desc">Peeling e hidratación profunda con tecnología de succión de impurezas e infusión de sérums de ácido hialurónico.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">50 min</span>
-                                <span class="treatment-price">65€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Kobido: Masaje Lifting Japonés</span>
-                                <span class="treatment-desc">Terapia neuro-sensorial que tonifica la musculatura facial, drena toxinas y atenúa líneas de expresión de forma natural.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">45 min</span>
-                                <span class="treatment-price">50€</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- GRUPO 2: CORPORAL -->
-                <div class="treatment-group" data-category="corporal">
+                <div class="treatment-group" data-category="corporal" id="corporal">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title">Tratamientos Corporales</h2>
+                        <h2 class="treatment-group-title">Tratamientos Corporales & Maderoterapia</h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -104,52 +72,30 @@
                     <div class="treatment-list">
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Masaje Relajante Moonlight</span>
-                                <span class="treatment-desc">Masaje de cuerpo entero con aceites calientes de lavanda y jazmín para aliviar el estrés y promover el descanso.</span>
+                                <span class="treatment-name">Valoración Inicial + Maderoterapia Corporal Integral <span class="treatment-badge">1ª Sesión</span></span>
+                                <span class="treatment-desc">Diagnóstico estético personalizado seguido de una completa sesión de maderoterapia corporal en brazos, abdomen, espalda, glúteos y piernas para evaluar y activar el sistema circulatorio y linfático.</span>
                             </div>
                             <div class="treatment-price-duration">
                                 <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">55€</span>
+                                <span class="treatment-price">60€</span>
                             </div>
                         </div>
 
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Masaje Descontracturante Localizado</span>
-                                <span class="treatment-desc">Enfoque intenso en espalda, cuello y hombros para liberar tensiones musculares acumuladas.</span>
+                                <span class="treatment-name">Maderoterapia Corporal Reductora Focalizada <span class="treatment-badge">A partir de 2ª sesión</span></span>
+                                <span class="treatment-desc">Tratamiento remodelante personalizado centrado en las zonas corporales clave detectadas en la valoración inicial. Diseñado para atenuar la celulitis, suavizar la piel de naranja, reducir cúmulos grasos y drenar toxinas. *(El precio varía según las partes corporales tratadas)*.</span>
                             </div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">45 min</span>
-                                <span class="treatment-price">45€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Exfoliación Corporal con Hidratación Extra</span>
-                                <span class="treatment-desc">Renovación celular con sales marinas orgánicas y masaje posterior con manteca de karité caliente.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">50 min</span>
-                                <span class="treatment-price">50€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Drenaje Linfático Manual (Método Vodder)</span>
-                                <span class="treatment-desc">Técnica suave y rítmica ideal para piernas cansadas, retención de líquidos o procesos post-operatorios.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">58€</span>
+                                <span class="treatment-duration">60 - 90 min</span>
+                                <span class="treatment-price">Desde 65€</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- GRUPO 3: UÑAS -->
-                <div class="treatment-group" data-category="unas">
+                <div class="treatment-group" data-category="unas" id="unas">
                     <div class="treatment-group-header">
                         <h2 class="treatment-group-title">Manicura & Pedicura</h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -157,10 +103,258 @@
                         </svg>
                     </div>
                     <div class="treatment-list">
+                        <div class="treatment-subheading">Manicura</div>
+                        
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Manicura Express Express Semipermanente</span>
-                                <span class="treatment-desc">Limpieza express de cutículas, limado de uñas y esmaltado semipermanente de larga duración con base reforzada.</span>
+                                <span class="treatment-name">Manicura Natural Básica (Sin esmaltado)</span>
+                                <span class="treatment-desc">Limpieza y pulido de cutículas, limado y conformado de uñas con nutrición e hidratación.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">30 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Semipermanente (Sin refuerzo)</span>
+                                <span class="treatment-desc">Preparación de uña natural, acondicionamiento de cutículas y esmaltado semipermanente de alta duración.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h</span>
+                                <span class="treatment-price">22€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Semipermanente con Refuerzo de Grafeno</span>
+                                <span class="treatment-desc">Manicura semipermanente avanzada con capa estructural de grafeno para aportar nivelado, flexibilidad y resistencia extrema a la uña.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h 15 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Esculpida en Gel (Puesta Nueva) - Talla S</span>
+                                <span class="treatment-desc">Extensión y modelado estructural en gel de alta calidad para uñas cortas (Talla S).</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h 30 min</span>
+                                <span class="treatment-price">30€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Esculpida en Gel (Puesta Nueva) - Talla M</span>
+                                <span class="treatment-desc">Extensión y modelado estructural en gel de alta calidad para uñas de longitud media (Talla M).</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h 45 min</span>
+                                <span class="treatment-price">35€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Manicura Esculpida en Gel (Puesta Nueva) - Talla L</span>
+                                <span class="treatment-desc">Extensión y modelado estructural en gel de alta calidad para uñas de longitud larga (Talla L).</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">2h</span>
+                                <span class="treatment-price">40€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Suplemento: Reconstrucción de Uña con Poligel (Manos)</span>
+                                <span class="treatment-desc">Reparación estructural de uña dañada o rota en manos con poligel *(añadido a un servicio principal)*.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-price">3€ / uña</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-subheading">Pedicura</div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pedicura Exfoliante en Seco</span>
+                                <span class="treatment-desc">Trabajo minucioso de cutículas, limado y conformado de uñas sin inmersión previa, finalizado con nutrición e hidratación profunda en uñas y pies.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h</span>
+                                <span class="treatment-price">22€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pedicura Nutritiva con Remojo y Exfoliación (Sin esmaltar)</span>
+                                <span class="treatment-desc">Baño relajante de pies, pulido de durezas, exfoliación profunda de arrastre de células muertas, trabajo de cutículas y uñas con nutrición e hidratación profunda en uñas y pies.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pedicura Spa Completa</span>
+                                <span class="treatment-desc">Ritual integral para el cuidado podal: baño podal, corte y limado de uñas, eliminación de durezas, exfoliación aromática, esmaltado y masaje relajante.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">1h 15 min</span>
+                                <span class="treatment-price">30€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Extra / Suplemento: Retirado & Pedicura Básica Express</span>
+                                <span class="treatment-desc">Retirado rápido de esmalte anterior y acondicionamiento básico express de uñas.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">15 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Suplemento: Reconstrucción de Uña con Poligel (Pies)</span>
+                                <span class="treatment-desc">Reconstrucción estética y nivelación de uña dañada en pies mediante poligel *(añadido a un servicio principal)*.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-price">6€ / uña</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRUPO 4: DEPILACIÓN CERA -->
+                <div class="treatment-group" data-category="cera" id="cera">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title">Depilación a la Cera</h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <div class="treatment-subheading">Depilación Cera Mujer</div>
+                        
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Diseño de Cejas (Cera + Pinzas)</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">12€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Labio Superior</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">5€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Nariz</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">5€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Axilas</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">10€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Brazos</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Ingles</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Ingles Completa</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">22€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Medias Piernas</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Piernas Enteras</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-subheading">Depilación Cera Hombre</div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Axilas</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pecho o Lumbares</span>
                             </div>
                             <div class="treatment-price-duration">
                                 <span class="treatment-duration">40 min</span>
@@ -170,34 +364,277 @@
 
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Manicura Spa Completa Llum de Lluna</span>
-                                <span class="treatment-desc">Tratamiento completo: exfoliación orgánica de manos, limado, cutículas, masaje relajante y esmaltado semipermanente.</span>
+                                <span class="treatment-name">Abdomen</span>
                             </div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Espalda y Hombros</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Medias Piernas</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Piernas Enteras</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">30€</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRUPO 5: DEPILACIÓN IPL -->
+                <div class="treatment-group" data-category="ipl" id="ipl">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title">Fotodepilación IPL (Luz Pulsada)</h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <div class="treatment-subheading">Zonas IPL Mujer (Por Sesión)</div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Labio</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Mentón</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Línea Alba</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">15€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Axilas</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Ingles</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Pubis / Intraglúteos</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Brazos</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Espalda</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">25€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Muslos</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">30€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Glúteos + Intraglúteos</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">30€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Medias Piernas</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
                                 <span class="treatment-price">35€</span>
                             </div>
                         </div>
-
                         <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name">Pedicura Completa Spa con Torno</span>
-                                <span class="treatment-desc">Eliminación de durezas con torno, exfoliación, tratamiento de cutículas y uñas, masaje podal nutritivo y esmaltado.</span>
-                            </div>
+                            <div class="treatment-info"><span class="treatment-name">Piernas Enteras</span></div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">42€</span>
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">50€</span>
                             </div>
                         </div>
 
+                        <div class="treatment-subheading">Packs Combinados IPL Mujer</div>
+
                         <div class="treatment-item">
                             <div class="treatment-info">
-                                <span class="treatment-name">Retirar Esmaltado Semipermanente (de otro centro)</span>
-                                <span class="treatment-desc">Retirado cuidadoso con torno o acetona cosmética sin dañar la queratina de la uña, incluye base hidratante.</span>
+                                <span class="treatment-name">Pack Axilas + Ingles + Piernas Enteras</span>
+                                <span class="treatment-desc">Tratamiento de fotodepilación combinada en axilas, ingles y piernas enteras.</span>
                             </div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">15 min</span>
-                                <span class="treatment-price">8€</span>
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">70€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Axilas + Ingles + Brazos</span>
+                                <span class="treatment-desc">Fotodepilación rápida y efectiva en axilas, ingles y brazos completos.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">60€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Brazos + Piernas Enteras</span>
+                                <span class="treatment-desc">Sesión combinada para la eliminación progresiva del vello en extremidades superiores e inferiores.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">65€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Cuerpo Entero Mujer</span>
+                                <span class="treatment-desc">Tratamiento integral de fotodepilación corporal en todas las zonas requeridas.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">90€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-subheading">Zonas IPL Hombre (Por Sesión)</div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Axilas</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">20 min</span>
+                                <span class="treatment-price">20€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Pecho</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">35€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Abdomen</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">35€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Brazos</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">40€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Espalda</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">45€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Medias Piernas</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">50€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info"><span class="treatment-name">Piernas Enteras</span></div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">70€</span>
+                            </div>
+                        </div>
+
+                        <div class="treatment-subheading">Packs Combinados IPL Hombre</div>
+
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Pecho + Abdomen + Brazos</span>
+                                <span class="treatment-desc">Tratamiento masculino completo de torso superior y brazos.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">90€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Pecho + Espalda + Brazos</span>
+                                <span class="treatment-desc">Fotodepilación masculina integral para el área superior del torso, espalda y brazos.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">95€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Pecho + Abdomen + Espalda + Brazos</span>
+                                <span class="treatment-desc">Tratamiento integral combinado de torso completo, espalda y brazos.</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">40 min</span>
+                                <span class="treatment-price">105€</span>
+                            </div>
+                        </div>
+                        <div class="treatment-item">
+                            <div class="treatment-info">
+                                <span class="treatment-name">Pack Cuerpo Entero Hombre</span>
+                                <span class="treatment-desc">Combinación integral de todas las zonas masculinas anteriores (axilas, pecho, abdomen, espalda, brazos y piernas).</span>
+                            </div>
+                            <div class="treatment-price-duration">
+                                <span class="treatment-duration">60 min</span>
+                                <span class="treatment-price">120€</span>
                             </div>
                         </div>
                     </div>
