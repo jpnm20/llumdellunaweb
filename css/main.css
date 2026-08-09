@@ -273,6 +273,15 @@
     border: 1px dashed rgba(197, 168, 128, 0.3);
 }
 
+/* Imagen Sección Sobre Nosotros */
+.about-img {
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
 /* RESPONSIVIDAD EXTRA PÁGINAS */
 @media (max-width: 992px) {
     .contact-section-grid {
@@ -282,9 +291,18 @@
 
 @media (max-width: 768px) {
     .hero {
+        height: auto;
+        min-height: auto;
+        padding: calc(var(--header-height) + 1.5rem) 0 3rem;
         text-align: center;
     }
     
+    .hero-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+    }
+
     .hero-content {
         align-items: center;
         max-width: 100%;
@@ -295,18 +313,47 @@
         text-align: center;
         gap: var(--spacing-sm);
     }
+
+    .hero-circle-display {
+        width: min(260px, 72vw);
+        height: min(260px, 72vw);
+        margin: 0 auto;
+    }
     
     .hero-actions {
         flex-direction: column;
         width: 100%;
+        gap: var(--spacing-sm);
     }
     
     .hero-actions button, .hero-actions .btn {
         width: 100%;
     }
 
+    .about-img {
+        height: 250px;
+        max-height: 280px;
+    }
+
+    .page-header {
+        padding: calc(var(--header-height) + 1.5rem) 0 2rem;
+    }
+
+    .page-header h1.hero-title {
+        font-size: clamp(2rem, 7.5vw, 2.5rem) !important;
+    }
+
+    .contact-card-map {
+        padding: var(--spacing-md);
+    }
+
+    .map-placeholder {
+        height: 220px;
+    }
+
     .services-grid, .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
 }
 

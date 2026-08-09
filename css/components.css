@@ -465,7 +465,56 @@
     .lightbox-nav-next {
         right: 25%;
     }
+
+    .service-img-wrapper {
+        height: 200px;
+    }
+
+    .treatment-group-header {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .treatment-group-title {
+        font-size: 1.35rem;
+    }
 }
+
+@media (max-width: 600px) {
+    .treatment-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+        padding: var(--spacing-md);
+    }
+
+    .treatment-price-duration {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.2rem;
+        padding-top: 0.5rem;
+        border-top: 1px dashed rgba(197, 168, 128, 0.2);
+    }
+
+    .treatment-price {
+        font-size: 1.15rem;
+    }
+
+    .filters-container {
+        gap: 6px;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.72rem;
+    }
+
+    .service-content {
+        padding: var(--spacing-md);
+    }
+}
+
 
 /* BOTÓN FLOTANTE DE WHATSAPP */
 .whatsapp-float {

@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('#footer-placeholder', 'footer.html')
     ]);
 
+    // Identificar la página actual
+    const currentPath = window.location.pathname;
+    let page = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+    if (!page) page = 'index.html';
+
     // 1. Menú Móvil (Hamburger Menu)
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
@@ -34,6 +39,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Cerrar menú al hacer click en un enlace
         navMenu.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === page || (page === 'index.html' && href === 'index.html')) {
+                link.classList.add('active');
+            }
+
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('open');
                 navMenu.classList.remove('open');
@@ -41,23 +51,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // Identificar la página actual
-    const currentPath = window.location.pathname;
-    let page = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-    if (!page) page = 'index.html';
-    const isHomePage = (page === 'index.html');
-
     // 2. Cabecera Fija con Scroll (Sticky Header)
     const header = document.getElementById('header');
     
     if (header) {
-        if (isHomePage) {
-            header.classList.add('auto-hide');
-        }
-
         const handleScroll = () => {
-            const threshold = isHomePage ? 120 : 20;
-            if (window.scrollY > threshold) {
+            if (window.scrollY > 20) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
