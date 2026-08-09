@@ -39,6 +39,12 @@
     align-items: center;
 }
 
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
 /* Logo */
 .logo {
     display: flex;
@@ -307,6 +313,19 @@
 
     .logo-img {
         max-height: 52px;
+    }
+
+    .theme-toggle-btn {
+        padding: 9px;
+        width: 42px;
+        height: 42px;
+        justify-content: center;
+        border-radius: var(--border-radius-md);
+        border-width: 1.5px;
+    }
+
+    .theme-toggle-label {
+        display: none !important;
     }
 
     /* Header Móvil */
