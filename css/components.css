@@ -677,67 +677,73 @@
 
 /* SECCIÓN PILARES DE PRIVACIDAD & CONFORT */
 .hero-h1 {
-    font-family: var(--font-title);
+    font-family: var(--font-title, 'Cormorant Garamond', serif);
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 500;
-    color: var(--color-primary);
+    font-weight: 600;
+    color: var(--color-primary, #3E5642);
     line-height: 1.2;
-    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 .privacy-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    gap: var(--spacing-lg, 1.5rem);
+    margin-top: var(--spacing-lg, 1.5rem);
 }
 
 .privacy-card {
-    background-color: var(--color-bg-secondary);
-    padding: var(--spacing-lg);
-    border-radius: var(--border-radius-lg);
-    border: 1px solid var(--color-border-card);
+    background-color: var(--color-bg-secondary, #F9F7F4);
+    padding: var(--spacing-lg, 1.5rem);
+    border-radius: var(--border-radius-lg, 12px);
+    border: 1px solid var(--color-border-card, #EAE5DE);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    transition: var(--transition-smooth);
+    transition: var(--transition-smooth, all 0.3s ease);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-xs, 0.5rem);
 }
 
 .privacy-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.08));
+    border-color: var(--color-primary-light, #E8EFE9);
 }
 
 .privacy-icon {
     width: 48px;
     height: 48px;
-    border-radius: var(--border-radius-full);
-    background-color: var(--color-primary-light);
-    color: var(--color-primary);
+    border-radius: var(--border-radius-full, 50%);
+    background-color: var(--color-primary-light, #E8EFE9);
+    color: var(--color-primary, #3E5642);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs, 0.5rem);
+    flex-shrink: 0;
 }
 
 .privacy-icon svg {
     width: 24px;
     height: 24px;
+    stroke: var(--color-primary, #3E5642);
+    fill: none;
 }
 
 .privacy-card h3 {
     font-size: 1.25rem;
-    font-family: var(--font-title);
-    color: var(--color-text-dark);
+    font-family: var(--font-title, 'Cormorant Garamond', serif);
+    color: var(--color-text-dark, #2C2C2C);
     font-weight: 600;
+    margin: 0;
 }
 
 .privacy-card p {
     font-size: 0.92rem;
-    color: var(--color-text-muted);
+    color: var(--color-text-muted, #666666);
     line-height: 1.5;
+    margin: 0;
 }
 
 
