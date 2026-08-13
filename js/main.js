@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const elem = document.querySelector(selector);
         if (elem) {
             try {
-                const res = await fetch(file);
+                const res = await fetch(`${file}?v=1.1`, { cache: 'no-cache' });
                 if (res.ok) {
                     const html = await res.text();
                     elem.outerHTML = html;
