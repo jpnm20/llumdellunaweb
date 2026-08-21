@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadComponent('#footer-placeholder', 'footer.html')
     ]);
 
+    // Inicializar Sistema de Idiomas (i18n)
+    if (window.i18n) {
+        window.i18n.init();
+    }
+
     // Identificar la página actual
     const currentPath = window.location.pathname;
     let page = currentPath.substring(currentPath.lastIndexOf('/') + 1);

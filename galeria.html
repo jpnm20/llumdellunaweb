@@ -29,9 +29,9 @@
     <!-- CABECERA DE LA PÁGINA -->
     <section class="page-header">
         <div class="container">
-            <span class="hero-subtitle">Instalaciones Privadas en L'Eliana</span>
-            <h1 class="hero-title" style="font-size: 2.8rem;">Galería & Instalaciones en L'Eliana</h1>
-            <p style="max-width: 650px; margin: var(--spacing-sm) auto 0;">Descubre el ambiente íntimo y sereno de nuestras cabinas individuales en L'Eliana, concebidas para garantizar tu máxima privacidad, confort y resultados de belleza excepcionales.</p>
+            <span class="hero-subtitle" data-i18n="gallery.tag">Instalaciones Privadas en L'Eliana</span>
+            <h1 class="hero-title" style="font-size: 2.8rem;" data-i18n="gallery.title">Galería & Instalaciones en L'Eliana</h1>
+            <p style="max-width: 650px; margin: var(--spacing-sm) auto 0;" data-i18n="gallery.desc">Descubre el ambiente íntimo y sereno de nuestras cabinas individuales en L'Eliana, concebidas para garantizar tu máxima privacidad, confort y resultados de belleza excepcionales.</p>
         </div>
     </section>
 
@@ -41,11 +41,11 @@
             
             <!-- Botones de Filtrado -->
             <div class="filters-container">
-                <button class="btn filter-btn active" data-filter="all">Todos</button>
-                <button class="btn filter-btn" data-filter="facial">Facial</button>
-                <button class="btn filter-btn" data-filter="corporal">Bienestar & Masajes</button>
-                <button class="btn filter-btn" data-filter="unas">Manicura & Uñas</button>
-                <button class="btn filter-btn" data-filter="instalaciones">El Centro</button>
+                <button class="btn filter-btn active" data-filter="all" data-i18n="gallery.filterAll">Todos</button>
+                <button class="btn filter-btn" data-filter="facial" data-i18n="gallery.filterFacial">Facial</button>
+                <button class="btn filter-btn" data-filter="corporal" data-i18n="gallery.filterBody">Bienestar & Masajes</button>
+                <button class="btn filter-btn" data-filter="unas" data-i18n="gallery.filterNails">Manicura & Uñas</button>
+                <button class="btn filter-btn" data-filter="instalaciones" data-i18n="gallery.filterCenter">El Centro</button>
             </div>
 
             <!-- GRID DE TARJETAS DE GALERÍA -->
@@ -126,6 +126,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts JS -->
+    <script src="js/i18n.js?v=1.1"></script>
     <script src="js/main.js?v=1.1"></script>
     <script src="js/galeria.js"></script>
 </body>
