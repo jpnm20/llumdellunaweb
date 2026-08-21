@@ -117,11 +117,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('#submitBtn') || contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn ? submitBtn.textContent : 'Enviar Solicitud';
+            const originalBtnText = submitBtn ? (window.i18n ? window.i18n.get('contact.sendBtn') : submitBtn.textContent) : 'Enviar Solicitud';
             
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'Enviando solicitud...';
+                submitBtn.textContent = window.i18n ? window.i18n.get('contact.sendingBtn') : 'Enviando solicitud...';
             }
 
             try {
@@ -136,14 +136,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 if (response.ok) {
                     const clientName = document.getElementById('name')?.value.trim() || '';
-                    showToast(`¡Gracias ${clientName ? clientName : ''}! Tu solicitud ha sido enviada con éxito. Te contactaremos pronto.`, true);
+                    const successMsg = window.i18n 
+                        ? window.i18n.get('contact.successToast', window.i18n.currentLang, { name: clientName })
+                        : `¡Gracias ${clientName ? clientName : ''}! Tu solicitud ha sido enviada con éxito. Te contactaremos pronto.`;
+                    showToast(successMsg, true);
                     contactForm.reset();
                 } else {
-                    showToast('Ocurrió un error al enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.', false);
+                    const errorMsg = window.i18n ? window.i18n.get('contact.errorToast') : 'Ocurrió un error al enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.';
+                    showToast(errorMsg, false);
                 }
             } catch (err) {
                 console.error('Error enviando formulario:', err);
-                showToast('No se pudo enviar el mensaje. Comprueba tu conexión o contáctanos por teléfono.', false);
+                const networkMsg = window.i18n ? window.i18n.get('contact.networkErrorToast') : 'No se pudo enviar el mensaje. Comprueba tu conexión o contáctanos por teléfono.';
+                showToast(networkMsg, false);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -153,7 +158,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-    // 7. Sistema de Dark Mode (Persistente con localStorage)
+    // 7. Sistema de Dark Mode (Persistente con localStorage y compatible con i18n)
     const initThemeToggle = () => {
         const themeToggle = document.getElementById('themeToggle');
         const themeToggleText = document.getElementById('themeToggleText');
@@ -163,7 +168,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const applyTheme = (theme) => {
             document.documentElement.setAttribute('data-theme', theme);
             if (themeToggleText) {
-                themeToggleText.textContent = theme === 'dark' ? 'Modo Oscuro' : 'Modo Claro';
+                if (window.i18n) {
+                    const key = theme === 'dark' ? 'header.modeDark' : 'header.modeLight';
+                    themeToggleText.textContent = window.i18n.get(key);
+                } else {
+                    themeToggleText.textContent = theme === 'dark' ? 'Modo Oscuro' : 'Modo Claro';
+                }
             }
         };
 
@@ -179,6 +189,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 localStorage.setItem('theme', newTheme);
             });
         }
+
+        window.addEventListener('languageChanged', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            applyTheme(currentTheme);
+        });
     };
 
     initThemeToggle();
