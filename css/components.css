@@ -187,9 +187,13 @@
     flex-direction: column;
     gap: 0.75rem;
     margin-top: var(--spacing-lg);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .treatment-group {
+    width: 100%;
+    box-sizing: border-box;
     background-color: var(--color-bg-secondary);
     border-radius: var(--border-radius-lg);
     box-shadow: 0 6px 20px rgba(34, 33, 31, 0.08);
@@ -410,6 +414,8 @@
 
 /* VISTA DE CATEGORÍA ESPECÍFICA (LAS SUBCATEGORÍAS SE MOSTRARÁN DIRECTAMENTE COMO TARJETAS PRINCIPALES INDIVIDUALES) */
 .treatments-accordion-container.single-category-filtered .treatment-group {
+    width: 100%;
+    box-sizing: border-box;
     background-color: transparent;
     border: none;
     box-shadow: none;
@@ -422,6 +428,8 @@
 }
 
 .treatments-accordion-container.single-category-filtered .treatment-group > .treatment-list {
+    width: 100%;
+    box-sizing: border-box;
     max-height: none !important;
     overflow: visible !important;
     padding: 0;
@@ -431,6 +439,8 @@
 }
 
 .treatments-accordion-container.single-category-filtered .treatment-subgroup {
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
     background-color: var(--color-bg-secondary);
     border-radius: var(--border-radius-lg);
@@ -440,6 +450,8 @@
 }
 
 .treatments-accordion-container.single-category-filtered .treatment-subheading {
+    width: 100%;
+    box-sizing: border-box;
     background-color: var(--color-secondary-light);
     padding: 1.1rem var(--spacing-lg);
     font-family: var(--font-title);
@@ -761,8 +773,46 @@
     height: 32px;
 }
 
-/* RESPONSIVIDAD COMPONENTES */
+/* RESPONSIVIDAD COMPONENTES Y TRATAMIENTOS */
 @media (max-width: 768px) {
+    .treatments-accordion-container {
+        gap: 0.65rem;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .treatment-group-header {
+        padding: 0.85rem 1rem;
+    }
+
+    .treatment-group-title {
+        font-size: 1.25rem;
+    }
+
+    .treatment-group-title > span:first-child,
+    .treatment-subheading > span:first-child {
+        flex-wrap: wrap;
+        gap: 0.35rem;
+    }
+
+    .treatment-subgroup {
+        margin: 0.6rem 0.4rem;
+    }
+
+    .treatment-subheading {
+        padding: 0.7rem 0.85rem;
+        font-size: 0.82rem;
+    }
+
+    .treatments-accordion-container.single-category-filtered .treatment-subheading {
+        padding: 0.85rem 1rem;
+        font-size: 1.25rem;
+    }
+
+    .treatment-item {
+        padding: 0.85rem 1rem;
+    }
+
     .lightbox-nav {
         top: auto;
         bottom: -60px;
@@ -780,23 +830,23 @@
     .service-img-wrapper {
         height: 200px;
     }
-
-    .treatment-group-header {
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-
-    .treatment-group-title {
-        font-size: 1.35rem;
-    }
 }
 
 @media (max-width: 600px) {
+    .badge-coming-soon {
+        margin-left: 0;
+        font-size: 0.65rem;
+        padding: 0.15rem 0.45rem;
+        white-space: normal;
+        text-align: left;
+    }
+
     .treatment-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 0.6rem;
-        padding: var(--spacing-md);
+        padding: 0.85rem;
     }
 
     .treatment-price-duration {
@@ -808,7 +858,14 @@
     }
 
     .treatment-price {
-        font-size: 1.15rem;
+        font-size: 1.05rem;
+    }
+
+    .btn-notify-wa {
+        white-space: normal;
+        word-break: break-word;
+        font-size: 0.72rem;
+        max-width: 100%;
     }
 
     .filters-container {
@@ -817,7 +874,7 @@
     }
     
     .filter-btn {
-        padding: 0.5rem 1rem;
+        padding: 0.45rem 0.85rem;
         font-size: 0.72rem;
     }
 
