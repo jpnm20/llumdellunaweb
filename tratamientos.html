@@ -37,46 +37,380 @@
 
     <!-- SECCIÓN DE TRATAMIENTOS INTERACTIVOS -->
     <section class="section-padding">
-        <div class="container" style="max-width: 800px;">
-                   <!-- Botones de Filtrado -->
+        <div class="container" style="max-width: 1260px;">
+            <!-- Botones de Filtrado -->
             <div class="filters-container">
                 <button class="btn filter-btn active" data-filter="all" data-i18n="treatments.filterAll">Todos</button>
                 <button class="btn filter-btn" data-filter="facial" data-i18n="treatments.filterFacial">Facial</button>
-                <button class="btn filter-btn" data-filter="corporal" data-i18n="treatments.filterBody">Bienestar & Corporal</button>
+                <button class="btn filter-btn" data-filter="hairspa" data-i18n="treatments.filterHairSpa">Hair Spa</button>
+                <button class="btn filter-btn" data-filter="corporal" data-i18n="treatments.filterBody">Corporal</button>
                 <button class="btn filter-btn" data-filter="unas" data-i18n="treatments.filterNails">Manicura & Pedicura</button>
                 <button class="btn filter-btn" data-filter="cera" data-i18n="treatments.filterWax">Depilación Cera</button>
                 <button class="btn filter-btn" data-filter="ipl" data-i18n="treatments.filterIPL">Depilación IPL</button>
-            </div>
-
-            <!-- CONTENEDOR DE ACORDEONES -->
+               <!-- CONTENEDOR DE ACORDEONES -->
             <div class="treatments-accordion-container">
                 
-                <!-- GRUPO 1: FACIAL -->
+                <!-- GRUPO 1: LIMPIEZAS FACIALES -->
                 <div class="treatment-group" data-category="facial" id="facial">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title" data-i18n="treatments.groupFacial">Tratamientos Faciales</h2>
+                        <h2 class="treatment-group-title"><span data-i18n="treatments.groupFacial">Facial</span> <span class="badge-coming-soon" data-i18n="treatments.newTreatmentsComingSoon">Nuevos tratamientos próximamente</span></h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
                     <div class="treatment-list">
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.facial1.name">Ritual Facial Renovador & Nutritivo Profundo</span>
-                                <span class="treatment-desc" data-i18n="t.facial1.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                        <!-- SUBCATEGORÍA 1.1: RITUALES -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subRituals">Rituales</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">60€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facial1.name">Ritual Facial Renovador</span>
+                                        <span class="treatment-desc" data-i18n="t.facial1.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">65€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facial2.name">Ritual Facial Mantenimiento</span>
+                                        <span class="treatment-desc" data-i18n="t.facial2.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">50 min</span>
+                                        <span class="treatment-price">55€</span>
+                                    </div>
+                                </div>
+
+                                <!-- SUPLEMENTOS FACIALES -->
+                                <div class="treatment-item supplement-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialSupp1.name">Suplemento Diseño de Cejas</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">+10 min</span>
+                                        <span class="treatment-price">+5€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item supplement-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialSupp2.name">Suplemento Depilación de Bigote</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">+5 min</span>
+                                        <span class="treatment-price">+3€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SUBCATEGORÍA 1.2: TRATAMIENTOS -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subTreatments">Tratamientos</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialVitC.name">Tratamiento Vitamina C</span>
+                                        <span class="treatment-desc" data-i18n="t.facialVitC.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialHydra.name">Tratamiento Hidratacion profunda</span>
+                                        <span class="treatment-desc" data-i18n="t.facialHydra.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialSpots.name">Tratamiento reductor de manchas</span>
+                                        <span class="treatment-desc" data-i18n="t.facialSpots.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialAntiage.name">Tratamiento antiedad</span>
+                                        <span class="treatment-desc" data-i18n="t.facialAntiage.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialRefresh.name">Tratamiento refrescante</span>
+                                        <span class="treatment-desc" data-i18n="t.facialRefresh.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SUBCATEGORÍA 1.3: DERMAPEN -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span><span data-i18n="treatments.subDermapen">Dermapen</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name"><span data-i18n="t.dermapen.name">Dermapen (Microneedling Facial)</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                        <span class="treatment-desc" data-i18n="t.dermapen.desc">Tratamiento de inducción de colágeno mediante microagujas para atenuar marcas, poros dilatados y líneas de expresión. *(Valoración previa recomendada)*.</span>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Dermapen%20(Microneedling%20Facial)%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- SUBCATEGORÍA 1.4: COMBINACIÓN CON SPA CAPILAR -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span><span data-i18n="treatments.subFacialCapillaryCombo">Combinación con spa capilar</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name"><span data-i18n="t.facialHairCombo.name">Ritual Facial + Spa Capilar</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                        <span class="treatment-desc" data-i18n="t.facialHairCombo.desc">Tratamiento integral que combina el cuidado facial profundo con una relajante experiencia de spa capilar.</span>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Facial%20%2B%20Spa%20Capilar%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RECOMENDACIONES GENERALES PRE Y POST SESIÓN -->
+                        <div class="treatment-group-recommendations">
+                            <div class="treatment-group-recommendations-title">
+                                💡 <span data-i18n="treatments.recTitle">Recomendaciones generales Pre y Post-sesión</span>
+                            </div>
+                            <div class="treatment-group-recommendations-list">
+                                <div><strong>📌 Pre-sesión:</strong> <span data-i18n="t.facial.pre">Acudir a cara lavada, sin productos ni tratamientos aplicados. Recomendación, acudir con el cabello no recién lavado.</span></div>
+                                <div><strong>✨ Post-sesión:</strong> <span data-i18n="t.facial.post">Hidratarse correctamente la piel y usar protección solar.</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GRUPO 2: CORPORAL -->
+                <!-- GRUPO 2: HAIR SPA -->
+                <div class="treatment-group" data-category="hairspa" id="hairspa">
+                    <div class="treatment-group-header">
+                        <h2 class="treatment-group-title"><span data-i18n="treatments.groupHairSpa">Hair Spa</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></h2>
+                        <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="treatment-list">
+                        <!-- SUBCATEGORÍA 2.1: TRATAMIENTOS CAPILARES -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span><span data-i18n="treatments.subCapillaryTreatments">Tratamientos capilares</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairLoss.name">Tratamiento Capilar para Caída</span>
+                                        <span class="treatment-desc" data-i18n="t.hairLoss.desc">Tratamiento capilar intensivo diseñado para fortalecer el folículo, estimular el crecimiento y frenar la caída del cabello.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairLoss.pre">Acudir con el cuero cabelludo limpio, sin lacas ni fijadores, y cepillado suave antes de la cita.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairLoss.post">Combinar con masajes capilares suaves y evitar recogidos o peinados muy tirantes.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Tratamiento%20Capilar%20para%20Ca%C3%ADda%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairDandruff.name">Tratamiento Capilar para Caspa/Descamación</span>
+                                        <span class="treatment-desc" data-i18n="t.hairDandruff.desc">Tratamiento capilar intensivo para calmar el cuero cabelludo, eliminar la descamación y prevenir la reaparición de la caspa.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairDandruff.pre">No rascar ni rascado agresivo del cuero cabelludo antes del servicio, ni champús especificos para no sobrecargar el cuero cabelludo.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairDandruff.post">Usar champú específico calmante y evitar el secado con aire excesivamente caliente pegado a la raíz.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Tratamiento%20Capilar%20para%20Caspa%2FDescamaci%C3%B3n%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SUBCATEGORÍA 2.2: RITUALES CAPILARES -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span><span data-i18n="treatments.subCapillaryRituals">Rituales capilares</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairOily.name">Ritual Capilar para Cabello Graso</span>
+                                        <span class="treatment-desc" data-i18n="t.hairOily.desc">Tratamiento capilar intensivo para purificar, equilibrar y controlar el exceso de grasa en el cuero cabelludo.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairOily.pre">No aplicar aceites ni mascarillas pesadas en el cuero cabelludo antes de la cita.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairOily.post">Utilizar champú purificante equilibrante y evitar lavar el cabello con agua muy caliente.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Capilar%20para%20Cabello%20Graso%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairDry.name">Ritual Capilar para Cabello Seco</span>
+                                        <span class="treatment-desc" data-i18n="t.hairDry.desc">Tratamiento capilar intensivo para aportar una hidratación profunda y devolver la flexibilidad y suavidad al cabello seco.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairDry.pre">Desenredar suavemente el cabello previo a la sesión.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairDry.post">Usar sérum nutritivo en puntas y limitar el uso de planchas o secadores a alta temperatura.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Capilar%20para%20Cabello%20Seco%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairDamaged.name">Ritual Capilar para Cabello Dañado</span>
+                                        <span class="treatment-desc" data-i18n="t.hairDamaged.desc">Tratamiento capilar intensivo para reparar la fibra capilar y devolver la vitalidad y el brillo al cabello dañado.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairDamaged.pre">Evitar tratamientos químicos (tintes, decoloraciones) en los 3 días previos.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairDamaged.post">Aplicar mascarilla reparadora una vez por semana y proteger del calor extremo.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Capilar%20para%20Cabello%20Da%C3%B1ado%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRUPO 3: TRATAMIENTOS CORPORALES Y MADEROTERAPIA -->
                 <div class="treatment-group" data-category="corporal" id="corporal">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title" data-i18n="treatments.groupBody">Tratamientos Corporales & Maderoterapia</h2>
+                        <h2 class="treatment-group-title"><span data-i18n="treatments.groupBody">Corporal</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -86,10 +420,15 @@
                             <div class="treatment-info">
                                 <span class="treatment-name"><span data-i18n="t.body1.name">Valoración Inicial + Maderoterapia Corporal Integral</span> <span class="treatment-badge" data-i18n="treatments.badgeSession1">1ª Sesión</span></span>
                                 <span class="treatment-desc" data-i18n="t.body1.desc">Diagnóstico estético personalizado seguido de una completa sesión de maderoterapia corporal en brazos, abdomen, espalda, glúteos y piernas para evaluar y activar el sistema circulatorio y linfático.</span>
+                                <div>
+                                    <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Valoraci%C3%B3n%20Inicial%20%2B%20Maderoterapia%20Corporal%20Integral%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                        <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                    </a>
+                                </div>
                             </div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">60€</span>
+                                <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
                             </div>
                         </div>
 
@@ -97,326 +436,400 @@
                             <div class="treatment-info">
                                 <span class="treatment-name"><span data-i18n="t.body2.name">Maderoterapia Corporal Reductora Focalizada</span> <span class="treatment-badge" data-i18n="treatments.badgeSession2">A partir de 2ª sesión</span></span>
                                 <span class="treatment-desc" data-i18n="t.body2.desc">Tratamiento remodelante personalizado centrado en las zonas corporales clave detectadas en la valoración inicial. Diseñado para atenuar la celulitis, suavizar la piel de naranja, reducir cúmulos grasos y drenar toxinas. *(El precio varía según las partes corporales tratadas)*.</span>
+                                <div>
+                                    <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Maderoterapia%20Corporal%20Reductora%20Focalizada%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                        <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                    </a>
+                                </div>
                             </div>
                             <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 - 90 min</span>
-                                <span class="treatment-price">Desde 65€</span>
+                                <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                            </div>
+                        </div>
+
+                        <!-- RECOMENDACIONES GENERALES PRE Y POST SESIÓN -->
+                        <div class="treatment-group-recommendations">
+                            <div class="treatment-group-recommendations-title">
+                                💡 <span data-i18n="treatments.recTitle">Recomendaciones generales Pre y Post-sesión</span>
+                            </div>
+                            <div class="treatment-group-recommendations-list">
+                                <div><strong>📌 Pre-sesión:</strong> <span data-i18n="t.body.pre">Mantener la piel hidratada diariamente, beber suficiente agua antes de la cita y no aplicar cremas pesadas ni aceites justo antes de la sesión.</span></div>
+                                <div><strong>✨ Post-sesión:</strong> <span data-i18n="t.body.post">Incrementar el consumo de agua para favorecer el drenaje linfático, evitar el consumo excesivo de sal y realizar actividad física moderada.</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GRUPO 3: UÑAS -->
+                <!-- GRUPO 4: MANICURA Y PEDICURA -->
                 <div class="treatment-group" data-category="unas" id="unas">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title" data-i18n="treatments.groupNails">Manicura & Pedicura</h2>
+                        <h2 class="treatment-group-title" data-i18n="treatments.groupNails">Manicura y pedicura</h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
                     <div class="treatment-list">
-                        <div class="treatment-subheading" data-i18n="treatments.subManicure">Manicura</div>
-                        
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani1.name">Manicura Natural Básica (Sin esmaltado)</span>
-                                <span class="treatment-desc" data-i18n="t.mani1.desc">Limpieza y pulido de cutículas, limado y conformado de uñas con nutrición e hidratación.</span>
+                        <!-- SUBCATEGORÍA: MANICURA -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subManicure">Manicura</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">30 min</span>
-                                <span class="treatment-price">15€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani1.name">Manicura Natural Básica (Sin esmaltado)</span>
+                                        <span class="treatment-desc" data-i18n="t.mani1.desc">Limpieza y pulido de cutículas, limado y conformado de uñas con nutrición e hidratación.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">30 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani2.name">Manicura Semipermanente (Sin refuerzo)</span>
+                                        <span class="treatment-desc" data-i18n="t.mani2.desc">Preparación de uña natural, acondicionamiento de cutículas y esmaltado semipermanente de alta duración.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">22€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani3.name">Manicura Semipermanente con Refuerzo de Grafeno</span>
+                                        <span class="treatment-desc" data-i18n="t.mani3.desc">Manicura semipermanente avanzada con capa estructural de grafeno para aportar nivelado, flexibilidad y resistencia extrema a la uña.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">75 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani4.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla S</span>
+                                        <span class="treatment-desc" data-i18n="t.mani4.desc">Extensión y modelado estructural en gel de alta calidad.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">90 min</span>
+                                        <span class="treatment-price">30€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani5.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla M</span>
+                                        <span class="treatment-desc" data-i18n="t.mani5.desc">Extensión y modelado estructural en gel de alta calidad.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">105 min</span>
+                                        <span class="treatment-price">35€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani6.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla L</span>
+                                        <span class="treatment-desc" data-i18n="t.mani6.desc">Extensión y modelado estructural en gel de alta calidad.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">120 min</span>
+                                        <span class="treatment-price">40€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item supplement-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.mani7.name">Suplemento: Reconstrucción de Uña con Poligel (Manos)</span>
+                                        <span class="treatment-desc" data-i18n="t.mani7.desc">Reparación estructural de uña dañada o rota en manos con poligel *(añadido a un servicio principal)*.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price">3€ / uña</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani2.name">Manicura Semipermanente (Sin refuerzo)</span>
-                                <span class="treatment-desc" data-i18n="t.mani2.desc">Preparación de uña natural, acondicionamiento de cutículas y esmaltado semipermanente de alta duración.</span>
+                        <!-- SUBCATEGORÍA: PEDICURA -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subPedicure">Pedicura</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h</span>
-                                <span class="treatment-price">22€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.pedi1.name">Pedicura Exfoliante en Seco</span>
+                                        <span class="treatment-desc" data-i18n="t.pedi1.desc">Trabajo minucioso de cutículas, limado y conformado de uñas sin inmersión previa, finalizado con nutrición e hidratación profunda en uñas y pies.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">22€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.pedi2.name">Pedicura Nutritiva con Remojo y Exfoliación (Sin esmaltar)</span>
+                                        <span class="treatment-desc" data-i18n="t.pedi2.desc">Baño relajante de pies, pulido de durezas, exfoliación profunda de arrastre de células muertas, trabajo de cutículas y uñas con nutrición e hidratación profunda en uñas y pies.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.pedi3.name">Pedicura Spa Completa</span>
+                                        <span class="treatment-desc" data-i18n="t.pedi3.desc">Ritual integral para el cuidado podal: baño podal, corte y limado de uñas, eliminación de durezas, exfoliación aromática, esmaltado y masaje relajante.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">75 min</span>
+                                        <span class="treatment-price">30€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item supplement-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.pedi4.name">Extra / Suplemento: Retirado & Pedicura Básica Express</span>
+                                        <span class="treatment-desc" data-i18n="t.pedi4.desc">Retirado rápido de esmalte anterior y acondicionamiento básico express de uñas.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">15 min</span>
+                                        <span class="treatment-price">10€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item supplement-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.pedi5.name">Suplemento: Reconstrucción de Uña con Poligel (Pies)</span>
+                                        <span class="treatment-desc" data-i18n="t.pedi5.desc">Reconstrucción estética y nivelación de uña dañada en pies mediante poligel *(añadido a un servicio principal)*.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price">6€ / uña</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani3.name">Manicura Semipermanente con Refuerzo de Grafeno</span>
-                                <span class="treatment-desc" data-i18n="t.mani3.desc">Manicura semipermanente avanzada con capa estructural de grafeno para aportar nivelado, flexibilidad y resistencia extrema a la uña.</span>
+                        <!-- RECOMENDACIONES GENERALES PRE Y POST SESIÓN -->
+                        <div class="treatment-group-recommendations">
+                            <div class="treatment-group-recommendations-title">
+                                💡 <span data-i18n="treatments.recTitle">Recomendaciones generales Pre y Post-sesión</span>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h 15 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani4.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla S</span>
-                                <span class="treatment-desc" data-i18n="t.mani4.desc">Extensión y modelado estructural en gel de alta calidad para uñas cortas (Talla S).</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h 30 min</span>
-                                <span class="treatment-price">30€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani5.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla M</span>
-                                <span class="treatment-desc" data-i18n="t.mani5.desc">Extensión y modelado estructural en gel de alta calidad para uñas de longitud media (Talla M).</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h 45 min</span>
-                                <span class="treatment-price">35€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani6.name">Manicura Esculpida en Gel (Puesta Nueva) - Talla L</span>
-                                <span class="treatment-desc" data-i18n="t.mani6.desc">Extensión y modelado estructural en gel de alta calidad para uñas de longitud larga (Talla L).</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">2h</span>
-                                <span class="treatment-price">40€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.mani7.name">Suplemento: Reconstrucción de Uña con Poligel (Manos)</span>
-                                <span class="treatment-desc" data-i18n="t.mani7.desc">Reparación estructural de uña dañada o rota en manos con poligel *(añadido a un servicio principal)*.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-price">3€ / uña</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-subheading" data-i18n="treatments.subPedicure">Pedicura</div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.pedi1.name">Pedicura Exfoliante en Seco</span>
-                                <span class="treatment-desc" data-i18n="t.pedi1.desc">Trabajo minucioso de cutículas, limado y conformado de uñas sin inmersión previa, finalizado con nutrición e hidratación profunda en uñas y pies.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h</span>
-                                <span class="treatment-price">22€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.pedi2.name">Pedicura Nutritiva con Remojo y Exfoliación (Sin esmaltar)</span>
-                                <span class="treatment-desc" data-i18n="t.pedi2.desc">Baño relajante de pies, pulido de durezas, exfoliación profunda de arrastre de células muertas, trabajo de cutículas y uñas con nutrición e hidratación profunda en uñas y pies.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.pedi3.name">Pedicura Spa Completa</span>
-                                <span class="treatment-desc" data-i18n="t.pedi3.desc">Ritual integral para el cuidado podal: baño podal, corte y limado de uñas, eliminación de durezas, exfoliación aromática, esmaltado y masaje relajante.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">1h 15 min</span>
-                                <span class="treatment-price">30€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.pedi4.name">Extra / Suplemento: Retirado & Pedicura Básica Express</span>
-                                <span class="treatment-desc" data-i18n="t.pedi4.desc">Retirado rápido de esmalte anterior y acondicionamiento básico express de uñas.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">15 min</span>
-                                <span class="treatment-price">15€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.pedi5.name">Suplemento: Reconstrucción de Uña con Poligel (Pies)</span>
-                                <span class="treatment-desc" data-i18n="t.pedi5.desc">Reconstrucción estética y nivelación de uña dañada en pies mediante poligel *(añadido a un servicio principal)*.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-price">6€ / uña</span>
+                            <div class="treatment-group-recommendations-list">
+                                <div><strong>📌 Pre-sesión:</strong> <span data-i18n="t.nails.pre">No cortar excesivamente ni arrancar las cutículas en días previos y acudir con las uñas limpias sin productos químicos agresivos.</span></div>
+                                <div><strong>✨ Post-sesión:</strong> <span data-i18n="t.nails.post">Aplicar aceite de cutículas diariamente, usar guantes para tareas domésticas o de limpieza e hidratar las manos y pies periódicamente.</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GRUPO 4: DEPILACIÓN CERA -->
+                <!-- GRUPO 5: DEPILACIÓN CON CERA CALIENTE -->
                 <div class="treatment-group" data-category="cera" id="cera">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title" data-i18n="treatments.groupWax">Depilación a la Cera</h2>
+                        <h2 class="treatment-group-title" data-i18n="treatments.groupWax">Depilación con cera caliente</h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
                     <div class="treatment-list">
-                        <div class="treatment-subheading" data-i18n="treatments.subWaxWomen">Depilación Cera Mujer</div>
-                        
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW1.name">Diseño de Cejas (Cera + Pinzas)</span>
+                        <!-- SUBCATEGORÍA: DEPILACIÓN MUJER -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subWaxWomen">Depilación mujer</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">12€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW1.name">Diseño de Cejas (Cera + Pinzas)</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">12€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW2.name">Depilación de Labio Superior</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">5€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW3.name">Depilación de Nariz</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">5€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW4.name">Depilación de Axilas</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">10€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW5.name">Depilación de Brazos</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW6.name">Depilación de Ingles</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW7.name">Depilación de Ingles Completa</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">22€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW8.name">Depilación de Medias Piernas</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxW9.name">Depilación de Piernas Enteras</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW2.name">Labio Superior</span>
+                        <!-- SUBCATEGORÍA: DEPILACIÓN HOMBRE -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subWaxMen">Depilación hombre</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">5€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM1.name">Depilación de Axilas</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM2.name">Depilación de Pecho o Lumbares</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM3.name">Depilación de Abdomen</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM4.name">Depilación de Espalda y Hombros</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM5.name">Depilación de Medias Piernas</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM6.name">Depilación de Piernas Enteras</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">30€</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW3.name">Nariz</span>
+                        <!-- RECOMENDACIONES GENERALES PRE Y POST SESIÓN -->
+                        <div class="treatment-group-recommendations">
+                            <div class="treatment-group-recommendations-title">
+                                💡 <span data-i18n="treatments.recTitle">Recomendaciones generales Pre y Post-sesión</span>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">5€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW4.name">Axilas</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">10€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW5.name">Brazos</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">15€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW6.name">Ingles</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW7.name">Ingles Completa</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">22€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW8.name">Medias Piernas</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">15€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxW9.name">Piernas Enteras</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-subheading" data-i18n="treatments.subWaxMen">Depilación Cera Hombre</div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM1.name">Axilas</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM2.name">Pecho o Lumbares</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM3.name">Abdomen</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM4.name">Espalda y Hombros</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM5.name">Medias Piernas</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.waxM6.name">Piernas Enteras</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">30€</span>
+                            <div class="treatment-group-recommendations-list">
+                                <div><strong>📌 Pre-sesión:</strong> <span data-i18n="t.wax.pre">Exfoliar la piel suavemente 24-48 horas antes para prevenir pelos encarnados y no aplicar cremas o lociones el día del servicio.</span></div>
+                                <div><strong>✨ Post-sesión:</strong> <span data-i18n="t.wax.post">Evitar la exposición solar, saunas, piscinas con cloro y el uso de ropa muy ajustada durante las primeras 24 horas.</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- GRUPO 5: DEPILACIÓN IPL -->
+                <!-- GRUPO 6: FOTODEPILACIÓN IPL -->
                 <div class="treatment-group" data-category="ipl" id="ipl">
                     <div class="treatment-group-header">
                         <h2 class="treatment-group-title" data-i18n="treatments.groupIPL">Fotodepilación IPL (Luz Pulsada)</h2>
@@ -425,228 +838,275 @@
                         </svg>
                     </div>
                     <div class="treatment-list">
-                        <div class="treatment-subheading" data-i18n="treatments.subIPLWomen">Zonas IPL Mujer (Por Sesión)</div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW1.name">Labio</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">15€</span>
+                        <!-- SUBCATEGORÍA: ZONAS IPL MUJER -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subIPLWomen">Zonas IPL Mujer (Por Sesión)</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW2.name">Mentón</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">15€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW3.name">Línea Alba</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">15€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW4.name">Axilas</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW5.name">Ingles</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">20€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW6.name">Pubis / Intraglúteos</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW7.name">Brazos</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW8.name">Espalda</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">25€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW9.name">Muslos</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">30€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW10.name">Glúteos + Intraglúteos</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">30€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW11.name">Medias Piernas</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">35€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW12.name">Piernas Enteras</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">50€</span>
-                            </div>
-                        </div>
-
-                        <div class="treatment-subheading" data-i18n="treatments.subIPLWomenPacks">Packs Combinados IPL Mujer</div>
-
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplWP1.name">Pack Axilas + Ingles + Piernas Enteras</span>
-                                <span class="treatment-desc" data-i18n="t.iplWP1.desc">Tratamiento de fotodepilación combinada en axilas, ingles y piernas enteras.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">70€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplWP2.name">Pack Axilas + Ingles + Brazos</span>
-                                <span class="treatment-desc" data-i18n="t.iplWP2.desc">Fotodepilación rápida y efectiva en axilas, ingles y brazos completos.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">60€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplWP3.name">Pack Brazos + Piernas Enteras</span>
-                                <span class="treatment-desc" data-i18n="t.iplWP3.desc">Sesión combinada para la eliminación progresiva del vello en extremidades superiores e inferiores.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">65€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplWP4.name">Pack Cuerpo Entero Mujer</span>
-                                <span class="treatment-desc" data-i18n="t.iplWP4.desc">Tratamiento integral de fotodepilación corporal en todas las zonas requeridas.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">90€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW1.name">Labio</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW2.name">Mentón</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW3.name">Línea Alba</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW4.name">Axilas</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW5.name">Ingles</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW6.name">Pubis / Intraglúteos</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW7.name">Brazos</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW8.name">Espalda</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">25€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW9.name">Muslos</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">30€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW10.name">Glúteos + Intraglúteos</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">30€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW11.name">Medias Piernas</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">35€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplW12.name">Piernas Enteras</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">50€</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-subheading" data-i18n="treatments.subIPLMen">Zonas IPL Hombre (Por Sesión)</div>
+                        <!-- SUBCATEGORÍA: PACKS COMBINADOS IPL MUJER -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subIPLWomenPacks">Packs Combinados IPL Mujer</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplWP1.name">Pack Axilas + Ingles + Piernas Enteras</span>
+                                        <span class="treatment-desc" data-i18n="t.iplWP1.desc">Tratamiento de fotodepilación combinada en axilas, ingles y piernas enteras.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">70€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplWP2.name">Pack Axilas + Ingles + Brazos</span>
+                                        <span class="treatment-desc" data-i18n="t.iplWP2.desc">Fotodepilación rápida y efectiva en axilas, ingles y brazos completos.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplWP3.name">Pack Brazos + Piernas Enteras</span>
+                                        <span class="treatment-desc" data-i18n="t.iplWP3.desc">Sesión combinada para la eliminación progresiva del vello en extremidades superiores e inferiores.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">65€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplWP4.name">Pack Cuerpo Entero Mujer</span>
+                                        <span class="treatment-desc" data-i18n="t.iplWP4.desc">Tratamiento integral de fotodepilación corporal en todas las zonas requeridas.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">90€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM1.name">Axilas</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">20 min</span>
-                                <span class="treatment-price">20€</span>
+                        <!-- SUBCATEGORÍA: ZONAS IPL HOMBRE -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subIPLMen">Zonas IPL Hombre (Por Sesión)</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
                             </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM2.name">Pecho</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">35€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM3.name">Abdomen</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">35€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM4.name">Brazos</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">40€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM5.name">Espalda</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">45€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM6.name">Medias Piernas</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">50€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM7.name">Piernas Enteras</span></div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">70€</span>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM1.name">Axilas</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">20€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM2.name">Pecho</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">35€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM3.name">Abdomen</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">35€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM4.name">Brazos</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">40€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM5.name">Espalda</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">45€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM6.name">Medias Piernas</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">50€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info"><span class="treatment-name" data-i18n="t.iplM7.name">Piernas Enteras</span></div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">70€</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="treatment-subheading" data-i18n="treatments.subIPLMenPacks">Packs Combinados IPL Hombre</div>
+                        <!-- SUBCATEGORÍA: PACKS COMBINADOS IPL HOMBRE -->
+                        <div class="treatment-subgroup">
+                            <div class="treatment-subheading">
+                                <span data-i18n="treatments.subIPLMenPacks">Packs Combinados IPL Hombre</span>
+                                <svg class="treatment-subheading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                            <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplMP1.name">Pack Pecho + Abdomen + Brazos</span>
+                                        <span class="treatment-desc" data-i18n="t.iplMP1.desc">Tratamiento masculino completo de torso superior y brazos.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">90€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplMP2.name">Pack Pecho + Espalda + Brazos</span>
+                                        <span class="treatment-desc" data-i18n="t.iplMP2.desc">Fotodepilación masculina integral para el área superior del torso, espalda y brazos.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">95€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplMP3.name">Pack Pecho + Abdomen + Espalda + Brazos</span>
+                                        <span class="treatment-desc" data-i18n="t.iplMP3.desc">Tratamiento integral combinado de torso completo, espalda y brazos.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">40 min</span>
+                                        <span class="treatment-price">105€</span>
+                                    </div>
+                                </div>
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.iplMP4.name">Pack Cuerpo Entero Hombre</span>
+                                        <span class="treatment-desc" data-i18n="t.iplMP4.desc">Combinación integral de todas las zonas masculinas anteriores (axilas, pecho, abdomen, espalda, brazos y piernas).</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">120€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplMP1.name">Pack Pecho + Abdomen + Brazos</span>
-                                <span class="treatment-desc" data-i18n="t.iplMP1.desc">Tratamiento masculino completo de torso superior y brazos.</span>
+                        <!-- RECOMENDACIONES GENERALES PRE Y POST SESIÓN -->
+                        <div class="treatment-group-recommendations">
+                            <div class="treatment-group-recommendations-title">
+                                💡 <span data-i18n="treatments.recTitle">Recomendaciones generales Pre y Post-sesión</span>
                             </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">90€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplMP2.name">Pack Pecho + Espalda + Brazos</span>
-                                <span class="treatment-desc" data-i18n="t.iplMP2.desc">Fotodepilación masculina integral para el área superior del torso, espalda y brazos.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">95€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplMP3.name">Pack Pecho + Abdomen + Espalda + Brazos</span>
-                                <span class="treatment-desc" data-i18n="t.iplMP3.desc">Tratamiento integral combinado de torso completo, espalda y brazos.</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">40 min</span>
-                                <span class="treatment-price">105€</span>
-                            </div>
-                        </div>
-                        <div class="treatment-item">
-                            <div class="treatment-info">
-                                <span class="treatment-name" data-i18n="t.iplMP4.name">Pack Cuerpo Entero Hombre</span>
-                                <span class="treatment-desc" data-i18n="t.iplMP4.desc">Combinación integral de todas las zonas masculinas anteriores (axilas, pecho, abdomen, espalda, brazos y piernas).</span>
-                            </div>
-                            <div class="treatment-price-duration">
-                                <span class="treatment-duration">60 min</span>
-                                <span class="treatment-price">120€</span>
+                            <div class="treatment-group-recommendations-list">
+                                <div><strong>📌 Pre-sesión:</strong> <span data-i18n="t.ipl.pre">Rasurar la zona a tratar con cuchilla 24 horas antes, no arrancar el vello de raíz (cera o pinzas) durante el tratamiento y evitar la exposición solar directa. Si es zona que vaya cubierta por ropa, venir con ropa cómoda.</span></div>
+                                <div><strong>✨ Post-sesión:</strong> <span data-i18n="t.ipl.post">Aplicar gel de aloe vera para calmar la piel, usar protección solar alta en zonas expuestas y evitar baños calientes o sudoración excesiva las primeras 24-48 horas.</span></div>
                             </div>
                         </div>
                     </div>
@@ -668,8 +1128,8 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts JS -->
-    <script src="js/i18n.js?v=1.1"></script>
-    <script src="js/main.js?v=1.1"></script>
-    <script src="js/tratamientos.js"></script>
+    <script src="js/i18n.js?v=1.3"></script>
+    <script src="js/main.js?v=1.3"></script>
+    <script src="js/tratamientos.js?v=1.3"></script>
 </body>
 </html>

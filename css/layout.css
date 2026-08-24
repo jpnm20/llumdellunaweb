@@ -125,6 +125,19 @@
     color: var(--color-text-dark);
 }
 
+/* Botón de Cita en Navbar (Ajustado al texto como el botón de Modo Claro) */
+.nav-menu .nav-link.btn {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: var(--border-radius-full);
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Animación de línea elegante */
 .nav-link:not(.btn)::after {
     content: '';

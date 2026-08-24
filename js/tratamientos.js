@@ -1,14 +1,26 @@
 /* js/tratamientos.js */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lógica del Acordeón para Tratamientos
+    // 1. Lógica del Acordeón para Tratamientos (Categorías Principales)
     const accordions = document.querySelectorAll('.treatment-group-header');
-    
+
     accordions.forEach(header => {
         header.addEventListener('click', () => {
             const group = header.parentElement;
             group.classList.toggle('open');
         });
     });
+
+    // 1.1 Lógica del Acordeón para Subcategorías (Sub-grupos)
+    const subAccordions = document.querySelectorAll('.treatment-subheading');
+
+    subAccordions.forEach(subHeader => {
+        subHeader.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const subgroup = subHeader.parentElement;
+            subgroup.classList.toggle('open');
+        });
+    });
+
 
     // 2. Filtros de Categorías de Tratamientos
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -44,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyFilter(filterValue);
             });
         });
-        
+
         // 3. Detección de Categoría mediante URL Query Parameter o Hash (#facial, ?category=unas, etc.)
         const urlParams = new URLSearchParams(window.location.search);
         const categoryParam = urlParams.get('category') || window.location.hash.replace('#', '');
