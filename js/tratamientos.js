@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // 2. Filtros de Categorías de Tratamientos
     const filterButtons = document.querySelectorAll('.filter-btn');
     const treatmentGroups = document.querySelectorAll('.treatment-group');
@@ -40,8 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         treatmentGroups.forEach(group => {
             const category = group.getAttribute('data-category');
             if (filterValue === 'all' || category === filterValue) {
-                group.style.display = 'block';
-                group.classList.add('open');
+                group.style.display = '';
             } else {
                 group.style.display = 'none';
                 group.classList.remove('open');
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 3. Detección de Categoría mediante URL Query Parameter o Hash (#facial, ?category=unas, etc.)
+        // 3. Detección de Categoría mediante URL Query Parameter o Hash (#facial, #hairspa, #corporal, etc.)
         const urlParams = new URLSearchParams(window.location.search);
         const categoryParam = urlParams.get('category') || window.location.hash.replace('#', '');
 
@@ -66,14 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const targetElement = document.getElementById(categoryParam) || document.querySelector(`.treatment-group[data-category="${categoryParam}"]`);
                 if (targetElement) {
+                    targetElement.classList.add('open');
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 150);
-        } else {
-            // Abrir el primer acordeón por defecto si no viene parámetro
-            if (treatmentGroups[0]) {
-                treatmentGroups[0].classList.add('open');
-            }
         }
     }
 });
