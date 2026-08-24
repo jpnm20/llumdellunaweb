@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Filtros de Categorías de Tratamientos
     const filterButtons = document.querySelectorAll('.filter-btn');
     const treatmentGroups = document.querySelectorAll('.treatment-group');
+    const container = document.querySelector('.treatments-accordion-container');
 
     function applyFilter(filterValue) {
         // Quitar clase active de todos los botones y agregar al actual
@@ -35,16 +36,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Mostrar/Ocultar grupos según filtro
-        treatmentGroups.forEach(group => {
-            const category = group.getAttribute('data-category');
-            if (filterValue === 'all' || category === filterValue) {
+        if (filterValue === 'all') {
+            if (container) container.classList.remove('single-category-filtered');
+            treatmentGroups.forEach(group => {
                 group.style.display = '';
-            } else {
-                group.style.display = 'none';
-                group.classList.remove('open');
-            }
-        });
+            });
+        } else {
+            if (container) container.classList.add('single-category-filtered');
+            treatmentGroups.forEach(group => {
+                const category = group.getAttribute('data-category');
+                if (category === filterValue) {
+                    group.style.display = '';
+                    group.classList.add('open');
+                } else {
+                    group.style.display = 'none';
+                    group.classList.remove('open');
+                }
+            });
+        }
     }
 
     if (filterButtons.length > 0 && treatmentGroups.length > 0) {
@@ -64,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const targetElement = document.getElementById(categoryParam) || document.querySelector(`.treatment-group[data-category="${categoryParam}"]`);
                 if (targetElement) {
-                    targetElement.classList.add('open');
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 150);
