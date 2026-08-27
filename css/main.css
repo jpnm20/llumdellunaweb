@@ -179,17 +179,97 @@
     gap: var(--spacing-lg);
 }
 
-/* PORTFOLIO CARD */
+/* PORTFOLIO CARD & 3D FLIP CARD */
 .portfolio-card {
-    background-color: var(--color-bg-secondary);
+    background-color: transparent;
     border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-smooth);
     position: relative;
     aspect-ratio: 1 / 1;
     cursor: pointer;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+}
+
+.portfolio-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-card.is-flipped .portfolio-card-inner {
+    transform: rotateY(180deg);
+}
+
+.portfolio-card-front,
+.portfolio-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.portfolio-card-front {
+    transform: rotateY(0deg);
+    background-color: var(--color-bg-secondary);
+}
+
+.portfolio-card-back {
+    transform: rotateY(180deg);
+    background-color: var(--color-bg-tertiary, #f8f6f2);
+    border: 1.5px solid var(--color-accent, #c5a880);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+    text-align: center;
+    box-sizing: border-box;
+    color: var(--color-text-main);
+}
+
+.card-back-badge {
+    font-family: var(--font-subtitle);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #C97A85; /* Rosa vibrante elegante */
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-back-title {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: var(--color-text-dark, #22211F);
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.25;
+}
+
+.card-back-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-back-hint {
+    font-size: 0.72rem;
+    font-style: italic;
+    color: #C97A85; /* Rosa vibrante elegante */
+    opacity: 0.95;
+    margin-top: auto;
+    font-weight: 500;
 }
 
 .portfolio-img {
@@ -205,7 +285,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(44, 44, 44, 0.75);
+    background-color: rgba(30, 30, 30, 0.82);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,22 +301,101 @@
     transform: scale(1.05);
 }
 
-.portfolio-card:hover .portfolio-overlay {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .portfolio-card:hover .portfolio-overlay {
+        opacity: 1;
+    }
 }
 
 .portfolio-overlay-title {
     font-family: var(--font-title);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    color: #FFFFFF;
     margin-bottom: var(--spacing-xs);
 }
 
 .portfolio-overlay-category {
     font-family: var(--font-subtitle);
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--color-secondary);
+    color: #F2C4CB; /* Rosa palo brillante y legible sobre el fondo oscuro */
+    font-weight: 600;
+}
+
+/* SECCIÓN GALERÍA: 4 CLAVES DE PRIVACIDAD & CONFORT */
+.privacy-keys-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 1024px) {
+    .privacy-keys-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .privacy-keys-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.privacy-key-card {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--color-border-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-key-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.privacy-key-img-wrapper {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+}
+
+.privacy-key-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.privacy-key-card:hover .privacy-key-img {
+    transform: scale(1.06);
+}
+
+.privacy-key-content {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex-grow: 1;
+}
+
+.privacy-key-title {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    color: var(--color-text-dark, #22211F);
+    line-height: 1.25;
+    margin-bottom: 2px;
+}
+
+.privacy-key-desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--color-text-muted);
 }
 
 /* SECCIÓN CONTÁCTANOS COMPUESTA */
@@ -278,7 +437,7 @@
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
     width: 100%;
-    height: 450px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
 }
 
@@ -332,8 +491,9 @@
     }
 
     .about-img {
-        height: 250px;
-        max-height: 280px;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .page-header {

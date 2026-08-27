@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Filtrar elementos
                 portfolioCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    if (filterValue === 'all' || category === filterValue) {
+                    const categories = (card.getAttribute('data-category') || '').split(' ');
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
                         card.style.display = 'block';
                         // Pequeño delay para fade-in elegante
                         setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
@@ -47,18 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
 
-    if (lightbox && lightboxImg) {
-        // Abrir Lightbox al hacer click en una tarjeta
+    if (portfolioCards.length > 0) {
+        // Voltear tarjeta (3D Card Flip) al hacer click/tap
         portfolioCards.forEach((card) => {
             card.addEventListener('click', () => {
-                // Encontrar el índice de esta tarjeta dentro de las activas actualmente
-                currentIndex = activeCards.indexOf(card);
-                if (currentIndex === -1) currentIndex = 0;
-                
-                openLightbox(card);
+                card.classList.toggle('is-flipped');
             });
         });
+    }
 
+    if (lightbox && lightboxImg) {
         const openLightbox = (card) => {
             const img = card.querySelector('.portfolio-img');
             const title = card.querySelector('.portfolio-overlay-title').innerText;

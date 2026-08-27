@@ -76,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 150);
+        } else {
+            // Abrir por defecto el grupo de tratamientos faciales al cargar la página
+            const defaultFacial = document.getElementById('facial') || document.querySelector('.treatment-group[data-category="facial"]');
+            if (defaultFacial) defaultFacial.classList.add('open');
         }
     }
 });

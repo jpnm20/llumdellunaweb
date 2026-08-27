@@ -26,8 +26,65 @@
     <!-- CABECERA (HEADER MODULAR) -->
     <div id="header-placeholder"></div>
 
-    <!-- CABECERA DE LA PÁGINA -->
-    <section class="page-header">
+    <!-- SECCIÓN PILARES DE PRIVACIDAD Y LAS 4 CLAVES DE LA COMODIDAD (ARRIBA DEL TODO EN GALERÍA) -->
+    <section class="section-padding" style="background-color: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border-card); padding: calc(var(--header-height) + var(--spacing-xl)) 0 var(--spacing-xl) 0;">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <span class="hero-subtitle" data-i18n="privacy.tag">Tu Privacidad Es Nuestra Prioridad</span>
+                <h2 data-i18n="privacy.title" style="font-size: 2.2rem;">Tu Privacidad & Las 4 Claves de la Comodidad</h2>
+                <p style="max-width: 650px; margin: var(--spacing-xs) auto 0;" data-i18n="privacy.desc">Un centro de estética en L'Eliana concebido para ser un refugio íntimo: reservado, pacífico y diseñado para tu relajación plena sin interrupciones.</p>
+            </div>
+
+            <div class="privacy-keys-grid">
+                <!-- Clave 1 -->
+                <article class="privacy-key-card">
+                    <div class="privacy-key-img-wrapper">
+                        <img src="images/cabina-iluminada.jpeg" alt="Cabinas Privadas Individuales Llum de Lluna" class="privacy-key-img">
+                    </div>
+                    <div class="privacy-key-content">
+                        <h3 class="privacy-key-title" data-i18n="privacy.p1Title">Cabinas Privadas Individuales</h3>
+                        <p class="privacy-key-desc" data-i18n="privacy.p1Desc">Tratamientos a puerta cerrada con total confidencialidad. Garantizamos tu intimidad absoluta y cero interrupciones mientras cuidamos de ti.</p>
+                    </div>
+                </article>
+
+                <!-- Clave 2 -->
+                <article class="privacy-key-card">
+                    <div class="privacy-key-img-wrapper">
+                        <img src="images/cabina-luz-ambiente.jpeg" alt="Ambiente de Calma y Relax Llum de Lluna" class="privacy-key-img">
+                    </div>
+                    <div class="privacy-key-content">
+                        <h3 class="privacy-key-title" data-i18n="privacy.p2Title">Ambiente de Calma & Relax</h3>
+                        <p class="privacy-key-desc" data-i18n="privacy.p2Desc">Un espacio silencioso y acogedor en L'Eliana con música tenue y aromaterapia donde el estrés cotidiano se detiene.</p>
+                    </div>
+                </article>
+
+                <!-- Clave 3 -->
+                <article class="privacy-key-card">
+                    <div class="privacy-key-img-wrapper">
+                        <img src="images/facial-ritual-1.jpeg" alt="Atención Exclusiva 1 a 1 Llum de Lluna" class="privacy-key-img">
+                    </div>
+                    <div class="privacy-key-content">
+                        <h3 class="privacy-key-title" data-i18n="privacy.p3Title">Atención Exclusiva 1 a 1</h3>
+                        <p class="privacy-key-desc" data-i18n="privacy.p3Desc">Sin aglomeraciones ni prisas. Cada cita está programada holgadamente para dedicarte el 100% de nuestra atención en exclusiva.</p>
+                    </div>
+                </article>
+
+                <!-- Clave 4 -->
+                <article class="privacy-key-card">
+                    <div class="privacy-key-img-wrapper">
+                        <img src="images/cabina-detalle-camilla.jpeg" alt="Alta Cosmética Premium Llum de Lluna" class="privacy-key-img">
+                    </div>
+                    <div class="privacy-key-content">
+                        <h3 class="privacy-key-title" data-i18n="privacy.p4Title">Alta Cosmética Premium</h3>
+                        <p class="privacy-key-desc" data-i18n="privacy.p4Desc">Firmas de alta gama respetuosas con tu piel y el planeta, combinando tecnología de vanguardia y manos expertas.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CABECERA DE LA PÁGINA (A CONTINUACIÓN) -->
+    <section class="page-header" style="padding: var(--spacing-xl) 0; background-color: var(--color-bg-primary);">
         <div class="container">
             <span class="hero-subtitle" data-i18n="gallery.tag">Instalaciones Privadas en L'Eliana</span>
             <h1 class="hero-title" style="font-size: 2.8rem;" data-i18n="gallery.title">Galería & Instalaciones en L'Eliana</h1>
@@ -51,39 +108,269 @@
             <!-- GRID DE TARJETAS DE GALERÍA -->
             <div class="portfolio-grid" id="portfolioGrid">
                 
-                <!-- Foto 1: Instalaciones (Sala de Espera) -->
+                <!-- Foto 1: Instalaciones (Zona de Espera) -->
                 <div class="portfolio-card" data-category="instalaciones">
-                    <img src="images/sala-espera-sofa.jpeg" alt="Zona de espera y recepción serena Llum de Lluna" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-overlay-title" data-i18n="gallery.card1Title">Zona de Espera & Recepción</h3>
-                        <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/refugio-sofa.jpeg" alt="Zona de espera y recepción serena Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card1Title">Zona de Espera & Recepción</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card1Title">Zona de Espera & Recepción</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card1Desc">Zona de espera y recepción serena diseñada para darte la bienvenida en un entorno de calma y paz.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Foto 2: Pedicura Spa -->
-                <div class="portfolio-card" data-category="unas">
-                    <img src="images/pedicura-spa.png" alt="Pedicura Spa Completa en Llum de Lluna" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-overlay-title" data-i18n="gallery.card2Title">Pedicura Spa Completa</h3>
-                        <span class="portfolio-overlay-category" data-i18n="gallery.card2Category">Manicura & Pedicura</span>
+                <!-- Foto 2: Sala Pequeña (Luz Ambiente) -->
+                <div class="portfolio-card" data-category="instalaciones facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/cabina-luz-ambiente.jpeg" alt="Cabina Faciales y Capilar Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card6Title">Cabina Faciales & Capilar</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card6Title">Cabina Faciales & Capilar</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card6Desc">Iluminación ambiente durante el tratamiento y música relajante.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Foto 3: Fotodepilación IPL / Láser -->
-                <div class="portfolio-card" data-category="corporal">
-                    <img src="images/depilacion-laser.png" alt="Fotodepilación IPL / Láser profesional" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-overlay-title" data-i18n="gallery.card3Title">Fotodepilación IPL / Láser</h3>
-                        <span class="portfolio-overlay-category" data-i18n="gallery.card3Category">Depilación & Corporal</span>
+                <!-- Foto 3: Sala Pequeña (Cabina Facial & Hair Spa) -->
+                <div class="portfolio-card" data-category="instalaciones facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/cabina-iluminada.jpeg" alt="Cabina Faciales y Capilar Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card8Title">Cabina Faciales & Capilar</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card8Title">Cabina Faciales & Capilar</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card8Desc">Espacio privado a puerta cerrada con música relajante.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Foto 4: Facial Renovador -->
+                <!-- Foto 4: Sala Grande (Vista General) -->
+                <div class="portfolio-card" data-category="instalaciones corporal">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/cabina-vista-general.jpeg" alt="Cabina Corporal y Depilación Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card5Title">Cabina Corporal & Depilación</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card5Title">Cabina Corporal & Depilación</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card5Desc">Espacio amplio a puerta cerrada con música de acompañamiento.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 5: Sala Grande (Cromoterapia / Iluminación) -->
+                <div class="portfolio-card" data-category="instalaciones corporal">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/cabina-cromoterapia.jpeg" alt="Cabina Corporal y Depilación Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card7Title">Cabina Corporal & Depilación</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card7Title">Cabina Corporal & Depilación</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card7Desc">Iluminación ambiente durante el tratamiento y música de acompañamiento.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 6: Sala Grande (Detalle Camilla) -->
+                <div class="portfolio-card" data-category="instalaciones corporal">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/cabina-detalle-camilla.jpeg" alt="Cabina Corporal y Depilación Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card9Title">Cabina Corporal & Depilación</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card1Category">El Centro</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card1Category">El Centro</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card9Title">Cabina Corporal & Depilación</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card9Desc">Equipamiento y camilla confort con música de acompañamiento.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 7: Tratamiento Facial 1 -->
                 <div class="portfolio-card" data-category="facial">
-                    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Ritual Facial Renovador & Nutritivo Profundo" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-overlay-title" data-i18n="gallery.card4Title">Ritual Facial Renovador</h3>
-                        <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">Tratamiento Facial</span>
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/facial-tratamiento-1.jpeg" alt="Tratamiento Facial en Llum de Lluna L'Eliana" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.cardFacial1Title">Tratamiento Facial</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">FACIAL</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card4Category">FACIAL</span>
+                            <h3 class="card-back-title" data-i18n="gallery.cardFacial1Title">Tratamiento Facial</h3>
+                            <p class="card-back-desc" data-i18n="gallery.cardFacial1Desc">Cuidado facial profundo de 60 minutos con limpieza, exfoliación, desincrustante y activo concentrado.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 8: Ritual Facial 1 -->
+                <div class="portfolio-card" data-category="facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/facial-ritual-1.jpeg" alt="Ritual Facial en Llum de Lluna L'Eliana" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.cardFacial2Title">Ritual Facial</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">FACIAL</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card4Category">FACIAL</span>
+                            <h3 class="card-back-title" data-i18n="gallery.cardFacial2Title">Ritual Facial</h3>
+                            <p class="card-back-desc" data-i18n="gallery.cardFacial2Desc">Masaje facial relajante con técnicas drenantes y reafirmantes para potenciar la luminosidad natural.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 9: Tratamiento Facial 2 -->
+                <div class="portfolio-card" data-category="facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/facial-tratamiento-2.jpeg" alt="Tratamiento Facial en Llum de Lluna L'Eliana" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.cardFacial3Title">Tratamiento Facial</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">FACIAL</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card4Category">FACIAL</span>
+                            <h3 class="card-back-title" data-i18n="gallery.cardFacial3Title">Tratamiento Facial</h3>
+                            <p class="card-back-desc" data-i18n="gallery.cardFacial3Desc">Aplicación de cosmética de alta gama tras diagnóstico estético personalizado de la piel.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 10: Ritual Facial 2 -->
+                <div class="portfolio-card" data-category="facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/facial-ritual-2.jpeg" alt="Ritual Facial Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.cardFacial4Title">Ritual Facial</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">FACIAL</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card4Category">FACIAL</span>
+                            <h3 class="card-back-title" data-i18n="gallery.cardFacial4Title">Ritual Facial</h3>
+                            <p class="card-back-desc" data-i18n="gallery.cardFacial4Desc">Mascarilla oclusiva refrescante e hidratante combinada con masaje relajante cervical y armónico.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 11: Ritual Facial 3 -->
+                <div class="portfolio-card" data-category="facial">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/facial-ritual-3.jpeg" alt="Ritual Facial Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.cardFacial5Title">Ritual Facial</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card4Category">FACIAL</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card4Category">FACIAL</span>
+                            <h3 class="card-back-title" data-i18n="gallery.cardFacial5Title">Ritual Facial</h3>
+                            <p class="card-back-desc" data-i18n="gallery.cardFacial5Desc">Preparación artesanal y técnica delicada de aplicación de mascarilla para calmar y renovar la tez.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 12: Manicura Semipermanente -->
+                <div class="portfolio-card" data-category="unas">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800" alt="Manicura Semipermanente y Cuidado en Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card2Title">Manicura Semipermanente & Cuidado</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card2Category">Manicura & Pedicura</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card2Category">Manicura & Pedicura</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card2Title">Manicura Semipermanente & Cuidado</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card2Desc">Cuidado integral de manos y uñas con esmaltado de alta duración y refuerzo estructural.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 13: Pedicura Spa -->
+                <div class="portfolio-card" data-category="unas">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="images/pedicura-spa.png" alt="Pedicura Spa Completa en Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card2bTitle">Pedicura Spa Completa</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card2Category">Manicura & Pedicura</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card2Category">Manicura & Pedicura</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card2bTitle">Pedicura Spa Completa</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card2bDesc">Ritual de cuidado podal integral con baño aromático, exfoliación, tratamiento de cutículas y masaje.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 14: Hair Spa -->
+                <div class="portfolio-card" data-category="corporal">
+                    <div class="portfolio-card-inner">
+                        <div class="portfolio-card-front">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800" alt="Hair Spa y Rituales Capilares Llum de Lluna" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-overlay-title" data-i18n="gallery.card3Title">Hair Spa & Rituales Capilares</h3>
+                                <span class="portfolio-overlay-category" data-i18n="gallery.card3Category">Bienestar & Capilar</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card-back">
+                            <span class="card-back-badge" data-i18n="gallery.card3Category">Bienestar & Capilar</span>
+                            <h3 class="card-back-title" data-i18n="gallery.card3Title">Hair Spa & Rituales Capilares</h3>
+                            <p class="card-back-desc" data-i18n="gallery.card3Desc">Tratamientos intensivos para purificar, hidratar o reparar el cuero cabelludo y la fibra capilar.</p>
+                            <span class="card-back-hint" data-i18n="gallery.tapToFlip">Toca para voltear ↺</span>
+                        </div>
                     </div>
                 </div>
 
