@@ -204,6 +204,7 @@
 
 .portfolio-card.is-flipped .portfolio-card-inner {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .portfolio-card-front,
@@ -215,17 +216,43 @@
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .portfolio-card-front {
+    z-index: 2;
     transform: rotateY(0deg);
-    background-color: var(--color-bg-secondary);
+    -webkit-transform: rotateY(0deg);
 }
 
 .portfolio-card-back {
     transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    background-color: var(--color-bg-secondary);
+}
+
+/* SECCIONES DESTACADAS SUPERIORES (BAJO CABECERA FIJA) */
+.top-featured-hero {
+    background-color: var(--color-bg-secondary);
+    border-bottom: 1px solid var(--color-border-card);
+    padding-top: calc(85px + var(--spacing-xl)) !important;
+    padding-bottom: var(--spacing-xl) !important;
+}
+
+@media (max-width: 768px) {
+    .top-featured-hero {
+        padding-top: calc(75px + var(--spacing-lg)) !important;
+        padding-bottom: var(--spacing-lg) !important;
+    }
+}
+
+.portfolio-card-back {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
     background-color: var(--color-bg-tertiary, #f8f6f2);
     border: 1.5px solid var(--color-accent, #c5a880);
     display: flex;
@@ -330,13 +357,13 @@
     gap: var(--spacing-md);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .privacy-keys-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 640px) {
     .privacy-keys-grid {
         grid-template-columns: 1fr;
     }
@@ -360,9 +387,12 @@
 
 .privacy-key-img-wrapper {
     width: 100%;
-    height: 160px;
+    aspect-ratio: 16 / 10;
+    min-height: 150px;
+    max-height: 200px;
     overflow: hidden;
     position: relative;
+    background-color: var(--color-bg-tertiary, #f8f6f2);
 }
 
 .privacy-key-img {
