@@ -68,13 +68,13 @@
                     </div>
                 </article>
 
-                <!-- Servicio 3: Hair Spa -->
+                <!-- Servicio 3: Spa Capilar -->
                 <article class="service-card" onclick="const h=document.querySelector('#hairspa'); if(h){ h.classList.add('open'); h.scrollIntoView({behavior:'smooth', block:'start'}); }" style="cursor: pointer;">
                     <div class="service-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600" alt="Rituales Capilares Hair Spa Llum de Lluna">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600" alt="Rituales Capilares Spa Capilar Llum de Lluna">
                     </div>
                     <div class="service-content">
-                        <span class="service-tag" data-i18n="services.tagHairSpa">Hair Spa</span>
+                        <span class="service-tag" data-i18n="services.tagHairSpa">Spa Capilar</span>
                         <h3 class="service-title" data-i18n="services.hairSpaTitleHome">Rituales Capilares</h3>
                         <p class="service-description" data-i18n="services.hairSpaDescHome">Tratamientos intensivos para purificar, equilibrar, hidratar o reparar el cuero cabelludo y la fibra capilar en un ambiente de serenidad y relax.</p>
                         <span class="service-link">
@@ -103,11 +103,13 @@
             <div class="filters-container">
                 <button class="btn filter-btn active" data-filter="all" data-i18n="treatments.filterAll">Todos</button>
                 <button class="btn filter-btn" data-filter="facial" data-i18n="treatments.filterFacial">Facial</button>
-                <button class="btn filter-btn" data-filter="hairspa" data-i18n="treatments.filterHairSpa">Hair Spa</button>
+                <button class="btn filter-btn" data-filter="hairspa" data-i18n="treatments.filterHairSpa">Spa Capilar</button>
                 <button class="btn filter-btn" data-filter="corporal" data-i18n="treatments.filterBody">Corporal</button>
                 <button class="btn filter-btn" data-filter="unas" data-i18n="treatments.filterNails">Manicura & Pedicura</button>
                 <button class="btn filter-btn" data-filter="cera" data-i18n="treatments.filterWax">Depilación Cera</button>
                 <button class="btn filter-btn" data-filter="ipl" data-i18n="treatments.filterIPL">Depilación IPL</button>
+            </div>
+            
                <!-- CONTENEDOR DE ACORDEONES -->
             <div class="treatments-accordion-container">
                 
@@ -185,18 +187,7 @@
                             <div class="treatment-sublist">
                                 <div class="treatment-item">
                                     <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.facialVitC.name">Tratamiento Vitamina C</span>
-                                        <span class="treatment-desc" data-i18n="t.facialVitC.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
-                                    </div>
-                                    <div class="treatment-price-duration">
-                                        <span class="treatment-duration">60 min</span>
-                                        <span class="treatment-price">60€</span>
-                                    </div>
-                                </div>
-
-                                <div class="treatment-item">
-                                    <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.facialHydra.name">Tratamiento Hidratacion profunda</span>
+                                        <span class="treatment-name" data-i18n="t.facialHydra.name">Tratamiento Hidratante</span>
                                         <span class="treatment-desc" data-i18n="t.facialHydra.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
                                     </div>
                                     <div class="treatment-price-duration">
@@ -207,8 +198,8 @@
 
                                 <div class="treatment-item">
                                     <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.facialSpots.name">Tratamiento reductor de manchas</span>
-                                        <span class="treatment-desc" data-i18n="t.facialSpots.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                        <span class="treatment-name" data-i18n="t.facialCalm.name">Tratamiento Calmante (Pieles Sensibles)</span>
+                                        <span class="treatment-desc" data-i18n="t.facialCalm.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
                                     </div>
                                     <div class="treatment-price-duration">
                                         <span class="treatment-duration">60 min</span>
@@ -218,19 +209,19 @@
 
                                 <div class="treatment-item">
                                     <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.facialAntiage.name">Tratamiento antiedad</span>
+                                        <span class="treatment-name" data-i18n="t.facialPurify.name">Tratamiento Purificante (Pieles con Acné)</span>
+                                        <span class="treatment-desc" data-i18n="t.facialPurify.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">60 min</span>
+                                        <span class="treatment-price">60€</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.facialAntiage.name">Tratamiento Antiedad</span>
                                         <span class="treatment-desc" data-i18n="t.facialAntiage.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
-                                    </div>
-                                    <div class="treatment-price-duration">
-                                        <span class="treatment-duration">60 min</span>
-                                        <span class="treatment-price">60€</span>
-                                    </div>
-                                </div>
-
-                                <div class="treatment-item">
-                                    <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.facialRefresh.name">Tratamiento refrescante</span>
-                                        <span class="treatment-desc" data-i18n="t.facialRefresh.desc">Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.</span>
                                     </div>
                                     <div class="treatment-price-duration">
                                         <span class="treatment-duration">60 min</span>
@@ -255,7 +246,7 @@
                                         <span class="treatment-desc" data-i18n="t.dermapen.desc">Tratamiento de inducción de colágeno mediante microagujas para atenuar marcas, poros dilatados y líneas de expresión. *(Valoración previa recomendada)*.</span>
                                         <div>
                                             <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Dermapen%20(Microneedling%20Facial)%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
-                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                                 <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
                                             </a>
                                         </div>
@@ -307,10 +298,10 @@
                     </div>
                 </div>
 
-                <!-- GRUPO 2: HAIR SPA -->
+                <!-- GRUPO 2: SPA CAPILAR -->
                 <div class="treatment-group" data-category="hairspa" id="hairspa">
                     <div class="treatment-group-header">
-                        <h2 class="treatment-group-title"><span data-i18n="treatments.groupHairSpa">Hair Spa</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></h2>
+                        <h2 class="treatment-group-title"><span data-i18n="treatments.groupHairSpa">Spa Capilar</span> <span class="badge-coming-soon" data-i18n="treatments.comingSoon">Próximamente</span></h2>
                         <svg class="treatment-group-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -367,6 +358,32 @@
                                         </div>
                                         <div>
                                             <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Tratamiento%20Capilar%20para%20Caspa%2FDescamaci%C3%B3n%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                                <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                                <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
+                                    </div>
+                                </div>
+
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.hairDamaged.name">Tratamiento Capilar para Cabello Dañado</span>
+                                        <span class="treatment-desc" data-i18n="t.hairDamaged.desc">Tratamiento capilar intensivo para reparar la fibra capilar y devolver la vitalidad y el brillo al cabello dañado.</span>
+                                        <div class="treatment-care-box">
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">📌 Pre-tratamiento:</span>
+                                                <span data-i18n="t.hairDamaged.pre">Evitar tratamientos químicos (tintes, decoloraciones) en los 3 días previos.</span>
+                                            </div>
+                                            <div class="treatment-care-item">
+                                                <span class="treatment-care-label">✨ Post-tratamiento:</span>
+                                                <span data-i18n="t.hairDamaged.post">Aplicar mascarilla reparadora una vez por semana y proteger del calor extremo.</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Tratamiento%20Capilar%20para%20Cabello%20Da%C3%B1ado%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
                                                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                                 <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
                                             </a>
@@ -442,26 +459,27 @@
 
                                 <div class="treatment-item">
                                     <div class="treatment-info">
-                                        <span class="treatment-name" data-i18n="t.hairDamaged.name">Ritual Capilar para Cabello Dañado</span>
-                                        <span class="treatment-desc" data-i18n="t.hairDamaged.desc">Tratamiento capilar intensivo para reparar la fibra capilar y devolver la vitalidad y el brillo al cabello dañado.</span>
+                                        <span class="treatment-name" data-i18n="t.hairRelax.name">Ritual Capilar Relajación Profunda</span>
+                                        <span class="treatment-desc" data-i18n="t.hairRelax.desc">Experiencia de bienestar capilar intensiva de 75 minutos diseñada para liberar tensiones acumuladas en el cuero cabelludo, cuello y trapecios, aportando una desconexión y relajación profunda.</span>
                                         <div class="treatment-care-box">
                                             <div class="treatment-care-item">
                                                 <span class="treatment-care-label">📌 Pre-tratamiento:</span>
-                                                <span data-i18n="t.hairDamaged.pre">Evitar tratamientos químicos (tintes, decoloraciones) en los 3 días previos.</span>
+                                                <span data-i18n="t.hairRelax.pre">Venir con ropa cómoda y sin peinados muy tirantes.</span>
                                             </div>
                                             <div class="treatment-care-item">
                                                 <span class="treatment-care-label">✨ Post-tratamiento:</span>
-                                                <span data-i18n="t.hairDamaged.post">Aplicar mascarilla reparadora una vez por semana y proteger del calor extremo.</span>
+                                                <span data-i18n="t.hairRelax.post">Mantener la hidratación y disfrutar de la sensación de ligereza en el cuero cabelludo.</span>
                                             </div>
                                         </div>
                                         <div>
-                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Capilar%20para%20Cabello%20Da%C3%B1ado%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
+                                            <a href="https://wa.me/34604870785?text=Hola!%20Estoy%20interesad@%20en%20el%20tratamiento%20Ritual%20Capilar%20Relajaci%C3%B3n%20Profunda%2C%20me%20gustar%C3%ADa%20que%20me%20avisaseis%20cuando%20est%C3%A9%20disponible.%20Gracias!" target="_blank" rel="noopener noreferrer" class="btn-notify-wa">
                                                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                                 <span data-i18n="treatments.notifyAvailable">Avísame cuando esté disponible</span>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="treatment-price-duration">
+                                        <span class="treatment-duration">75 min</span>
                                         <span class="treatment-price" style="font-size: 0.85rem;" data-i18n="treatments.comingSoon">Próximamente</span>
                                     </div>
                                 </div>
@@ -855,6 +873,16 @@
                                 </svg>
                             </div>
                             <div class="treatment-sublist">
+                                <div class="treatment-item">
+                                    <div class="treatment-info">
+                                        <span class="treatment-name" data-i18n="t.waxM0.name">Diseño de Cejas (Cera + Pinzas)</span>
+                                    </div>
+                                    <div class="treatment-price-duration">
+                                        <span class="treatment-duration">20 min</span>
+                                        <span class="treatment-price">15€</span>
+                                    </div>
+                                </div>
+
                                 <div class="treatment-item">
                                     <div class="treatment-info">
                                         <span class="treatment-name" data-i18n="t.waxM1.name">Depilación de Axilas</span>
