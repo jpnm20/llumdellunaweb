@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Publicaciones Instagram | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #C9B3B9;
+            --color-card-bg: rgba(255, 255, 255, 0.15);
+            --color-accent: #E3DCD1;
+            --color-text-white: #FFFFFF;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header img {
+            height: 60px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: var(--color-accent);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .post-card {
+            background: var(--color-card-bg);
+            border: 1px solid rgba(227, 220, 209, 0.35);
+            border-radius: 20px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border-color: #FFFFFF;
+        }
+
+        .post-badge {
+            align-self: flex-start;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(227, 220, 209, 0.3);
+            color: #FFFFFF;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .post-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .post-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.45;
+            margin-bottom: 20px;
+        }
+
+        .btn-open {
+            background: #8B9986;
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="../images/logo IG 1.png" alt="Llum de Lluna">
+            <h1>Colección de Publicaciones para Instagram</h1>
+            <p>Generador de carruseles en formato nativo 1080x1350 px con exportación en 1-clic.</p>
+        </div>
+
+        <div class="posts-grid">
+            <!-- Post 1: ¿Dónde estamos? -->
+            <a href="donde-estamos.html" class="post-card">
+                <div>
+                    <span class="post-badge">Carrusel 4 Diapositivas</span>
+                    <h3>¿Dónde estamos?</h3>
+                    <p>Guía de ubicación con mapa de L'Eliana, canales digitales oficiales y horarios de atención.</p>
+                </div>
+                <div class="btn-open">
+                    Abrir Generador
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
