@@ -117,11 +117,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('#submitBtn') || contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn ? (window.i18n ? window.i18n.get('contact.sendBtn') : submitBtn.textContent) : 'Enviar Solicitud';
+            const originalBtnText = submitBtn ? (window.i18n ? window.i18n.get('contact.sendBtn') : submitBtn.textContent) : 'Enviar Sugerencia';
             
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = window.i18n ? window.i18n.get('contact.sendingBtn') : 'Enviando solicitud...';
+                submitBtn.textContent = window.i18n ? window.i18n.get('contact.sendingBtn') : 'Enviando...';
             }
 
             try {
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const clientName = document.getElementById('name')?.value.trim() || '';
                     const successMsg = window.i18n 
                         ? window.i18n.get('contact.successToast', window.i18n.currentLang, { name: clientName })
-                        : `¡Gracias ${clientName ? clientName : ''}! Tu solicitud ha sido enviada con éxito. Te contactaremos pronto.`;
+                        : `¡Gracias ${clientName ? clientName : ''}! Hemos recibido tu mensaje. Estaremos encantados de escucharte y seguir mejorando nuestro servicio.`;
                     showToast(successMsg, true);
                     contactForm.reset();
                 } else {
