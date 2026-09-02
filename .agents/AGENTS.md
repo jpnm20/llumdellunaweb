@@ -18,7 +18,7 @@
 
 4. **Funcionalidades Estándar Obligatorias**:
    - **Visor Interactivo**: Navegación entre diapositivas con botones previa/siguiente e indicadores de punto (`dots`).
-   - **Descarga en 1-Clic**: Botón `Descargar Diapositiva Actual (PNG HD)` configurado para guardar imágenes a 1080x1350px.
-   - **Panel de Copy & Hashtags**: Caja lateral con el texto optimizado y botón de 1-clic `Copiar Texto de Publicación`.
+   - **Descarga en 1-Clic**: Botones para `Descargar Diapositiva Actual (PNG HD)` y `Descargar Carrusel Completo (Todas las Diapositivas HD)` configurados para guardar imágenes a 1080x1350px.
+   - **Panel de Copy Trilingüe & Hashtags**: Caja lateral con el texto optimizado redactado en **Castellano, Valenciano e Inglés (en ese orden exacto)** y botón de 1-clic `Copiar Texto de Publicación`.
    - **Centrado Simétrico**: Contenidos maquetados con `margin: auto 0` para una distribución equilibrada sin huecos excesivos.
    - **Mapas Limpios**: Usar gráficos vectoriales o imágenes estáticas sin barras de Google ni popups de estrellas o comentarios.

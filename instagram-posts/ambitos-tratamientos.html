@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel Instagram - Experiencias de Bienestar | Llum de Lluna Estética</title>
+    
+    <!-- Tipografías Oficiales de la Marca -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Librería para la Descarga Directa de Diapositivas en PNG HD -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        :root {
+            --color-bg-primary: #FAF7F2;      /* Blanco Crema exacto de la web (--color-bg-primary) */
+            --color-bg-tertiary: #E3DCD1;     /* Arena / Crema cálido de contraste (--color-bg-tertiary) */
+            --color-accent-green: #8B9986;     /* Verde Salvia oficial */
+            --color-text-green: #3C4A39;       /* Verde Salvia Oscuro para títulos */
+            --color-text-body: #2D372B;        /* Verde Salvia Profundo para texto */
+            --color-text-muted: #556651;       /* Verde Salvia Suave para subtítulos */
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: #1a1918;
+            color: var(--color-bg-primary);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-app {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+
+        .header-app h1 {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            color: #FAF7F2;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
+
+        .header-app p {
+            color: #E3DCD1;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Layout Principal */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 40px;
+            max-width: 1280px;
+            width: 100%;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Visor del Carrusel (Nativo 480x600 -> Exporta a 1080x1350) */
+        .carousel-stage-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-viewport {
+            width: 480px;
+            height: 600px;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--color-bg-primary);
+        }
+
+        .slide-card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+            background: var(--color-bg-primary);
+            color: var(--color-text-body);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 38px 44px 38px;
+        }
+
+        .slide-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Diapositiva 1: Portada Minimalista Pura */
+        .slide-card-cover {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            padding: 44px 34px;
+        }
+
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            margin: auto 0;
+            width: 100%;
+        }
+
+        .cover-logo {
+            height: 140px;
+            max-width: 90%;
+            object-fit: contain;
+            filter: none;
+            margin-bottom: 4px;
+        }
+
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 2.75rem;
+            line-height: 1.12;
+            color: var(--color-text-green);
+            font-weight: 600;
+            max-width: 410px;
+            letter-spacing: 0.01em;
+        }
+
+        .cover-summary {
+            font-size: 1.02rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 390px;
+        }
+
+        /* Header en diapositivas estándar (2 a 8) */
+        .slide-brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(60, 74, 57, 0.18);
+        }
+
+        .slide-brand-header img {
+            height: 40px;
+            filter: none;
+            object-fit: contain;
+        }
+
+        .slide-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-text-green);
+            background: rgba(227, 220, 209, 0.4);
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 153, 134, 0.35);
+        }
+
+        /* Cuerpo de Diapositivas Intermedias */
+        .slide-body-clean {
+            margin: auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .slide-title-clean {
+            font-family: var(--font-title);
+            font-size: 2.35rem;
+            line-height: 1.15;
+            color: var(--color-text-green);
+            font-weight: 600;
+        }
+
+        .clean-bullet-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 2px;
+        }
+
+        .clean-bullet-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.86rem;
+            line-height: 1.48;
+            color: var(--color-text-body);
+        }
+
+        .bullet-icon {
+            font-size: 1.05rem;
+            line-height: 1.3;
+            flex-shrink: 0;
+        }
+
+        .bullet-text strong {
+            color: var(--color-text-green);
+            font-weight: 600;
+        }
+
+        /* Box Resultado reservado exclusivamente para la Estrella ✨ */
+        .box-resultado {
+            background: rgba(227, 220, 209, 0.45);
+            border: 1.5px solid rgba(139, 153, 134, 0.4);
+            border-radius: 14px;
+            padding: 11px 14px;
+            font-size: 0.82rem;
+            color: var(--color-text-body);
+            line-height: 1.45;
+            margin-top: 6px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            box-shadow: 0 4px 14px rgba(60, 74, 57, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .box-resultado strong {
+            color: var(--color-text-green);
+            font-weight: 600;
+        }
+
+        /* Estilos del Índice Resumen (Slide 2) */
+        .index-list-clean {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .index-item-clean {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--color-text-green);
+            font-weight: 600;
+            background: rgba(227, 220, 209, 0.35);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 153, 134, 0.3);
+        }
+
+        /* Slide 8: Cierre & Reservas */
+        .closing-clean-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .closing-info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem;
+            color: var(--color-text-body);
+            line-height: 1.45;
+        }
+
+        /* Controles de Navegación */
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 480px;
+            margin-top: 20px;
+        }
+
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FAF7F2;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: #8B9986;
+            border-color: #8B9986;
+            color: #FFFFFF;
+            transform: scale(1.05);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .dots-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #FFFFFF;
+            width: 26px;
+            border-radius: 10px;
+        }
+
+        /* Panel de Copy Lateral */
+        .side-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 26px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .panel-section-title {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            color: #FAF7F2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .caption-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 16px;
+            color: #E3DCD1;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            max-height: 320px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .btn-copy {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            color: #FAF7F2;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .btn-copy:hover {
+            background: #FFFFFF;
+            color: #1a1918;
+        }
+
+        .info-pill {
+            background: rgba(139, 153, 134, 0.2);
+            border: 1px solid rgba(139, 153, 134, 0.4);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 0.8rem;
+            color: #E3DCD1;
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-app">
+        <h1>Diseñador de Carrusel Instagram</h1>
+        <p>Experiencias & Cuidados en Llum de Lluna • Exportador Nativo HD 1080x1350 px</p>
+    </div>
+
+    <div class="workspace-grid">
+        <!-- Visor e Interfaz de Control -->
+        <div class="carousel-stage-container">
+            <div class="slide-viewport" id="slideViewport">
+                
+                <!-- SLIDE 1: PORTADA MINIMALISTA PURA -->
+                <div class="slide-card slide-card-cover active">
+                    <div class="cover-content">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética" class="cover-logo">
+                        <h2 class="cover-title">Nuestras Experiencias de Bienestar</h2>
+                        <p class="cover-summary">
+                            Descubre los 5 pilares de estética y serenidad concebidos para cuidar de tu piel, tu cuerpo y tu descanso en L'Eliana.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: ÍNDICE / RESUMEN (SIN NÚMEROS) -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">ÍNDICE</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Nuestras Experiencias</h2>
+
+                        <div class="index-list-clean">
+                            <div class="index-item-clean">
+                                <span class="bullet-icon">✨</span>
+                                <span>Tratamientos Faciales</span>
+                            </div>
+                            <div class="index-item-clean">
+                                <span class="bullet-icon">🌿</span>
+                                <span>Spa Capilar</span>
+                            </div>
+                            <div class="index-item-clean">
+                                <span class="bullet-icon">🪵</span>
+                                <span>Bienestar Corporal & Masajes</span>
+                            </div>
+                            <div class="index-item-clean">
+                                <span class="bullet-icon">💅</span>
+                                <span>Manicura & Pedicura</span>
+                            </div>
+                            <div class="index-item-clean">
+                                <span class="bullet-icon">🕊️</span>
+                                <span>Depilación Cera & IPL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: RITUALES & TRATAMIENTOS FACIALES -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">FACIAL</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Tratamientos Faciales</h2>
+
+                        <div class="clean-bullet-list">
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div class="bullet-text"><strong>Rituales Faciales</strong>: Experiencia de relax con limpieza profunda, mascarilla geloide y masaje facial, cervical y brazos.</div>
+                            </div>
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div class="bullet-text"><strong>Tratamientos Específicos</strong>: Alta cosmética diana para necesidad potente: hidratante, calmante, purificante o reafirmante.</div>
+                            </div>
+                        </div>
+
+                        <div class="box-resultado">
+                            <span class="bullet-icon">✨</span>
+                            <div><strong>Resultado:</strong> Relajación profunda con los rituales o solución dermo-estética concreta con los tratamientos específicos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4: SPA CAPILAR -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">SPA CAPILAR</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Spa Capilar</h2>
+
+                        <div class="clean-bullet-list">
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div class="bullet-text"><strong>Rituales Capilares</strong>: Masaje craneal y aromaterapia enfocados en liberar tensiones y relajarte.</div>
+                            </div>
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div class="bullet-text"><strong>Tratamientos Específicos</strong>: Acción potente para purificar el cuero cabelludo y reparar la fibra dañada.</div>
+                            </div>
+                        </div>
+
+                        <div class="box-resultado">
+                            <span class="bullet-icon">✨</span>
+                            <div><strong>Resultado:</strong> Alivio del estrés con los rituales y equilibrio saludable del cuero cabelludo con los tratamientos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 5: BIENESTAR CORPORAL -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">CORPORAL</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Corporal & Bienestar</h2>
+
+                        <div class="clean-bullet-list">
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div class="bullet-text"><strong>Rituales de Masaje & Relax</strong>: Experiencias de calma profunda descontracturante y relajante a puerta cerrada.</div>
+                            </div>
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div class="bullet-text"><strong>Tratamiento de Maderoterapia</strong>: Técnica específica potente para remodelar silueta, reducir y drenar.</div>
+                            </div>
+                        </div>
+
+                        <div class="box-resultado">
+                            <span class="bullet-icon">✨</span>
+                            <div><strong>Resultado:</strong> Desconexión absoluta con nuestros masajes o remodelación corporal intensiva con la maderoterapia.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 6: MANICURA & PEDICURA -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">MANOS & PIES</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Manicura & Pedicura</h2>
+
+                        <div class="clean-bullet-list">
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div class="bullet-text"><strong>Manicura</strong>: Cuidado minucioso de uñas, esmaltado semipermanente y refuerzo de grafeno para proteger la uña natural.</div>
+                            </div>
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div class="bullet-text"><strong>Pedicura</strong>: Pedicura spa completa con baño de sales relajantes, exfoliación, hidratación profunda y masaje.</div>
+                            </div>
+                        </div>
+
+                        <div class="box-resultado">
+                            <span class="bullet-icon">✨</span>
+                            <div><strong>Resultado:</strong> Manos elegantes con uñas fuertes de alta resistencia y pies descansados y renovados.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 7: DEPILACIÓN CERA & IPL -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">DEPILACIÓN</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Depilación Cera & IPL</h2>
+
+                        <div class="clean-bullet-list">
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div class="bullet-text"><strong>Depilación Cera</strong>: Depilación tradicional suave y de máxima precisión.</div>
+                            </div>
+                            <div class="clean-bullet-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div class="bullet-text"><strong>Depilación IPL</strong>: Fotodepilación progresiva de alta potencia para debilitar y eliminar el vello.</div>
+                            </div>
+                        </div>
+
+                        <div class="box-resultado">
+                            <span class="bullet-icon">✨</span>
+                            <div><strong>Resultado:</strong> Suavidad al instante respetando tu piel o la máxima potencia de la depilación IPL.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 8: RESERVA TU CITA -->
+                <div class="slide-card">
+                    <div class="slide-brand-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna Estética">
+                        <span class="slide-badge">RESERVAS</span>
+                    </div>
+
+                    <div class="slide-body-clean">
+                        <h2 class="slide-title-clean">Reserva Tu Momento</h2>
+
+                        <div class="closing-clean-box">
+                            <div class="closing-info-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div><strong>Cabinas individuales</strong> a puerta cerrada</div>
+                            </div>
+                            <div class="closing-info-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div><strong>L'Eliana (Valencia)</strong> • Fácil aparcamiento</div>
+                            </div>
+                            <div class="closing-info-item">
+                                <span class="bullet-icon">🌙</span>
+                                <div><strong>Reserva online</strong> en el enlace de nuestro perfil</div>
+                            </div>
+                            <div class="closing-info-item">
+                                <span class="bullet-icon">☀️</span>
+                                <div>WhatsApp / Teléfono: <strong>604 87 07 85</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Controles del Carrusel -->
+            <div class="carousel-controls">
+                <button class="btn-nav" id="btnPrev" onclick="changeSlide(-1)" disabled>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="dots-container" id="dotsContainer">
+                    <div class="dot active" onclick="goToSlide(0)"></div>
+                    <div class="dot" onclick="goToSlide(1)"></div>
+                    <div class="dot" onclick="goToSlide(2)"></div>
+                    <div class="dot" onclick="goToSlide(3)"></div>
+                    <div class="dot" onclick="goToSlide(4)"></div>
+                    <div class="dot" onclick="goToSlide(5)"></div>
+                    <div class="dot" onclick="goToSlide(6)"></div>
+                    <div class="dot" onclick="goToSlide(7)"></div>
+                </div>
+                <button class="btn-nav" id="btnNext" onclick="changeSlide(1)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Panel de Copy para Instagram -->
+        <div class="side-panel">
+            <h3 class="panel-section-title">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                Copy para Instagram
+            </h3>            <div class="caption-box" id="captionText">🇪🇸 CASTELLANO:
+Desliza el carrusel para descubrir la carta de nuestro centro:
+
+🌙 • FACIAL: Rituales Faciales & Tratamientos Específicos.
+🌿 • SPA CAPILAR: Rituales Capilares & Tratamientos Específicos.
+🪵 • CORPORAL: Rituales de Masaje & Maderoterapia.
+💅 • MANICURA & PEDICURA: Manicura Semipermanente & Pedicura Spa.
+🕊️ • DEPILACIÓN: Depilación Cera & Depilación IPL.
+
+---
+🌙 ¿Dónde estamos? En L'Eliana (Valencia).
+🌙 Cabinas privadas individuales a puerta cerrada.
+☀️ Reserva tu cita en el enlace de la bio o por WhatsApp al 604 87 07 85.
+🌐 Tratamientos más detallados en la web.
+
+---
+VALENCIÀ:
+Glisa el carrusel per a descobrir la carta del nostre centre:
+
+🌙 • FACIAL: Rituals Facials i Tractaments Específics.
+🌿 • SPA CAPILAR: Rituals Capilars i Tractaments Específics.
+🪵 • CORPORAL: Rituals de Massatge i Maderoteràpia.
+💅 • MANICURA I PEDICURA: Manicura Semipermanent i Pedicura Spa.
+🕊️ • DEPILACIÓ: Depilació Cera i Depilació IPL.
+
+---
+🌙 On estem? A L'Eliana (València).
+🌙 Cabines privades individuals a porta tancada.
+☀️ Reserva la teua cita a l'enllaç de la bio o per WhatsApp al 604 87 07 85.
+🌐 Tractaments més detallats a la nostra web.
+
+---
+🇬🇧 ENGLISH:
+Swipe through the carousel to discover our treatment menu:
+
+🌙 • FACIAL: Facial Rituals & Specific Treatments.
+🌿 • HAIR SPA: Scalp Rituals & Specific Treatments.
+🪵 • BODY: Massage Rituals & Wood Therapy.
+💅 • MANICURE & PEDICURE: Gel Manicure & Spa Pedicure.
+🕊️ • HAIR REMOVAL: Waxing & IPL Laser Hair Removal.
+
+---
+🌙 Location: L'Eliana (Valencia).
+🌙 Private individual treatment rooms.
+☀️ Book your appointment via the link in bio or WhatsApp +34 604 87 07 85.
+🌐 Discover more detailed treatments on our website.
+
+#LlumdeLluna #LEliana #EsteticaLEliana #TratamientosFaciales #MaderoterapiaValencia #SpaCapilar #ManicuraLEliana #EsteticaValencia #Bienestar #CabinasPrivadas</div>
+
+            <button class="btn-copy" id="btnDownloadSlide" style="background: #8B9986; color: #FFFFFF;" onclick="downloadCurrentSlide()">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Descargar Diapositiva Actual (PNG HD)
+            </button>
+
+            <button class="btn-copy" id="btnDownloadAll" style="background: rgba(139, 153, 134, 0.25); border-color: #8B9986; color: #FAF7F2;" onclick="downloadAllSlides()">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="2" x2="20" y2="2"/></svg>
+                Descargar Carrusel Completo (8 PNG HD)
+            </button>
+
+            <button class="btn-copy" id="btnCopyCaption" onclick="copyCaption()">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copiar Texto (Castellano, Valencià, English)
+            </button>
+
+            <div class="info-pill">
+                💡 <strong>Consejo de Marca:</strong><br>
+                Usa este carrusel y fíjalo en la parte superior de tu perfil de Instagram o guárdalo en las <strong>Historias Destacadas</strong> bajo el nombre <strong>"Servicios"</strong> o <strong>"Tratamientos"</strong>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-card');
+        const dots = document.querySelectorAll('.dot');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+
+            btnPrev.disabled = currentSlide === 0;
+            btnNext.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide + direction));
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function copyCaption() {
+            const caption = document.getElementById('captionText').innerText;
+            const btn = document.getElementById('btnCopyCaption');
+            const originalText = btn.innerHTML;
+
+            const copySuccess = () => {
+                btn.innerHTML = `✓ ¡Texto Trilingüe Copiado!`;
+                btn.style.background = '#8B9986';
+                btn.style.color = '#FFFFFF';
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 2500);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(caption).then(copySuccess).catch(() => fallbackCopy(caption, copySuccess));
+            } else {
+                fallbackCopy(caption, copySuccess);
+            }
+        }
+
+        function fallbackCopy(text, callback) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                callback();
+            } catch (err) {
+                alert('No se pudo copiar automáticamente. Por favor, selecciona el texto de la caja.');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function downloadCurrentSlide() {
+            const activeSlide = document.querySelector('.slide-card.active');
+            const slideNumber = currentSlide + 1;
+            
+            const btn = document.getElementById('btnDownloadSlide');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `⏳ Exportando 1080 x 1350...`;
+            btn.disabled = true;
+
+            html2canvas(activeSlide, {
+                width: 480,
+                height: 600,
+                scale: 2.25, // 480 x 2.25 = 1080px ancho, 600 x 2.25 = 1350px alto
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#FAF7F2'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Llum-de-Lluna-Experiencias-Bienestar-Slide-${slideNumber}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                btn.innerHTML = `✓ ¡Diapositiva ${slideNumber} Guardada (1080x1350)!`;
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 3000);
+            }).catch(err => {
+                console.error(err);
+                alert('No se pudo procesar la imagen automáticamente. Puedes tomar una captura de pantalla.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        async function downloadAllSlides() {
+            const btn = document.getElementById('btnDownloadAll');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+
+            const total = slides.length;
+            for (let i = 0; i < total; i++) {
+                btn.innerHTML = `⏳ Guardando Diapositiva ${i + 1} de ${total}...`;
+                
+                // Activar diapositiva i
+                slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+                await new Promise(r => setTimeout(r, 180));
+
+                const slideCard = slides[i];
+                try {
+                    const canvas = await html2canvas(slideCard, {
+                        width: 480,
+                        height: 600,
+                        scale: 2.25,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#FAF7F2'
+                    });
+
+                    const link = document.createElement('a');
+                    link.download = `Llum-de-Lluna-Experiencias-Bienestar-Slide-${i + 1}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                } catch (e) {
+                    console.error(e);
+                }
+
+                await new Promise(r => setTimeout(r, 450));
+            }
+
+            // Restaurar vista
+            updateCarousel();
+            btn.innerHTML = `✓ ¡Carrusel Completo Guardado (${total} Imágenes HD)!`;
+            btn.disabled = false;
+
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
