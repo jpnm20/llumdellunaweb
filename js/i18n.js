@@ -191,8 +191,15 @@ const translations = {
         "t.facialRefresh.pre": "Evitar tomar el sol el mismo día del tratamiento.",
         "t.facialRefresh.post": "Evitar saunas, baños calientes y ejercicio intenso durante las 24 horas posteriores.",
 
-        "t.dermapen.name": "Dermapen (Microneedling Facial)",
-        "t.dermapen.desc": "Tratamiento de inducción de colágeno mediante microagujas para atenuar marcas, poros dilatados y líneas de expresión. *(Valoración previa recomendada)*.",
+        "t.dermapenActive.name": "Dermapen con Principio Activo",
+        "t.dermapenActive.desc": "Tratamiento de inducción de colágeno mediante microagujas combinado con principio activo concentrado (ácido hialurónico, vitaminas o reafirmante) adaptado a la necesidad de la piel. Atenúa marcas, poros dilatados y líneas de expresión. *(Valoración previa recomendada)*.",
+        "t.dermapenActive.pre": "Evitar retinoides, ácidos exfoliantes o depilación facial 48-72h antes. Acudir con la piel limpia y sin maquillaje.",
+        "t.dermapenActive.post": "Usar protección solar SPF 50+, alta hidratación regeneradora y evitar sol directo, saunas, maquillaje o ejercicio 24-48h.",
+
+        "t.dermapenExo.name": "Dermapen Regenerativo con Exosomas",
+        "t.dermapenExo.desc": "Tratamiento facial biotecnológico avanzado de rejuvenecimiento celular intenso mediante microagujas y exosomas, estimulando la señalización y regeneración profunda de la piel. *(Valoración previa recomendada)*.",
+        "t.dermapenExo.pre": "Evitar retinoides o ácidos exfoliantes las 72h previas. Acudir con la piel limpia y libre de productos.",
+        "t.dermapenExo.post": "Fotoprotección solar estricta SPF 50+, alta hidratación biocompatible y evitar exposición solar directa o fuentes de calor durante 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capilar",
         "t.facialHairCombo.desc": "Tratamiento integral que combina el cuidado facial profundo con una relajante experiencia de spa capilar.",
@@ -578,8 +585,15 @@ const translations = {
         "t.facialRefresh.pre": "Evitar prendre el sol el mateix dia del tractament.",
         "t.facialRefresh.post": "Evitar saunes, banys calents i exercici intens durant les 24 hores posteriors.",
 
-        "t.dermapen.name": "Dermapen (Microneedling Facial)",
-        "t.dermapen.desc": "Tractament d'inducció de col·lagen mitjançant microagulles per a atenuar marques, porus dilatats i línies d'expressió. *(Valoració prèvia recomanada)*.",
+        "t.dermapenActive.name": "Dermapen amb Principi Actiu",
+        "t.dermapenActive.desc": "Tractament d'inducció de col·lagen mitjançant microagulles combinat amb principi actiu concentrat (àcid hialurònic, vitamines o reafirmant) adaptat a la necessitat de la pell. Atenua marques, porus dilatats i línies d'expressió. *(Valoració prèvia recomanada)*.",
+        "t.dermapenActive.pre": "Evitar retinoides, àcids exfoliants o depilació facial 48-72h abans. Anar amb la pell neta i sense maquillatge.",
+        "t.dermapenActive.post": "Usar protecció solar SPF 50+, alta hidratació regeneradora i evitar sol directe, saunes, maquillatge o exercici 24-48h.",
+
+        "t.dermapenExo.name": "Dermapen Regeneratiu amb Exosomes",
+        "t.dermapenExo.desc": "Tractament facial biotecnològic avançat de rejoveniment cel·lular intens mitjançant microagulles i exosomes, estimulant la senyalització i regeneració profunda de la pell. *(Valoració prèvia recomanada)*.",
+        "t.dermapenExo.pre": "Evitar retinoides o àcids exfoliants les 72h prèvies. Anar amb la pell neta i lliure de productes.",
+        "t.dermapenExo.post": "Fotoprotecció solar estricta SPF 50+, alta hidratació biocompatible i evitar exposició solar directa o fonts de calor durant 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capil·lar",
         "t.facialHairCombo.desc": "Tractament integral que combina la cura facial profunda amb una relaxant experiència de spa capil·lar.",
@@ -950,8 +964,15 @@ const translations = {
         "t.facialRefresh.pre": "Avoid sunbathing on the day of treatment.",
         "t.facialRefresh.post": "Avoid saunas, hot baths, and intense exercise for 24 hours.",
 
-        "t.dermapen.name": "Dermapen (Facial Microneedling)",
-        "t.dermapen.desc": "Collagen induction treatment using microneedles to smooth marks, enlarged pores, and fine lines. *(Prior assessment recommended)*.",
+        "t.dermapenActive.name": "Dermapen with Active Ingredient",
+        "t.dermapenActive.desc": "Collagen induction treatment using microneedles combined with concentrated active ingredients (hyaluronic acid, vitamins, or firming complex) tailored to skin assessment. Smooths acne marks, enlarged pores, and fine lines. *(Prior assessment recommended)*.",
+        "t.dermapenActive.pre": "Avoid retinoids, exfoliating acids, or facial waxing 48-72 hours prior. Arrive with clean skin and no makeup.",
+        "t.dermapenActive.post": "Use strict SPF 50+ sunscreen, intensive regenerating moisturizer, and avoid direct sun, saunas, makeup, or heavy exercise for 24-48 hours.",
+
+        "t.dermapenExo.name": "Regenerative Dermapen with Exosomes",
+        "t.dermapenExo.desc": "Advanced biotechnological cellular rejuvenation treatment using microneedling and exosomes to stimulate deep skin signaling and repair. *(Prior assessment recommended)*.",
+        "t.dermapenExo.pre": "Avoid retinoids or exfoliating acids 72h prior. Arrive with clean skin and free of products.",
+        "t.dermapenExo.post": "Strict SPF 50+ sunscreen, high biocompatible hydration, and avoid direct sun exposure or heat sources for 48 hours.",
 
         "t.facialHairCombo.name": "Facial Ritual + Hair Spa",
         "t.facialHairCombo.desc": "Comprehensive treatment combining deep facial care with a relaxing hair spa experience.",
