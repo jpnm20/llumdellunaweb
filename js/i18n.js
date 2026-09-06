@@ -131,6 +131,8 @@ const translations = {
         "treatments.comingSoon": "Próximamente",
         "treatments.newTreatmentsComingSoon": "Nuevos tratamientos próximamente",
         "treatments.notifyAvailable": "Avísame cuando esté disponible",
+        "treatments.bookDermapen": "Pedir Cita por WhatsApp",
+        "treatments.consultPrice": "Consultar",
 
         "treatments.badgeSession1": "1ª Sesión",
         "treatments.badgeSession2": "A partir de 2ª sesión",
@@ -516,6 +518,8 @@ const translations = {
         "treatments.comingSoon": "Pròximament",
         "treatments.newTreatmentsComingSoon": "Nous tractaments pròximament",
         "treatments.notifyAvailable": "Avisa'm quan estiga disponible",
+        "treatments.bookDermapen": "Demanar Cita per WhatsApp",
+        "treatments.consultPrice": "Consultar",
 
         "treatments.badgeSession1": "1a Sessió",
         "treatments.badgeSession2": "A partir de 2a sessió",
@@ -886,6 +890,8 @@ const translations = {
         "treatments.comingSoon": "Coming Soon",
         "treatments.newTreatmentsComingSoon": "New treatments coming soon",
         "treatments.notifyAvailable": "Notify me when available",
+        "treatments.bookDermapen": "Book via WhatsApp",
+        "treatments.consultPrice": "Inquire",
 
         "treatments.badgeSession1": "1st Session",
         "treatments.badgeSession2": "From 2nd session",
