@@ -164,6 +164,16 @@ const translations = {
         "t.facialHydra.pre": "Acudir con la piel limpia y suspender el uso de exfoliantes agresivos el día anterior.",
         "t.facialHydra.post": "Mantener una buena hidratación bebiendo agua y aplicar la crema hidratante de confianza.",
 
+        "t.facialCalm.name": "Tratamiento Calmante (Pieles Sensibles)",
+        "t.facialCalm.desc": "Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación suave y principio activo concentrado calmante tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.",
+        "t.facialCalm.pre": "Evitar la exposición solar directa y el uso de productos irritantes 48 horas antes.",
+        "t.facialCalm.post": "Aplicar productos descongestivos e hidratantes suaves y fotoprotección solar diaria.",
+
+        "t.facialPurify.name": "Tratamiento Purificante (Pieles con Acné)",
+        "t.facialPurify.desc": "Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación purificante, solución desincrustante, extracción meticulosa y principio activo regulador tras valoración estética. Incluye crema seborreguladora con masaje facial, mascarilla geloide, masaje relajante, protector solar y bálsamo labial.",
+        "t.facialPurify.pre": "No manipular lesiones cutáneas ni aplicar ácidos agresivos los días previos.",
+        "t.facialPurify.post": "Mantener la piel limpia con limpiadores suaves y usar protección solar no comedogénica.",
+
         "t.facialSpots.name": "Tratamiento reductor de manchas",
         "t.facialSpots.desc": "Tratamiento facial integral de 60 minutos: limpieza profunda, exfoliación, solución desincrustante, extracción (depilación opcional) y principio activo concentrado tras valoración estética. Incluye crema hidratante con masaje facial, mascarilla geloide oclusiva, masaje en zona cervical, pecho y brazos, protector solar y bálsamo labial.",
         "t.facialSpots.pre": "Evitar el bronceado y el uso de autobronceadores durante las dos semanas previas.",
@@ -539,6 +549,16 @@ const translations = {
         "t.facialHydra.pre": "Acudir amb la pell neta i suspendre l'ús d'exfoliants agressius el dia anterior.",
         "t.facialHydra.post": "Mantindre una bona hidratació bevent aigua i aplicar la crema hidratant de confiança.",
 
+        "t.facialCalm.name": "Tractament Calmant (Pells Sensibles)",
+        "t.facialCalm.desc": "Tractament facial integral de 60 minuts: neteja profunda, exfoliació suau i principi actiu concentrat calmant després de valoració estètica. Inclou crema hidratant amb massatge facial, mascareta geloide oclusiva, massatge en zona cervical, pit i braços, protector solar i bàlsam labial.",
+        "t.facialCalm.pre": "Evitar l'exposició solar directa i l'ús de productes irritants 48 hores abans.",
+        "t.facialCalm.post": "Aplicar productes descongestius i hidratants suaus i fotoprotecció solar diària.",
+
+        "t.facialPurify.name": "Tractament Purificant (Pells amb Acne)",
+        "t.facialPurify.desc": "Tractament facial integral de 60 minuts: neteja profunda, exfoliació purificant, solució desincrustant, extracció meticulosa i principi actiu regulador després de valoració estètica. Inclou crema seborreguladora amb massatge facial, mascareta geloide, massatge relaxant, protector solar i bàlsam labial.",
+        "t.facialPurify.pre": "No manipular lesions cutànies ni aplicar àcids agressius els dies prèvis.",
+        "t.facialPurify.post": "Mantindre la pell neta amb netejadors suaus i usar protecció solar no comedogènica.",
+
         "t.facialSpots.name": "Tractament reductor de taques",
         "t.facialSpots.desc": "Tractament facial integral de 60 minuts: neteja profunda, exfoliació, solució desincrustant, extracció (depilació opcional) i principi actiu concentrat després de valoració estètica. Inclou crema hidratant amb massatge facial, mascareta geloide oclusiva, massatge en zona cervical, pit i braços, protector solar i bàlsam labial.",
         "t.facialSpots.pre": "Evitar el bronzejat i l'ús d'autobronzejadors durant les dues setmanes prèvies.",
@@ -898,6 +918,16 @@ const translations = {
         "t.facialHydra.desc": "Comprehensive 60-minute facial treatment: deep cleansing, exfoliation, desincrustation solution, extraction (optional hair removal) and concentrated active ingredient after skin assessment. Includes hydrating cream with facial massage, occlusive gel mask, cervical, chest and arm massage, sunscreen and lip balm.",
         "t.facialHydra.pre": "Arrive with clean skin and discontinue aggressive exfoliants the day before.",
         "t.facialHydra.post": "Maintain proper hydration by drinking water and applying your trusted moisturizer.",
+
+        "t.facialCalm.name": "Soothing Treatment (Sensitive Skin)",
+        "t.facialCalm.desc": "Comprehensive 60-minute facial treatment: deep cleansing, gentle exfoliation, and concentrated soothing active ingredient after skin assessment. Includes hydrating cream with facial massage, occlusive gel mask, cervical, chest and arm massage, sunscreen, and lip balm.",
+        "t.facialCalm.pre": "Avoid direct sun exposure and irritating products 48 hours prior.",
+        "t.facialCalm.post": "Apply gentle soothing moisturizers and daily sunscreen photoprotection.",
+
+        "t.facialPurify.name": "Purifying Treatment (Acne-Prone Skin)",
+        "t.facialPurify.desc": "Comprehensive 60-minute facial treatment: deep cleansing, purifying exfoliation, desincrustation solution, thorough extraction, and regulating active ingredient after skin assessment. Includes sebum-regulating cream with facial massage, gel mask, relaxing massage, sunscreen, and lip balm.",
+        "t.facialPurify.pre": "Do not squeeze blemishes or apply harsh acids in the days prior.",
+        "t.facialPurify.post": "Keep skin clean with gentle cleansers and use non-comedogenic sunscreen.",
 
         "t.facialSpots.name": "Spot Reducing Treatment",
         "t.facialSpots.desc": "Comprehensive 60-minute facial treatment: deep cleansing, exfoliation, desincrustation solution, extraction (optional hair removal) and concentrated active ingredient after skin assessment. Includes hydrating cream with facial massage, occlusive gel mask, cervical, chest and arm massage, sunscreen and lip balm.",
