@@ -1,0 +1,38 @@
+<svg width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&amp;family=Montserrat:wght@400;600&amp;display=swap');
+        .title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 46px; fill: #FFFFFF; text-anchor: end; }
+        .desc { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 26px; fill: #FFFFFF; text-anchor: middle; }
+    </style>
+    <!-- Fondo Malva Oficial -->
+    <rect width="1080" height="1350" fill="#C9B3B9"/>
+    
+    <!-- Cabecera Superior -->
+    <rect width="1080" height="125" fill="#C9B3B9"/>
+    <line x1="0" y1="125" x2="1080" y2="125" stroke="#E3DCD1" stroke-width="2" stroke-opacity="0.45"/>
+    <image href="/home/jnavas/llumdelluna/images/logo IG 1.png" x="45" y="25" height="75"/>
+    <text x="1035" y="78" class="title">Retirado, Factor Solar &amp; Bálsamo</text>
+
+    <!-- Ventana transparente para el vídeo -->
+    <mask id="video-mask">
+        <rect width="1080" height="1350" fill="white"/>
+        <rect x="27" y="145" width="1026" height="1175" rx="30" ry="30" fill="black"/>
+    </mask>
+    <rect width="1080" height="1350" fill="#C9B3B9" mask="url(#video-mask)"/>
+
+    <!-- Borde redondeado del vídeo -->
+    <rect x="27" y="145" width="1026" height="1175" rx="30" ry="30" fill="none" stroke="#E3DCD1" stroke-width="2" stroke-opacity="0.4"/>
+
+    <!-- Gradiente inferior sobre el vídeo -->
+    <defs>
+        <linearGradient id="overlay-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+        </linearGradient>
+        <clipPath id="video-clip">
+            <rect x="27" y="145" width="1026" height="1175" rx="30" ry="30"/>
+        </clipPath>
+    </defs>
+    <rect x="27" y="980" width="1026" height="340" fill="url(#overlay-grad)" clip-path="url(#video-clip)"/>
+    <text x="540" y="1260" class="desc" clip-path="url(#video-clip)">Protección solar e hidratación labial.</text>
+</svg>

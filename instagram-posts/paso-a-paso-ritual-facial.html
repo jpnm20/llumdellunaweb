@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicación IG: Paso a Paso Ritual Facial Renovador (Vídeo HD) | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;       /* Lila / Malva Oficial de Marca */
+            --color-accent-beige: #E3DCD1;   /* Beige Cálido de Marca */
+            --color-accent-salvia: #8B9986;  /* Verde Salvia Acento */
+            --color-text-dark: #2A2426;      /* Texto Oscuro */
+            --color-text-white: #FFFFFF;     /* Texto Blanco puro */
+            --color-text-cream: #FAF7F2;     /* Blanco Crema */
+            --color-border-card: rgba(227, 220, 209, 0.4);
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .header-bar {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link {
+            color: var(--color-accent-beige);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .page-title-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(201, 179, 185, 0.6);
+            color: #FFFFFF;
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--color-accent-beige);
+        }
+
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 950px) {
+            .main-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Visor Carousel HD */
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 480px;
+            flex-shrink: 0;
+        }
+
+        .carousel-viewport {
+            width: 480px;
+            height: 600px;
+            position: relative;
+            background-color: var(--color-bg-brand);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-card {
+            width: 480px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-bg-brand);
+            color: var(--color-text-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.97);
+            overflow: hidden;
+        }
+
+        .slide-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Cabecera Superior en Lila (#C9B3B9) y Beige (#E3DCD1) */
+        .slide-top-header {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(201, 179, 185, 0.96);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(227, 220, 209, 0.45);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            flex-shrink: 0;
+            gap: 15px;
+        }
+
+        .slide-mini-logo {
+            height: 34px;
+            object-fit: contain;
+            filter: none;
+            flex-shrink: 0;
+        }
+
+        .slide-step-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            line-height: 1.15;
+            color: #FFFFFF;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-align: right;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contenedor del Vídeo ocupando la parte inferior con encuadre de rostro */
+        .step-video-container-full {
+            flex: 1;
+            width: calc(100% - 24px);
+            margin: 10px 12px 14px 12px;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            background-color: #000;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(227, 220, 209, 0.4);
+        }
+
+        .step-video-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* Encuadre suave centrado en la clienta para los 4 primeros pasos (sin zoom excesivo) */
+        .step-video-client-focus {
+            object-position: center 35% !important;
+            transform: none !important;
+        }
+
+        .step-video-bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 20px 18px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.75) 100%);
+            display: flex;
+            align-items: flex-end;
+            z-index: 5;
+        }
+
+        .step-video-desc {
+            font-size: 0.84rem;
+            color: rgba(255, 255, 255, 0.94);
+            line-height: 1.35;
+            width: 100%;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Diapositiva 1: Portada */
+        .slide-card-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 480px;
+            height: 600px;
+            text-align: center;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 50px 32px 32px;
+            overflow: hidden;
+            background-color: #2A2426;
+            background-image: linear-gradient(180deg, rgba(20, 14, 16, 0.48) 0%, rgba(20, 14, 16, 0.08) 45%, rgba(20, 14, 16, 0.2) 100%), url('../images/ritual-facial-portada.jpg?v=2');
+            background-size: cover;
+            background-position: 85% 15%;
+        }
+
+        .cover-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 85% 15%;
+            transform: scale(1.35);
+            transform-origin: 85% 15%;
+            z-index: 1;
+        }
+
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(20, 14, 16, 0.48) 0%, rgba(20, 14, 16, 0.08) 45%, rgba(20, 14, 16, 0.2) 100%);
+            z-index: 2;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 3.5rem;
+            line-height: 1.05;
+            color: #E3DCD1;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+        }
+
+        /* Diapositiva 10: Cierre / Reserva en Paleta Lila & Beige */
+        .slide-card-cta {
+            padding: 0;
+            justify-content: flex-start;
+            background-color: var(--color-bg-brand);
+        }
+
+        .cta-content-wrapper {
+            flex: 1;
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .cta-box {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(227, 220, 209, 0.5);
+            border-radius: 20px;
+            padding: 24px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            width: 100%;
+        }
+
+        .cta-box h3 {
+            font-family: var(--font-title);
+            font-size: 2.1rem;
+            line-height: 1.15;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .cta-box p {
+            font-size: 0.86rem;
+            color: var(--color-text-cream);
+            line-height: 1.35;
+        }
+
+        .promo-offer-card {
+            background: rgba(227, 220, 209, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-badge-tag {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: #2A2426;
+            background: var(--color-accent-beige);
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .promo-offer-title {
+            font-family: var(--font-title);
+            font-size: 1.55rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-top: 2px;
+        }
+
+        .promo-offer-desc {
+            font-size: 0.80rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.25;
+        }
+
+        .promo-fine-print {
+            font-size: 0.60rem;
+            color: rgba(255, 255, 255, 0.78);
+            font-style: italic;
+            line-height: 1.2;
+            margin-top: 3px;
+        }
+
+        .contact-pill {
+            background: rgba(227, 220, 209, 0.38);
+            color: #FFFFFF;
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 9px 20px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Controles de Navegación */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 9px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .dots-indicator {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--color-accent-beige);
+            transform: scale(1.3);
+        }
+
+        /* Botones de Descarga */
+        .download-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-action {
+            background: rgba(201, 179, 185, 0.5);
+            border: 1px solid rgba(227, 220, 209, 0.6);
+            color: white;
+            padding: 13px 18px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-action:hover {
+            background: rgba(201, 179, 185, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .btn-action.secondary {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--color-accent-beige);
+            box-shadow: none;
+        }
+
+        .btn-action.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Panel de Copy Lateral */
+        .copy-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 16px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .copy-panel h3 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-accent-beige);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 10px;
+        }
+
+        .copy-content {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: pre-wrap;
+            max-height: 480px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-copy {
+            background: rgba(201, 179, 185, 0.5);
+            border: 1px solid rgba(227, 220, 209, 0.6);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-copy:hover {
+            background: rgba(201, 179, 185, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al Índice de Publicaciones
+        </a>
+        <span class="page-title-badge">Paleta Oficial: Lila & Beige</span>
+    </div>
+
+    <div class="main-layout">
+        
+        <!-- Visor de Diapositivas HD -->
+        <div class="viewer-container">
+            <div class="carousel-viewport">
+                
+                <!-- Diapositiva 1: Portada -->
+                <div class="slide-card slide-card-cover active">
+                    <img src="../images/ritual-facial-portada.jpg?v=2" alt="Ritual Facial" class="cover-bg-img">
+                    <div class="cover-overlay"></div>
+                    
+                    <div class="cover-content">
+                        <h1 class="cover-title">Ritual Facial</h1>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 2: Paso 1 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-01.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-01.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Turbante & Leche Limpiadora</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full step-video-client-focus" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-01.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Protegemos el cabello y retiramos suavemente las impurezas acumuladas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 3: Paso 2 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-02.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-02.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Exfoliante & Limpieza Profunda</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full step-video-client-focus" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-02.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Renovamos la capa córnea para devolver la luminosidad a la piel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 4: Paso 3 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-03.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-03.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Tónico Reequilibrante</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full step-video-client-focus" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-03.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Bruma refrescante que calma y restablece el pH de la epidermis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 5: Paso 4 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-04.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-04.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Principio Activo & Radiofrecuencia</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full step-video-client-focus" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-04.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Aplicación de principio activo adaptado a las necesidades de la piel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 6: Paso 5 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-05.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-05.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Crema Hidratante & Masaje Facial</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-05.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Maniobras remodelantes y drenantes que activan la microcirculación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 7: Paso 6 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-06.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-06.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Mascarilla Geloide</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-06.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Sello intensivo que calma, reconforta y le da luz a la piel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 8: Paso 7 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-07.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-07.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Masaje Corporal & Capilar</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-07.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Relajación en hombros, escote y zona craneal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 9: Paso 8 -->
+                <div class="slide-card" data-video="videos/paso-a-paso-ritual-facial/paso-08.mp4" data-post-video="videos/paso-a-paso-ritual-facial/post-paso-08.mp4">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Retirado, Factor Solar & Bálsamo</h3>
+                    </div>
+
+                    <div class="step-video-container-full">
+                        <video class="step-video-full" loop muted playsinline preload="metadata" src="videos/paso-a-paso-ritual-facial/paso-08.mp4"></video>
+                        <div class="step-video-bottom-overlay">
+                            <p class="step-video-desc">Protección solar e hidratación labial.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 10: Cierre / Reserva & Promoción Especial -->
+                <div class="slide-card slide-card-cta">
+                    <div class="slide-top-header">
+                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <h3 class="slide-step-title">Reserva de Cita</h3>
+                    </div>
+
+                    <div class="cta-content-wrapper">
+                        <div class="cta-box">
+                            <h3>Regálale a tu piel este momento</h3>
+                            <p>Reserva tu ritual facial en nuestras cabinas privadas.</p>
+                            
+                            <!-- Tarjeta de Oferta Especial -->
+                            <div class="promo-offer-card">
+                                <span class="promo-badge-tag">✨ OFERTA ESPECIAL COMPARTIDA</span>
+                                <h4 class="promo-offer-title">10% DTO. al reservar 2 Citas</h4>
+                                <p class="promo-offer-desc">Reserva 1 cita para ti + 1 para regalar.</p>
+                                <p class="promo-fine-print">*Abonando por adelantado. Válido para reservar y disfrutar durante septiembre y octubre de 2026. Más información por WhatsApp o teléfono.</p>
+                            </div>
+
+                            <div class="contact-pill">
+                                <span>📍 L'Eliana, Valencia</span>
+                            </div>
+
+                            <p style="font-size: 0.82rem; color: var(--color-text-cream);">
+                                📲 Citas por WhatsApp: <strong>604 87 07 85</strong><br>
+                                o a través del enlace de nuestra bio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navegación por Diapositivas -->
+            <div class="controls-row">
+                <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                    Anterior
+                </button>
+                <div class="dots-indicator">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                    <span class="dot" onclick="goToSlide(5)"></span>
+                    <span class="dot" onclick="goToSlide(6)"></span>
+                    <span class="dot" onclick="goToSlide(7)"></span>
+                    <span class="dot" onclick="goToSlide(8)"></span>
+                    <span class="dot" onclick="goToSlide(9)"></span>
+                </div>
+                <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+                    Siguiente
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Botones de Exportación HD -->
+            <div class="download-actions">
+                <button class="btn-action" id="btnDownloadSlide" onclick="downloadCurrentSlide()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar Diapositiva Actual (PNG HD 1080x1350)
+                </button>
+                <button class="btn-action secondary" id="btnDownloadVideo" onclick="downloadCurrentVideo()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    Descargar Vídeo MP4 con Encuadernación & Título (Paso Activo)
+                </button>
+                <button class="btn-action secondary" id="btnDownloadAllVideos" onclick="downloadAllVideos()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/><path d="M12 5v14M5 12h14"/></svg>
+                    Descargar Todos los Vídeos MP4 (8 Archivos 1080x1350 con Encuadernación)
+                </button>
+                <button class="btn-action secondary" id="btnDownloadAll" onclick="downloadAllSlides()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><polyline points="12 11 12 17 17 14"/></svg>
+                    Descargar Carrusel Completo (10 Imágenes PNG HD)
+                </button>
+            </div>
+        </div>
+
+        <!-- Panel de Copy Trilingüe y Hashtags -->
+        <div class="copy-panel">
+            <h3>Texto Optimizado para Publicación</h3>
+
+            <div class="copy-content" id="captionText">✨ PASO A PASO: RITUAL FACIAL RENOVADOR EN LLUM DE LLUNA ✨
+
+¿Te has preguntado qué ocurre exactamente durante una hora de tratamiento facial en nuestras cabinas? 🌿
+
+Te mostramos la secuencia ritual en 8 pasos con vídeo real diseñada para devolver la luz y nutrición a tu piel:
+
+1️⃣ Turbante & Leche Limpiadora: Protegemos el cabello y retiramos suavemente las impurezas acumuladas.
+2️⃣ Exfoliación Suave & Limpieza Profunda: Micro-exfoliación botánica para renovar la piel y aclarado purificante.
+3️⃣ Tónico Botánico Reequilibrante: Bruma vegetal para calmar, afinar el poro y reequilibrar el pH cutáneo.
+4️⃣ Principio Activo & Radiofrecuencia: Aplicación de principio activo adaptado a las necesidades de la piel.
+5️⃣ Crema Nutritiva & Masaje Facial: Masaje remodelante y drenante que estimula la firmeza y microcirculación.
+6️⃣ Mascarilla Geloide: Sello intensivo que calma, reconforta y le da luz a la piel.
+7️⃣ Masaje Corporal & Capilar: Relajación en hombros, escote y zona capilar durante la pose de mascarilla.
+8️⃣ Retirado, Factor Solar & Bálsamo: Protección solar e hidratación labial.
+
+🎁 PROMO ESPECIAL COMPARTIDA:
+Reserva 1 cita para ti + 1 para regalar y disfruta de un 10% DTO.
+*(Válido abonando por adelantado. Para reservar y utilizar durante septiembre y octubre de 2026. Más información por teléfono o WhatsApp).*
+
+📍 Reserva tu experiencia en nuestras cabinas privadas en L'Eliana.
+
+📲 Citas en el enlace de la bio o por WhatsApp: 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+
+✨ PAS A PAS: RITUAL FACIAL RENOVADOR A LLUM DE LLUNA ✨
+
+T'has preguntat què passa exactament durant una hora de tractament facial en les nostres cabines? 🌿
+
+Et mostrem la seqüència ritual en 8 passos amb vídeo real dissenyada per a retornar la llum i nutrició a la teua pell:
+
+1️⃣ Turbant i Llet Netejadora: Protegim el cabell i retirem suaument les impureses acumulades.
+2️⃣ Exfoliació Suau i Neteja Profunda: Micro-exfoliació botànica per a renovar la pell i aclarit purificant.
+3️⃣ Tònic Botànic Reequilibrant: Boira vegetal per a calmar, afinar el porus i reequilibrar el pH cutani.
+4️⃣ Principi Actiu i Radiofreqüència: Aplicació de principi actiu adaptat a les necessitats de la pell.
+5️⃣ Crema Nutritiva i Massatge Facial: Massatge remodelador i drenant que estimula la fermesa i microcirculació.
+6️⃣ Mascareta Geloid: Segell intensiu que calma, reconforta i li dóna llum a la pell.
+7️⃣ Massatge Corporal i Capil·lar: Relaxació en fembres, escot i zona capil·lar durant la pose de mascareta.
+8️⃣ Retirat, Factor Solar i Bàlsam: Protecció solar i hidratació labial.
+
+🎁 PROMO ESPECIAL COMPARTIDA:
+Reserva 1 cita per a tu + 1 per a regalar i gaudeix d'un 10% DTE.
+*(Vàlid abonant per avançat. Per a reservar i utilitzar durant setembre i octubre de 2026. Més informació per telèfon o WhatsApp).*
+
+📍 Reserva la teua experiència en les nostres cabines privades a L'Eliana.
+
+📲 Cites en l'enllaç de la bio o por WhatsApp: 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+
+✨ STEP BY STEP: RENOVATING FACIAL RITUAL AT LLUM DE LLUNA ✨
+
+Ever wondered what happens during a 60-minute facial treatment in our private cabins? 🌿
+
+Here is our complete 8-step signature sequence with live video footage, designed to restore radiance and deep hydration to your skin:
+
+1️⃣ Headband Setup & Cleansing Milk: Protecting hair and gently removing accumulated impurities.
+2️⃣ Soft Exfoliation & Deep Cleansing: Botanical micro-exfoliation to renew skin and clarifying rinse.
+3️⃣ Rebalancing Botanical Toner: Soothing mist that refines pores and restores skin pH balance.
+4️⃣ Active Concentrates & Radiofrequency: Application of active ingredients tailored to your skin needs.
+5️⃣ Nourishing Cream & Facial Massage: Sculpting and draining massage boosting microcirculation.
+6️⃣ Geloid Mask: Intensive seal that calms, comforts, and illuminates the skin.
+7️⃣ Body & Scalp Relaxation Massage: Relaxation for shoulders, chest, and scalp during mask time.
+8️⃣ Mask Removal, Sun Protection & Lip Care: Sun protection and nourishing lip hydration.
+
+🎁 SPECIAL GIFT & SHARE PROMO:
+Book 1 session for yourself + 1 as a gift and get 10% OFF!
+*(Valid when paying in advance. Available to book and use during September and October 2026. More info via phone or WhatsApp).*
+
+📍 Book your 60-minute pampering session in L'Eliana today.
+
+📲 Book via link in bio or WhatsApp: +34 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+#LlumDeLluna #RitualFacial #EsteticaLEliana #LimpiezaFacial #PielRadiante #LEliana #CuidadoFacial #ValenciaEstetica #BienestarYSalud #TratamientoFacial</div>
+
+            <button class="btn-copy" onclick="copyCaption()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copiar Texto de Publicación
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-card');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function playActiveVideo(video) {
+            if (!video) return;
+            video.muted = true;
+            video.playsInline = true;
+
+            const tryPlay = () => {
+                video.muted = true;
+                const p = video.play();
+                if (p !== undefined) {
+                    p.catch(err => {
+                        console.warn('Autoplay caught:', err);
+                        setTimeout(() => {
+                            video.play().catch(() => {});
+                        }, 250);
+                    });
+                }
+            };
+
+            if (video.readyState >= 2) {
+                tryPlay();
+            } else {
+                video.load();
+                video.addEventListener('canplay', tryPlay, { once: true });
+                setTimeout(tryPlay, 300);
+            }
+        }
+
+        function updateSlidePosition() {
+            slides.forEach((slide, idx) => {
+                const video = slide.querySelector('video');
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                    if (video) {
+                        playActiveVideo(video);
+                    }
+                } else {
+                    slide.classList.remove('active');
+                    if (video) {
+                        video.pause();
+                        try { video.currentTime = 0; } catch (e) {}
+                    }
+                }
+            });
+
+            // Pre-cargar vídeo de la siguiente diapositiva para transición fluida
+            const nextSlideIdx = currentSlide + 1;
+            if (nextSlideIdx < slides.length) {
+                const nextVideo = slides[nextSlideIdx].querySelector('video');
+                if (nextVideo && nextVideo.preload === 'metadata') {
+                    nextVideo.preload = 'auto';
+                }
+            }
+
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+
+            const currentVideo = slides[currentSlide].getAttribute('data-video');
+            const btnVideo = document.getElementById('btnDownloadVideo');
+            if (btnVideo) {
+                btnVideo.style.display = currentVideo ? 'flex' : 'none';
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            updateSlidePosition();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlidePosition();
+        }
+
+        function copyCaption() {
+            const text = document.getElementById('captionText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '✓ ¡Texto Copiado al Portapapeles!';
+                btn.style.background = '#C5BAAA';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '#E3DCD1';
+                }, 2500);
+            }).catch(err => {
+                console.error('Error al copiar:', err);
+            });
+        }
+
+        function downloadCurrentVideo() {
+            const activeSlide = slides[currentSlide];
+            const videoSrc = activeSlide.getAttribute('data-post-video') || activeSlide.getAttribute('data-video');
+            if (!videoSrc) {
+                alert('La diapositiva actual no contiene un vídeo.');
+                return;
+            }
+
+            const stepNumber = currentSlide;
+            const link = document.createElement('a');
+            link.download = `Llum-de-Lluna-Post-Video-Paso-${stepNumber}.mp4`;
+            link.href = videoSrc;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        async function downloadAllVideos() {
+            const btn = document.getElementById('btnDownloadAllVideos');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+
+            let count = 0;
+            const videoSlides = Array.from(slides).filter(s => s.getAttribute('data-video'));
+
+            for (let i = 0; i < videoSlides.length; i++) {
+                const videoSrc = videoSlides[i].getAttribute('data-post-video') || videoSlides[i].getAttribute('data-video');
+                if (videoSrc) {
+                    count++;
+                    btn.innerHTML = `⏳ Descargando Vídeo Post ${count} de ${videoSlides.length}...`;
+                    const link = document.createElement('a');
+                    link.download = `Llum-de-Lluna-Post-Video-Paso-${count}.mp4`;
+                    link.href = videoSrc;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    await new Promise(r => setTimeout(r, 600));
+                }
+            }
+
+            btn.innerHTML = `✓ ¡Los ${count} Vídeos Post MP4 (1080x1350) Guardados!`;
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 3500);
+        }
+
+        async function downloadCurrentSlide() {
+            const activeSlide = slides[currentSlide];
+            const slideNumber = currentSlide + 1;
+            
+            const btn = document.getElementById('btnDownloadSlide');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `⏳ Exportando 1080 x 1350...`;
+            btn.disabled = true;
+
+            try {
+                const canvas = await html2canvas(activeSlide, {
+                    width: 480,
+                    height: 600,
+                    scale: 2.25,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: '#C9B3B9',
+                    onclone: (clonedDoc) => {
+                        const clonedSlide = clonedDoc.querySelector('.slide-card.active');
+                        if (clonedSlide) {
+                            clonedSlide.style.opacity = '1';
+                            clonedSlide.style.visibility = 'visible';
+                            clonedSlide.style.transform = 'none';
+
+                            const origVideo = activeSlide.querySelector('video');
+                            if (origVideo && origVideo.readyState >= 2) {
+                                const vCanvas = document.createElement('canvas');
+                                vCanvas.width = origVideo.videoWidth || 720;
+                                vCanvas.height = origVideo.videoHeight || 1280;
+                                const ctx = vCanvas.getContext('2d');
+                                ctx.drawImage(origVideo, 0, 0, vCanvas.width, vCanvas.height);
+                                
+                                const clonedVideo = clonedSlide.querySelector('video');
+                                if (clonedVideo) {
+                                    const img = document.createElement('img');
+                                    img.src = vCanvas.toDataURL('image/png');
+                                    img.className = clonedVideo.className;
+                                    img.style.objectFit = 'cover';
+                                    clonedVideo.parentNode.replaceChild(img, clonedVideo);
+                                }
+                            }
+                        }
+                    }
+                });
+
+                const link = document.createElement('a');
+                link.download = `Llum-de-Lluna-PasoAPaso-RitualFacial-Slide-${slideNumber}.png`;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                btn.innerHTML = `✓ ¡Diapositiva ${slideNumber} Guardada (1080x1350)!`;
+            } catch (err) {
+                console.error('Error al descargar diapositiva:', err);
+                alert('Ocurrió un error al generar la imagen.');
+            } finally {
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 3000);
+            }
+        }
+
+        async function downloadAllSlides() {
+            const btn = document.getElementById('btnDownloadAll');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+
+            for (let i = 0; i < slides.length; i++) {
+                goToSlide(i);
+                btn.innerHTML = `⏳ Exportando Diapositiva ${i + 1} de ${slides.length}...`;
+                await new Promise(r => setTimeout(r, 600));
+                
+                const slideCard = slides[i];
+                try {
+                    const canvas = await html2canvas(slideCard, {
+                        width: 480,
+                        height: 600,
+                        scale: 2.25,
+                        useCORS: true,
+                        allowTaint: false,
+                        backgroundColor: '#C9B3B9',
+                        onclone: (clonedDoc) => {
+                            const clonedSlide = clonedDoc.querySelectorAll('.slide-card')[i];
+                            if (clonedSlide) {
+                                clonedSlide.style.opacity = '1';
+                                clonedSlide.style.visibility = 'visible';
+                                clonedSlide.style.transform = 'none';
+
+                                const origVideo = slideCard.querySelector('video');
+                                if (origVideo && origVideo.readyState >= 2) {
+                                    const vCanvas = document.createElement('canvas');
+                                    vCanvas.width = origVideo.videoWidth || 720;
+                                    vCanvas.height = origVideo.videoHeight || 1280;
+                                    const ctx = vCanvas.getContext('2d');
+                                    ctx.drawImage(origVideo, 0, 0, vCanvas.width, vCanvas.height);
+                                    
+                                    const clonedVideo = clonedSlide.querySelector('video');
+                                    if (clonedVideo) {
+                                        const img = document.createElement('img');
+                                        img.src = vCanvas.toDataURL('image/png');
+                                        img.className = clonedVideo.className;
+                                        img.style.objectFit = 'cover';
+                                        clonedVideo.parentNode.replaceChild(img, clonedVideo);
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    const link = document.createElement('a');
+                    link.download = `Llum-de-Lluna-PasoAPaso-RitualFacial-Slide-${i + 1}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    await new Promise(r => setTimeout(r, 400));
+                } catch (err) {
+                    console.error('Error al exportar la diapositiva ' + (i + 1), err);
+                }
+            }
+
+            btn.innerHTML = `✓ ¡Las ${slides.length} Diapositivas Guardadas!`;
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.step-video-container-full').forEach(container => {
+                container.style.cursor = 'pointer';
+                container.addEventListener('click', () => {
+                    const video = container.querySelector('video');
+                    if (video) {
+                        if (video.paused) {
+                            video.play().catch(() => {});
+                        } else {
+                            video.pause();
+                        }
+                    }
+                });
+            });
+            updateSlidePosition();
+        });
+    </script>
+</body>
+</html>

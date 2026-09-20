@@ -162,56 +162,64 @@
 
         /* Diapositiva 1: Portada */
         .slide-card-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 480px;
+            height: 600px;
             text-align: center;
             align-items: center;
-            justify-content: center;
-            padding: 40px 30px;
+            justify-content: flex-start;
+            padding: 50px 32px 32px;
+            overflow: hidden;
+            background-color: #2A2426;
+            background-image: linear-gradient(180deg, rgba(20, 14, 16, 0.48) 0%, rgba(20, 14, 16, 0.08) 45%, rgba(20, 14, 16, 0.2) 100%), url('../images/ritual-facial-portada.jpg?v=2');
+            background-size: cover;
+            background-position: 85% 15%;
+        }
+
+        .cover-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 85% 15%;
+            transform: scale(1.35);
+            transform-origin: 85% 15%;
+            z-index: 1;
+        }
+
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(20, 14, 16, 0.48) 0%, rgba(20, 14, 16, 0.08) 45%, rgba(20, 14, 16, 0.2) 100%);
+            z-index: 2;
         }
 
         .cover-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 22px;
-            margin: auto 0;
-            width: 100%;
-        }
-
-        .cover-logo {
-            height: 120px;
-            max-width: 85%;
-            object-fit: contain;
-            filter: none;
-        }
-
-        .cover-badge {
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            color: var(--color-accent-beige);
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            padding: 6px 14px;
-            border-radius: 20px;
+            justify-content: flex-start;
+            margin-top: 10px;
         }
 
         .cover-title {
             font-family: var(--font-title);
-            font-size: 3.1rem;
-            line-height: 1.1;
-            color: #FFFFFF;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-        }
-
-        .cover-subtitle {
-            font-size: 1.05rem;
-            line-height: 1.5;
-            color: var(--color-text-cream);
-            font-weight: 400;
-            max-width: 95%;
+            font-size: 3.5rem;
+            line-height: 1.05;
+            color: #E3DCD1; /* Tono beige cálido armonizado con la luz y elementos de la foto */
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
         }
 
         /* Contenido de diapositivas temáticas */
@@ -529,15 +537,11 @@
                 
                 <!-- Diapositiva 1: Portada -->
                 <div class="slide-card slide-card-cover active">
+                    <img src="../images/ritual-facial-portada.jpg?v=2" alt="Ritual Facial" class="cover-bg-img">
+                    <div class="cover-overlay"></div>
+                    
                     <div class="cover-content">
-                        <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="cover-logo">
-                        <span class="cover-badge">EXPERIENCIA FACIAL EXCLUSIVA</span>
                         <h1 class="cover-title">Ritual Facial</h1>
-                        <p class="cover-subtitle">Un oasis de calma, iluminación y nutrición profunda para revitalizar tu piel.</p>
-                    </div>
-                    <div class="slide-footer">
-                        <span>LLUM DE LLUNA • L'ELIANA</span>
-                        <span>01 / 04</span>
                     </div>
                 </div>
 

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicación IG: Mitos vs. Realidades Fotodepilación IPL | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-primary: #E3DCD1;      /* Fondo Beige cálido de marca (más cálido y asentado) */
+            --color-bg-tertiary: #FAF7F2;     /* Blanco crema de contraste */
+            --color-accent-green: #8B9986;    /* Verde Salvia oficial */
+            --color-text-green: #3C4A39;      /* Verde Salvia Oscuro para títulos */
+            --color-text-body: #2D372B;       /* Verde Salvia Profundo para texto */
+            --color-text-muted: #556651;      /* Verde Salvia Suave para subtítulos */
+            --color-bg-card: rgba(250, 247, 242, 0.55); /* Tarjeta clara sobre el fondo beige */
+            --color-border-card: rgba(139, 153, 134, 0.35);
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1A1918;
+            color: #FAF7F2;
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .header-bar {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link {
+            color: var(--color-bg-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .page-title-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(139, 153, 134, 0.3);
+            color: var(--color-bg-primary);
+            padding: 5px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(227, 220, 209, 0.3);
+        }
+
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            max-width: 1100px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 950px) {
+            .main-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Visor Carousel HD */
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 480px;
+            flex-shrink: 0;
+        }
+
+        .carousel-viewport {
+            width: 480px;
+            height: 600px;
+            position: relative;
+            background-color: var(--color-bg-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-card {
+            width: 480px;
+            height: 600px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-body);
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.97);
+        }
+
+        .slide-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Línea superior y cabecera en diapositivas 2 a 5 */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(60, 74, 57, 0.22);
+        }
+
+        .slide-mini-logo {
+            height: 40px;
+            object-fit: contain;
+            filter: none;
+        }
+
+        .slide-brand-tag {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--color-text-green);
+            background: rgba(250, 247, 242, 0.65);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 153, 134, 0.4);
+        }
+
+        /* Diapositiva 1: Portada */
+        .slide-card-cover {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+        }
+
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: auto 0;
+            width: 100%;
+        }
+
+        .cover-logo {
+            height: 130px;
+            max-width: 85%;
+            object-fit: contain;
+            filter: none;
+        }
+
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 3.1rem;
+            line-height: 1.1;
+            color: var(--color-text-green);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+
+        .cover-subtitle {
+            font-size: 1.02rem;
+            line-height: 1.55;
+            color: var(--color-text-muted);
+            font-weight: 400;
+            max-width: 95%;
+        }
+
+        /* Contenido de diapositivas temáticas */
+        .slide-body {
+            margin: auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* El Mito fuera de la caja */
+        .myth-section-outside {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .myth-tag-outside {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #9E3B3B;
+        }
+
+        .myth-title-outside {
+            font-family: var(--font-title);
+            font-size: 1.95rem;
+            line-height: 1.2;
+            color: var(--color-text-green);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Cuadradito Resaltado (La Realidad) */
+        .reality-card-box {
+            background: var(--color-bg-card);
+            border-left: 4px solid var(--color-accent-green);
+            border-top: 1px solid var(--color-border-card);
+            border-right: 1px solid var(--color-border-card);
+            border-bottom: 1px solid var(--color-border-card);
+            border-radius: 0 16px 16px 0;
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .reality-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #2F693A;
+        }
+
+        .reality-text {
+            font-size: 0.95rem;
+            color: var(--color-text-body);
+            line-height: 1.55;
+            font-weight: 400;
+        }
+
+        .benefit-card {
+            background: var(--color-bg-card);
+            border-left: 3px solid var(--color-accent-green);
+            padding: 14px 16px;
+            border-radius: 0 12px 12px 0;
+            border-top: 1px solid var(--color-border-card);
+            border-right: 1px solid var(--color-border-card);
+            border-bottom: 1px solid var(--color-border-card);
+        }
+
+        .benefit-card h4 {
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            color: var(--color-text-green);
+            margin-bottom: 4px;
+        }
+
+        .benefit-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        /* Caja de CTA y Contacto */
+        .cta-box {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-card);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            margin: auto 0;
+            width: 100%;
+        }
+
+        .cta-box h3 {
+            font-family: var(--font-title);
+            font-size: 2.1rem;
+            line-height: 1.2;
+            color: var(--color-text-green);
+            font-weight: 600;
+        }
+
+        .cta-box p {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .contact-pill {
+            background: var(--color-accent-green);
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Controles de Navegación */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .dots-indicator {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: var(--color-accent-green);
+            transform: scale(1.25);
+        }
+
+        /* Botones de Descarga */
+        .download-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-action {
+            background: var(--color-accent-green);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-action:hover {
+            background: #7A8875;
+            transform: translateY(-2px);
+        }
+
+        .btn-action.secondary {
+            background: rgba(227, 220, 209, 0.2);
+            border: 1px solid rgba(227, 220, 209, 0.4);
+            color: var(--color-bg-primary);
+            box-shadow: none;
+        }
+
+        .btn-action.secondary:hover {
+            background: rgba(227, 220, 209, 0.3);
+        }
+
+        /* Panel de Copy Lateral */
+        .copy-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 16px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+        }
+
+        .copy-panel h3 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-bg-primary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 10px;
+        }
+
+        .copy-content {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
+            padding: 18px;
+            font-size: 0.88rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: pre-wrap;
+            max-height: 480px;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-copy {
+            background: var(--color-accent-green);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-copy:hover {
+            background: #7A8875;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <a href="index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al Índice de Publicaciones
+        </a>
+        <span class="page-title-badge">Carrusel Instagram 6 Diapositivas</span>
+    </div>
+
+    <div class="main-layout">
+        
+        <!-- Visor de Diapositivas HD -->
+        <div class="viewer-container">
+            <div class="carousel-viewport">
+                
+                <!-- Diapositiva 1: Portada -->
+                <div class="slide-card slide-card-cover active">
+                    <div class="cover-content">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="cover-logo">
+                        <h2 class="cover-title">Fotodepilación IPL en Otoño</h2>
+                        <p class="cover-subtitle">Desmontamos los 3 mitos más comunes sobre la depilación con luz pulsada para lucir una piel suave y libre de bello.</p>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 2: Mito 1 -->
+                <div class="slide-card">
+                    <div class="slide-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <span class="slide-brand-tag">Mito 1 de 3</span>
+                    </div>
+
+                    <div class="slide-body">
+                        <div class="myth-section-outside">
+                            <span class="myth-tag-outside">❌ MITO 1</span>
+                            <h3 class="myth-title-outside">"Es un tratamiento muy doloroso e incómodo."</h3>
+                        </div>
+
+                        <div class="reality-card-box">
+                            <div class="reality-label">✔️ LA REALIDAD</div>
+                            <p class="reality-text">Nuestra tecnología incorpora un sistema de cabezal frío con refrigeración cutánea. La sensación es suave, fresca y totalmente confortable durante toda la sesión.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 3: Mito 2 -->
+                <div class="slide-card">
+                    <div class="slide-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <span class="slide-brand-tag">Mito 2 de 3</span>
+                    </div>
+
+                    <div class="slide-body">
+                        <div class="myth-section-outside">
+                            <span class="myth-tag-outside">❌ MITO 2</span>
+                            <h3 class="myth-title-outside">"Hay que dejar crecer el bello antes de la sesión."</h3>
+                        </div>
+
+                        <div class="reality-card-box">
+                            <div class="reality-label">✔️ LA REALIDAD</div>
+                            <p class="reality-text">Se rasura la zona justo antes del tratamiento. La energía lumínica actúa directamente sobre el folículo en fase activa, por lo que no necesitas dejar crecer el bello.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 4: Mito 3 -->
+                <div class="slide-card">
+                    <div class="slide-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <span class="slide-brand-tag">Mito 3 de 3</span>
+                    </div>
+
+                    <div class="slide-body">
+                        <div class="myth-section-outside">
+                            <span class="myth-tag-outside">❌ MITO 3</span>
+                            <h3 class="myth-title-outside">"El otoño no es buen momento para empezar."</h3>
+                        </div>
+
+                        <div class="reality-card-box">
+                            <div class="reality-label">✔️ LA REALIDAD</div>
+                            <p class="reality-text">¡Al contrario! Al reducir la exposición solar directa, el otoño e invierno son las épocas idóneas para avanzar sesiones y llegar a la primavera con la piel suave y libre de bello.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 5: Por qué Llum de Lluna -->
+                <div class="slide-card">
+                    <div class="slide-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <span class="slide-brand-tag">Tu Experiencia en Cabina</span>
+                    </div>
+
+                    <div class="slide-body">
+                        <div class="myth-section-outside">
+                            <span class="myth-tag-outside" style="color: var(--color-text-green);">✨ NUESTRA GARANTÍA</span>
+                            <h3 class="myth-title-outside">Por qué elegir Llum de Lluna</h3>
+                        </div>
+
+                        <div class="benefit-card">
+                            <h4>Cabinas Privadas en L'Eliana</h4>
+                            <p>Sesiones individuales en un ambiente tranquilo, confortable y de máxima higiene.</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <h4>Piel Suave y Regenerada</h4>
+                            <p>Además de eliminar el bello, la luz pulsada estimula el colágeno y mejora la textura cutánea.</p>
+                        </div>
+
+                        <div class="benefit-card">
+                            <h4>Valoración & Prueba de Confort</h4>
+                            <p>Valoramos tu tipo de piel sin compromiso y hacemos una prueba para que compruebes la sensación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diapositiva 6: Cierre / Reserva -->
+                <div class="slide-card">
+                    <div class="slide-header">
+                        <img src="../images/logo verde.png" alt="Llum de Lluna" class="slide-mini-logo">
+                        <span class="slide-brand-tag">RESERVA DE CITA</span>
+                    </div>
+
+                    <div class="slide-body">
+                        <div class="cta-box">
+                            <h3>Disfruta de una piel libre de bello</h3>
+                            <p>Pide tu cita de valoración y prueba de confort sin compromiso.</p>
+                            
+                            <div class="contact-pill">
+                                <span>📍 L'Eliana, Valencia</span>
+                            </div>
+
+                            <p style="font-size: 0.88rem; color: var(--color-text-body); margin-top: 6px;">
+                                📲 Citas por WhatsApp: <strong>604 87 07 85</strong><br>
+                                o a través del enlace de nuestra bio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navegación por Diapositivas -->
+            <div class="controls-row">
+                <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                    Anterior
+                </button>
+                <div class="dots-indicator">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                    <span class="dot" onclick="goToSlide(5)"></span>
+                </div>
+                <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+                    Siguiente
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+
+            <!-- Botones de Exportación en HD (1080x1350px) -->
+            <div class="download-actions">
+                <button class="btn-action" id="btnDownloadSlide" onclick="downloadCurrentSlide()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Descargar Diapositiva Actual (PNG HD)
+                </button>
+                <button class="btn-action secondary" id="btnDownloadAll" onclick="downloadAllSlides()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><polyline points="12 11 12 17 17 14"/></svg>
+                    Descargar Carrusel Completo (6 Diapositivas HD)
+                </button>
+            </div>
+        </div>
+
+        <!-- Panel de Copy Trilingüe y Hashtags -->
+        <div class="copy-panel">
+            <h3>Texto Optimizado para Publicación</h3>
+
+            <div class="copy-content" id="captionText">✨ MITOS VS. REALIDADES DE LA FOTODEPILACIÓN IPL ✨
+
+¿Piensas en empezar la depilación con Luz Pulsada pero tienes dudas sobre el dolor, la preparación o la mejor época del año? 🍂
+
+Desmontamos 3 de los mitos más frecuentes sobre la fotodepilación IPL:
+
+1️⃣ ¿Duele? No. Contamos con tecnología de cabezal con refrigeración cutánea para que cada sesión sea confortable e indolora.
+2️⃣ ¿Hay que dejar crecer el bello? No. La zona se rasura previamente; la energía de la luz actúa sobre el folículo en fase activa.
+3️⃣ ¿Por qué en otoño/invierno? Es la época idónea al reducirse la exposición al sol. Llegarás a la primavera con una piel suave y sin bello.
+
+📍 Te esperamos en nuestras cabinas de L'Eliana. Pide tu prueba de pulso y diagnóstico personalizado sin compromiso.
+
+📲 Citas en el enlace de la bio o por WhatsApp: 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+
+✨ MITES VS. REALITATS DE LA FOTODEPILACIÓ IPL ✨
+
+Penses en començar la depilació amb Llum Pulsada però tens dubtes sobre el dolor, la preparació o la millor època de l'any? 🍂
+
+Desmuntem 3 dels mites més freqüents sobre la fotodepilació IPL:
+
+1️⃣ Fa mal? No. Comptem amb tecnologia de capçal amb refrigeració cutània perquè cada sessió siga confortable i indolora.
+2️⃣ Cal deixar créixer el pèl? No. La zona es rasura prèviament; l'energia de la llum actua sobre el fol·licle en fase activa.
+3️⃣ Per què a la tardor/hivern? És l'època idònia en reduir-se l'exposició al sol. Arribaràs a la primavera amb una pell suau i sense pèl.
+
+📍 T'esperem a les nostres cabines de L'Eliana. Demana la teua prova de pols i diagnòstic personalitzat sense compromís.
+
+📲 Cites en l'enllaç de la bio o per WhatsApp: 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+
+✨ MYTHS VS. REALITIES OF IPL HAIR REMOVAL ✨
+
+Thinking about starting Intense Pulsed Light (IPL) hair removal but wondering about discomfort, prep, or timing? 🍂
+
+Here are 3 common myths behind IPL hair removal:
+
+1️⃣ Is it painful? No. Our device features skin-cooling technology for a smooth, gentle, and comfortable experience.
+2️⃣ Do I need to let hair grow? No. The area is shaved beforehand; the light energy targets the active follicle directly.
+3️⃣ Why autumn/winter? Lower sun exposure makes it the ideal season to start, ensuring smooth, hair-free skin by spring.
+
+📍 Book your free consultation and patch test in L'Eliana today.
+
+📲 Book via link in bio or WhatsApp: +34 604 87 07 85 | www.llumdellunaestetica.es
+
+---
+#LlumDeLluna #FotodepilacionIPL #EsteticaLEliana #DepilacionIPL #PielSuave #LEliana #ValenciaEstetica #BienestarYSalud #CuidadoCutaneo #TratamientosDeOtoño</div>
+
+            <button class="btn-copy" onclick="copyCaption()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copiar Texto de Publicación
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-card');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlidePosition() {
+            slides.forEach((slide, idx) => {
+                if (idx === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            dots.forEach((dot, idx) => {
+                if (idx === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = 0;
+            if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+            updateSlidePosition();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlidePosition();
+        }
+
+        function copyCaption() {
+            const text = document.getElementById('captionText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.btn-copy');
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '✓ ¡Texto Copiado al Portapapeles!';
+                btn.style.background = '#6B7A66';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '#8B9986';
+                }, 2500);
+            }).catch(err => {
+                console.error('Error al copiar:', err);
+            });
+        }
+
+        function downloadCurrentSlide() {
+            const activeSlide = slides[currentSlide];
+            const slideNumber = currentSlide + 1;
+            
+            const btn = document.getElementById('btnDownloadSlide');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `⏳ Exportando 1080 x 1350...`;
+            btn.disabled = true;
+
+            html2canvas(activeSlide, {
+                width: 480,
+                height: 600,
+                scale: 2.25, // 480 x 2.25 = 1080px, 600 x 2.25 = 1350px
+                useCORS: true,
+                allowTaint: false,
+                backgroundColor: '#E3DCD1',
+                onclone: (clonedDoc) => {
+                    const clonedSlide = clonedDoc.querySelector('.slide-card.active');
+                    if (clonedSlide) {
+                        clonedSlide.style.opacity = '1';
+                        clonedSlide.style.visibility = 'visible';
+                        clonedSlide.style.transform = 'none';
+                    }
+                }
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Llum-de-Lluna-FotodepilacionIPL-Slide-${slideNumber}.png`;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                btn.innerHTML = `✓ ¡Diapositiva ${slideNumber} Guardada (1080x1350)!`;
+                btn.disabled = false;
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 3000);
+            }).catch(err => {
+                console.error('Error al descargar diapositiva:', err);
+                alert('Ocurrió un error al generar la imagen en tu navegador.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
+        }
+
+        async function downloadAllSlides() {
+            const btn = document.getElementById('btnDownloadAll');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+
+            for (let i = 0; i < slides.length; i++) {
+                goToSlide(i);
+                btn.innerHTML = `⏳ Exportando Diapositiva ${i + 1} de ${slides.length}...`;
+                await new Promise(r => setTimeout(r, 600));
+                
+                const slideCard = slides[i];
+                try {
+                    const canvas = await html2canvas(slideCard, {
+                        width: 480,
+                        height: 600,
+                        scale: 2.25,
+                        useCORS: true,
+                        allowTaint: false,
+                        backgroundColor: '#E3DCD1',
+                        onclone: (clonedDoc) => {
+                            const clonedSlide = clonedDoc.querySelectorAll('.slide-card')[i];
+                            if (clonedSlide) {
+                                clonedSlide.style.opacity = '1';
+                                clonedSlide.style.visibility = 'visible';
+                                clonedSlide.style.transform = 'none';
+                            }
+                        }
+                    });
+
+                    const link = document.createElement('a');
+                    link.download = `Llum-de-Lluna-FotodepilacionIPL-Slide-${i + 1}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    await new Promise(r => setTimeout(r, 400));
+                } catch (err) {
+                    console.error('Error al exportar la diapositiva ' + (i + 1), err);
+                }
+            }
+
+            btn.innerHTML = `✓ ¡Las ${slides.length} Diapositivas Guardadas!`;
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
