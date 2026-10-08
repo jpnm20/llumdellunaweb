@@ -67,6 +67,9 @@ const translations = {
         "services.tagHairSpa": "Spa Capilar",
         "services.hairSpaTitleHome": "Rituales Capilares",
         "services.hairSpaDescHome": "Tratamientos intensivos para purificar, equilibrar, hidratar o reparar el cuero cabelludo y la fibra capilar en un ambiente de serenidad y relax.",
+        "services.tagLaser": "Depilación",
+        "services.laserTitleHome": "Fotodepilación IPL",
+        "services.laserDescHome": "Eliminación progresiva y definitiva del vello con tecnología IPL de alta eficacia y máxima seguridad, apta para todo tipo de pieles.",
         "services.learnMore": "Saber más",
 
         // Contact Section (Home)
@@ -356,12 +359,16 @@ const translations = {
 
         "gallery.card1Title": "Zona de Espera & Recepción",
         "gallery.card1Desc": "Zona de espera y recepción serena diseñada para darte la bienvenida en un entorno de calma y paz.",
+        "gallery.card1bTitle": "Recepción Llum de Lluna",
+        "gallery.card1bDesc": "Nuevo mostrador de recepción con paneles de madera, diseño luminoso y atención personalizada.",
         "gallery.card1Category": "El Centro",
-        "gallery.card2Title": "Manicura Semipermanente & Cuidado",
-        "gallery.card2Desc": "Cuidado integral de manos y uñas con esmaltado de alta duración y refuerzo estructural.",
+        "gallery.card2Title": "Manicura Francesa Rosa",
+        "gallery.card2Desc": "Esmaltado semipermanente en rosa con línea francesa blanca: un acabado natural, elegante y duradero.",
         "gallery.card2Category": "Manicura & Pedicura",
         "gallery.card2bTitle": "Pedicura Spa Completa",
         "gallery.card2bDesc": "Ritual de cuidado podal integral con baño aromático, exfoliación, tratamiento de cutículas y masaje.",
+        "gallery.card2cTitle": "Nail Art Flor en Pulgares",
+        "gallery.card2cDesc": "Detalle de manicura semipermanente francesa con diseño de flores blancas pintadas a mano en los pulgares.",
         "gallery.card3Title": "Spa Capilar & Rituales Capilares",
         "gallery.card3Desc": "Tratamientos intensivos para purificar, hidratar o reparar el cuero cabelludo y la fibra capilar.",
         "gallery.card3Category": "Bienestar & Capilar",
@@ -462,6 +469,9 @@ const translations = {
         "services.tagHairSpa": "Spa Capil·lar",
         "services.hairSpaTitleHome": "Rituals Capil·lars",
         "services.hairSpaDescHome": "Tractaments intensius per purificar, equilibrar, hidratar o reparar el cuir cabellut i la fibra capil·lar en un ambient de serenitat i relax.",
+        "services.tagLaser": "Depilació",
+        "services.laserTitleHome": "Fotodepilació IPL",
+        "services.laserDescHome": "Eliminació progressiva i definitiva del pèl amb tecnologia IPL d'alta eficàcia i màxima seguretat, apte per a tot tipus de pells.",
         "services.learnMore": "Saber més",
 
         // Contact Section (Home)
@@ -736,12 +746,16 @@ const translations = {
 
         "gallery.card1Title": "Zona d'Espera i Recepció",
         "gallery.card1Desc": "Zona d'espera i recepció serena dissenyada per a donar-te la benvinguda en un entorn de calma i pau.",
+        "gallery.card1bTitle": "Recepció Llum de Lluna",
+        "gallery.card1bDesc": "Nou tauler de recepció amb panells de fusta, disseny lluminós i atenció personalitzada.",
         "gallery.card1Category": "El Centre",
-        "gallery.card2Title": "Manicura Semipermanent i Cura",
-        "gallery.card2Desc": "Cura integral de mans i ungles amb esmaltat de llarga durada i reforç estructural.",
+        "gallery.card2Title": "Manicura Francesa Rosa",
+        "gallery.card2Desc": "Esmaltat semipermanent en rosa amb línia francesa blanca: un acabat natural, elegant i durador.",
         "gallery.card2Category": "Manicura i Pedicura",
         "gallery.card2bTitle": "Pedicura Spa Completa",
         "gallery.card2bDesc": "Ritual de cura podal integral amb bany aromàtic, exfoliació, tractament de cutícules i massatge.",
+        "gallery.card2cTitle": "Nail Art Flor en Polzars",
+        "gallery.card2cDesc": "Detall de manicura semipermanent francesa amb disseny de flors blanques pintades a mà en els polzars.",
         "gallery.card3Title": "Spa Capil·lar i Rituals Capil·lars",
         "gallery.card3Desc": "Tractaments intensius per a purificar, hidratar o reparar el cuir cabellut i la fibra capil·lar.",
         "gallery.card3Category": "Benestar i Capil·lar",
@@ -842,6 +856,9 @@ const translations = {
         "services.tagHairSpa": "Spa Capilar",
         "services.hairSpaTitleHome": "Hair Rituals",
         "services.hairSpaDescHome": "Intensive treatments to purify, balance, hydrate, or repair the scalp and hair fiber in a soothing, relaxing atmosphere.",
+        "services.tagLaser": "Hair Removal",
+        "services.laserTitleHome": "IPL Hair Removal",
+        "services.laserDescHome": "Progressive and permanent hair reduction using high-efficiency IPL technology, safe for all skin types.",
         "services.learnMore": "Learn more",
 
         // Contact Section (Home)
@@ -1127,12 +1144,16 @@ const translations = {
 
         "gallery.card1Title": "Waiting Area & Reception",
         "gallery.card1Desc": "Serene waiting and reception area designed to welcome you in an atmosphere of peace and calm.",
+        "gallery.card1bTitle": "Llum de Lluna Reception Desk",
+        "gallery.card1bDesc": "New reception desk with wooden slat panels, bright design and personalized welcome.",
         "gallery.card1Category": "The Center",
-        "gallery.card2Title": "Gel Polish Manicure & Care",
-        "gallery.card2Desc": "Comprehensive hand and nail care with long-lasting gel polish and structural reinforcement.",
+        "gallery.card2Title": "Pink French Manicure",
+        "gallery.card2Desc": "Pink gel polish with a white French tip: a natural, elegant and long-lasting finish.",
         "gallery.card2Category": "Manicure & Pedicure",
         "gallery.card2bTitle": "Full Spa Pedicure",
         "gallery.card2bDesc": "Comprehensive foot care ritual with aromatic bath, scrub, cuticle treatment, and relaxing massage.",
+        "gallery.card2cTitle": "Floral Nail Art on Thumbs",
+        "gallery.card2cDesc": "Detail of French gel polish manicure with handcrafted white floral art on thumbs.",
         "gallery.card3Title": "Hair Spa & Scalp Rituals",
         "gallery.card3Desc": "Intensive treatments to purify, hydrate, or repair scalp and hair fiber.",
         "gallery.card3Category": "Wellness & Hair Spa",
@@ -1182,7 +1203,8 @@ class I18nManager {
     }
 
     get(key, lang = this.currentLang, params = {}) {
-        let translation = translations[lang]?.[key] || translations['es']?.[key] || key;
+        let translation = translations[lang]?.[key] || translations['es']?.[key];
+        if (!translation) return null;
         if (params && typeof params === 'object') {
             Object.keys(params).forEach(k => {
                 translation = translation.replace(new RegExp(`\\{${k}\\}`, 'g'), params[k]);
