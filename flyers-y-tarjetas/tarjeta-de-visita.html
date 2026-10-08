@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Tarjeta de Visita (Perfeccionada) | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;       /* Malva / Lila Oficial de Marca */
+            --color-accent-beige: #E3DCD1;   /* Beige Cálido */
+            --color-accent-salvia: #8B9986;  /* Verde Salvia Acento */
+            --color-salvia-dark: #74836F;    /* Verde Salvia Oscuro Texto */
+            --color-mauve-text: #B5989F;     /* Malva Texto Pie */
+            --color-text-dark: #2A2426;      
+            --color-text-white: #FFFFFF;     
+            --color-border-card: rgba(227, 220, 209, 0.45);
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        .header-bar {
+            width: 100%;
+            max-width: 1180px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link {
+            color: var(--color-accent-beige);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
+
+        .page-title-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(201, 179, 185, 0.5);
+            color: #FFFFFF;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--color-accent-beige);
+            font-weight: 600;
+        }
+
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            max-width: 1180px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout { flex-direction: column; align-items: center; }
+        }
+
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 618px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 650px) {
+            .viewer-container { width: 100%; max-width: 618px; }
+        }
+
+        /* 85mm x 55mm Business Card Viewport (618px x 400px) */
+        .card-viewport {
+            width: 618px;
+            height: 400px;
+            position: relative;
+            background-color: var(--color-bg-brand);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+        .card-face {
+            width: 618px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-bg-brand);
+            color: var(--color-text-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+            box-sizing: border-box;
+        }
+
+        .card-face.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Subtle Japanese Zen Wave Arch Pattern Background SVG Overlay */
+        .zen-pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 A30 30 0 0 1 60 30 M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M0 15 A15 15 0 0 1 30 15 M30 15 A15 15 0 0 1 60 15' fill='none' stroke='%23E3DCD1' stroke-width='0.7' stroke-opacity='0.45'/%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        /* Franja/Arco Superior Base */
+        .arch-top-shape {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 380px;
+            height: 145px;
+            border-bottom-left-radius: 190px;
+            border-bottom-right-radius: 190px;
+            z-index: 2;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 14px;
+        }
+
+        /* --- ANVERSO (SIDE 1 - PORTADA EN BEIGE CÁLIDO CON ARCO LILA MALVA) --- */
+        .anverso-card-canvas {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            background: var(--color-accent-beige); /* Fondo Beige Cálido en Cara 1 */
+            overflow: hidden;
+        }
+
+        .anverso-card-canvas .zen-pattern-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 A30 30 0 0 1 60 30 M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M0 15 A15 15 0 0 1 30 15 M30 15 A15 15 0 0 1 60 15' fill='none' stroke='%23C9B3B9' stroke-width='0.7' stroke-opacity='0.45'/%3E%3C/svg%3E");
+        }
+
+        .anverso-card-canvas .arch-top-shape {
+            background: var(--color-bg-brand); /* Arco Lila en Cara 1 */
+        }
+
+        .anverso-brand-center {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Logo oficial verde original del proyecto */
+        .anverso-logo-img {
+            height: 88px;
+            filter: none;
+        }
+
+        .anverso-brand-titles {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .anverso-main-title {
+            font-family: var(--font-title);
+            font-size: 2.95rem;
+            font-weight: 700;
+            color: var(--color-salvia-dark);
+            line-height: 1;
+            letter-spacing: 0.01em;
+        }
+
+        .anverso-sub-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            color: #8D737A;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* --- REVERSO (SIDE 2 - LOGO Y TRATAMIENTOS EN FONDO LILA MALVA CON ARCO BEIGE) --- */
+        .reverso-card-canvas {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 25px 18px 25px;
+            background: var(--color-bg-brand); /* Fondo Lila Malva en Cara 2 */
+            overflow: hidden;
+        }
+
+        .reverso-card-canvas .arch-top-shape {
+            background: var(--color-accent-beige); /* Arco Beige en Cara 2 */
+        }
+
+        /* Logo exactamente centrado arriba en el reverso */
+        .reverso-arch-logo {
+            height: 72px;
+            filter: none;
+        }
+
+        /* Contenedor de Tratamientos perfectamente centrado */
+        .center-services-box {
+            position: relative;
+            z-index: 3;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 6px;
+            margin-top: 130px;
+            margin-bottom: 8px;
+        }
+
+        .service-title-item {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            line-height: 1.25;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .bottom-contact-box {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 8px;
+            border-top: 1px solid rgba(227, 220, 209, 0.45);
+        }
+
+        .contact-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: left;
+        }
+
+        .contact-row-1 {
+            font-size: 0.84rem;
+            color: var(--color-accent-beige);
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+
+        .contact-row-2 {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.03em;
+            font-weight: 500;
+        }
+
+        .contact-web-url {
+            font-size: 0.85rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-top: 1px;
+        }
+
+        /* Código QR en la esquina inferior derecha del Reverso */
+        .reverso-qr-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(227, 220, 209, 0.6);
+            padding: 5px 6px 3px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            flex-shrink: 0;
+        }
+
+        .reverso-qr-img {
+            width: 52px;
+            height: 52px;
+        }
+
+        .reverso-qr-text {
+            font-size: 0.52rem;
+            color: var(--color-salvia-dark);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        /* Controls Navigation */
+        .controls-nav { display: flex; align-items: center; gap: 15px; }
+
+        .btn-side {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #FFFFFF;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-side.active, .btn-side:hover {
+            background: var(--color-bg-brand);
+            border-color: var(--color-accent-beige);
+            font-weight: 600;
+        }
+
+        .side-dots { display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); cursor: pointer; }
+        .dot.active { background: var(--color-accent-beige); transform: scale(1.2); }
+
+        .export-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+
+        .btn-action {
+            width: 100%; padding: 12px; border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+
+        .btn-download-active { background: var(--color-accent-salvia); color: #FFFFFF; }
+        .btn-download-all { background: rgba(201, 179, 185, 0.85); color: #FFFFFF; border: 1px solid var(--color-accent-beige); }
+
+        .panel-container {
+            flex-grow: 1; width: 100%; background: #252324; border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .tabs-header { display: flex; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px; }
+        .tab-btn { background: transparent; border: none; color: rgba(255,255,255,0.65); font-size: 0.9rem; font-weight: 600; padding: 6px 14px; cursor: pointer; border-radius: 8px; }
+        .tab-btn.active { background: rgba(201,179,185,0.3); color: var(--color-accent-beige); }
+
+        .tab-content { display: none; flex-direction: column; gap: 16px; }
+        .tab-content.active { display: flex; }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.78rem; color: var(--color-accent-beige); font-weight: 600; text-transform: uppercase; }
+        .form-control { background: rgba(0,0,0,0.3); border: 1px solid rgba(227,220,209,0.3); border-radius: 8px; padding: 10px 12px; color: #FFF; font-family: var(--font-body); font-size: 0.88rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        .copy-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(227,220,209,0.2); border-radius: 10px; padding: 14px; font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.9); max-height: 380px; overflow-y: auto; white-space: pre-wrap; }
+        .btn-copy { background: var(--color-accent-salvia); color: #FFF; padding: 10px 16px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .specs-badge { background: rgba(201,179,185,0.2); border: 1px dashed var(--color-accent-beige); padding: 12px; border-radius: 10px; font-size: 0.78rem; color: var(--color-accent-beige); }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <a href="tarjetas-visita-coleccion.html" class="back-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver a la Colección de Tarjetas
+        </a>
+        <span class="page-title-badge">Tarjeta de Visita (Perfeccionada)</span>
+    </div>
+
+    <div class="main-layout">
+        <div class="viewer-container">
+            <div class="card-viewport" id="cardViewport">
+                <!-- ANVERSO (PORTADA CON LOGO VERDE OFICIAL Y TITULO BELLEZA & BIENESTAR) -->
+                <div class="card-face active" id="faceAnverso">
+                    <div class="anverso-card-canvas">
+                        <div class="zen-pattern-overlay"></div>
+                        <div class="arch-top-shape"></div>
+
+                        <div class="anverso-brand-center">
+                            <!-- Logo Oficial del proyecto -->
+                            <img src="../images/logo verde.png" alt="Llum de Lluna" class="anverso-logo-img">
+                            <div class="anverso-brand-titles">
+                                <h2 class="anverso-main-title" id="prevTitle">Llum de Lluna</h2>
+                                <p class="anverso-sub-title" id="prevSub">BELLEZA & BIENESTAR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REVERSO (LOGO CENTRADO EN EL ARCO LILA + TRATAMIENTOS CENTRADOS EN EL ESPACIO LIBRE + CÓDIGO QR EN PIE) -->
+                <div class="card-face" id="faceReverso">
+                    <div class="reverso-card-canvas">
+                        <div class="zen-pattern-overlay"></div>
+                        <!-- Logo perfectamente centrado dentro del arco lila superior -->
+                        <div class="arch-top-shape">
+                            <img src="../images/logo verde.png" alt="Llum de Lluna" class="reverso-arch-logo">
+                        </div>
+
+                        <!-- Lista de Tratamientos perfectamente centrada en el espacio libre medio -->
+                        <div class="center-services-box">
+                            <div class="service-title-item" id="srv1">MANICURA Y PEDICURA</div>
+                            <div class="service-title-item" id="srv2">DEPILACIÓN</div>
+                            <div class="service-title-item" id="srv3">MASAJES</div>
+                            <div class="service-title-item" id="srv4">LIMPIEZAS FACIALES</div>
+                            <div class="service-title-item" id="srv5">HAIR SPA</div>
+                            <div class="service-title-item" id="srv6">MICROPIGMENTACIÓN</div>
+                        </div>
+
+                        <!-- Pie con Teléfonos, Dirección, Web y Código QR -->
+                        <div class="bottom-contact-box">
+                            <div class="contact-text-group">
+                                <div class="contact-row-1" id="prevPhones">960-560-566 / 604-870-785 / @llumdelluna</div>
+                                <div class="contact-row-2" id="prevAddress">Calle General Pastor, 19, prta 1, L’Eliana</div>
+                                <div class="contact-web-url" id="prevWebDisplay">llumdellunaestetica.es</div>
+                            </div>
+
+                            <div class="reverso-qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://llumdellunaestetica.es&color=74836f" alt="Código QR llumdellunaestetica.es" class="reverso-qr-img">
+                                <span class="reverso-qr-text">ESCANEAR WEB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-nav">
+                <button class="btn-side active" id="btnAnverso" onclick="showSide(0)">Anverso (Portada Logo)</button>
+                <div class="side-dots">
+                    <span class="dot active" onclick="showSide(0)"></span>
+                    <span class="dot" onclick="showSide(1)"></span>
+                </div>
+                <button class="btn-side" id="btnReverso" onclick="showSide(1)">Reverso (Servicios & QR)</button>
+            </div>
+
+            <div class="export-actions">
+                <button class="btn-action btn-download-active" onclick="downloadCurrentSide()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Descargar Cara Actual (PNG HD 300 DPI)
+                </button>
+                <button class="btn-action btn-download-all" onclick="downloadBothSides()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Descargar Ambas Caras (Imágenes PNG HD)
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('tabCustom')">Personalización en Vivo</button>
+                <button class="tab-btn" onclick="switchTab('tabCopy')">Copy & Especificaciones</button>
+            </div>
+
+            <div class="tab-content active" id="tabCustom">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Título Principal</label>
+                        <input type="text" class="form-control" id="inTitle" value="Llum de Lluna">
+                    </div>
+                    <div class="form-group">
+                        <label>Subtítulo</label>
+                        <input type="text" class="form-control" id="inSub" value="BELLEZA & BIENESTAR">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>URL Web para Código QR</label>
+                        <input type="text" class="form-control" id="inWeb" value="llumdellunaestetica.es">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfonos & Instagram</label>
+                        <input type="text" class="form-control" id="inPhones" value="960-560-566 / 604-870-785 / @llumdelluna">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <input type="text" class="form-control" id="inAddress" value="Calle General Pastor, 19, prta 1, L’Eliana">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Servicio 1</label>
+                        <input type="text" class="form-control" id="inSrv1" value="MANICURA Y PEDICURA">
+                    </div>
+                    <div class="form-group">
+                        <label>Servicio 2</label>
+                        <input type="text" class="form-control" id="inSrv2" value="DEPILACIÓN">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Servicio 3</label>
+                        <input type="text" class="form-control" id="inSrv3" value="MASAJES">
+                    </div>
+                    <div class="form-group">
+                        <label>Servicio 4</label>
+                        <input type="text" class="form-control" id="inSrv4" value="LIMPIEZAS FACIALES">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Servicio 5</label>
+                        <input type="text" class="form-control" id="inSrv5" value="HAIR SPA">
+                    </div>
+                    <div class="form-group">
+                        <label>Servicio 6</label>
+                        <input type="text" class="form-control" id="inSrv6" value="MICROPIGMENTACIÓN">
+                    </div>
+                </div>
+
+                <button type="button" class="btn-action" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(227, 220, 209, 0.3); margin-top: 10px;" onclick="resetFormToDefaults()">
+                    🔄 Restablecer Textos Predeterminados
+                </button>
+            </div>
+
+            <div class="tab-content" id="tabCopy">
+                <div class="specs-badge">
+                    <strong>📏 Especificaciones Técnicas para Imprenta:</strong><br>
+                    • Tamaño Final: 85 mm × 55 mm (Proporción estándar 1.545:1)<br>
+                    • Logo del reverso centrado en la franja lila superior.<br>
+                    • Menú de 6 tratamientos perfectamente centrado en el espacio libre.<br>
+                    • Código QR en el reverso apuntando a <code>https://llumdellunaestetica.es</code>.
+                </div>
+
+                <button class="btn-copy" onclick="copyInfoText()">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copiar Texto de Presentación Trilingüe
+                </button>
+
+                <div class="copy-box" id="copyBoxText">✨ Llum de Lluna • Centro de Belleza & Bienestar en L'Eliana
+
+[CASTELLANO]
+Tarjeta de Visita Oficial Llum de Lluna (Belleza & Bienestar). 
+Servicios: Manicura y Pedicura, Depilación, Masajes, Limpiezas Faciales, Hair Spa, Micropigmentación.
+📍 Calle General Pastor, 19, prta 1, L’Eliana | 📞 Teléfonos: 960 56 05 66 / 604 87 07 85 | 📸 @llumdelluna | 🌐 llumdellunaestetica.es
+
+[VALENCIÀ]
+Targeta de Visita Oficial Llum de Lluna (Bellesa i Benestar).
+Serveis: Manicura i Pedicura, Depilació, Massatges, Neteges Facials, Hair Spa, Micropigmentació.
+📍 Carrer General Pastor, 19, prta 1, L’Eliana | 📞 Telèfons: 960 56 05 66 / 604 87 07 85 | 📸 @llumdelluna | 🌐 llumdellunaestetica.es
+
+[ENGLISH]
+Official Business Card Llum de Lluna (Beauty & Wellness).
+Services: Manicure & Pedicure, Hair Removal, Massages, Facial Cleansing, Hair Spa, Micropigmentation.
+📍 Calle General Pastor, 19, prta 1, L’Eliana | 📞 Phone: 960 56 05 66 / +34 604 87 07 85 | 📸 @llumdelluna | 🌐 llumdellunaestetica.es</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY_PREFIX = 'ldl_card_' + window.location.pathname.split('/').pop() + '_';
+        let currentSide = 0; // 0: Anverso, 1: Reverso
+
+        function showSide(index) {
+            currentSide = index;
+            const faceAnverso = document.getElementById('faceAnverso');
+            const faceReverso = document.getElementById('faceReverso');
+            const btnAnverso = document.getElementById('btnAnverso');
+            const btnReverso = document.getElementById('btnReverso');
+            const dots = document.querySelectorAll('.dot');
+
+            if (index === 0) {
+                faceAnverso.classList.add('active');
+                faceReverso.classList.remove('active');
+                btnAnverso.classList.add('active');
+                btnReverso.classList.remove('active');
+                dots[0].classList.add('active');
+                dots[1].classList.remove('active');
+            } else {
+                faceAnverso.classList.remove('active');
+                faceReverso.classList.add('active');
+                btnAnverso.classList.remove('active');
+                btnReverso.classList.add('active');
+                dots[0].classList.remove('active');
+                dots[1].classList.add('active');
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tabId === 'tabCustom') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('tabCustom').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('tabCopy').classList.add('active');
+            }
+        }
+
+        // Live Customizer Sync
+        document.getElementById('inTitle').addEventListener('input', (e) => {
+            document.getElementById('prevTitle').innerText = e.target.value;
+        });
+        document.getElementById('inSub').addEventListener('input', (e) => {
+            document.getElementById('prevSub').innerText = e.target.value;
+        });
+        document.getElementById('inWeb').addEventListener('input', (e) => {
+            document.getElementById('prevWebDisplay').innerText = e.target.value;
+        });
+        document.getElementById('inPhones').addEventListener('input', (e) => {
+            document.getElementById('prevPhones').innerText = e.target.value;
+        });
+        document.getElementById('inAddress').addEventListener('input', (e) => {
+            document.getElementById('prevAddress').innerText = e.target.value;
+        });
+
+        document.getElementById('inSrv1').addEventListener('input', (e) => { document.getElementById('srv1').innerText = e.target.value; });
+        document.getElementById('inSrv2').addEventListener('input', (e) => { document.getElementById('srv2').innerText = e.target.value; });
+        document.getElementById('inSrv3').addEventListener('input', (e) => { document.getElementById('srv3').innerText = e.target.value; });
+        document.getElementById('inSrv4').addEventListener('input', (e) => { document.getElementById('srv4').innerText = e.target.value; });
+        document.getElementById('inSrv5').addEventListener('input', (e) => { document.getElementById('srv5').innerText = e.target.value; });
+        document.getElementById('inSrv6').addEventListener('input', (e) => { document.getElementById('srv6').innerText = e.target.value; });
+
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', (e) => {
+                localStorage.setItem(STORAGE_KEY_PREFIX + e.target.id, e.target.value);
+            });
+        });
+
+        function restoreSavedInputs() {
+            document.querySelectorAll('.form-control').forEach(input => {
+                const savedVal = localStorage.getItem(STORAGE_KEY_PREFIX + input.id);
+                if (savedVal !== null) {
+                    input.value = savedVal;
+                    input.dispatchEvent(new Event('input'));
+                }
+            });
+        }
+
+        function resetFormToDefaults() {
+            if (confirm('¿Deseas borrar tus textos personalizados guardados y volver a los predeterminados?')) {
+                document.querySelectorAll('.form-control').forEach(input => {
+                    localStorage.removeItem(STORAGE_KEY_PREFIX + input.id);
+                });
+                window.location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', restoreSavedInputs);
+
+        // Download via html2canvas (Scale 3.0x for 300 DPI high resolution rendering)
+        async function renderElementToPng(element, filename) {
+            const canvas = await html2canvas(element, {
+                scale: 3,
+                useCORS: true,
+                backgroundColor: '#FAF7F4',
+                logging: false
+            });
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        async function downloadCurrentSide() {
+            const sideName = currentSide === 0 ? 'anverso' : 'reverso';
+            const element = currentSide === 0 ? document.getElementById('faceAnverso') : document.getElementById('faceReverso');
+            
+            const originalOpacity = element.style.opacity;
+            const originalVisibility = element.style.visibility;
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            
+            await renderElementToPng(element, `tarjeta-visita-${sideName}-300dpi.png`);
+
+            element.style.opacity = originalOpacity;
+            element.style.visibility = originalVisibility;
+        }
+
+        async function downloadBothSides() {
+            showSide(0);
+            await new Promise(r => setTimeout(r, 200));
+            await renderElementToPng(document.getElementById('faceAnverso'), 'tarjeta-visita-anverso-300dpi.png');
+            
+            showSide(1);
+            await new Promise(r => setTimeout(r, 200));
+            await renderElementToPng(document.getElementById('faceReverso'), 'tarjeta-visita-reverso-300dpi.png');
+        }
+
+        function copyInfoText() {
+            const copyText = document.getElementById('copyBoxText').innerText;
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert('¡Texto de presentación trilingüe copiado al portapapeles!');
+            });
+        }
+    </script>
+</body>
+</html>

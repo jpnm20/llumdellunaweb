@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Flyer Depilación IPL | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;
+            --color-accent-beige: #E3DCD1;
+            --color-accent-salvia: #8B9986;
+            --color-salvia-dark: #74836F;
+            --color-text-white: #FFFFFF;
+            --color-text-dark: #2A2426;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; padding: 30px 15px;
+        }
+
+        .header-bar {
+            width: 100%; max-width: 1180px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link { color: var(--color-accent-beige); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .page-title-badge { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; background: rgba(201, 179, 185, 0.5); color: #FFFFFF; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--color-accent-beige); font-weight: 600; }
+
+        .main-layout { display: flex; flex-direction: row; gap: 35px; max-width: 1180px; width: 100%; align-items: flex-start; }
+        @media (max-width: 1024px) { .main-layout { flex-direction: column; align-items: center; } }
+
+        .viewer-container { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 450px; flex-shrink: 0; }
+        .flyer-viewport { width: 450px; height: 638px; position: relative; background-color: var(--color-accent-beige); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
+        .flyer-face { width: 450px; height: 638px; position: absolute; top: 0; left: 0; background-color: var(--color-accent-beige); color: var(--color-text-dark); display: flex; flex-direction: column; justify-content: space-between; padding: 22px 20px; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; box-sizing: border-box; }
+        .flyer-face.active { opacity: 1; visibility: visible; }
+
+        .zen-pattern-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.45;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 A30 30 0 0 1 60 30 M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M0 15 A15 15 0 0 1 30 15 M30 15 A15 15 0 0 1 60 15' fill='none' stroke='%23C9B3B9' stroke-width='0.7' stroke-opacity='0.45'/%3E%3C/svg%3E"); z-index: 1;
+        }
+
+        .flyer-content-inner {
+            height: 100%; position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; border: 1.5px solid #C9B3B9; border-radius: 10px; padding: 16px; background: var(--color-accent-beige);
+        }
+
+        .flyer-header-box { text-align: center; border-bottom: 1.5px solid #C9B3B9; padding-bottom: 6px; }
+        .flyer-logo { height: 42px; margin-bottom: 2px; }
+        .flyer-main-title { font-family: var(--font-title); font-size: 1.55rem; color: var(--color-salvia-dark); font-weight: 700; line-height: 1.1; }
+        .flyer-sub-title { font-size: 0.60rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--color-bg-brand); font-weight: 700; margin-top: 2px; }
+
+        .treatment-items-container { display: flex; flex-direction: column; gap: 7px; margin: 8px 0; }
+        .treatment-item-card {
+            background: #FAF7F4; border: 1.5px solid #C9B3B9; border-radius: 8px; padding: 8px 11px; text-align: left; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(201, 179, 185, 0.12); gap: 10px;
+        }
+        .treatment-info h4 { font-family: var(--font-title); font-size: 1.05rem; color: var(--color-salvia-dark); font-weight: 700; }
+        .treatment-info p { font-size: 0.62rem; color: #2A2426; margin-top: 2px; font-weight: 500; line-height: 1.3; }
+        .treatment-badge { font-size: 0.64rem; font-weight: 600; color: var(--color-salvia-dark); background: rgba(116, 131, 111, 0.1); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(116, 131, 111, 0.25); white-space: nowrap; flex-shrink: 0; }
+
+        .flyer-footer-box { text-align: center; border-top: 1.5px solid #C9B3B9; padding-top: 6px; font-size: 0.65rem; color: var(--color-salvia-dark); display: flex; justify-content: space-between; align-items: center; }
+        .qr-mini-box { display: flex; align-items: center; gap: 6px; background: #FAF7F4; border: 1.5px solid #C9B3B9; padding: 3px 6px; border-radius: 6px; }
+        .qr-mini-box img { width: 34px; height: 34px; border-radius: 4px; background: #FFF; padding: 2px; border: 1px solid #74836F; }
+
+        .controls-nav { display: flex; align-items: center; gap: 15px; }
+        .btn-side { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #FFFFFF; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
+        .btn-side.active, .btn-side:hover { background: var(--color-accent-salvia); border-color: var(--color-accent-beige); font-weight: 600; }
+
+        .export-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        .btn-action { width: 100%; padding: 12px; border-radius: 10px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-download-active { background: var(--color-accent-salvia); color: #FFFFFF; }
+
+        .panel-container { flex-grow: 1; width: 100%; background: #252324; border: 1px solid rgba(227, 220, 209, 0.25); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+        .tabs-header { display: flex; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px; }
+        .tab-btn { background: transparent; border: none; color: rgba(255,255,255,0.65); font-size: 0.9rem; font-weight: 600; padding: 6px 14px; cursor: pointer; border-radius: 8px; }
+        .tab-btn.active { background: rgba(201,179,185,0.3); color: var(--color-accent-beige); }
+
+        .tab-content { display: none; flex-direction: column; gap: 16px; }
+        .tab-content.active { display: flex; }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.78rem; color: var(--color-accent-beige); font-weight: 600; text-transform: uppercase; }
+        .form-control { background: rgba(0,0,0,0.3); border: 1px solid rgba(227,220,209,0.3); border-radius: 8px; padding: 10px 12px; color: #FFF; font-family: var(--font-body); font-size: 0.88rem; }
+        .copy-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(227,220,209,0.2); border-radius: 10px; padding: 14px; font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.9); max-height: 380px; overflow-y: auto; white-space: pre-wrap; }
+        .btn-copy { background: var(--color-accent-salvia); color: #FFF; padding: 10px 16px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <a href="flyers-local-coleccion.html" class="back-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver a la Colección del Local
+        </a>
+        <span class="page-title-badge">Flyer Depilación IPL A5</span>
+    </div>
+
+    <div class="main-layout">
+        <div class="viewer-container">
+            <div class="flyer-viewport" id="flyerViewport">
+                <!-- Anverso -->
+                <div class="flyer-face active" id="faceAnverso">
+                    <div class="zen-pattern-overlay"></div>
+                    <div class="flyer-content-inner">
+                        <div class="flyer-header-box">
+                            <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="flyer-logo">
+                            <h2 class="flyer-main-title" id="prevMainTitle">Fotodepilación IPL</h2>
+                            <p class="flyer-sub-title" id="prevSubTitle">TECNOLOGÍA DE LUZ PULSADA INTENSA INDOLORA</p>
+                        </div>
+
+                        <div class="treatment-items-container">
+                            <div class="treatment-item-card">
+                                <div class="treatment-info">
+                                    <h4>⚡ Láser IPL Zonas Pequeñas</h4>
+                                    <p>Fotodepilación láser indolora de alta precisión para zonas faciales o pequeñas áreas corporales.</p>
+                                </div>
+                                <span class="treatment-badge">desde 15 €</span>
+                            </div>
+                            <div class="treatment-item-card">
+                                <div class="treatment-info">
+                                    <h4>❄️ Láser IPL Zonas Medianas & Grandes</h4>
+                                    <p>Tratamiento progresivo e indoloro de fotodepilación láser en zonas corporales medianas o extensas.</p>
+                                </div>
+                                <span class="treatment-badge">desde 20 €</span>
+                            </div>
+                            <div class="treatment-item-card">
+                                <div class="treatment-info">
+                                    <h4>✨ Packs Combinados Láser IPL</h4>
+                                    <p>Packs promocionales combinados de varias zonas corporales para un tratamiento completo.</p>
+                                </div>
+                                <span class="treatment-badge">desde 70 €</span>
+                            </div>
+                            <div class="treatment-item-card">
+                                <div class="treatment-info">
+                                    <h4>🧔 Zonas Láser IPL Hombre</h4>
+                                    <p>Sesiones de fotodepilación láser adaptadas a la densidad folicular y zonas masculinas.</p>
+                                </div>
+                                <span class="treatment-badge">desde 20 €</span>
+                            </div>
+                        </div>
+
+                        <div class="flyer-footer-box">
+                            <div style="text-align: left;">
+                                <strong style="color: var(--color-salvia-dark); font-size: 0.76rem;">Llum de Lluna • Belleza & Bienestar</strong><br>
+                                <span id="prevFooterAddr" style="color: var(--color-text-dark);">WhatsApp: 604 87 07 85 • llumdellunaestetica.es</span>
+                            </div>
+                            <div class="qr-mini-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://widget.treatwell.es/establecimiento/llum-de-lluna/&color=74836f" alt="QR Treatwell">
+                                <span style="font-size: 0.58rem; line-height: 1.2; color: var(--color-salvia-dark); font-weight: 600;">Reserva<br>en Treatwell</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reverso -->
+                <div class="flyer-face" id="faceReverso">
+                    <div class="zen-pattern-overlay"></div>
+                    <div class="flyer-content-inner" style="justify-content: space-around; text-align: center;">
+                        <div class="flyer-header-box" style="border: none;">
+                            <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="flyer-logo">
+                            <h2 class="flyer-main-title">Consejos Previos a la Sesión</h2>
+                            <p class="flyer-sub-title">CUIDADOS ANTES Y DESPUÉS DEL IPL</p>
+                        </div>
+
+                        <div style="background: #FAF7F4; border: 1.5px solid #C9B3B9; border-radius: 12px; padding: 14px; font-size: 0.75rem; line-height: 1.6; color: #2A2426; text-align: left;">
+                            <p><strong>1. Acudir rasurada:</strong> Rasura la zona a tratar 24h antes con cuchilla.<br>
+                            <strong>2. Evitar el sol:</strong> No tomar el sol ni rayos UVA 48h antes y después.<br>
+                            <strong>3. Hidratación:</strong> Aplica gel de Aloe Vera puro tras la sesión.</p>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://widget.treatwell.es/establecimiento/llum-de-lluna/&color=74836f" style="width: 95px; height: 95px; border-radius: 8px; background: #FFF; padding: 4px;" alt="QR Treatwell">
+                            <span style="font-size: 0.72rem; color: #74836F; font-weight: 700;">Escanea para Agendar Valoración IPL</span>
+                        </div>
+
+                        <div class="flyer-footer-box" style="justify-content: center; flex-direction: column; gap: 4px; color: #2A2426;">
+                            <strong style="color: #2A2426;">www.llumdellunaestetica.es</strong>
+                            <span>WhatsApp: 604 87 07 85</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-nav">
+                <button class="btn-side active" id="btnAnverso" onclick="showSide('anverso')">Anverso (Servicios)</button>
+                <button class="btn-side" id="btnReverso" onclick="showSide('reverso')">Reverso (Pautas & QR)</button>
+            </div>
+
+            <div class="export-actions">
+                <button class="btn-action btn-download-active" onclick="downloadCurrentSide()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Descargar Cara Actual (PNG HD 300 DPI)
+                </button>
+                <button class="btn-action" style="background: rgba(255,255,255,0.15); color: #FFF; border: 1px solid rgba(255,255,255,0.3);" onclick="downloadBothSides()">
+                    Descargar Ambas Caras (PNG HD 300 DPI)
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('editor')">✏️ Editor en Vivo</button>
+                <button class="tab-btn" onclick="switchTab('copy')">📋 Copy Trilingüe & Info</button>
+            </div>
+
+            <div class="tab-content active" id="tabEditor">
+                <div class="form-group">
+                    <label>Título Principal</label>
+                    <input type="text" class="form-control" id="inputMainTitle" value="Fotodepilación IPL" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Subtítulo</label>
+                    <input type="text" class="form-control" id="inputSubTitle" value="TECNOLOGÍA DE LUZ PULSADA INTENSA INDOLORA" oninput="updatePreview()">
+                </div>
+                <div class="form-group">
+                    <label>Pie de Datos & Contacto</label>
+                    <input type="text" class="form-control" id="inputFooterAddr" value="WhatsApp: 604 87 07 85 • llumdellunaestetica.es" oninput="updatePreview()">
+                </div>
+                <button type="button" class="btn-action" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(227, 220, 209, 0.3); margin-top: 10px;" onclick="resetFormToDefaults()">
+                    🔄 Restablecer Textos Predeterminados
+                </button>
+            </div>
+
+            <div class="tab-content" id="tabCopy">
+                <div class="copy-box" id="copyTextContent">🇪🇸 CASTELLANO:
+Fotodepilación IPL Indolora en Llum de Lluna
+Olvídate del vello con nuestra tecnología de Luz Pulsada Intensa refrigerada. Sesiones rápidas, eficaces e indoloras para pieles masculinas y femeninas. ¡Prueba gratuita!
+📞 Citas y WhatsApp: 604 87 07 85
+🌐 Cita Online: https://widget.treatwell.es/establecimiento/llum-de-lluna/
+
+---
+VALENCIÀ:
+Fotodepilació IPL Incolora a Llum de Lluna
+Oblida't del pèl amb la nostra tecnologia de Llum Pulsada Intensa refrigerada. Sessions ràpides, eficaces i incolores per a pells masculines i femenines. Prova gratuïta!
+📞 Cites i WhatsApp: 604 87 07 85
+
+---
+🇬🇧 ENGLISH:
+Painless IPL Hair Removal at Llum de Lluna
+Say goodbye to unwanted hair with our refrigerated IPL technology. Fast, safe, and painless sessions for women and men. Free test session included!
+📞 Book via WhatsApp: +34 604 87 07 85</div>
+                <button class="btn-copy" onclick="copyText()">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                    Copiar Texto Trilingüe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY_PREFIX = 'ldl_flyer_depilacion_ipl_';
+        let currentSide = 'anverso';
+
+        function showSide(side) {
+            currentSide = side;
+            document.getElementById('faceAnverso').classList.toggle('active', side === 'anverso');
+            document.getElementById('faceReverso').classList.toggle('active', side === 'reverso');
+            document.getElementById('btnAnverso').classList.toggle('active', side === 'anverso');
+            document.getElementById('btnReverso').classList.toggle('active', side === 'reverso');
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            if (tab === 'editor') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('tabEditor').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('tabCopy').classList.add('active');
+            }
+        }
+
+        function updatePreview() {
+            document.getElementById('prevMainTitle').textContent = document.getElementById('inputMainTitle').value;
+            document.getElementById('prevSubTitle').textContent = document.getElementById('inputSubTitle').value;
+            document.getElementById('prevFooterAddr').textContent = document.getElementById('inputFooterAddr').value;
+        }
+
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', (e) => {
+                localStorage.setItem(STORAGE_KEY_PREFIX + e.target.id, e.target.value);
+            });
+        });
+
+        function restoreSavedInputs() {
+            document.querySelectorAll('.form-control').forEach(input => {
+                const savedVal = localStorage.getItem(STORAGE_KEY_PREFIX + input.id);
+                if (savedVal !== null) {
+                    input.value = savedVal;
+                    input.dispatchEvent(new Event('input'));
+                }
+            });
+            updatePreview();
+        }
+
+        function resetFormToDefaults() {
+            if (confirm('¿Deseas borrar tus textos personalizados guardados y volver a los predeterminados?')) {
+                document.querySelectorAll('.form-control').forEach(input => {
+                    localStorage.removeItem(STORAGE_KEY_PREFIX + input.id);
+                });
+                window.location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', restoreSavedInputs);
+
+        function downloadCurrentSide() {
+            const target = currentSide === 'anverso' ? document.getElementById('faceAnverso') : document.getElementById('faceReverso');
+            html2canvas(target, { scale: 2.6, useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Flyer-Depilacion-IPL-${currentSide.toUpperCase()}-LlumDeLluna.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        function downloadBothSides() {
+            showSide('anverso');
+            setTimeout(() => {
+                downloadCurrentSide();
+                setTimeout(() => {
+                    showSide('reverso');
+                    setTimeout(() => {
+                        downloadCurrentSide();
+                    }, 500);
+                }, 800);
+            }, 300);
+        }
+
+        function copyText() {
+            const text = document.getElementById('copyTextContent').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('¡Texto trilingüe copiado al portapapeles!'));
+        }
+    </script>
+</body>
+</html>

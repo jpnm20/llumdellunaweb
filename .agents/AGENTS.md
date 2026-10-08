@@ -56,3 +56,27 @@
 5. **Panel de Copy Trilingüe**:
    - Incluir en la caja lateral los textos completos para Instagram en **Castellano, Valenciano e Inglés (en ese orden exacto)**, detallando la secuencia numerada de pasos, emoticonos, bloque de promoción con condiciones e indicando año, y hashtags de marca.
 
+---
+
+## 🎴 Reglas Permanentes para Flyers y Tarjetas de Visita (Papelería e Imprenta)
+
+1. **Ubicación de Archivos**:
+   - Todas las páginas web generadoras de flyers, tarjetas de visita y bonos de regalo deben crearse y almacenarse obligatoriamente dentro del directorio `flyers-y-tarjetas/<nombre-archivo>.html`.
+   - Cada nuevo diseño de imprenta se debe registrar e incorporar al índice general en `flyers-y-tarjetas/index.html`.
+   - Queda prohibido dejar archivos de papelería en la raíz del sitio web (`/`).
+
+2. **Identidad Visual y Paleta Oficial**:
+   - **Fondo Principal**: Malva `#C9B3B9` sólido (color de marca extraído del isotipo `logo IG 1.png`).
+   - **Tipografía**: Títulos en `Cormorant Garamond` (Blanco `#FFFFFF` / Beige `#E3DCD1`) y subtítulos/cuerpo en `Montserrat` (Acentos en Beige `#E3DCD1` y Verde Salvia `#8B9986`).
+   - **Logotipo Integrado**: Utilizar `../images/logo IG 1.png` sin sombras ni relieves (`filter: none`).
+
+3. **Formato y Exportación HD 300 DPI**:
+   - **Tarjetas de Visita**: Formato Estándar 85 mm × 55 mm (relación de aspecto ~1.545:1). Exportación nativa a escala 3.0x (aprox. 1854px × 1200px) lista para imprenta offset o digital a 300 DPI.
+   - **Flyers y Volantes**: Formato Estándar A5 (148 mm × 210 mm). Exportación nativa a escala 2.6x-3.0x a 300 DPI.
+
+4. **Funcionalidades Estándar Obligatorias**:
+   - **Visor Interactivo a Doble Cara**: Conmutación directa entre Anverso (Frontal) y Reverso (Posterior) mediante botones e indicadores de cara (`dots`).
+   - **Personalización en Vivo (Live Form Editor)**: Formulario con sincronización en tiempo real para modificar nombres, teléfono/WhatsApp, Instagram, web, ofertas y códigos de bono.
+   - **Descarga en 1-Clic HD**: Botones para `Descargar Cara Actual (PNG HD 300 DPI)` y `Descargar Ambas Caras / Completo (PNG HD)` usando `html2canvas`.
+   - **Panel de Copy & Info Trilingüe**: Caja lateral con los textos informativos o promocionales redactados en **Castellano, Valenciano e Inglés (en ese orden exacto)** y botón de 1-clic `Copiar Texto`.
+

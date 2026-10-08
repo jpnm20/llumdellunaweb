@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Flyer General Publicidad A5 | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;       /* Malva de Marca */
+            --color-accent-beige: #E3DCD1;   /* Beige Cálido */
+            --color-accent-salvia: #8B9986;  /* Verde Salvia Acento */
+            --color-salvia-dark: #74836F;    /* Verde Salvia Texto Principal */
+            --color-text-dark: #2A2426;      /* Texto Oscuro */
+            --color-text-white: #FFFFFF;     /* Texto Blanco */
+            --color-paper-bg: #FAF7F4;       /* Fondo Papel Crema */
+            --color-ribbon-mauve: rgba(201, 179, 185, 0.35); /* Tinta Pincelada */
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        /* Header Bar Navigation */
+        .header-bar {
+            width: 100%;
+            max-width: 1180px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link {
+            color: var(--color-accent-beige);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 0.8; }
+
+        .page-title-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(201, 179, 185, 0.5);
+            color: #FFFFFF;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--color-accent-beige);
+            font-weight: 600;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            max-width: 1180px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout { flex-direction: column; align-items: center; }
+        }
+
+        /* Left Column: Interactive Viewer */
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 450px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 500px) {
+            .viewer-container { width: 100%; max-width: 450px; }
+        }
+
+        /* A5 Flyer Viewport (450px x 638px) */
+        .flyer-viewport {
+            width: 450px;
+            height: 638px;
+            position: relative;
+            background-color: var(--color-paper-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        .flyer-face {
+            width: 450px;
+            height: 638px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-paper-bg);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Cpath d='M0,20 Q10,5 20,20 Q30,5 40,20 M-20,10 Q-10,-5 0,10 Q10,-5 20,10 Q30,-5 40,10 Q50,-5 60,10' fill='none' stroke='%23EBE2E6' stroke-width='1.1'/%3E%3C/svg%3E");
+            color: var(--color-text-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .flyer-face.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Top Arch Header Area */
+        .top-arch-header {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(180deg, rgba(201, 179, 185, 0.85) 0%, rgba(201, 179, 185, 0.55) 100%);
+            border-radius: 0 0 50% 50% / 0 0 105px 105px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 30px 22px;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(201, 179, 185, 0.25);
+            margin-bottom: 5px;
+        }
+
+        .official-logo-img {
+            max-height: 68px;
+            max-width: 78%;
+            object-fit: contain;
+            filter: none;
+            display: block;
+            margin: auto;
+        }
+
+        /* Content Section */
+        .flyer-content {
+            padding: 0 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--color-salvia-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* Pinceladas / Brush Ribbon Banners en Lila Malva Oficial (#C9B3B9) */
+        .brush-ribbon {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 42' preserveAspectRatio='none'%3E%3Cpath d='M8,5 C40,2 100,6 150,3 C210,5 270,1 292,7 C298,12 296,28 290,36 C260,40 180,37 130,40 C70,38 20,41 7,34 C2,28 4,12 8,5 Z' fill='%23C9B3B9' fill-opacity='0.7'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+            padding: 5px 18px;
+            text-align: center;
+            color: var(--color-salvia-dark);
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 1.02rem;
+            letter-spacing: 0.09em;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 84%;
+            margin: 3.5px 0;
+            box-sizing: border-box;
+            min-height: 38px;
+        }
+
+        /* Reverso specific sections */
+        .reverso-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .reverso-ribbon {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 40' preserveAspectRatio='none'%3E%3Cpath d='M6,4 C50,2 120,5 160,2 C220,4 265,1 294,6 C299,11 297,27 291,35 C255,39 175,36 125,39 C65,37 18,40 6,33 C1,27 3,11 6,4 Z' fill='%23C9B3B9' fill-opacity='0.7'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+            padding: 4px 16px;
+            color: var(--color-salvia-dark);
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 0.98rem;
+            letter-spacing: 0.08em;
+            width: 72%;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .reverso-info-text {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--color-salvia-dark);
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .slogan-footer {
+            font-family: var(--font-title);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-salvia-dark);
+            text-align: center;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin: 12px 0 16px;
+        }
+
+        /* Footer Bar Anverso */
+        .footer-bar-anverso {
+            width: 100%;
+            padding: 12px 22px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 0.68rem;
+            color: var(--color-salvia-dark);
+            font-weight: 500;
+            max-width: 240px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-right-ribbon {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 65' preserveAspectRatio='none'%3E%3Cpath d='M6,4 C40,2 100,5 174,3 C178,12 176,50 172,60 C120,63 50,61 6,58 C2,45 3,15 6,4 Z' fill='%23C9B3B9' fill-opacity='0.7'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+            padding: 8px 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 140px;
+        }
+
+        .cita-previa-title {
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 0.78rem;
+            color: var(--color-salvia-dark);
+            letter-spacing: 0.08em;
+            margin-bottom: 2px;
+        }
+
+        .cita-previa-phones {
+            font-family: var(--font-title);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--color-salvia-dark);
+            line-height: 1.25;
+        }
+
+        /* Controls for View switching */
+        .controls-card {
+            display: flex;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.07);
+            padding: 6px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-side {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-side.active {
+            background: var(--color-accent-salvia);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-download-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, var(--color-accent-salvia) 0%, #74836F 100%);
+            color: #FFFFFF;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-action-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-action-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Right Column: Editor Panel */
+        .editor-container {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .editor-section-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--color-accent-beige);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"] {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--color-accent-beige);
+        }
+
+        /* Copy Panel */
+        .copy-panel {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 14px;
+            padding: 18px;
+            margin-top: 10px;
+        }
+
+        .copy-panel h4 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--color-accent-beige);
+            margin-bottom: 10px;
+        }
+
+        .copy-text-area {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: pre-wrap;
+            max-height: 180px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <a href="flyers-coleccion.html" class="back-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver a la Colección de Flyers
+        </a>
+        <span class="page-title-badge">Flyer General Publicitario A5</span>
+    </div>
+
+    <div class="main-layout">
+        <!-- LEFT COLUMN: VISOR INTERACTIVO A5 -->
+        <div class="viewer-container">
+            <div class="controls-card">
+                <button class="btn-side active" id="btnAnverso" onclick="showFace('anverso')">Anverso (Servicios)</button>
+                <button class="btn-side" id="btnReverso" onclick="showFace('reverso')">Reverso (Reserva & Horario)</button>
+            </div>
+
+            <!-- Viewport A5 (450px x 638px) -->
+            <div class="flyer-viewport" id="flyerViewport">
+                <!-- ANVERSO -->
+                <div class="flyer-face active" id="faceAnverso">
+                    <div class="top-arch-header">
+                        <img src="../images/logo texto verde.png" alt="Llum de Lluna" class="official-logo-img">
+                    </div>
+
+                    <div class="flyer-content">
+                        <div class="section-title">NUESTROS SERVICIOS</div>
+                        <div class="brush-ribbon" id="displayServicio1">MANICURA</div>
+                        <div class="brush-ribbon" id="displayServicio2">PEDICURA</div>
+                        <div class="brush-ribbon" id="displayServicio3">DEPILACIÓN</div>
+                        <div class="brush-ribbon" id="displayServicio4">MASAJES</div>
+                        <div class="brush-ribbon" id="displayServicio5">LIMPIEZAS FACIALES</div>
+                        <div class="brush-ribbon" id="displayServicio6">HAIR SPA</div>
+                        <div class="brush-ribbon" id="displayServicio7">MICROPIGMENTACIÓN</div>
+                    </div>
+
+                    <div class="footer-bar-anverso">
+                        <div class="footer-left">
+                            <div class="contact-item">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 0-5 5c0 3.5 5 10 5 10s5-6.5 5-10a5 5 0 0 0-5-5z"/><circle cx="12" cy="7" r="1.5"/></svg>
+                                <span id="displayInstagram1">@llumdelluna</span>
+                            </div>
+                            <div class="contact-item">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span id="displayDireccion1">Calle General Pastor, 19, prta 1, L'Eliana</span>
+                            </div>
+                        </div>
+
+                        <div class="footer-right-ribbon">
+                            <div class="cita-previa-title">CITA PREVIA:</div>
+                            <div class="cita-previa-phones">
+                                <div id="displayTel1">960-560-566</div>
+                                <div id="displayTel2">604-870-785</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REVERSO -->
+                <div class="flyer-face" id="faceReverso">
+                    <div class="top-arch-header">
+                        <img src="../images/logo texto verde.png" alt="Llum de Lluna" class="official-logo-img">
+                    </div>
+
+                    <div class="flyer-content" style="justify-content: space-evenly; width: 100%;">
+                        <div class="section-title" style="margin-bottom: 8px;">¡RESERVA CON NOSOTROS!</div>
+
+                        <!-- Sección Web -->
+                        <div class="reverso-section">
+                            <div class="reverso-ribbon">Web</div>
+                            <div class="reverso-info-text">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                                <span id="displayWeb">https://llumdellunaestetica.es/</span>
+                            </div>
+                        </div>
+
+                        <!-- Sección Llamadas y WhatsApp -->
+                        <div class="reverso-section">
+                            <div class="reverso-ribbon">Llamadas y WhatsApp</div>
+                            <div class="reverso-info-text">
+                                <span id="displayTelCombined">960-560-566 / 604-870-785</span>
+                            </div>
+                        </div>
+
+                        <!-- Sección Redes Sociales -->
+                        <div class="reverso-section">
+                            <div class="reverso-ribbon">Redes Sociales</div>
+                            <div class="reverso-info-text">
+                                <span id="displayInstagram2">@llumdelluna</span>
+                            </div>
+                        </div>
+
+                        <!-- Sección Horario -->
+                        <div class="reverso-section">
+                            <div class="reverso-ribbon">Horario</div>
+                            <div class="reverso-info-text" style="flex-direction: column; gap: 2px;">
+                                <div id="displayHorario1">Lunes - Viernes: 10:00 - 14:00 / 16:00 - 20:00</div>
+                                <div id="displayHorario2">Sábados: 10:00 - 14:00</div>
+                            </div>
+                        </div>
+
+                        <div class="slogan-footer" id="displayEslogan">¡DISFRUTA CON NOSOTROS TU MOMENTO DE RELAX!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="btn-download-group">
+                <button class="btn-action" onclick="downloadSingleFace()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Descargar Cara Actual (PNG HD 300 DPI)
+                </button>
+                <button class="btn-action btn-action-secondary" onclick="downloadBothFaces()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                    Descargar Ambas Caras / Completo (PNG HD)
+                </button>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: LIVE FORM EDITOR & COPY PANEL -->
+        <div class="editor-container">
+            <div class="editor-section-title">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                Editor en Vivo del Flyer
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Instagram / Usuario Redes</label>
+                    <input type="text" id="inputInstagram" value="@llumdelluna" oninput="updateAll()">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono 1 (Fijo/Atención)</label>
+                    <input type="text" id="inputTel1" value="960-560-566" oninput="updateAll()">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono 2 (WhatsApp)</label>
+                    <input type="text" id="inputTel2" value="604-870-785" oninput="updateAll()">
+                </div>
+                <div class="form-group full-width">
+                    <label>Dirección del Local</label>
+                    <input type="text" id="inputDireccion" value="Calle General Pastor, 19, prta 1, L'Eliana" oninput="updateAll()">
+                </div>
+                <div class="form-group full-width">
+                    <label>Página Web Oficial</label>
+                    <input type="text" id="inputWeb" value="https://llumdellunaestetica.es/" oninput="updateAll()">
+                </div>
+                <div class="form-group full-width">
+                    <label>Horario Lunes a Viernes</label>
+                    <input type="text" id="inputHorario1" value="Lunes - Viernes: 10:00 - 14:00 / 16:00 - 20:00" oninput="updateAll()">
+                </div>
+                <div class="form-group full-width">
+                    <label>Horario Sábados</label>
+                    <input type="text" id="inputHorario2" value="Sábados: 10:00 - 14:00" oninput="updateAll()">
+                </div>
+
+                <!-- Edición de Servicios -->
+                <div class="form-group full-width" style="margin-top: 10px;">
+                    <label style="color: var(--color-accent-beige); font-size: 0.9rem;">Lista de 7 Servicios Principales (Anverso)</label>
+                </div>
+                <div class="form-group"><label>Servicio 1</label><input type="text" id="inputS1" value="MANICURA" oninput="updateAll()"></div>
+                <div class="form-group"><label>Servicio 2</label><input type="text" id="inputS2" value="PEDICURA" oninput="updateAll()"></div>
+                <div class="form-group"><label>Servicio 3</label><input type="text" id="inputS3" value="DEPILACIÓN" oninput="updateAll()"></div>
+                <div class="form-group"><label>Servicio 4</label><input type="text" id="inputS4" value="MASAJES" oninput="updateAll()"></div>
+                <div class="form-group"><label>Servicio 5</label><input type="text" id="inputS5" value="LIMPIEZAS FACIALES" oninput="updateAll()"></div>
+                <div class="form-group"><label>Servicio 6</label><input type="text" id="inputS6" value="HAIR SPA" oninput="updateAll()"></div>
+                <div class="form-group full-width"><label>Servicio 7</label><input type="text" id="inputS7" value="MICROPIGMENTACIÓN" oninput="updateAll()"></div>
+
+                <div class="form-group full-width">
+                    <label>Eslogan Inferior (Reverso)</label>
+                    <input type="text" id="inputEslogan" value="¡DISFRUTA CON NOSOTROS TU MOMENTO DE RELAX!" oninput="updateAll()">
+                </div>
+            </div>
+
+            <!-- PANEL DE COPY TRILINGÜE -->
+            <div class="copy-panel">
+                <h4>Texto Informativo Trilingüe (Castellano / Valencià / English)</h4>
+                <div class="copy-text-area" id="copyTextArea">✨ Descubre la experiencia completa de belleza y bienestar en Llum de Lluna ⭐
+
+Nuestros Servicios:
+• Manicura Spa & Pedicura Rusa
+• Depilación Láser IPL & Cera Caliente
+• Masajes Relajantes & Descontracturantes
+• Limpiezas Faciales Profundas
+• Hair Spa Capilar Sensorial
+• Micropigmentación Avanzada
+
+📍 Calle General Pastor, 19, prta 1, L'Eliana
+📞 Cita Previa: 960 560 566 / 604 870 785
+🌐 Reserva Online: https://llumdellunaestetica.es/
+📸 Instagram: @llumdelluna
+
+---
+✨ Descobreix l'experiència completa de bellesa i benestar a Llum de Lluna ⭐
+
+Els Nostres Serveis:
+• Manicura Spa i Pedicura Russa
+• Depilació Laser IPL i Cera Calenta
+• Massatges Relaxants i Descontracturants
+• Neteges Facials Profundes
+• Hair Spa Capil·lar Sensorial
+• Micropigmentació Avançada
+
+📍 Carrer General Pastor, 19, porta 1, L'Eliana
+📞 Cita Prèvia: 960 560 566 / 604 870 785
+🌐 Reserva En Línia: https://llumdellunaestetica.es/
+📸 Instagram: @llumdelluna
+
+---
+✨ Discover the complete beauty & wellness experience at Llum de Lluna ⭐
+
+Our Services:
+• Spa Manicure & Russian Pedicure
+• IPL Laser Hair Removal & Hot Waxing
+• Relaxing & Deep Tissue Massages
+• Deep Facial Cleansings
+• Sensory Hair Spa
+• Advanced Micropigmentation
+
+📍 Calle General Pastor, 19, prta 1, L'Eliana, Valencia
+📞 Bookings: 960 560 566 / 604 870 785
+🌐 Book Online: https://llumdellunaestetica.es/
+📸 Instagram: @llumdelluna</div>
+                <button class="btn-action" style="width: 100%; padding: 10px;" onclick="copyTrilingualText()">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copiar Texto Informativo (Trilingüe)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentFace = 'anverso';
+
+        function showFace(face) {
+            currentFace = face;
+            document.getElementById('faceAnverso').classList.toggle('active', face === 'anverso');
+            document.getElementById('faceReverso').classList.toggle('active', face === 'reverso');
+            document.getElementById('btnAnverso').classList.toggle('active', face === 'anverso');
+            document.getElementById('btnReverso').classList.toggle('active', face === 'reverso');
+        }
+
+        function updateAll() {
+            const ig = document.getElementById('inputInstagram').value;
+            const tel1 = document.getElementById('inputTel1').value;
+            const tel2 = document.getElementById('inputTel2').value;
+            const dir = document.getElementById('inputDireccion').value;
+            const web = document.getElementById('inputWeb').value;
+            const hor1 = document.getElementById('inputHorario1').value;
+            const hor2 = document.getElementById('inputHorario2').value;
+            const eslogan = document.getElementById('inputEslogan').value;
+
+            document.getElementById('displayInstagram1').innerText = ig;
+            document.getElementById('displayInstagram2').innerText = ig;
+            document.getElementById('displayDireccion1').innerText = dir;
+            document.getElementById('displayTel1').innerText = tel1;
+            document.getElementById('displayTel2').innerText = tel2;
+            document.getElementById('displayTelCombined').innerText = tel1 + ' / ' + tel2;
+            document.getElementById('displayWeb').innerText = web;
+            document.getElementById('displayHorario1').innerText = hor1;
+            document.getElementById('displayHorario2').innerText = hor2;
+            document.getElementById('displayEslogan').innerText = eslogan;
+
+            for (let i = 1; i <= 7; i++) {
+                const val = document.getElementById('inputS' + i).value;
+                document.getElementById('displayServicio' + i).innerText = val;
+            }
+        }
+
+        async function downloadSingleFace() {
+            const faceElem = currentFace === 'anverso' ? document.getElementById('faceAnverso') : document.getElementById('faceReverso');
+            const canvas = await html2canvas(faceElem, {
+                scale: 2.6,
+                useCORS: true,
+                backgroundColor: '#FAF7F4'
+            });
+            const link = document.createElement('a');
+            link.download = `flyer-general-publicidad-llumdelluna-${currentFace}-300dpi.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        async function downloadBothFaces() {
+            // Anverso download
+            showFace('anverso');
+            await new Promise(r => setTimeout(r, 100));
+            const canvas1 = await html2canvas(document.getElementById('faceAnverso'), {
+                scale: 2.6,
+                useCORS: true,
+                backgroundColor: '#FAF7F4'
+            });
+            const link1 = document.createElement('a');
+            link1.download = `flyer-general-publicidad-llumdelluna-anverso-300dpi.png`;
+            link1.href = canvas1.toDataURL('image/png');
+            link1.click();
+
+            // Reverso download
+            await new Promise(r => setTimeout(r, 400));
+            showFace('reverso');
+            await new Promise(r => setTimeout(r, 100));
+            const canvas2 = await html2canvas(document.getElementById('faceReverso'), {
+                scale: 2.6,
+                useCORS: true,
+                backgroundColor: '#FAF7F4'
+            });
+            const link2 = document.createElement('a');
+            link2.download = `flyer-general-publicidad-llumdelluna-reverso-300dpi.png`;
+            link2.href = canvas2.toDataURL('image/png');
+            link2.click();
+        }
+
+        function copyTrilingualText() {
+            const text = document.getElementById('copyTextArea').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('¡Texto trilingüe copiado al portapapeles!');
+            });
+        }
+    </script>
+</body>
+</html>

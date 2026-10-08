@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Display Recepción & Mostrador | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;       /* Lila / Malva Intenso Marca */
+            --color-accent-beige: #E3DCD1;   /* Beige Cálido */
+            --color-accent-salvia: #8B9986;  /* Verde Salvia Acento */
+            --color-salvia-dark: #74836F;    /* Verde Salvia Oscuro */
+            --color-text-white: #FFFFFF;     /* Blanco */
+            --color-text-dark: #2A2426;      /* Texto Oscuro */
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; padding: 30px 15px;
+        }
+
+        .header-bar {
+            width: 100%; max-width: 1180px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link { color: var(--color-accent-beige); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; font-weight: 500; }
+        .page-title-badge { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; background: rgba(201, 179, 185, 0.5); color: #FFFFFF; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--color-accent-beige); font-weight: 600; }
+
+        .main-layout { display: flex; flex-direction: row; gap: 35px; max-width: 1180px; width: 100%; align-items: flex-start; }
+        @media (max-width: 1024px) { .main-layout { flex-direction: column; align-items: center; } }
+
+        .viewer-container { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 450px; flex-shrink: 0; }
+        .flyer-viewport { width: 450px; height: 638px; position: relative; background-color: var(--color-accent-beige); border-radius: 14px; overflow: hidden; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35); }
+        .flyer-face { width: 450px; height: 638px; position: absolute; top: 0; left: 0; background-color: var(--color-accent-beige); color: var(--color-text-dark); display: flex; flex-direction: column; justify-content: space-between; padding: 22px 20px; opacity: 0; visibility: hidden; transition: opacity 0.4s ease; box-sizing: border-box; }
+        .flyer-face.active { opacity: 1; visibility: visible; }
+
+        .zen-pattern-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.45;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='30' viewBox='0 0 60 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 A30 30 0 0 1 60 30 M-30 30 A30 30 0 0 1 30 30 M30 30 A30 30 0 0 1 90 30 M0 15 A15 15 0 0 1 30 15 M30 15 A15 15 0 0 1 60 15' fill='none' stroke='%23C9B3B9' stroke-width='0.7' stroke-opacity='0.45'/%3E%3C/svg%3E"); z-index: 1;
+        }
+
+        .flyer-content-inner {
+            height: 100%; position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; border: 1.5px solid #C9B3B9; border-radius: 10px; padding: 22px 20px; background: var(--color-accent-beige);
+        }
+
+        .flyer-header-box { text-align: center; border-bottom: 1.5px solid #C9B3B9; padding-bottom: 12px; }
+        .flyer-logo { height: 58px; margin-bottom: 4px; }
+        .flyer-main-title { font-family: var(--font-title); font-size: 2.1rem; color: var(--color-salvia-dark); font-weight: 700; line-height: 1.1; }
+        .flyer-sub-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: #C9B3B9; font-weight: 700; margin-top: 4px; }
+
+        .display-card { background: #FAF7F4; border: 1.5px solid #C9B3B9; border-radius: 12px; padding: 16px; text-align: center; margin: auto 0; backdrop-filter: blur(4px); box-shadow: 0 8px 20px rgba(201, 179, 185, 0.15); }
+        .display-card h4 { font-family: var(--font-title); font-size: 1.45rem; color: var(--color-salvia-dark); font-weight: 700; margin-bottom: 6px; }
+        .display-card p { font-size: 0.8rem; color: #2A2426; line-height: 1.45; font-weight: 600; }
+
+        .qr-display-box {
+            background: #FAF7F4; border: 1.5px solid #C9B3B9; border-radius: 12px; padding: 16px; display: flex; align-items: center; justify-content: space-around; gap: 14px; margin-bottom: 10px; backdrop-filter: blur(4px);
+        }
+
+        .qr-display-img { width: 90px; height: 90px; border-radius: 8px; background: #FFF; padding: 4px; border: 2px solid #C9B3B9; }
+        .qr-display-text { font-size: 0.78rem; color: #2A2426; line-height: 1.4; font-weight: 600; }
+
+        .flyer-footer-box { text-align: center; border-top: 1.5px solid #C9B3B9; padding-top: 12px; font-size: 0.78rem; color: #2A2426; font-weight: 600; display: flex; justify-content: center; align-items: center; gap: 12px; }
+
+        .controls-nav { display: flex; align-items: center; gap: 15px; }
+        .btn-side { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.25); color: #FFFFFF; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; }
+        .btn-side.active, .btn-side:hover { background: var(--color-accent-salvia); border-color: var(--color-accent-beige); font-weight: 600; }
+
+        .export-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+        .btn-action { width: 100%; padding: 12px; border-radius: 10px; font-size: 0.88rem; font-weight: 600; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-download-active { background: var(--color-accent-salvia); color: #FFFFFF; }
+
+        .panel-container { flex-grow: 1; width: 100%; background: #252324; border: 1px solid rgba(227, 220, 209, 0.25); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+        .tabs-header { display: flex; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px; }
+        .tab-btn { background: transparent; border: none; color: rgba(255,255,255,0.65); font-size: 0.9rem; font-weight: 600; padding: 6px 14px; cursor: pointer; border-radius: 8px; }
+        .tab-btn.active { background: rgba(201,179,185,0.3); color: var(--color-accent-beige); }
+
+        .tab-content { display: none; flex-direction: column; gap: 16px; }
+        .tab-content.active { display: flex; }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 0.78rem; color: var(--color-accent-beige); font-weight: 600; text-transform: uppercase; }
+        .form-control { background: rgba(0,0,0,0.3); border: 1px solid rgba(227,220,209,0.3); border-radius: 8px; padding: 10px 12px; color: #FFF; font-family: var(--font-body); font-size: 0.88rem; }
+        .copy-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(227,220,209,0.2); border-radius: 10px; padding: 14px; font-size: 0.82rem; line-height: 1.55; color: rgba(255,255,255,0.9); max-height: 380px; overflow-y: auto; white-space: pre-wrap; }
+        .btn-copy { background: var(--color-accent-salvia); color: #FFF; padding: 10px 16px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .specs-badge { background: rgba(201,179,185,0.2); border: 1px dashed var(--color-accent-beige); padding: 12px; border-radius: 10px; font-size: 0.78rem; color: var(--color-accent-beige); }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <a href="flyers-local-coleccion.html" class="back-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver a la Colección del Local
+        </a>
+        <span class="page-title-badge">Display de Recepción & Mostrador</span>
+    </div>
+
+    <div class="main-layout">
+        <div class="viewer-container">
+            <div class="flyer-viewport" id="flyerViewport">
+                <div class="flyer-face active" id="faceAnverso">
+                    <div class="zen-pattern-overlay"></div>
+                    <div class="flyer-content-inner">
+                        <div class="flyer-header-box">
+                            <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="flyer-logo">
+                            <h2 class="flyer-main-title" id="prevMainTitle">¿Te ha gustado tu experiencia?</h2>
+                            <p class="flyer-sub-title" id="prevSubTitle">DEJA TU OPINIÓN Y RESERVA TU PRÓXIMA CITA</p>
+                        </div>
+
+                        <div class="display-card">
+                            <h4 id="prevBoxTitle">Tu Opinión Nos Ayuda a Crecer</h4>
+                            <p id="prevBoxText">Nos encantaría conocer tu valoración. Escanea el código QR y déjanos tu reseña en Google.</p>
+                        </div>
+
+                        <div class="qr-display-box">
+                            <img id="qrGoogleImg" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fwww.google.com%2Fmaps%2Fplace%2FLlum%2Bde%2BLluna%2B-%2BEst%25C3%25A9tica%2F%4039.564869%2C-0.530488%2C15z%2Fdata%3D%214m6%213m5%211s0xd60594dec24eceb%3A0x6f8b81119586ceb7%218m2%213d39.5648687%214d-0.530488%2116s%252Fg%252F11zdcdd1lh%3Fhl%3Des%26entry%3Dttu%26g_ep%3DEgoyMDI2MTAwNC4wIKXMDSoASAFQAw%253D%253D&color=74836f" alt="QR Google Reseñas" class="qr-display-img">
+                            <div class="qr-display-text">
+                                <strong style="color: #FFFFFF; font-size: 0.88rem;">Escanea el Código QR</strong><br>
+                                <span style="color: var(--color-accent-beige);">Valoración rápida en Google o reserva directa por WhatsApp.</span>
+                            </div>
+                        </div>
+
+                        <div class="flyer-footer-box">
+                            <span id="prevFooterText">✨ Llum de Lluna • WhatsApp: 604 87 07 85 • llumdellunaestetica.es</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-nav">
+                <button class="btn-side active" id="btnAnverso">Display de Recepción A5</button>
+            </div>
+
+            <div class="export-actions">
+                <button class="btn-action btn-download-active" onclick="downloadCurrentSide()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Descargar Display Mostrador (PNG HD 300 DPI)
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('tabCustom')">Personalización en Vivo</button>
+                <button class="tab-btn" onclick="switchTab('tabCopy')">Copy & Especificaciones</button>
+            </div>
+
+            <div class="tab-content active" id="tabCustom">
+                <div class="form-group">
+                    <label>Título Principal</label>
+                    <input type="text" class="form-control" id="inMainTitle" value="¿Te ha gustado tu experiencia?">
+                </div>
+                <div class="form-group">
+                    <label>Subtítulo</label>
+                    <input type="text" class="form-control" id="inSubTitle" value="DEJA TU OPINIÓN Y RESERVA TU PRÓXIMA CITA">
+                </div>
+                <div class="form-group">
+                    <label>Título de la Tarjeta</label>
+                    <input type="text" class="form-control" id="inBoxTitle" value="Tu Opinión Nos Ayuda a Crecer">
+                </div>
+                <div class="form-group">
+                    <label>Mensaje del Display</label>
+                    <input type="text" class="form-control" id="inBoxText" value="Nos encantaría conocer tu valoración. Escanea el código QR y déjanos tu reseña en Google.">
+                </div>
+                <div class="form-group">
+                    <label>Enlace QR Google (Google Maps Reseñas)</label>
+                    <input type="text" class="form-control" id="inGoogleUrl" value="https://www.google.com/maps/place/Llum+de+Lluna+-+Est%C3%A9tica/@39.564869,-0.530488,15z/data=!4m6!3m5!1s0xd60594dec24eceb:0x6f8b81119586ceb7!8m2!3d39.5648687!4d-0.530488!16s%2Fg%2F11zdcdd1lh?hl=es&entry=ttu&g_ep=EgoyMDI2MTAwNC4wIKXMDSoASAFQAw%3D%3D">
+                </div>
+                <div class="form-group">
+                    <label>Pie de Datos</label>
+                    <input type="text" class="form-control" id="inFooterText" value="✨ Llum de Lluna • WhatsApp: 604 87 07 85 • llumdellunaestetica.es">
+                </div>
+
+                <button type="button" class="btn-action" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(227, 220, 209, 0.3); margin-top: 10px;" onclick="resetFormToDefaults()">
+                    🔄 Restablecer Textos Predeterminados
+                </button>
+            </div>
+
+            <div class="tab-content" id="tabCopy">
+                <div class="specs-badge">
+                    <strong>📏 Especificaciones Técnicas para Imprenta:</strong><br>
+                    • Tamaño Final: Formato A5 Vertical (148 mm × 210 mm)<br>
+                    • Ideal para soporte de metacrilato o expositor de mostrador en recepción.<br>
+                    • Incluye QR escaneable directo a Google Maps.
+                </div>
+
+                <button class="btn-copy" onclick="copyInfoText()">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copiar Texto Informativo Trilingüe
+                </button>
+
+                <div class="copy-box" id="copyBoxText">⭐ Display Recepción Llum de Lluna • Reseñas y Reserva
+
+[CASTELLANO]
+¿Te ha gustado tu experiencia en Llum de Lluna? Nos encantaría conocer tu valoración. Escanea el QR para dejar tu reseña en Google o agendar tu próxima cita por WhatsApp.
+🌐 llumdellunaestetica.es | 📞 604 87 07 85
+
+[VALENCIÀ]
+T'ha agradat la teua experiència a Llum de Lluna? Ens encantaria conéixer la teua valoració. Escaneja el QR per a deixar la teua resenya a Google o agendar la teua pròxima cita per WhatsApp.
+🌐 llumdellunaestetica.es | 📞 604 87 07 85
+
+[ENGLISH]
+Did you enjoy your experience at Llum de Lluna? We would love to hear your feedback. Scan the QR code to leave your Google review or book your next session via WhatsApp.
+🌐 llumdellunaestetica.es | 📞 +34 604 87 07 85</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY_PREFIX = 'ldl_flyer_mostrador_';
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            if (tabId === 'tabCustom') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('tabCustom').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('tabCopy').classList.add('active');
+            }
+        }
+
+        document.getElementById('inMainTitle').addEventListener('input', (e) => { document.getElementById('prevMainTitle').innerText = e.target.value; });
+        document.getElementById('inSubTitle').addEventListener('input', (e) => { document.getElementById('prevSubTitle').innerText = e.target.value; });
+        document.getElementById('inBoxTitle').addEventListener('input', (e) => { document.getElementById('prevBoxTitle').innerText = e.target.value; });
+        document.getElementById('inBoxText').addEventListener('input', (e) => { document.getElementById('prevBoxText').innerText = e.target.value; });
+        document.getElementById('inGoogleUrl').addEventListener('input', (e) => { 
+            document.getElementById('qrGoogleImg').src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(e.target.value) + '&color=74836f'; 
+        });
+        document.getElementById('inFooterText').addEventListener('input', (e) => { document.getElementById('prevFooterText').innerText = e.target.value; });
+
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', (e) => {
+                localStorage.setItem(STORAGE_KEY_PREFIX + e.target.id, e.target.value);
+            });
+        });
+
+        function restoreSavedInputs() {
+            document.querySelectorAll('.form-control').forEach(input => {
+                const savedVal = localStorage.getItem(STORAGE_KEY_PREFIX + input.id);
+                if (savedVal !== null) {
+                    input.value = savedVal;
+                    input.dispatchEvent(new Event('input'));
+                }
+            });
+        }
+
+        function resetFormToDefaults() {
+            if (confirm('¿Deseas borrar tus textos personalizados guardados y volver a los predeterminados?')) {
+                document.querySelectorAll('.form-control').forEach(input => {
+                    localStorage.removeItem(STORAGE_KEY_PREFIX + input.id);
+                });
+                window.location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', restoreSavedInputs);
+
+        async function renderElementToPng(element, filename) {
+            const canvas = await html2canvas(element, { scale: 2.6, useCORS: true, backgroundColor: '#C9B3B9', logging: false });
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        async function downloadCurrentSide() {
+            await renderElementToPng(document.getElementById('faceAnverso'), 'display-mostrador-recepcion-300dpi.png');
+        }
+
+        function copyInfoText() {
+            navigator.clipboard.writeText(document.getElementById('copyBoxText').innerText).then(() => {
+                alert('¡Texto del display copiado al portapapeles!');
+            });
+        }
+    </script>
+</body>
+</html>

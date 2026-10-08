@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador Flyer Promocional A5 (148x210mm) | Llum de Lluna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --color-bg-brand: #C9B3B9;       /* Lila / Malva Intenso de Marca */
+            --color-accent-beige: #E3DCD1;   /* Beige Cálido de Marca */
+            --color-accent-salvia: #8B9986;  /* Verde Salvia Acento */
+            --color-text-dark: #2A2426;      /* Texto Oscuro */
+            --color-text-white: #FFFFFF;     /* Texto Blanco puro */
+            --color-text-cream: #FAF7F2;     /* Blanco Crema */
+            --color-border-card: rgba(227, 220, 209, 0.45);
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #1A1918;
+            color: var(--color-text-white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 15px;
+        }
+
+        /* Header Bar */
+        .header-bar {
+            width: 100%;
+            max-width: 1180px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .back-link {
+            color: var(--color-accent-beige);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .page-title-badge {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(201, 179, 185, 0.5);
+            color: #FFFFFF;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--color-accent-beige);
+            font-weight: 600;
+        }
+
+        /* Main Grid Layout */
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 35px;
+            max-width: 1180px;
+            width: 100%;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Viewer Container Left Column */
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 450px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 500px) {
+            .viewer-container {
+                width: 100%;
+                max-width: 450px;
+            }
+        }
+
+        /* Standard A5 Flyer Viewport (450px x 638px - Proportional to 148x210mm) */
+        .flyer-viewport {
+            width: 450px;
+            height: 638px;
+            position: relative;
+            background-color: var(--color-bg-brand);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        .flyer-face {
+            width: 450px;
+            height: 638px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-bg-brand);
+            color: var(--color-text-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 22px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            transform: scale(0.98);
+            box-sizing: border-box;
+        }
+
+        .flyer-face.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* --- ANVERSO (FLYER SIDE 1) --- */
+        .anverso-flyer-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(227, 220, 209, 0.45);
+            border-radius: 10px;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(201, 179, 185, 1) 0%, rgba(188, 164, 171, 1) 100%);
+            position: relative;
+        }
+
+        .flyer-header-box {
+            text-align: center;
+            border-bottom: 1px solid rgba(227, 220, 209, 0.35);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .flyer-logo {
+            height: 60px;
+            margin-bottom: 4px;
+            filter: none;
+        }
+
+        .flyer-main-title {
+            font-family: var(--font-title);
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.1;
+        }
+
+        .flyer-sub-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--color-accent-beige);
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .services-list-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .service-item-card {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(227, 220, 209, 0.3);
+            border-radius: 8px;
+            padding: 9px 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .service-icon {
+            font-size: 1rem;
+            color: var(--color-accent-beige);
+            line-height: 1;
+            margin-top: 2px;
+        }
+
+        .service-info h4 {
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            color: #FFFFFF;
+            margin-bottom: 2px;
+            line-height: 1.1;
+        }
+
+        .service-info p {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.3;
+        }
+
+        .promo-banner-box {
+            background: rgba(139, 153, 134, 0.85);
+            border: 1px solid var(--color-accent-beige);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .promo-badge-tag {
+            display: inline-block;
+            background: var(--color-accent-beige);
+            color: var(--color-text-dark);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-bottom: 4px;
+        }
+
+        .promo-banner-box h3 {
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            color: #FFFFFF;
+            margin-bottom: 3px;
+        }
+
+        .promo-banner-box p {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        /* --- REVERSO (FLYER SIDE 2) --- */
+        .reverso-flyer-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(227, 220, 209, 0.45);
+            border-radius: 10px;
+            padding: 20px;
+            background: #231C1E; /* Dark contrast background */
+            color: #FFFFFF;
+        }
+
+        .reverso-title-box {
+            text-align: center;
+            border-bottom: 1px solid rgba(227, 220, 209, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .reverso-title-box h2 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--color-accent-beige);
+        }
+
+        .reverso-title-box p {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.05em;
+        }
+
+        .pillars-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .pillar-card {
+            background: rgba(201, 179, 185, 0.12);
+            border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.72rem;
+        }
+
+        .pillar-card strong {
+            display: block;
+            color: var(--color-accent-beige);
+            font-size: 0.78rem;
+            margin-bottom: 4px;
+        }
+
+        .pillar-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.35;
+        }
+
+        .location-contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(227, 220, 209, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .coupon-box {
+            border: 2px dashed var(--color-accent-beige);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            background: rgba(201, 179, 185, 0.18);
+            position: relative;
+        }
+
+        .coupon-scissor-icon {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #231C1E;
+            padding: 0 6px;
+            font-size: 0.75rem;
+            color: var(--color-accent-beige);
+        }
+
+        .coupon-box h4 {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--color-accent-beige);
+            margin-bottom: 2px;
+        }
+
+        .coupon-box p {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.88);
+            margin-bottom: 4px;
+        }
+
+        .coupon-code-pill {
+            display: inline-block;
+            background: var(--color-accent-salvia);
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            padding: 3px 12px;
+            border-radius: 12px;
+        }
+
+        /* Controls Navigation */
+        .controls-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-side {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #FFFFFF;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-side.active, .btn-side:hover {
+            background: var(--color-bg-brand);
+            border-color: var(--color-accent-beige);
+            font-weight: 600;
+        }
+
+        .side-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .dot.active {
+            background: var(--color-accent-beige);
+            transform: scale(1.2);
+        }
+
+        /* Download Action Box */
+        .export-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-download-active {
+            background: var(--color-accent-salvia);
+            color: #FFFFFF;
+        }
+
+        .btn-download-all {
+            background: rgba(201, 179, 185, 0.85);
+            color: #FFFFFF;
+            border: 1px solid var(--color-accent-beige);
+        }
+
+        /* Right Panel: Tabs & Forms */
+        .panel-container {
+            flex-grow: 1;
+            width: 100%;
+            background: #252324;
+            border: 1px solid rgba(227, 220, 209, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tabs-header {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: rgba(201, 179, 185, 0.3);
+            color: var(--color-accent-beige);
+        }
+
+        .tab-content {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .tab-content.active {
+            display: flex;
+        }
+
+        /* Form Inputs */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.78rem;
+            color: var(--color-accent-beige);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-control {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(227, 220, 209, 0.3);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-accent-beige);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* Copy Box Panel */
+        .copy-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(227, 220, 209, 0.2);
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.9);
+            max-height: 380px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .btn-copy {
+            background: var(--color-accent-salvia);
+            color: #FFFFFF;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .specs-badge {
+            background: rgba(201, 179, 185, 0.2);
+            border: 1px dashed var(--color-accent-beige);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            line-height: 1.45;
+            color: var(--color-accent-beige);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Bar -->
+    <div class="header-bar">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Volver al Catálogo de Imprenta
+        </a>
+        <span class="page-title-badge">Flyer Promocional A5 (148 × 210 mm)</span>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Viewer Container -->
+        <div class="viewer-container">
+            <div class="flyer-viewport" id="flyerViewport">
+                <!-- ANVERSO (FLYER SIDE 1) -->
+                <div class="flyer-face active" id="faceAnverso">
+                    <div class="anverso-flyer-content">
+                        <div class="flyer-header-box">
+                            <img src="../images/logo IG 1.png" alt="Llum de Lluna" class="flyer-logo">
+                            <h2 class="flyer-main-title" id="prevMainTitle">Descubre Tu Luz Propia</h2>
+                            <p class="flyer-sub-title" id="prevSubTitle">TRATAMIENTOS DE ESTÉTICA AVANZADA & BIENESTAR</p>
+                        </div>
+
+                        <div class="services-list-grid">
+                            <div class="service-item-card">
+                                <span class="service-icon">✦</span>
+                                <div class="service-info">
+                                    <h4>Rituales Faciales Renovadores</h4>
+                                    <p>Higiene profunda, hidratación intensa y diagnóstico personalizado.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-card">
+                                <span class="service-icon">✦</span>
+                                <div class="service-info">
+                                    <h4>Spa Capilar & Masaje Craneal</h4>
+                                    <p>Exfoliación del cuero cabelludo, lavado sensorial y relajación total.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-card">
+                                <span class="service-icon">✦</span>
+                                <div class="service-info">
+                                    <h4>Fotodepilación IPL de Alta Precisión</h4>
+                                    <p>Eliminación del vello progresiva y prueba previa gratuita.</p>
+                                </div>
+                            </div>
+                            <div class="service-item-card">
+                                <span class="service-icon">✦</span>
+                                <div class="service-info">
+                                    <h4>Manicura & Pedicura Spa</h4>
+                                    <p>Cuidado artesanal de uñas, exfoliación y esmaltado duradero.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="promo-banner-box">
+                            <span class="promo-badge-tag">OFERTA DE BIENVENIDA</span>
+                            <h3 id="prevPromoTitle">10% DTO. en tu Primer Tratamiento</h3>
+                            <p id="prevPromoSub">Reserva tu cita previa por WhatsApp y regálale un momento a tu piel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REVERSO (FLYER SIDE 2) -->
+                <div class="flyer-face" id="faceReverso">
+                    <div class="reverso-flyer-content">
+                        <div class="reverso-title-box">
+                            <h2>Llum de Lluna • Tu Refugio</h2>
+                            <p>CENTRO DE ESTÉTICA & BIENESTAR EN L'ELIANA</p>
+                        </div>
+
+                        <div class="pillars-list">
+                            <div class="pillar-card">
+                                <strong>✦ Atención Exclusiva</strong>
+                                <p>Diagnóstico y trato personal de Emma Sánchez Villaplana.</p>
+                            </div>
+                            <div class="pillar-card">
+                                <strong>✦ Alta Cosmética</strong>
+                                <p>Fórmulas respetuosas con el PH y principios activos naturales.</p>
+                            </div>
+                            <div class="pillar-card">
+                                <strong>✦ Espacio de Paz</strong>
+                                <p>Cabinas con aromaterapia y música relajante.</p>
+                            </div>
+                            <div class="pillar-card">
+                                <strong>✦ Fácil Acceso</strong>
+                                <p>Ubicación cómoda en L'Eliana con facilidades de aparcamiento.</p>
+                            </div>
+                        </div>
+
+                        <div class="location-contact-card">
+                            <div class="location-item">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span id="prevAddrRev">📍 L'Eliana, Valencia (Cita Previa)</span>
+                            </div>
+                            <div class="location-item">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <span id="prevPhoneRev">📞 WhatsApp & Citas: 604 87 07 85</span>
+                            </div>
+                            <div class="location-item">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                <span>🌐 Web: llumdelluna.es | IG: @llumdelluna</span>
+                            </div>
+                        </div>
+
+                        <div class="coupon-box">
+                            <span class="coupon-scissor-icon">✂️ VALE PROMOCIONAL</span>
+                            <h4>Presenta este Flyer en tu Cita</h4>
+                            <p>O menciona el código promocional al reservar por WhatsApp:</p>
+                            <span class="coupon-code-pill" id="prevCode">CÓDIGO: LLUM-A5-2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Navigation -->
+            <div class="controls-nav">
+                <button class="btn-side active" id="btnAnverso" onclick="showSide(0)">Anverso (Portada)</button>
+                <div class="side-dots">
+                    <span class="dot active" onclick="showSide(0)"></span>
+                    <span class="dot" onclick="showSide(1)"></span>
+                </div>
+                <button class="btn-side" id="btnReverso" onclick="showSide(1)">Reverso (Contacto)</button>
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="export-actions">
+                <button class="btn-action btn-download-active" onclick="downloadCurrentSide()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Descargar Cara Actual (PNG HD A5 300 DPI)
+                </button>
+                <button class="btn-action btn-download-all" onclick="downloadBothSides()">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Descargar Flyer Completo (Imágenes PNG HD)
+                </button>
+            </div>
+        </div>
+
+        <!-- Panel Controls & Info (Right Column) -->
+        <div class="panel-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('tabCustom')">Personalización en Vivo</button>
+                <button class="tab-btn" onclick="switchTab('tabCopy')">Copy & Especificaciones</button>
+            </div>
+
+            <!-- Tab 1: Live Customizer Form -->
+            <div class="tab-content active" id="tabCustom">
+                <div class="form-group">
+                    <label>Titular Principal del Flyer</label>
+                    <input type="text" class="form-control" id="inMainTitle" value="Descubre Tu Luz Propia">
+                </div>
+
+                <div class="form-group">
+                    <label>Subtítulo</label>
+                    <input type="text" class="form-control" id="inSubTitle" value="TRATAMIENTOS DE ESTÉTICA AVANZADA & BIENESTAR">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Título de la Oferta</label>
+                        <input type="text" class="form-control" id="inPromoTitle" value="10% DTO. en tu Primer Tratamiento">
+                    </div>
+                    <div class="form-group">
+                        <label>Código Promocional</label>
+                        <input type="text" class="form-control" id="inCode" value="CÓDIGO: LLUM-A5-2026">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Teléfono / WhatsApp</label>
+                        <input type="text" class="form-control" id="inPhoneRev" value="📞 WhatsApp & Citas: 604 87 07 85">
+                    </div>
+                    <div class="form-group">
+                        <label>Ubicación</label>
+                        <input type="text" class="form-control" id="inAddrRev" value="📍 L'Eliana, Valencia (Cita Previa)">
+                    </div>
+                </div>
+
+                <button type="button" class="btn-action" style="background: rgba(255, 255, 255, 0.12); color: #FFFFFF; border: 1px solid rgba(227, 220, 209, 0.3); margin-top: 10px;" onclick="resetFormToDefaults()">
+                    🔄 Restablecer Textos Predeterminados
+                </button>
+            </div>
+
+            <!-- Tab 2: Copy Trilingüe & Specs -->
+            <div class="tab-content" id="tabCopy">
+                <div class="specs-badge">
+                    <strong>📏 Especificaciones Técnicas para Imprenta:</strong><br>
+                    • Tamaño Estándar: Formato A5 (148 mm × 210 mm - Proporción 1:1.419)<br>
+                    • Resolución de Renderizado: Scale 2.6x (Nativo ~1170px × 1658px a 300 DPI)<br>
+                    • Listo para enviar a imprenta offset o digital.
+                </div>
+
+                <button class="btn-copy" onclick="copyInfoText()">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Copiar Texto Promocional Trilingüe
+                </button>
+
+                <div class="copy-box" id="copyBoxText">🌸 Flyer Promocional Llum de Lluna • Estética Avanzada en L'Eliana
+
+[CASTELLANO]
+Descubre tu luz propia en Llum de Lluna (anteriormente Edurne Azcona).
+Disfruta de nuestros Rituales Faciales, Spa Capilar & Masaje Craneal, Fotodepilación IPL y Manicuras Spa.
+🎁 OFERTA DE BIENVENIDA: 10% DTO. en tu primer tratamiento o Diagnóstico Facial Gratuito.
+📍 L'Eliana (Valencia) | 📞 Citas por WhatsApp: 604 87 07 85 | 🌐 llumdelluna.es
+
+[VALENCIÀ]
+Descobreix la teua llum pròpia a Llum de Lluna (anteriorment Edurne Azcona).
+Gaudeix dels nostres Rituals Facials, Spa Capil·lar, Fotodepilació IPL i Manicures Spa.
+🎁 OFERTA DE BENVINGUDA: 10% DTO. en el teu primer tractament o Diagnòstic Facial Gratuït.
+📍 L'Eliana (València) | 📞 Cites per WhatsApp: 604 87 07 85 | 🌐 llumdelluna.es
+
+[ENGLISH]
+Discover your inner glow at Llum de Lluna (formerly Edurne Azcona).
+Enjoy our Facial Rituals, Head Spa & Cranial Massage, IPL Hair Removal, and Spa Manicures.
+🎁 WELCOME OFFER: 10% OFF your first treatment or Free Skin Diagnosis.
+📍 L'Eliana (Valencia) | 📞 WhatsApp Bookings: +34 604 87 07 85 | 🌐 llumdelluna.es
+
+#FlyerLlumDeLluna #EsteticaEliana #LEliana #TratamientosFaciales #SpaCapilar #Fotodepilacion #Valencia</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY_PREFIX = 'ldl_flyer_tratamientos_';
+        let currentSide = 0; // 0: Anverso, 1: Reverso
+
+        function showSide(index) {
+            currentSide = index;
+            const faceAnverso = document.getElementById('faceAnverso');
+            const faceReverso = document.getElementById('faceReverso');
+            const btnAnverso = document.getElementById('btnAnverso');
+            const btnReverso = document.getElementById('btnReverso');
+            const dots = document.querySelectorAll('.dot');
+
+            if (index === 0) {
+                faceAnverso.classList.add('active');
+                faceReverso.classList.remove('active');
+                btnAnverso.classList.add('active');
+                btnReverso.classList.remove('active');
+                dots[0].classList.add('active');
+                dots[1].classList.remove('active');
+            } else {
+                faceAnverso.classList.remove('active');
+                faceReverso.classList.add('active');
+                btnAnverso.classList.remove('active');
+                btnReverso.classList.add('active');
+                dots[0].classList.remove('active');
+                dots[1].classList.add('active');
+            }
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tabId === 'tabCustom') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('tabCustom').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('tabCopy').classList.add('active');
+            }
+        }
+
+        // Live Customizer Sync
+        document.getElementById('inMainTitle').addEventListener('input', (e) => {
+            document.getElementById('prevMainTitle').innerText = e.target.value;
+        });
+        document.getElementById('inSubTitle').addEventListener('input', (e) => {
+            document.getElementById('prevSubTitle').innerText = e.target.value;
+        });
+        document.getElementById('inPromoTitle').addEventListener('input', (e) => {
+            document.getElementById('prevPromoTitle').innerText = e.target.value;
+        });
+        document.getElementById('inCode').addEventListener('input', (e) => {
+            document.getElementById('prevCode').innerText = e.target.value;
+        });
+        document.getElementById('inPhoneRev').addEventListener('input', (e) => {
+            document.getElementById('prevPhoneRev').innerText = e.target.value;
+        });
+        document.getElementById('inAddrRev').addEventListener('input', (e) => {
+            document.getElementById('prevAddrRev').innerText = e.target.value;
+        });
+
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('input', (e) => {
+                localStorage.setItem(STORAGE_KEY_PREFIX + e.target.id, e.target.value);
+            });
+        });
+
+        function restoreSavedInputs() {
+            document.querySelectorAll('.form-control').forEach(input => {
+                const savedVal = localStorage.getItem(STORAGE_KEY_PREFIX + input.id);
+                if (savedVal !== null) {
+                    input.value = savedVal;
+                    input.dispatchEvent(new Event('input'));
+                }
+            });
+        }
+
+        function resetFormToDefaults() {
+            if (confirm('¿Deseas borrar tus textos personalizados guardados y volver a los predeterminados?')) {
+                document.querySelectorAll('.form-control').forEach(input => {
+                    localStorage.removeItem(STORAGE_KEY_PREFIX + input.id);
+                });
+                window.location.reload();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', restoreSavedInputs);
+
+        // Download via html2canvas
+        async function renderElementToPng(element, filename) {
+            const canvas = await html2canvas(element, {
+                scale: 2.6,
+                useCORS: true,
+                backgroundColor: '#C9B3B9',
+                logging: false
+            });
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        async function downloadCurrentSide() {
+            const sideName = currentSide === 0 ? 'anverso' : 'reverso';
+            const element = currentSide === 0 ? document.getElementById('faceAnverso') : document.getElementById('faceReverso');
+            
+            const originalOpacity = element.style.opacity;
+            const originalVisibility = element.style.visibility;
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            
+            await renderElementToPng(element, `flyer-tratamientos-${sideName}-a5-300dpi.png`);
+
+            element.style.opacity = originalOpacity;
+            element.style.visibility = originalVisibility;
+        }
+
+        async function downloadBothSides() {
+            showSide(0);
+            await new Promise(r => setTimeout(r, 200));
+            await renderElementToPng(document.getElementById('faceAnverso'), 'flyer-tratamientos-anverso-a5-300dpi.png');
+            
+            showSide(1);
+            await new Promise(r => setTimeout(r, 200));
+            await renderElementToPng(document.getElementById('faceReverso'), 'flyer-tratamientos-reverso-a5-300dpi.png');
+        }
+
+        function copyInfoText() {
+            const copyText = document.getElementById('copyBoxText').innerText;
+            navigator.clipboard.writeText(copyText).then(() => {
+                alert('¡Texto promocional trilingüe copiado al portapapeles!');
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
