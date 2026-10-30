@@ -19,7 +19,7 @@
 
     <!-- Favicon / Icono de Pestaña -->
     <link rel="icon" type="image/png" href="images/logo verde.png">
-    <link rel="stylesheet" href="css/main.css?v=2.1">
+    <link rel="stylesheet" href="css/main.css?v=2.2">
     <!-- html2canvas para exportar la Tarjeta Regalo en PNG HD A6 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 
@@ -27,14 +27,16 @@
         /* Layout Principal */
         .giftcard-grid {
             display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
             gap: var(--spacing-xl);
             align-items: start;
+            width: 100%;
         }
 
         @media (max-width: 1080px) {
             .giftcard-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
+                gap: var(--spacing-lg);
             }
         }
 
@@ -45,6 +47,9 @@
             border-radius: var(--border-radius-lg);
             padding: var(--spacing-lg);
             box-shadow: var(--shadow-md);
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .giftcard-fieldset {
@@ -349,6 +354,15 @@
             align-items: center;
             gap: var(--spacing-md);
             width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 1080px) {
+            .giftcard-preview-column {
+                position: static;
+            }
         }
 
         .preview-header-bar {
@@ -357,6 +371,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .preview-badge-live {
@@ -389,10 +405,12 @@
         .voucher-a6-stage {
             width: 100%;
             max-width: 560px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 397px;
+            position: relative;
             overflow: hidden;
+            margin: 0 auto;
+            border-radius: 14px;
+            box-shadow: 0 16px 38px rgba(34, 33, 31, 0.18);
         }
 
         .gift-voucher-canvas {
@@ -408,10 +426,10 @@
             color: #FFFFFF;
             font-family: 'Montserrat', sans-serif;
             border-radius: 14px;
-            box-shadow: 0 16px 38px rgba(34, 33, 31, 0.18);
-            position: relative;
-            flex-shrink: 0;
-            transform-origin: top center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top left;
         }
 
         .gift-voucher-inner {
@@ -664,6 +682,118 @@
             align-items: center;
             gap: var(--spacing-sm);
         }
+
+        /* ==========================================================================
+           AJUSTES RESPONSIVOS MÓVILES (EVITA CUALQUIER DESCUADRE EN PANTALLAS PEQUEÑAS)
+           ========================================================================== */
+        .form-select,
+        .form-input,
+        .form-textarea {
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 768px) {
+            .giftcard-form-card {
+                padding: 1.25rem 1rem;
+            }
+
+            .giftcard-legend {
+                font-size: 1.28rem;
+                gap: 8px;
+                margin-bottom: 0.9rem;
+            }
+
+            .legend-step-badge {
+                width: 25px;
+                height: 25px;
+                font-size: 0.75rem;
+            }
+
+            .gift-type-radios {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .gift-type-label {
+                padding: 0.85rem 0.95rem;
+            }
+
+            .amount-pills {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 6px;
+            }
+
+            .amount-pill {
+                padding: 0.5rem 0.15rem !important;
+                font-size: 0.78rem !important;
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .form-select,
+            .form-input,
+            .form-textarea {
+                padding: 0.75rem 0.9rem;
+                font-size: 0.9rem;
+            }
+
+            .recipient-phone-box {
+                padding: 0.85rem 0.9rem;
+            }
+
+            .order-summary-strip {
+                padding: 0.9rem 1rem;
+            }
+
+            .summary-line {
+                flex-wrap: wrap;
+                gap: 4px 8px;
+                font-size: 0.84rem;
+            }
+
+            .summary-line strong {
+                text-align: left !important;
+                word-break: break-word;
+            }
+
+            .summary-line.total {
+                justify-content: space-between;
+                flex-wrap: nowrap;
+            }
+
+            #giftSubmitBtn,
+            #previewDownloadBtn,
+            #postSubmitDownloadBtn,
+            .btn-revolut,
+            .shared-view-banner .btn {
+                padding: 0.85rem 1rem !important;
+                font-size: 0.8rem !important;
+                line-height: 1.35 !important;
+                white-space: normal !important;
+                text-align: center !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .payment-step-box {
+                padding: 1.15rem 1rem;
+            }
+
+            .shared-view-banner {
+                padding: 1.15rem 1rem;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .preview-header-bar {
+                justify-content: center;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -672,10 +802,10 @@
     <div id="header-placeholder"></div>
 
     <!-- CABECERA DE PÁGINA -->
-    <section class="page-header" style="padding: calc(var(--header-height) + var(--spacing-xl)) 0 var(--spacing-lg); background-color: var(--color-bg-tertiary);">
+    <section class="page-header">
         <div class="container">
             <span class="hero-subtitle" data-i18n="giftcard.pageTag">Regala Calma, Belleza & Privacidad</span>
-            <h1 class="hero-title" style="font-size: 2.7rem;" data-i18n="giftcard.pageTitle">Tarjeta Regalo Personalizada</h1>
+            <h1 class="hero-title" style="font-size: clamp(1.9rem, 6.5vw, 2.7rem);" data-i18n="giftcard.pageTitle">Tarjeta Regalo Personalizada</h1>
             <p style="max-width: 680px; margin: var(--spacing-sm) auto 0;" data-i18n="giftcard.pageDesc">Sorprende a quien más quieres con una experiencia exclusiva en cabinas privadas en L'Eliana. Elige un tratamiento de nuestra carta o un bono por importe, personaliza tu dedicatoria y descarga tu tarjeta en tamaño A6 lista para imprimir o enviar.</p>
         </div>
     </section>
@@ -1037,6 +1167,9 @@
             };
 
             window.addEventListener('resize', fitVoucherToScreen);
+            if (typeof ResizeObserver !== 'undefined' && voucherStage) {
+                new ResizeObserver(fitVoucherToScreen).observe(voucherStage);
+            }
             fitVoucherToScreen();
 
             // 2. Validación Accesible Tras Interacción (:user-invalid fallback + sync aria-invalid)
