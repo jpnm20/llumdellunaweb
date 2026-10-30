@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Regalo de Estética y Bienestar en L'Eliana | Llum de Lluna</title>
+    <!-- SEO Básico y Posicionamiento Local L'Eliana -->
+    <meta name="description" content="Regala bienestar y belleza en L'Eliana (Valencia) con la Tarjeta Regalo personalizada de Llum de Lluna. Elige un tratamiento o un importe en euros, añade tu dedicatoria y descárgala en tamaño A6.">
+    <meta name="keywords" content="tarjeta regalo estética l'eliana, bono regalo masaje l'eliana, regalar limpieza facial valencia, cheque regalo bienestar l'eliana, llum de lluna tarjeta regalo">
+    <link rel="canonical" href="https://llumdellunaestetica.es/tarjeta-regalo.html">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://llumdellunaestetica.es/tarjeta-regalo.html">
+    <meta property="og:title" content="Tarjeta Regalo Personalizada | Llum de Lluna - Estética & Bienestar">
+    <meta property="og:description" content="Diseña al instante tu Tarjeta Regalo para tratamientos faciales, rituales de bienestar, manicura o pedicura en L'Eliana.">
+    <meta property="og:image" content="https://llumdellunaestetica.es/images/logo%20verde.png">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Favicon / Icono de Pestaña -->
+    <link rel="icon" type="image/png" href="images/logo verde.png">
+    <link rel="stylesheet" href="css/main.css?v=2.1">
+    <!-- html2canvas para exportar la Tarjeta Regalo en PNG HD A6 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+    <style>
+        /* Layout Principal */
+        .giftcard-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: var(--spacing-xl);
+            align-items: start;
+        }
+
+        @media (max-width: 1080px) {
+            .giftcard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Panel del Formulario */
+        .giftcard-form-card {
+            background-color: var(--color-bg-secondary);
+            border: 1.5px solid var(--color-border-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .giftcard-fieldset {
+            border: none;
+            padding: 0;
+            margin: 0 0 var(--spacing-lg) 0;
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px dashed rgba(139, 153, 134, 0.28);
+        }
+
+        .giftcard-fieldset:last-of-type {
+            border-bottom: none;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: 0;
+        }
+
+        .giftcard-legend {
+            font-family: var(--font-title);
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .legend-step-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            font-family: var(--font-subtitle);
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Selector Radio de Modalidad (Tratamiento vs Importe) */
+        .gift-type-radios {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        @media (max-width: 560px) {
+            .gift-type-radios {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gift-type-option {
+            position: relative;
+        }
+
+        .gift-type-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+        }
+
+        .gift-type-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 1rem 1.1rem;
+            border-radius: var(--border-radius-md);
+            border: 1.5px solid var(--color-border-card);
+            background-color: var(--color-bg-primary);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            height: 100%;
+        }
+
+        .gift-type-option input[type="radio"]:focus-visible + .gift-type-label {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .gift-type-option input[type="radio"]:checked + .gift-type-label {
+            border-color: var(--color-primary);
+            background-color: var(--color-primary-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gift-type-title {
+            font-family: var(--font-subtitle);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+
+        .gift-type-title > span:first-child {
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .gift-type-validity {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 2px 9px;
+            border-radius: var(--border-radius-full);
+            background-color: rgba(139, 153, 134, 0.22);
+            color: var(--color-primary-hover);
+            white-space: nowrap;
+        }
+
+        [data-theme="dark"] .gift-type-validity {
+            color: var(--color-accent);
+        }
+
+        .gift-type-desc {
+            font-size: 0.78rem;
+            color: var(--color-text-muted);
+            line-height: 1.35;
+        }
+
+        /* Botones rápidos de importe en € */
+        .amount-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .amount-pill {
+            padding: 0.45rem 1rem;
+            border-radius: var(--border-radius-full);
+            border: 1px solid var(--color-border-card);
+            background-color: var(--color-bg-primary);
+            color: var(--color-text-dark);
+            font-family: var(--font-subtitle);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .amount-pill:hover,
+        .amount-pill.active {
+            background-color: var(--color-primary);
+            color: #FFFFFF;
+            border-color: var(--color-primary);
+        }
+
+        /* Campos Compensados y Alineados en el Formulario */
+        .form-group {
+            margin-bottom: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.32rem;
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            align-items: start;
+        }
+
+        .form-row-2 .form-label {
+            min-height: 1.35rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        @media (max-width: 600px) {
+            .form-row-2 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .form-row-2 .form-label {
+                min-height: auto;
+            }
+        }
+
+        .field-hint {
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            line-height: 1.35;
+        }
+
+        .field-error-msg {
+            display: none;
+            font-size: 0.75rem;
+            color: #c24038;
+            font-weight: 600;
+        }
+
+        [data-theme="dark"] .field-error-msg {
+            color: #f28b82;
+        }
+
+        .form-input:user-invalid,
+        .form-select:user-invalid,
+        .form-textarea:user-invalid,
+        .form-input.user-invalid-fallback,
+        .form-select.user-invalid-fallback,
+        .form-textarea.user-invalid-fallback {
+            border-color: #c24038;
+            background-color: rgba(194, 64, 56, 0.05);
+        }
+
+        .form-input:user-valid,
+        .form-select:user-valid,
+        .form-input.user-valid-fallback,
+        .form-select.user-valid-fallback {
+            border-color: var(--color-primary);
+        }
+
+        .form-group:has(:user-invalid) .field-error-msg,
+        .form-group:has(.user-invalid-fallback) .field-error-msg {
+            display: block;
+        }
+
+        /* Caja de aviso de sorpresa para el teléfono del destinatario */
+        .recipient-phone-box {
+            background-color: var(--color-bg-primary);
+            border: 1px solid rgba(139, 153, 134, 0.3);
+            border-radius: var(--border-radius-md);
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .surprise-checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            margin-top: 8px;
+            line-height: 1.35;
+        }
+
+        .surprise-checkbox-label input[type="checkbox"] {
+            margin-top: 2px;
+            accent-color: var(--color-primary);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* Resumen de Precio y Validez */
+        .order-summary-strip {
+            background-color: var(--color-bg-primary);
+            border: 1px solid rgba(139, 153, 134, 0.35);
+            border-radius: var(--border-radius-md);
+            padding: 1rem 1.2rem;
+            margin: var(--spacing-md) 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+            color: var(--color-text-muted);
+            gap: 12px;
+        }
+
+        .summary-line.total {
+            border-top: 1px dashed rgba(139, 153, 134, 0.3);
+            padding-top: 8px;
+            margin-top: 4px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+        }
+
+        .summary-price-badge {
+            font-family: var(--font-subtitle);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        /* Columna Derecha: Vista Previa A6 Exacta y Compensada */
+        .giftcard-preview-column {
+            position: sticky;
+            top: calc(var(--header-height) + 24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+            width: 100%;
+        }
+
+        .preview-header-bar {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-subtitle);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-primary);
+            background-color: var(--color-primary-light);
+            padding: 4px 12px;
+            border-radius: var(--border-radius-full);
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+        }
+
+        /* ==========================================================================
+           FORMATO EXACTO A6 HORIZONTAL (148 mm × 105 mm -> Proporción 1.4095:1)
+           Tamaño base fijo de 560px × 397px para que TODAS las tarjetas exportadas
+           sean idénticas (1748px × 1240px a 300 DPI) sin deformarse nunca.
+           ========================================================================== */
+        .voucher-a6-stage {
+            width: 100%;
+            max-width: 560px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .gift-voucher-canvas {
+            width: 560px;
+            height: 397px;
+            min-width: 560px;
+            min-height: 397px;
+            max-width: 560px;
+            max-height: 397px;
+            background-color: #C9B3B9;
+            padding: 16px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 14px;
+            box-shadow: 0 16px 38px rgba(34, 33, 31, 0.18);
+            position: relative;
+            flex-shrink: 0;
+            transform-origin: top center;
+        }
+
+        .gift-voucher-inner {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #E3DCD1;
+            border-radius: 10px;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #C9B3B9 0%, #B89FA6 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* Cabecera de la tarjeta A6 */
+        .gv-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(227, 220, 209, 0.48);
+            padding-bottom: 10px;
+            height: 54px;
+            flex-shrink: 0;
+        }
+
+        .gv-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .gv-brand img {
+            height: 42px;
+            width: auto;
+            filter: none !important;
+        }
+
+        .gv-brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1;
+        }
+
+        .gv-brand-sub {
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #E3DCD1;
+            margin-top: 3px;
+        }
+
+        .gv-pill {
+            background: rgba(227, 220, 209, 0.28);
+            border: 1px solid #E3DCD1;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* Cuerpo central simétrico y compensado (Altura fija para que nunca baile) */
+        .gv-body {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(227, 220, 209, 0.38);
+            border-radius: 9px;
+            padding: 12px 15px;
+            margin: auto 0;
+            height: 204px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* Corrección crítica para html2canvas: base.css aplica img { display: block },
+           lo que desajusta el cálculo de línea base (baseline) de las fuentes en html2canvas
+           y desplaza todos los textos hacia abajo cortándolos. */
+        img {
+            display: inline;
+        }
+        .logo-img,
+        .gv-brand img {
+            display: block;
+        }
+
+        /* Fila 1: Para y De parte de en 2 columnas equilibradas */
+        .gv-row-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            border-bottom: 1px dashed rgba(227, 220, 209, 0.35);
+            padding-bottom: 8px;
+        }
+
+        .gv-field-box {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 0;
+        }
+
+        .gv-label {
+            font-size: 0.63rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #E3DCD1;
+            line-height: 1.2;
+        }
+
+        .gv-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        /* Fila 2: Regalo / Experiencia */
+        .gv-row-gift {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            border-bottom: 1px dashed rgba(227, 220, 209, 0.35);
+            padding-bottom: 8px;
+        }
+
+        .gv-val-gift {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.16rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.25;
+            white-space: nowrap;
+        }
+
+        /* Fila 3: Dedicatoria compensada en altura fija */
+        .gv-row-dedication {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 54px;
+        }
+
+        .gv-dedication {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.96rem;
+            color: #FAF7F2;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+        /* Pie de la tarjeta A6 (Solo Validez + Datos de Contacto del Centro) */
+        .gv-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            border-top: 1px solid rgba(227, 220, 209, 0.42);
+            padding-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .gv-footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.68rem;
+            color: #E3DCD1;
+        }
+
+        .gv-footer-top strong {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .gv-disclaimer {
+            font-size: 0.56rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.86);
+            line-height: 1.25;
+            text-align: center;
+        }
+
+        /* Caja de Confirmación y Pago Revolut (Post-Envío) */
+        .payment-step-box {
+            display: none;
+            background-color: var(--color-bg-secondary);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        .payment-step-box.visible {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .btn-revolut {
+            background: linear-gradient(135deg, #22211F 0%, #3C4A39 100%);
+            color: #FFFFFF;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-subtitle);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-fast);
+            text-align: center;
+        }
+
+        .btn-revolut:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: #FFFFFF;
+        }
+
+        /* Banner superior cuando se abre desde el enlace del correo (?ver=1) */
+        .shared-view-banner {
+            display: none;
+            background-color: var(--color-primary-light);
+            border: 1.5px solid var(--color-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .shared-view-banner.visible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA (HEADER MODULAR) -->
+    <div id="header-placeholder"></div>
+
+    <!-- CABECERA DE PÁGINA -->
+    <section class="page-header" style="padding: calc(var(--header-height) + var(--spacing-xl)) 0 var(--spacing-lg); background-color: var(--color-bg-tertiary);">
+        <div class="container">
+            <span class="hero-subtitle" data-i18n="giftcard.pageTag">Regala Calma, Belleza & Privacidad</span>
+            <h1 class="hero-title" style="font-size: 2.7rem;" data-i18n="giftcard.pageTitle">Tarjeta Regalo Personalizada</h1>
+            <p style="max-width: 680px; margin: var(--spacing-sm) auto 0;" data-i18n="giftcard.pageDesc">Sorprende a quien más quieres con una experiencia exclusiva en cabinas privadas en L'Eliana. Elige un tratamiento de nuestra carta o un bono por importe, personaliza tu dedicatoria y descarga tu tarjeta en tamaño A6 lista para imprimir o enviar.</p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="section-padding" style="padding-top: var(--spacing-xl);">
+        <div class="container">
+
+            <!-- Banner especial cuando el cliente abre el enlace recibido en su correo (?ver=1) -->
+            <div id="sharedViewBanner" class="shared-view-banner" role="region" aria-label="Tarjeta Regalo Generada">
+                <span class="hero-subtitle" data-i18n="giftcard.sharedBadge">✨ Tu Tarjeta Regalo Está Lista</span>
+                <h2 style="font-size: 1.9rem; margin-bottom: 4px;" data-i18n="giftcard.sharedTitle">Aquí tienes tu Tarjeta Regalo personalizada</h2>
+                <p style="max-width: 620px; font-size: 0.92rem; color: var(--color-text-muted);" data-i18n="giftcard.sharedDesc">Puedes descargar la imagen en alta calidad (formato postal A6) para enviarla por WhatsApp o imprimirla fácilmente. Recuerda que para poder canjearla en el centro debe haberse completado el abono correspondiente en Revolut.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 8px;">
+                    <button type="button" id="sharedDownloadBtn" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        <span data-i18n="giftcard.btnDownloadPNG">Descargar Tarjeta Regalo (A6 PNG HD)</span>
+                    </button>
+                    <a href="https://checkout.revolut.com/pay/7470f218-b9af-4e9c-a4e6-ac56ffc9c201" target="_blank" rel="noopener noreferrer" class="btn-revolut" style="padding: 0.75rem 1.3rem; font-size: 0.8rem;">
+                        <span data-i18n="giftcard.sharedPayBtn">💳 Ir a la Pasarela de Pago Revolut</span>
+                    </a>
+                    <a href="tarjeta-regalo.html" class="btn btn-outline" style="padding: 0.75rem 1.2rem; font-size: 0.8rem;" data-i18n="giftcard.sharedNewBtn">Crear otra Tarjeta Regalo</a>
+                </div>
+            </div>
+
+            <div class="giftcard-grid">
+                <!-- COLUMNA IZQUIERDA: FORMULARIO DE PERSONALIZACIÓN Y PEDIDO -->
+                <div class="giftcard-form-card" id="giftFormContainer">
+                    <form id="giftCardForm" action="https://formsubmit.co/ajax/9f29206134078a96a0acb84c1e686c97" method="POST">
+                        <input type="hidden" name="_subject" id="hiddenSubject" value="🎁 Nueva Tarjeta Regalo - Llum de Lluna">
+                        <input type="hidden" name="_cc" id="hiddenCc" value="">
+                        <input type="hidden" name="_replyto" id="hiddenReplyTo" value="">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <!-- Campos calculados que se envían en el correo -->
+                        <input type="hidden" name="Modalidad_de_Regalo" id="hiddenGiftType" value="Tratamiento específico (Validez 3 meses)">
+                        <input type="hidden" name="Regalo_Seleccionado" id="hiddenGiftDetail" value="Ritual Facial Renovador">
+                        <input type="hidden" name="Importe_a_Abonar_en_Revolut" id="hiddenAmountToPay" value="65€">
+                        <input type="hidden" name="Fecha_de_Caducidad" id="hiddenExpiryDate" value="">
+                        <input type="hidden" name="Aviso_WhatsApp_Destinatario" id="hiddenNotifyRecipient" value="NO enviar mensaje al destinatario (El comprador la entregará personalmente)">
+                        <input type="hidden" name="Enlace_Tarjeta_Regalo" id="hiddenCardUrl" value="">
+
+                        <!-- PASO 1: ¿QUÉ QUIERES REGALAR? -->
+                        <fieldset class="giftcard-fieldset">
+                            <legend class="giftcard-legend">
+                                <span class="legend-step-badge">1</span>
+                                <span data-i18n="giftcard.step1Title">¿Qué te gustaría regalar?</span>
+                            </legend>
+
+                            <div class="gift-type-radios">
+                                <div class="gift-type-option">
+                                    <input type="radio" id="modeTreatment" name="giftMode" value="treatment" checked>
+                                    <label for="modeTreatment" class="gift-type-label">
+                                        <span class="gift-type-title">
+                                            <span data-i18n="giftcard.modeTreatmentTitle">🌸 Tratamiento</span>
+                                            <span class="gift-type-validity" data-i18n="giftcard.validity3m">Validez 3 meses</span>
+                                        </span>
+                                        <span class="gift-type-desc" data-i18n="giftcard.modeTreatmentDesc">Elige un ritual o servicio concreto. En la tarjeta solo aparecerá el nombre del tratamiento (sin mostrar el precio).</span>
+                                    </label>
+                                </div>
+
+                                <div class="gift-type-option">
+                                    <input type="radio" id="modeAmount" name="giftMode" value="amount">
+                                    <label for="modeAmount" class="gift-type-label">
+                                        <span class="gift-type-title">
+                                            <span data-i18n="giftcard.modeAmountTitle">💶 Bono por Importe (€)</span>
+                                            <span class="gift-type-validity" data-i18n="giftcard.validity6m">Validez 6 meses</span>
+                                        </span>
+                                        <span class="gift-type-desc" data-i18n="giftcard.modeAmountDesc">Regala saldo libre para que la persona elija el tratamiento que más le apetezca en el centro.</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Selector de Tratamiento -->
+                            <div class="form-group" id="treatmentSelectorGroup">
+                                <label class="form-label" for="treatmentSelect" data-i18n="giftcard.selectTreatmentLabel">Selecciona el Tratamiento a Regalar *</label>
+                                <select class="form-select" id="treatmentSelect" required aria-describedby="treatmentHelp">
+                                    <optgroup label="✨ Faciales & Rituales">
+                                        <option value="Ritual Facial Renovador (60 min)" data-price="65" selected>Ritual Facial Renovador (60 min) — 65€</option>
+                                        <option value="Ritual Facial Mantenimiento (50 min)" data-price="55">Ritual Facial Mantenimiento (50 min) — 55€</option>
+                                        <option value="Tratamiento Facial Hidratante (60 min)" data-price="60">Tratamiento Facial Hidratante (60 min) — 60€</option>
+                                        <option value="Tratamiento Facial Calmante Piel Sensible (60 min)" data-price="60">Tratamiento Facial Calmante Piel Sensible (60 min) — 60€</option>
+                                        <option value="Tratamiento Facial Purificante (60 min)" data-price="60">Tratamiento Facial Purificante (60 min) — 60€</option>
+                                        <option value="Tratamiento Facial Antiedad (60 min)" data-price="60">Tratamiento Facial Antiedad (60 min) — 60€</option>
+                                        <option value="Dermapen con Principio Activo (60 min)" data-price="70">Dermapen con Principio Activo (60 min) — 70€</option>
+                                    </optgroup>
+                                    <optgroup label="💅 Manicura & Cuidado de Manos">
+                                        <option value="Manicura Natural Básica" data-price="15">Manicura Natural Básica (30 min) — 15€</option>
+                                        <option value="Manicura Natural con Esmaltado Tradicional" data-price="18">Manicura Natural con Esmaltado Tradicional (40 min) — 18€</option>
+                                        <option value="Manicura Semipermanente" data-price="22">Manicura Semipermanente (60 min) — 22€</option>
+                                        <option value="Manicura Semipermanente con Refuerzo de Grafeno" data-price="25">Manicura Semipermanente con Refuerzo de Grafeno (75 min) — 25€</option>
+                                        <option value="Manicura Esculpida en Gel (Talla S)" data-price="30">Manicura Esculpida en Gel - Talla S (90 min) — 30€</option>
+                                        <option value="Manicura Esculpida en Gel (Talla M)" data-price="35">Manicura Esculpida en Gel - Talla M (105 min) — 35€</option>
+                                        <option value="Manicura Esculpida en Gel (Talla L)" data-price="40">Manicura Esculpida en Gel - Talla L (120 min) — 40€</option>
+                                    </optgroup>
+                                    <optgroup label="🦶 Pedicura & Spa Podal">
+                                        <option value="Pedicura Spa Completa (75 min)" data-price="30">Pedicura Spa Completa (75 min) — 30€</option>
+                                        <option value="Pedicura Nutritiva con Remojo y Exfoliación (60 min)" data-price="25">Pedicura Nutritiva con Remojo y Exfoliación (60 min) — 25€</option>
+                                        <option value="Pedicura en Seco (60 min)" data-price="22">Pedicura en Seco (60 min) — 22€</option>
+                                    </optgroup>
+                                    <optgroup label="🌿 Packs Combinados">
+                                        <option value="Pack Manicura Semipermanente + Pedicura Spa Completa" data-price="52">Pack Manicura Semipermanente + Pedicura Spa Completa — 52€</option>
+                                        <option value="Pack Ritual Facial Renovador + Pedicura Spa Completa" data-price="95">Pack Ritual Facial Renovador + Pedicura Spa Completa — 95€</option>
+                                    </optgroup>
+                                    <optgroup label="☀️ Fotodepilación IPL (Packs)">
+                                        <option value="Pack IPL Mujer: Axilas + Ingles + Piernas Enteras" data-price="70">Pack IPL Mujer: Axilas + Ingles + Piernas Enteras — 70€</option>
+                                        <option value="Pack IPL Mujer: Axilas + Ingles + Brazos" data-price="60">Pack IPL Mujer: Axilas + Ingles + Brazos — 60€</option>
+                                        <option value="Pack IPL Mujer: Cuerpo Entero" data-price="90">Pack IPL Mujer: Cuerpo Entero — 90€</option>
+                                        <option value="Pack IPL Hombre: Cuerpo Entero" data-price="120">Pack IPL Hombre: Cuerpo Entero — 120€</option>
+                                    </optgroup>
+                                </select>
+                                <span id="treatmentHelp" class="field-hint" data-i18n="giftcard.treatmentHint">El precio solo lo ves tú para el pago; en la tarjeta regalo solo figurará el nombre de la experiencia.</span>
+                            </div>
+
+                            <!-- Selector de Importe en € -->
+                            <div class="form-group" id="amountSelectorGroup" style="display: none;">
+                                <label class="form-label" for="customAmountInput" data-i18n="giftcard.selectAmountLabel">Importe del Bono Regalo (€) *</label>
+                                <div class="amount-pills" role="group" aria-label="Importes recomendados">
+                                    <button type="button" class="amount-pill" data-amount="30">30€</button>
+                                    <button type="button" class="amount-pill active" data-amount="50">50€</button>
+                                    <button type="button" class="amount-pill" data-amount="65">65€</button>
+                                    <button type="button" class="amount-pill" data-amount="100">100€</button>
+                                    <button type="button" class="amount-pill" data-amount="150">150€</button>
+                                </div>
+                                <input class="form-input" type="number" id="customAmountInput" min="1" max="1000" step="1" value="50" inputmode="numeric" aria-describedby="amountHelp amountError">
+                                <span id="amountHelp" class="field-hint" data-i18n="giftcard.amountHint">Puedes pulsar un importe rápido o escribir cualquier cantidad personalizada.</span>
+                                <span id="amountError" class="field-error-msg" data-i18n="giftcard.amountError">Introduce un importe válido en euros.</span>
+                            </div>
+                        </fieldset>
+
+                        <!-- PASO 2: PERSONALIZACIÓN Y DESTINATARIO -->
+                        <fieldset class="giftcard-fieldset">
+                            <legend class="giftcard-legend">
+                                <span class="legend-step-badge">2</span>
+                                <span data-i18n="giftcard.step2Title">Datos de Quien Recibe el Regalo</span>
+                            </legend>
+
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <label class="form-label" for="recipientName" data-i18n="giftcard.toLabel">Para (Nombre destinatario/a) *</label>
+                                    <input class="form-input" type="text" id="recipientName" name="Para_Destinatario" required maxlength="38" placeholder="Ej. Lucía Martínez" data-i18n-placeholder="giftcard.toPlaceholder" aria-describedby="recipientError">
+                                    <span id="recipientError" class="field-error-msg" data-i18n="giftcard.toError">Por favor, escribe el nombre de quien recibe el regalo.</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label" for="senderDisplayName" data-i18n="giftcard.fromLabel">De parte de (Quienes regalan) *</label>
+                                    <input class="form-input" type="text" id="senderDisplayName" name="De_parte_de" required maxlength="38" placeholder="Ej. Marta y familia" data-i18n-placeholder="giftcard.fromPlaceholder" aria-describedby="senderError">
+                                    <span id="senderError" class="field-error-msg" data-i18n="giftcard.fromError">Indica de parte de quién es el regalo.</span>
+                                </div>
+                            </div>
+
+                            <!-- Teléfono de quien recibe la tarjeta con aviso de confidencialidad / sorpresa -->
+                            <div class="recipient-phone-box">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label class="form-label" for="recipientPhone" data-i18n="giftcard.recipientPhoneLabel">Teléfono de quien recibe el regalo *</label>
+                                    <input class="form-input" type="tel" id="recipientPhone" name="Telefono_Destinatario" required placeholder="Ej. 600 987 654" aria-describedby="recipientPhoneHelp recipientPhoneError">
+                                    <span id="recipientPhoneHelp" class="field-hint" style="color: var(--color-text-dark); font-weight: 500; margin-top: 2px;" data-i18n="giftcard.recipientPhoneHint">🤫 Tranquilidad total: si no lo solicitas aquí abajo, NO le enviaremos ningún mensaje para no estropear tu sorpresa (solo lo usamos para registrar su ficha en el centro).</span>
+                                    <span id="recipientPhoneError" class="field-error-msg" data-i18n="giftcard.recipientPhoneError">Introduce el teléfono de la persona que recibirá la tarjeta.</span>
+                                </div>
+
+                                <label class="surprise-checkbox-label" for="requestCenterSendMsg">
+                                    <input type="checkbox" id="requestCenterSendMsg">
+                                    <span data-i18n="giftcard.requestSendWhatsappLabel">Solicito que Llum de Lluna le envíe un mensaje de WhatsApp en mi nombre avisándole de su regalo (si lo dejas desmarcado, no le enviaremos nada).</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="dedicationText" data-i18n="giftcard.dedicationLabel">Dedicatoria personalizada (Opcional)</label>
+                                <textarea class="form-textarea" id="dedicationText" name="Dedicatoria" rows="2" maxlength="130" style="min-height: 70px;" placeholder="Ej. Por todo lo que cuidas de nosotros, te mereces este ratito solo para ti..." data-i18n-placeholder="giftcard.dedicationPlaceholder" aria-describedby="dedicationHelp"></textarea>
+                                <span id="dedicationHelp" class="field-hint" data-i18n="giftcard.dedicationHint">Aparecerá centrada en cursiva dentro de la tarjeta (máx. 130 caracteres).</span>
+                            </div>
+                        </fieldset>
+
+                        <!-- PASO 3: DATOS DEL COMPRADOR (SOLO PARA REGISTRO INTERNO Y CORREO) -->
+                        <fieldset class="giftcard-fieldset">
+                            <legend class="giftcard-legend">
+                                <span class="legend-step-badge">3</span>
+                                <span data-i18n="giftcard.step3Title">Tus Datos de Comprador</span>
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="form-label" for="buyerFullName" data-i18n="giftcard.buyerNameLabel">Tu Nombre y Apellidos *</label>
+                                <input class="form-input" type="text" id="buyerFullName" name="Comprador_Titular_Pago" required autocomplete="name" placeholder="Ej. Marta Gómez Pérez" data-i18n-placeholder="giftcard.buyerNamePlaceholder" aria-describedby="buyerNameHelp buyerNameError">
+                                <span id="buyerNameHelp" class="field-hint" data-i18n="giftcard.buyerNameHint">No aparece impreso en la tarjeta; nos sirve internamente para registrar tu compra.</span>
+                                <span id="buyerNameError" class="field-error-msg" data-i18n="giftcard.buyerNameError">Introduce tu nombre y apellidos completos.</span>
+                            </div>
+
+                            <div class="form-row-2">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label class="form-label" for="buyerEmail" data-i18n="giftcard.buyerEmailLabel">Tu Correo Electrónico *</label>
+                                    <input class="form-input" type="email" id="buyerEmail" name="Email_Comprador" required autocomplete="email" placeholder="tucorreo@ejemplo.com" aria-describedby="buyerEmailHelp buyerEmailError">
+                                    <span id="buyerEmailHelp" class="field-hint" data-i18n="giftcard.buyerEmailHelp">Recibirás copia del pedido y el enlace a tu tarjeta.</span>
+                                    <span id="buyerEmailError" class="field-error-msg" data-i18n="giftcard.buyerEmailError">Introduce un correo electrónico válido.</span>
+                                </div>
+
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label class="form-label" for="buyerPhone" data-i18n="giftcard.buyerPhoneLabel">Tu Teléfono / WhatsApp *</label>
+                                    <input class="form-input" type="tel" id="buyerPhone" name="Telefono_Comprador" required autocomplete="tel" placeholder="Ej. 600 123 456" aria-describedby="buyerPhoneHelp buyerPhoneError">
+                                    <span id="buyerPhoneHelp" class="field-hint" data-i18n="giftcard.buyerPhoneHelp">Para cualquier consulta sobre tu compra.</span>
+                                    <span id="buyerPhoneError" class="field-error-msg" data-i18n="giftcard.buyerPhoneError">Introduce tu teléfono de contacto.</span>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <!-- RESUMEN DEL PEDIDO -->
+                        <div class="order-summary-strip" aria-live="polite">
+                            <div class="summary-line">
+                                <span data-i18n="giftcard.summaryGift">Experiencia / Bono:</span>
+                                <strong id="summaryGiftText" style="color: var(--color-text-dark); text-align: right;">Ritual Facial Renovador (60 min)</strong>
+                            </div>
+                            <div class="summary-line">
+                                <span data-i18n="giftcard.summaryValidity">Caducidad automática:</span>
+                                <strong id="summaryValidityText" style="color: var(--color-text-dark);">3 meses</strong>
+                            </div>
+                            <div class="summary-line total">
+                                <span data-i18n="giftcard.summaryTotal">Total a abonar:</span>
+                                <span class="summary-price-badge" id="summaryPriceText">65€</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="giftSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 0.9rem; font-weight: 700;">
+                            <span data-i18n="giftcard.submitBtn">Confirmar Pedido, Recibir por Correo y Pasar al Pago</span>
+                        </button>
+                    </form>
+
+                    <!-- CAJA DE PAGO Y DESCARGA (SE MUESTRA AL CONFIRMAR EL FORMULARIO) -->
+                    <div id="paymentStepBox" class="payment-step-box" role="region" aria-live="polite">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--color-primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</span>
+                            <div>
+                                <h3 style="font-size: 1.35rem; margin: 0;" data-i18n="giftcard.stepPayTitle">¡Pedido registrado! Último paso: Abono y Descarga</h3>
+                                <p style="font-size: 0.84rem; color: var(--color-text-muted); margin: 2px 0 0;" data-i18n="giftcard.stepPayEmailSent">Hemos enviado a tu correo electrónico el resumen de la compra junto con el enlace permanente a tu tarjeta regalo.</p>
+                            </div>
+                        </div>
+
+                        <div style="background-color: var(--color-bg-primary); border-left: 3px solid var(--color-primary); padding: 0.85rem 1rem; border-radius: var(--border-radius-sm); font-size: 0.85rem; line-height: 1.5; color: var(--color-text-dark);">
+                            <p style="margin: 0;"><strong data-i18n="giftcard.importantPayLabel">📌 Cómo activar tu Tarjeta Regalo:</strong></p>
+                            <p style="margin: 4px 0 0;">Pulsa el botón inferior para abonar <strong id="payStepAmount">65€</strong> en nuestra pasarela segura de <strong>Revolut</strong> e indica en el comentario de la pasarela el <strong>nombre de la persona a la que va dirigido el bono/experiencia</strong> (<strong id="payStepRecipientName">Lucía Martínez</strong>). En cuanto recibamos la confirmación del abono, la tarjeta quedará activada.</p>
+                        </div>
+
+                        <a href="https://checkout.revolut.com/pay/7470f218-b9af-4e9c-a4e6-ac56ffc9c201" target="_blank" rel="noopener noreferrer" class="btn-revolut" id="revolutPayLink">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            <span id="revolutPayBtnText">Abonar 65€ Ahora en Revolut</span>
+                        </a>
+
+                        <button type="button" id="postSubmitDownloadBtn" class="btn btn-outline" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            <span data-i18n="giftcard.btnDownloadPNG">Descargar Tarjeta Regalo (A6 PNG HD)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA: VISTA PREVIA EN VIVO EN TAMAÑO EXACTO A6 -->
+                <div class="giftcard-preview-column">
+                    <div class="preview-header-bar">
+                        <span class="preview-badge-live">
+                            <span class="live-dot"></span>
+                            <span data-i18n="giftcard.livePreviewTag">Vista Previa en Vivo</span>
+                        </span>
+                        <span style="font-size: 0.76rem; color: var(--color-text-muted);" data-i18n="giftcard.hdFormatTag">Tamaño Estándar A6 (148 × 105 mm)</span>
+                    </div>
+
+                    <!-- ESCENARIO A6 FIJO Y COMPENSADO -->
+                    <div class="voucher-a6-stage" id="voucherStage">
+                        <div class="gift-voucher-canvas" id="giftVoucherCanvas">
+                            <div class="gift-voucher-inner">
+                                <!-- Cabecera de la Tarjeta -->
+                                <div class="gv-top">
+                                    <div class="gv-brand">
+                                        <img src="images/logo IG 1.png" alt="Llum de Lluna">
+                                        <div>
+                                            <div class="gv-brand-name">Llum de Lluna</div>
+                                            <div class="gv-brand-sub">Estética &amp; Bienestar</div>
+                                        </div>
+                                    </div>
+                                    <span class="gv-pill" data-i18n="giftcard.cardBadge">TARJETA REGALO</span>
+                                </div>
+
+                                <!-- Cuerpo Simétrico de 3 Bloques Compensados -->
+                                <div class="gv-body">
+                                    <!-- Bloque 1: Para y De parte de (2 columnas iguales) -->
+                                    <div class="gv-row-split">
+                                        <div class="gv-field-box">
+                                            <span class="gv-label" data-i18n="giftcard.cardTo">🎁 Para</span>
+                                            <span class="gv-val" id="cardPreviewTo">Lucía Martínez</span>
+                                        </div>
+                                        <div class="gv-field-box">
+                                            <span class="gv-label" data-i18n="giftcard.cardFrom">💌 De parte de</span>
+                                            <span class="gv-val" id="cardPreviewFrom">Marta y familia</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bloque 2: Experiencia / Regalo -->
+                                    <div class="gv-row-gift">
+                                        <span class="gv-label" data-i18n="giftcard.cardGift">✨ Experiencia Regalo</span>
+                                        <span class="gv-val-gift" id="cardPreviewGift">Ritual Facial Renovador (60 min)</span>
+                                    </div>
+
+                                    <!-- Bloque 3: Dedicatoria (Siempre ocupa su espacio equilibrado) -->
+                                    <div class="gv-row-dedication">
+                                        <span class="gv-label" style="margin-bottom: 2px;" data-i18n="giftcard.cardDedication">💬 Dedicatoria</span>
+                                        <span class="gv-dedication" id="cardPreviewDedication">“Te mereces este momento de calma y cuidado solo para ti.”</span>
+                                    </div>
+                                </div>
+
+                                <!-- Pie de la Tarjeta: SOLO Validez y Datos de Contacto de Llum de Lluna -->
+                                <div class="gv-footer">
+                                    <div class="gv-footer-top">
+                                        <span>📅 <span data-i18n="giftcard.cardValidUntil">Válido hasta:</span> <strong id="cardPreviewExpiry">—</strong></span>
+                                        <span>📍 L'Eliana (Valencia) • 📞 WhatsApp: <strong>604 87 07 85</strong></span>
+                                    </div>
+                                    <div class="gv-disclaimer" data-i18n="giftcard.cardDisclaimer">
+                                        * Imprescindible reservar cita previa y presentar esta tarjeta. Válida una vez confirmado el abono. No canjeable por efectivo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción Directa bajo la Tarjeta -->
+                    <div style="width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 10px;">
+                        <button type="button" id="previewDownloadBtn" class="btn btn-secondary" style="width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            <span data-i18n="giftcard.btnDownloadPNG">Descargar Tarjeta Regalo (A6 PNG HD)</span>
+                        </button>
+                        <p style="font-size: 0.78rem; color: var(--color-text-muted); text-align: center; line-height: 1.4;" data-i18n="giftcard.previewNote">
+                            💡 Todas las tarjetas se descargan con medida exacta A6 (148 × 105 mm a 300 DPI) para que puedas imprimirlas fácilmente o enviarlas por WhatsApp.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (MODULAR) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts JS -->
+    <script src="js/i18n.js?v=2.2"></script>
+    <script src="js/main.js?v=2.2"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Escalado responsivo del visor A6 en pantallas pequeñas manteniendo 560x397 nativos
+            const voucherStage = document.getElementById('voucherStage');
+            const voucherCanvas = document.getElementById('giftVoucherCanvas');
+
+            const fitVoucherToScreen = () => {
+                if (!voucherStage || !voucherCanvas) return;
+                const availableWidth = voucherStage.clientWidth;
+                if (availableWidth > 0 && availableWidth < 560) {
+                    const scale = availableWidth / 560;
+                    voucherCanvas.style.transform = `scale(${scale})`;
+                    voucherStage.style.height = `${Math.round(397 * scale)}px`;
+                } else {
+                    voucherCanvas.style.transform = 'none';
+                    voucherStage.style.height = '397px';
+                }
+            };
+
+            window.addEventListener('resize', fitVoucherToScreen);
+            fitVoucherToScreen();
+
+            // 2. Validación Accesible Tras Interacción (:user-invalid fallback + sync aria-invalid)
+            const UserInvalidFallback = (() => {
+                const dirtyState = new WeakMap();
+                const updateState = (input) => {
+                    if (!input.checkValidity) return;
+                    const isValid = input.checkValidity();
+                    input.classList.toggle('user-invalid-fallback', !isValid);
+                    input.classList.toggle('user-valid-fallback', isValid);
+                    input.setAttribute('aria-invalid', !isValid ? 'true' : 'false');
+                };
+                const handleEvent = (event) => {
+                    const input = event.target;
+                    if (!input || !input.checkValidity) return;
+                    if (event.type === 'input' || event.type === 'change') {
+                        const state = dirtyState.get(input) || { hasInteracted: false, hasBlurred: false };
+                        state.hasInteracted = true;
+                        dirtyState.set(input, state);
+                        if (state.hasBlurred) updateState(input);
+                    } else if (event.type === 'blur') {
+                        const state = dirtyState.get(input) || { hasInteracted: false, hasBlurred: false };
+                        state.hasBlurred = true;
+                        dirtyState.set(input, state);
+                        if (state.hasInteracted) updateState(input);
+                    }
+                };
+                const init = (root = document) => {
+                    root.addEventListener('blur', handleEvent, true);
+                    root.addEventListener('input', handleEvent);
+                    root.addEventListener('change', handleEvent);
+                };
+                return { init };
+            })();
+
+            const giftCardForm = document.getElementById('giftCardForm');
+            if (giftCardForm) {
+                UserInvalidFallback.init(giftCardForm);
+            }
+
+            // Elementos del DOM
+            const modeTreatment = document.getElementById('modeTreatment');
+            const modeAmount = document.getElementById('modeAmount');
+            const treatmentSelectorGroup = document.getElementById('treatmentSelectorGroup');
+            const amountSelectorGroup = document.getElementById('amountSelectorGroup');
+            const treatmentSelect = document.getElementById('treatmentSelect');
+            const customAmountInput = document.getElementById('customAmountInput');
+            const amountPills = document.querySelectorAll('.amount-pill');
+
+            const recipientName = document.getElementById('recipientName');
+            const senderDisplayName = document.getElementById('senderDisplayName');
+            const recipientPhone = document.getElementById('recipientPhone');
+            const requestCenterSendMsg = document.getElementById('requestCenterSendMsg');
+            const dedicationText = document.getElementById('dedicationText');
+            const buyerFullName = document.getElementById('buyerFullName');
+            const buyerEmail = document.getElementById('buyerEmail');
+
+            // Elementos de Vista Previa en la Tarjeta A6
+            const cardPreviewTo = document.getElementById('cardPreviewTo');
+            const cardPreviewFrom = document.getElementById('cardPreviewFrom');
+            const cardPreviewGift = document.getElementById('cardPreviewGift');
+            const cardPreviewDedication = document.getElementById('cardPreviewDedication');
+            const cardPreviewExpiry = document.getElementById('cardPreviewExpiry');
+
+            // Elementos de Resumen y Hidden Inputs
+            const summaryGiftText = document.getElementById('summaryGiftText');
+            const summaryValidityText = document.getElementById('summaryValidityText');
+            const summaryPriceText = document.getElementById('summaryPriceText');
+
+            const hiddenSubject = document.getElementById('hiddenSubject');
+            const hiddenCc = document.getElementById('hiddenCc');
+            const hiddenReplyTo = document.getElementById('hiddenReplyTo');
+            const hiddenGiftType = document.getElementById('hiddenGiftType');
+            const hiddenGiftDetail = document.getElementById('hiddenGiftDetail');
+            const hiddenAmountToPay = document.getElementById('hiddenAmountToPay');
+            const hiddenExpiryDate = document.getElementById('hiddenExpiryDate');
+            const hiddenNotifyRecipient = document.getElementById('hiddenNotifyRecipient');
+            const hiddenCardUrl = document.getElementById('hiddenCardUrl');
+
+            const DEFAULT_DEDICATION = 'Te mereces este momento de calma y cuidado solo para ti.';
+
+            // Formatear fecha de caducidad (+3 meses para tratamiento, +6 meses para bono €)
+            const calculateExpiryDateString = (monthsToAdd) => {
+                const date = new Date();
+                date.setMonth(date.getMonth() + monthsToAdd);
+                const lang = window.i18n ? window.i18n.currentLang : 'es';
+                const localeMap = { es: 'es-ES', va: 'ca-ES', en: 'en-GB' };
+                return date.toLocaleDateString(localeMap[lang] || 'es-ES', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                });
+            };
+
+            // Construir enlace compartible con parámetros en la URL (sin datos de compra privados)
+            const buildShareableCardUrl = (data) => {
+                const baseUrl = window.location.origin + window.location.pathname;
+                const params = new URLSearchParams();
+                params.set('ver', '1');
+                params.set('para', data.to);
+                params.set('de', data.from);
+                params.set('regalo', data.giftDisplay);
+                params.set('dedicatoria', data.dedication || DEFAULT_DEDICATION);
+                params.set('caducidad', data.expiry);
+                return `${baseUrl}?${params.toString()}`;
+            };
+
+            // Comprobar si venimos desde un enlace de correo (?ver=1)
+            const urlParams = new URLSearchParams(window.location.search);
+            const isSharedView = urlParams.get('ver') === '1';
+
+            if (isSharedView) {
+                const sharedBanner = document.getElementById('sharedViewBanner');
+                if (sharedBanner) sharedBanner.classList.add('visible');
+
+                const pTo = urlParams.get('para') || '—';
+                const pFrom = urlParams.get('de') || '—';
+                const pGift = urlParams.get('regalo') || 'Experiencia Llum de Lluna';
+                const pDedication = urlParams.get('dedicatoria') || DEFAULT_DEDICATION;
+                const pExpiry = urlParams.get('caducidad') || '';
+
+                cardPreviewTo.textContent = pTo;
+                cardPreviewFrom.textContent = pFrom;
+                cardPreviewGift.textContent = pGift;
+                cardPreviewDedication.textContent = `“${pDedication.trim()}”`;
+                cardPreviewExpiry.textContent = pExpiry;
+
+                if (recipientName) recipientName.value = pTo;
+                if (senderDisplayName) senderDisplayName.value = pFrom;
+                if (dedicationText) dedicationText.value = pDedication;
+            }
+
+            // Función principal de sincronización en vivo
+            const updateLiveGiftCard = () => {
+                if (isSharedView && !giftCardForm.dataset.userEdited) {
+                    return;
+                }
+
+                const isTreatment = modeTreatment.checked;
+                let giftDisplayOnCard = '';
+                let priceToPay = 0;
+                let monthsValidity = isTreatment ? 3 : 6;
+
+                if (isTreatment) {
+                    treatmentSelectorGroup.style.display = 'flex';
+                    amountSelectorGroup.style.display = 'none';
+                    treatmentSelect.disabled = false;
+                    customAmountInput.disabled = true;
+                    const selectedOption = treatmentSelect.options[treatmentSelect.selectedIndex];
+                    giftDisplayOnCard = selectedOption ? selectedOption.value : 'Ritual Facial Renovador';
+                    priceToPay = selectedOption ? parseFloat(selectedOption.getAttribute('data-price') || '65') : 65;
+                } else {
+                    treatmentSelectorGroup.style.display = 'none';
+                    amountSelectorGroup.style.display = 'flex';
+                    treatmentSelect.disabled = true;
+                    customAmountInput.disabled = false;
+                    const rawVal = parseFloat(customAmountInput.value);
+                    priceToPay = (!isNaN(rawVal) && rawVal > 0) ? rawVal : 50;
+                    giftDisplayOnCard = `Bono Regalo de ${priceToPay}€ (En cualquier tratamiento)`;
+                }
+
+                const expiryStr = calculateExpiryDateString(monthsValidity);
+                const toVal = recipientName.value.trim() || 'Lucía Martínez';
+                const fromVal = senderDisplayName.value.trim() || 'Marta y familia';
+                const dedVal = dedicationText.value.trim() || DEFAULT_DEDICATION;
+
+                // Actualizar Tarjeta Visual A6 (Sin datos de compra del comprador)
+                cardPreviewTo.textContent = toVal;
+                cardPreviewFrom.textContent = fromVal;
+                cardPreviewGift.textContent = giftDisplayOnCard;
+                cardPreviewDedication.textContent = `“${dedVal}”`;
+                cardPreviewExpiry.textContent = expiryStr;
+
+                // Actualizar Resumen de Compra
+                summaryGiftText.textContent = giftDisplayOnCard;
+                summaryValidityText.textContent = isTreatment
+                    ? `3 meses (hasta el ${expiryStr})`
+                    : `6 meses (hasta el ${expiryStr})`;
+                summaryPriceText.textContent = `${priceToPay}€`;
+
+                // Actualizar Campos Ocultos para el Correo FormSubmit
+                hiddenGiftType.value = isTreatment
+                    ? 'Tratamiento específico (Validez 3 meses)'
+                    : 'Bono por Importe en € (Validez 6 meses)';
+                hiddenGiftDetail.value = giftDisplayOnCard;
+                hiddenAmountToPay.value = `${priceToPay}€`;
+                hiddenExpiryDate.value = expiryStr;
+                hiddenNotifyRecipient.value = (requestCenterSendMsg && requestCenterSendMsg.checked)
+                    ? `SÍ: El comprador solicita enviar WhatsApp al destinatario (${recipientPhone?.value.trim() || 'sin teléfono'})`
+                    : 'NO enviar mensaje al destinatario (Sorpresa: lo entregará el comprador)';
+                hiddenSubject.value = `🎁 Nueva Tarjeta Regalo (${priceToPay}€) - Para: ${toVal} (Comprador: ${buyerFullName.value.trim() || 'Cliente'})`;
+
+                if (buyerEmail.value.trim()) {
+                    hiddenCc.value = buyerEmail.value.trim();
+                    hiddenReplyTo.value = buyerEmail.value.trim();
+                }
+
+                const shareUrl = buildShareableCardUrl({
+                    to: recipientName.value.trim() || toVal,
+                    from: senderDisplayName.value.trim() || fromVal,
+                    giftDisplay: giftDisplayOnCard,
+                    dedication: dedVal,
+                    expiry: expiryStr
+                });
+                hiddenCardUrl.value = shareUrl;
+
+                // Actualizar textos de la caja de pago Revolut
+                const payStepAmount = document.getElementById('payStepAmount');
+                const payStepRecipientName = document.getElementById('payStepRecipientName');
+                const revolutPayBtnText = document.getElementById('revolutPayBtnText');
+                if (payStepAmount) payStepAmount.textContent = `${priceToPay}€`;
+                if (payStepRecipientName) payStepRecipientName.textContent = recipientName.value.trim() || 'el nombre del destinatario/a';
+                if (revolutPayBtnText) revolutPayBtnText.textContent = `💳 Abonar ${priceToPay}€ Ahora en Revolut`;
+            };
+
+            // Listeners de cambios en el formulario
+            [modeTreatment, modeAmount, treatmentSelect, customAmountInput, recipientName, senderDisplayName, recipientPhone, requestCenterSendMsg, dedicationText, buyerFullName, buyerEmail].forEach(el => {
+                if (el) {
+                    el.addEventListener('input', () => {
+                        giftCardForm.dataset.userEdited = 'true';
+                        updateLiveGiftCard();
+                    });
+                    el.addEventListener('change', () => {
+                        giftCardForm.dataset.userEdited = 'true';
+                        updateLiveGiftCard();
+                    });
+                }
+            });
+
+            // Botones rápidos de importe en €
+            amountPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    amountPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    customAmountInput.value = pill.getAttribute('data-amount');
+                    giftCardForm.dataset.userEdited = 'true';
+                    updateLiveGiftCard();
+                });
+            });
+
+            customAmountInput.addEventListener('input', () => {
+                const currentVal = customAmountInput.value;
+                amountPills.forEach(p => {
+                    p.classList.toggle('active', p.getAttribute('data-amount') === currentVal);
+                });
+            });
+
+            window.addEventListener('languageChanged', updateLiveGiftCard);
+
+            // Inicializar vista previa
+            updateLiveGiftCard();
+
+            // 3. Descarga de la Tarjeta Regalo en Tamaño Exacto A6 (1748x1240 px a 300 DPI)
+            const downloadGiftCardPNG = async (triggerBtn) => {
+                const canvasElem = document.getElementById('giftVoucherCanvas');
+                if (!canvasElem || typeof html2canvas === 'undefined') {
+                    if (window.showToast) window.showToast('Preparando generador de imagen, inténtalo en un segundo...', false);
+                    return;
+                }
+
+                const originalHtml = triggerBtn ? triggerBtn.innerHTML : '';
+                if (triggerBtn) {
+                    triggerBtn.disabled = true;
+                    triggerBtn.textContent = 'Generando tarjeta A6 HD...';
+                }
+
+                // Quitar temporalmente cualquier escalado móvil para exportar siempre a 560x397 exactos
+                const prevTransform = canvasElem.style.transform;
+                canvasElem.style.transform = 'none';
+
+                try {
+                    if (document.fonts && document.fonts.ready) {
+                        await document.fonts.ready;
+                    }
+                    const canvas = await html2canvas(canvasElem, {
+                        width: 560,
+                        height: 397,
+                        scale: 3.12, // 560 * 3.12 = 1747px x 1239px (A6 exacto 148x105mm a 300 DPI)
+                        useCORS: true,
+                        backgroundColor: '#C9B3B9',
+                        logging: false
+                    });
+                    const link = document.createElement('a');
+                    const cleanRecipient = (cardPreviewTo.textContent || 'Bienestar')
+                        .trim()
+                        .toLowerCase()
+                        .replace(/[^a-z0-9áéíóúñ]+/gi, '-');
+                    link.download = `tarjeta-regalo-A6-llum-de-lluna-${cleanRecipient}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+
+                    if (window.showToast) {
+                        window.showToast('¡Tarjeta Regalo descargada en tamaño A6 (PNG HD)!', true);
+                    }
+                } catch (err) {
+                    console.error('Error al generar PNG de la tarjeta regalo:', err);
+                    if (window.showToast) {
+                        window.showToast('No se pudo descargar automáticamente. Inténtalo de nuevo.', false);
+                    }
+                } finally {
+                    canvasElem.style.transform = prevTransform;
+                    if (triggerBtn) {
+                        triggerBtn.disabled = false;
+                        triggerBtn.innerHTML = originalHtml;
+                    }
+                }
+            };
+
+            ['previewDownloadBtn', 'postSubmitDownloadBtn', 'sharedDownloadBtn'].forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    btn.addEventListener('click', () => downloadGiftCardPNG(btn));
+                }
+            });
+
+            // 4. Envío del Formulario a llumdellunaestetica@gmail.com + Copia (_cc) al Comprador
+            if (giftCardForm) {
+                giftCardForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    updateLiveGiftCard();
+
+                    const submitBtn = document.getElementById('giftSubmitBtn');
+                    const originalText = submitBtn ? submitBtn.innerHTML : '';
+
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Registrando pedido y preparando pago...';
+                    }
+
+                    const isLocalhost = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) || window.location.protocol === 'file:';
+
+                    const unlockPaymentAndDownload = async (toastMsg, isSuccess = true) => {
+                        const paymentStepBox = document.getElementById('paymentStepBox');
+                        if (paymentStepBox) {
+                            paymentStepBox.classList.add('visible');
+                            paymentStepBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                        if (window.showToast && toastMsg) {
+                            window.showToast(toastMsg, isSuccess);
+                        }
+                        await downloadGiftCardPNG(document.getElementById('postSubmitDownloadBtn'));
+                    };
+
+                    try {
+                        const formData = new FormData(giftCardForm);
+                        const payloadObj = Object.fromEntries(formData.entries());
+
+                        const response = await fetch(giftCardForm.action, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payloadObj)
+                        });
+
+                        if (response.ok) {
+                            await unlockPaymentAndDownload(
+                                '¡Pedido registrado! Hemos enviado el resumen y el enlace de tu tarjeta a tu correo. Completa ahora el abono en Revolut.',
+                                true
+                            );
+                        } else if (isLocalhost) {
+                            await unlockPaymentAndDownload(
+                                'Modo prueba local: Tarjeta A6 descargada y pago en Revolut listo. (El envío de correo FormSubmit solo funciona desde el dominio público llumdellunaestetica.es).',
+                                true
+                            );
+                        } else {
+                            await unlockPaymentAndDownload(
+                                'Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.',
+                                true
+                            );
+                        }
+                    } catch (error) {
+                        console.warn('Aviso al conectar con FormSubmit:', error);
+                        if (isLocalhost) {
+                            await unlockPaymentAndDownload(
+                                'Modo prueba local: Tarjeta A6 descargada y botón de Revolut desbloqueado. (FormSubmit bloquea envíos de correo desde localhost por seguridad del dominio).',
+                                true
+                            );
+                        } else {
+                            await unlockPaymentAndDownload(
+                                'Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.',
+                                true
+                            );
+                        }
+                    } finally {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
