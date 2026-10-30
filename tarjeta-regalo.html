@@ -834,7 +834,7 @@
             <div class="giftcard-grid">
                 <!-- COLUMNA IZQUIERDA: FORMULARIO DE PERSONALIZACIÓN Y PEDIDO -->
                 <div class="giftcard-form-card" id="giftFormContainer">
-                    <form id="giftCardForm" action="https://formsubmit.co/ajax/9f29206134078a96a0acb84c1e686c97" method="POST">
+                    <form id="giftCardForm" action="https://script.google.com/macros/s/AKfycbxw0rDh9qbBPMi0Oph00PHI3GHQvZ9q5SzUpbEEVGepDoDeI_nb0jwAQgvwwnS4Csol/exec" method="POST">
                         <input type="hidden" name="_subject" id="hiddenSubject" value="🎁 Nueva Tarjeta Regalo - Llum de Lluna">
                         <input type="hidden" name="_cc" id="hiddenCc" value="">
                         <input type="hidden" name="_replyto" id="hiddenReplyTo" value="">
@@ -1423,11 +1423,11 @@
             updateLiveGiftCard();
 
             // 3. Descarga de la Tarjeta Regalo en Tamaño Exacto A6 (1748x1240 px a 300 DPI)
-            const downloadGiftCardPNG = async (triggerBtn) => {
+            const downloadGiftCardPNG = async (triggerBtn, showSuccessToast = true) => {
                 const canvasElem = document.getElementById('giftVoucherCanvas');
                 if (!canvasElem || typeof html2canvas === 'undefined') {
-                    if (window.showToast) window.showToast('Preparando generador de imagen, inténtalo en un segundo...', false);
-                    return;
+                    if (window.showToast && showSuccessToast) window.showToast('Preparando generador de imagen, inténtalo en un segundo...', false);
+                    return null;
                 }
 
                 const originalHtml = triggerBtn ? triggerBtn.innerHTML : '';
@@ -1439,6 +1439,8 @@
                 // Quitar temporalmente cualquier escalado móvil para exportar siempre a 560x397 exactos
                 const prevTransform = canvasElem.style.transform;
                 canvasElem.style.transform = 'none';
+
+                let generatedDataUrl = null;
 
                 try {
                     if (document.fonts && document.fonts.ready) {
@@ -1452,21 +1454,22 @@
                         backgroundColor: '#C9B3B9',
                         logging: false
                     });
+                    generatedDataUrl = canvas.toDataURL('image/png');
                     const link = document.createElement('a');
                     const cleanRecipient = (cardPreviewTo.textContent || 'Bienestar')
                         .trim()
                         .toLowerCase()
                         .replace(/[^a-z0-9áéíóúñ]+/gi, '-');
                     link.download = `tarjeta-regalo-A6-llum-de-lluna-${cleanRecipient}.png`;
-                    link.href = canvas.toDataURL('image/png');
+                    link.href = generatedDataUrl;
                     link.click();
 
-                    if (window.showToast) {
+                    if (window.showToast && showSuccessToast) {
                         window.showToast('¡Tarjeta Regalo descargada en tamaño A6 (PNG HD)!', true);
                     }
                 } catch (err) {
                     console.error('Error al generar PNG de la tarjeta regalo:', err);
-                    if (window.showToast) {
+                    if (window.showToast && showSuccessToast) {
                         window.showToast('No se pudo descargar automáticamente. Inténtalo de nuevo.', false);
                     }
                 } finally {
@@ -1476,16 +1479,19 @@
                         triggerBtn.innerHTML = originalHtml;
                     }
                 }
+                return generatedDataUrl;
             };
 
             ['previewDownloadBtn', 'postSubmitDownloadBtn', 'sharedDownloadBtn'].forEach(btnId => {
                 const btn = document.getElementById(btnId);
                 if (btn) {
-                    btn.addEventListener('click', () => downloadGiftCardPNG(btn));
+                    btn.addEventListener('click', () => downloadGiftCardPNG(btn, true));
                 }
             });
 
-            // 4. Envío del Formulario a llumdellunaestetica@gmail.com + Copia (_cc) al Comprador
+            // 4. Envío del Formulario mediante Google Apps Script (Gmail Oficial de Llum de Lluna + Copia al Comprador con PNG A6 adjunto)
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxw0rDh9qbBPMi0Oph00PHI3GHQvZ9q5SzUpbEEVGepDoDeI_nb0jwAQgvwwnS4Csol/exec';
+
             if (giftCardForm) {
                 giftCardForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -1496,64 +1502,51 @@
 
                     if (submitBtn) {
                         submitBtn.disabled = true;
-                        submitBtn.textContent = 'Registrando pedido y preparando pago...';
+                        submitBtn.textContent = 'Generando tarjeta y enviando correos...';
                     }
 
-                    const isLocalhost = ['localhost', '127.0.0.1', ''].includes(window.location.hostname) || window.location.protocol === 'file:';
-
-                    const unlockPaymentAndDownload = async (toastMsg, isSuccess = true) => {
-                        const paymentStepBox = document.getElementById('paymentStepBox');
-                        if (paymentStepBox) {
-                            paymentStepBox.classList.add('visible');
-                            paymentStepBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                        if (window.showToast && toastMsg) {
-                            window.showToast(toastMsg, isSuccess);
-                        }
-                        await downloadGiftCardPNG(document.getElementById('postSubmitDownloadBtn'));
-                    };
+                    const paymentStepBox = document.getElementById('paymentStepBox');
+                    if (paymentStepBox) {
+                        paymentStepBox.classList.add('visible');
+                        paymentStepBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
 
                     try {
+                        // 1. Generar y descargar la tarjeta A6 en el dispositivo + obtener imagen en Base64 para adjuntarla al email
+                        const cardDataUrl = await downloadGiftCardPNG(document.getElementById('postSubmitDownloadBtn'), false);
+
+                        // 2. Preparar los datos del pedido
                         const formData = new FormData(giftCardForm);
                         const payloadObj = Object.fromEntries(formData.entries());
+                        if (cardDataUrl) {
+                            payloadObj.cardImageBase64 = cardDataUrl;
+                        }
 
-                        const response = await fetch(giftCardForm.action, {
+                        // 3. Enviar a Google Apps Script usando text/plain (evita bloqueo CORS preflight OPTIONS)
+                        const response = await fetch(GOOGLE_SCRIPT_URL, {
                             method: 'POST',
                             headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
+                                'Content-Type': 'text/plain;charset=utf-8'
                             },
                             body: JSON.stringify(payloadObj)
                         });
 
-                        if (response.ok) {
-                            await unlockPaymentAndDownload(
-                                '¡Pedido registrado! Hemos enviado el resumen y el enlace de tu tarjeta a tu correo. Completa ahora el abono en Revolut.',
-                                true
-                            );
-                        } else if (isLocalhost) {
-                            await unlockPaymentAndDownload(
-                                'Modo prueba local: Tarjeta A6 descargada y pago en Revolut listo. (El envío de correo FormSubmit solo funciona desde el dominio público llumdellunaestetica.es).',
-                                true
-                            );
+                        const result = await response.json().catch(() => ({ success: response.ok }));
+
+                        if (result && result.success) {
+                            if (window.showToast) {
+                                window.showToast('¡Pedido enviado! Hemos mandado tu tarjeta regalo por correo (con la imagen A6 adjunta). Completa ahora el abono en Revolut.', true);
+                            }
                         } else {
-                            await unlockPaymentAndDownload(
-                                'Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.',
-                                true
-                            );
+                            console.warn('Respuesta de Google Script:', result);
+                            if (window.showToast) {
+                                window.showToast('Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.', true);
+                            }
                         }
                     } catch (error) {
-                        console.warn('Aviso al conectar con FormSubmit:', error);
-                        if (isLocalhost) {
-                            await unlockPaymentAndDownload(
-                                'Modo prueba local: Tarjeta A6 descargada y botón de Revolut desbloqueado. (FormSubmit bloquea envíos de correo desde localhost por seguridad del dominio).',
-                                true
-                            );
-                        } else {
-                            await unlockPaymentAndDownload(
-                                'Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.',
-                                true
-                            );
+                        console.error('Error al conectar con Google Apps Script:', error);
+                        if (window.showToast) {
+                            window.showToast('Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.', true);
                         }
                     } finally {
                         if (submitBtn) {
