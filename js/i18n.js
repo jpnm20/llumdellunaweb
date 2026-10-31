@@ -277,16 +277,16 @@ const translations = {
         "t.dermapenExo.post": "Fotoprotección solar estricta SPF 50+, alta hidratación biocompatible y evitar exposición solar directa o fuentes de calor durante 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capilar",
-        "t.facialHairCombo.desc": "Experiencia integral de 2h 25 min que combina nuestro cuidado facial profundo personalizado con el ritual de spa capilar, incluyendo un profundo masaje relajante facial, craneal, cervical, en pecho, trapecios y brazos para una desconexión total.",
+        "t.facialHairCombo.desc": "Experiencia integral de 2h 25 min que combina nuestro cuidado facial profundo personalizado con el ritual de spa capilar, incluyendo un profundo masaje relajante facial, craneal, cervical, en pecho, trapecios y brazos para una desconexión total. *(Los últimos 20 minutos están destinados a un secado básico del cabello)*.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Ritual Capilar para Cabello Graso",
-        "t.hairOily.desc": "Ritual capilar intensivo de 1h 10 min para purificar, equilibrar y controlar el exceso de grasa en el cuero cabelludo. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y desconectar por completo.",
+        "t.hairOily.desc": "Ritual capilar intensivo de 1h 10 min para purificar, equilibrar y controlar el exceso de grasa en el cuero cabelludo. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y desconectar por completo. *(Los últimos 20 minutos están destinados a un secado básico del cabello)*.",
         "t.hairOily.pre": "No aplicar aceites ni mascarillas pesadas en el cuero cabelludo antes de la cita.",
         "t.hairOily.post": "Utilizar champú purificante equilibrante y evitar lavar el cabello con agua muy caliente.",
 
         "t.hairDry.name": "Ritual Capilar para Cabello Seco",
-        "t.hairDry.desc": "Ritual capilar intensivo de 1h 10 min para aportar una hidratación profunda y devolver la flexibilidad y suavidad al cabello seco. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y disfrutar de un bienestar absoluto.",
+        "t.hairDry.desc": "Ritual capilar intensivo de 1h 10 min para aportar una hidratación profunda y devolver la flexibilidad y suavidad al cabello seco. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y disfrutar de un bienestar absoluto. *(Los últimos 20 minutos están destinados a un secado básico del cabello)*.",
         "t.hairDry.pre": "Desenredar suavemente el cabello previo a la sesión.",
         "t.hairDry.post": "Usar sérum nutritivo en puntas y limitar el uso de planchas o secadores a alta temperatura.",
 
@@ -768,16 +768,16 @@ const translations = {
         "t.dermapenExo.post": "Fotoprotecció solar estricta SPF 50+, alta hidratació biocompatible i evitar exposició solar directa o fonts de calor durant 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capil·lar",
-        "t.facialHairCombo.desc": "Experiència integral de 2h 25 min que combina la nostra cura facial profunda personalitzada amb el ritual de spa capil·lar, incloent un profund massatge relaxant facial, cranial, cervical, en pit, trapezis i braços per a una desconnexió total.",
+        "t.facialHairCombo.desc": "Experiència integral de 2h 25 min que combina la nostra cura facial profunda personalitzada amb el ritual de spa capil·lar, incloent un profund massatge relaxant facial, cranial, cervical, en pit, trapezis i braços per a una desconnexió total. *(Els últims 20 minuts estan destinats a un assecat bàsic del cabell)*.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Ritual Capil·lar per a Cabell Gràs",
-        "t.hairOily.desc": "Ritual capil·lar intensiu d'1h 10 min per a purificar, equilibrar i controlar l'excés de greix en el cuir cabellut. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i desconnectar per complet.",
+        "t.hairOily.desc": "Ritual capil·lar intensiu d'1h 10 min per a purificar, equilibrar i controlar l'excés de greix en el cuir cabellut. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i desconnectar per complet. *(Els últims 20 minuts estan destinats a un assecat bàsic del cabell)*.",
         "t.hairOily.pre": "No aplicar olis ni mascaretes pesades en el cuir cabellut abans de la cita.",
         "t.hairOily.post": "Utilitzar xampú purificant equilibrant i evitar lavar el cabell amb aigua molt calenta.",
 
         "t.hairDry.name": "Ritual Capil·lar per a Cabell Sec",
-        "t.hairDry.desc": "Ritual capil·lar intensiu d'1h 10 min per a aportar una hidratació profunda i retornar la flexibilitat i suavitat al cabell sec. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i gaudir d'un benestar absolut.",
+        "t.hairDry.desc": "Ritual capil·lar intensiu d'1h 10 min per a aportar una hidratació profunda i retornar la flexibilitat i suavitat al cabell sec. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i gaudir d'un benestar absolut. *(Els últims 20 minuts estan destinats a un assecat bàsic del cabell)*.",
         "t.hairDry.pre": "Desenredar suaument el cabell previ a la sessió.",
         "t.hairDry.post": "Usar sèrum nutritiu en puntes i limitar l'ús de planxes o secadors a alta temperatura.",
 
@@ -1244,16 +1244,16 @@ const translations = {
         "t.dermapenExo.post": "Strict SPF 50+ sunscreen, high biocompatible hydration, and avoid direct sun exposure or heat sources for 48 hours.",
 
         "t.facialHairCombo.name": "Facial Ritual + Hair Spa",
-        "t.facialHairCombo.desc": "Comprehensive 2h 25 min experience combining our personalized deep facial care with the hair spa ritual, including a deep relaxing facial, cranial, neck, chest, shoulder, and arm massage for total disconnection.",
+        "t.facialHairCombo.desc": "Comprehensive 2h 25 min experience combining our personalized deep facial care with the hair spa ritual, including a deep relaxing facial, cranial, neck, chest, shoulder, and arm massage for total disconnection. *(The last 20 minutes are dedicated to a basic hair blow-dry)*.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Hair Spa Ritual for Oily Hair",
-        "t.hairOily.desc": "Intensive 1h 10 min hair spa ritual to purify, balance, and control excess sebum on the scalp. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and disconnect completely.",
+        "t.hairOily.desc": "Intensive 1h 10 min hair spa ritual to purify, balance, and control excess sebum on the scalp. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and disconnect completely. *(The last 20 minutes are dedicated to a basic hair blow-dry)*.",
         "t.hairOily.pre": "Do not apply oils or heavy hair masks to the scalp before the appointment.",
         "t.hairOily.post": "Use a purifying balancing shampoo and avoid washing hair with very hot water.",
 
         "t.hairDry.name": "Hair Spa Ritual for Dry Hair",
-        "t.hairDry.desc": "Intensive 1h 10 min hair spa ritual to provide deep hydration and restore flexibility and softness to dry hair. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and enjoy absolute wellness.",
+        "t.hairDry.desc": "Intensive 1h 10 min hair spa ritual to provide deep hydration and restore flexibility and softness to dry hair. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and enjoy absolute wellness. *(The last 20 minutes are dedicated to a basic hair blow-dry)*.",
         "t.hairDry.pre": "Gently detangle hair prior to the session.",
         "t.hairDry.post": "Use nourishing serum on ends and limit the use of flat irons or high-heat dryers.",
 
