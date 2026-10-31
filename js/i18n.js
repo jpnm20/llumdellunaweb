@@ -277,16 +277,16 @@ const translations = {
         "t.dermapenExo.post": "Fotoprotección solar estricta SPF 50+, alta hidratación biocompatible y evitar exposición solar directa o fuentes de calor durante 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capilar",
-        "t.facialHairCombo.desc": "Tratamiento integral que combina el cuidado facial profundo con una relajante experiencia de spa capilar.",
+        "t.facialHairCombo.desc": "Experiencia integral de 2h 25 min que combina nuestro cuidado facial profundo personalizado con el ritual de spa capilar, incluyendo un profundo masaje relajante facial, craneal, cervical, en pecho, trapecios y brazos para una desconexión total.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Ritual Capilar para Cabello Graso",
-        "t.hairOily.desc": "Tratamiento capilar intensivo para purificar, equilibrar y controlar el exceso de grasa en el cuero cabelludo.",
+        "t.hairOily.desc": "Ritual capilar intensivo de 1h 10 min para purificar, equilibrar y controlar el exceso de grasa en el cuero cabelludo. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y desconectar por completo.",
         "t.hairOily.pre": "No aplicar aceites ni mascarillas pesadas en el cuero cabelludo antes de la cita.",
         "t.hairOily.post": "Utilizar champú purificante equilibrante y evitar lavar el cabello con agua muy caliente.",
 
         "t.hairDry.name": "Ritual Capilar para Cabello Seco",
-        "t.hairDry.desc": "Tratamiento capilar intensivo para aportar una hidratación profunda y devolver la flexibilidad y suavidad al cabello seco.",
+        "t.hairDry.desc": "Ritual capilar intensivo de 1h 10 min para aportar una hidratación profunda y devolver la flexibilidad y suavidad al cabello seco. Incluye un profundo masaje relajante craneal, cervical y en trapecios para liberar tensiones acumuladas y disfrutar de un bienestar absoluto.",
         "t.hairDry.pre": "Desenredar suavemente el cabello previo a la sesión.",
         "t.hairDry.post": "Usar sérum nutritivo en puntas y limitar el uso de planchas o secadores a alta temperatura.",
 
@@ -337,6 +337,10 @@ const translations = {
         "t.mani5.desc": "Extensión y modelado estructural en gel de alta calidad.",
         "t.mani6.name": "Manicura Esculpida en Gel (Puesta Nueva) - Talla L",
         "t.mani6.desc": "Extensión y modelado estructural en gel de alta calidad.",
+        "t.maniParaffin.name": "Tratamiento de Parafina en Manos",
+        "t.maniParaffin.desc": "Baño térmico e hidratación intensiva con parafina caliente para nutrir en profundidad, reparar la piel seca o agrietada y devolver la suavidad a las manos.",
+        "t.maniParaffinSupp.name": "Complemento: Tratamiento de Parafina en Manos",
+        "t.maniParaffinSupp.desc": "Hidratación profunda con parafina caliente añadida como complemento al realizar tu servicio de manicura.",
         "t.mani7.name": "Suplemento: Reconstrucción de Uña con Poligel (Manos)",
         "t.mani7.desc": "Reparación estructural de uña dañada o rota en manos con poligel *(añadido a un servicio principal)*.",
 
@@ -346,6 +350,10 @@ const translations = {
         "t.pedi2.desc": "Baño relajante de pies, pulido de durezas, exfoliación profunda de arrastre de células muertas, trabajo de cutículas y uñas con nutrición e hidratación profunda en uñas y pies.",
         "t.pedi3.name": "Pedicura Spa Completa",
         "t.pedi3.desc": "Ritual integral para el cuidado podal: baño podal, corte y limado de uñas, eliminación de durezas, exfoliación aromática, esmaltado y masaje relajante.",
+        "t.pediParaffin.name": "Tratamiento de Parafina en Pies",
+        "t.pediParaffin.desc": "Baño térmico y envoltura nutritiva con parafina caliente para hidratar intensamente, suavizar talones y durezas y aliviar la fatiga podal.",
+        "t.pediParaffinSupp.name": "Complemento: Tratamiento de Parafina en Pies",
+        "t.pediParaffinSupp.desc": "Hidratación profunda con parafina caliente añadida como complemento al realizar tu servicio de pedicura.",
         "t.pedi4.name": "Extra / Suplemento: Retirado & Pedicura Básica Express",
         "t.pedi4.desc": "Retirado rápido de esmalte anterior y acondicionamiento básico express de uñas.",
         "t.pedi5.name": "Suplemento: Reconstrucción de Uña con Poligel (Pies)",
@@ -760,16 +768,16 @@ const translations = {
         "t.dermapenExo.post": "Fotoprotecció solar estricta SPF 50+, alta hidratació biocompatible i evitar exposició solar directa o fonts de calor durant 48h.",
 
         "t.facialHairCombo.name": "Ritual Facial + Spa Capil·lar",
-        "t.facialHairCombo.desc": "Tractament integral que combina la cura facial profunda amb una relaxant experiència de spa capil·lar.",
+        "t.facialHairCombo.desc": "Experiència integral de 2h 25 min que combina la nostra cura facial profunda personalitzada amb el ritual de spa capil·lar, incloent un profund massatge relaxant facial, cranial, cervical, en pit, trapezis i braços per a una desconnexió total.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Ritual Capil·lar per a Cabell Gràs",
-        "t.hairOily.desc": "Tractament capil·lar intensiu per a purificar, equilibrar i controlar l'excés de greix en el cuir cabellut.",
+        "t.hairOily.desc": "Ritual capil·lar intensiu d'1h 10 min per a purificar, equilibrar i controlar l'excés de greix en el cuir cabellut. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i desconnectar per complet.",
         "t.hairOily.pre": "No aplicar olis ni mascaretes pesades en el cuir cabellut abans de la cita.",
         "t.hairOily.post": "Utilitzar xampú purificant equilibrant i evitar lavar el cabell amb aigua molt calenta.",
 
         "t.hairDry.name": "Ritual Capil·lar per a Cabell Sec",
-        "t.hairDry.desc": "Tractament capil·lar intensiu per a aportar una hidratació profunda i retornar la flexibilitat i suavitat al cabell sec.",
+        "t.hairDry.desc": "Ritual capil·lar intensiu d'1h 10 min per a aportar una hidratació profunda i retornar la flexibilitat i suavitat al cabell sec. Inclou un profund massatge relaxant cranial, cervical i en trapezis per a alliberar tensions acumulades i gaudir d'un benestar absolut.",
         "t.hairDry.pre": "Desenredar suaument el cabell previ a la sessió.",
         "t.hairDry.post": "Usar sèrum nutritiu en puntes i limitar l'ús de planxes o secadors a alta temperatura.",
 
@@ -816,6 +824,10 @@ const translations = {
         "t.mani5.desc": "Extensió i modelat estructural en gel d'alta qualitat per a ungles de longitud mitjana (Talla M).",
         "t.mani6.name": "Manicura Esculpida en Gel (Nova Posa) - Talla L",
         "t.mani6.desc": "Extensió i modelat estructural en gel d'alta qualitat per a ungles de longitud llarga (Talla L).",
+        "t.maniParaffin.name": "Tractament de Parafina en Mans",
+        "t.maniParaffin.desc": "Bany tèrmic i hidratació intensiva amb parafina calenta per a nodrir en profunditat, reparar la pell seca o esquerdada i retornar la suavitat a les mans.",
+        "t.maniParaffinSupp.name": "Complement: Tractament de Parafina en Mans",
+        "t.maniParaffinSupp.desc": "Hidratació profunda amb parafina calenta afegida com a complement en realitzar el teu servei de manicura.",
         "t.mani7.name": "Suplement: Reconstrucció d'Ungla amb Poligel (Mans)",
         "t.mani7.desc": "Reparació estructural d'ungla danyada o trencada en mans amb poligel *(afegit a un servei principal)*.",
 
@@ -825,6 +837,10 @@ const translations = {
         "t.pedi2.desc": "Bany relaxant de peus, poliment de dureses, exfoliació profunda d'arrossegament de cèl·lules meutes, treball de cutícules i ungles amb nutrició i hidratació profunda.",
         "t.pedi3.name": "Pedicura Spa Completa",
         "t.pedi3.desc": "Ritual integral per a la cura podal: bany podal, tall i llimat d'ungles, eliminació de dureses, exfoliació aromàtica, esmaltat i massatge relaxant.",
+        "t.pediParaffin.name": "Tractament de Parafina en Peus",
+        "t.pediParaffin.desc": "Bany tèrmic i embolcall nutritiu amb parafina calenta per a hidratar intensament, suavitzar talons i dureses i alleujar la fatiga podal.",
+        "t.pediParaffinSupp.name": "Complement: Tractament de Parafina en Peus",
+        "t.pediParaffinSupp.desc": "Hidratació profunda amb parafina calenta afegida com a complement en realitzar el teu servei de pedicura.",
         "t.pedi4.name": "Extra / Suplement: Retirat i Pedicura Bàsica Express",
         "t.pedi4.desc": "Retirat ràpid d'esmalt anterior i acondicionament bàsic express d'ungles.",
         "t.pedi5.name": "Suplement: Reconstrucció d'Ungla amb Poligel (Peus)",
@@ -1228,16 +1244,16 @@ const translations = {
         "t.dermapenExo.post": "Strict SPF 50+ sunscreen, high biocompatible hydration, and avoid direct sun exposure or heat sources for 48 hours.",
 
         "t.facialHairCombo.name": "Facial Ritual + Hair Spa",
-        "t.facialHairCombo.desc": "Comprehensive treatment combining deep facial care with a relaxing hair spa experience.",
+        "t.facialHairCombo.desc": "Comprehensive 2h 25 min experience combining our personalized deep facial care with the hair spa ritual, including a deep relaxing facial, cranial, neck, chest, shoulder, and arm massage for total disconnection.",
 
         // 2. Hair Spa
         "t.hairOily.name": "Hair Spa Ritual for Oily Hair",
-        "t.hairOily.desc": "Intensive hair treatment to purify, balance, and control excess sebum on the scalp.",
+        "t.hairOily.desc": "Intensive 1h 10 min hair spa ritual to purify, balance, and control excess sebum on the scalp. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and disconnect completely.",
         "t.hairOily.pre": "Do not apply oils or heavy hair masks to the scalp before the appointment.",
         "t.hairOily.post": "Use a purifying balancing shampoo and avoid washing hair with very hot water.",
 
         "t.hairDry.name": "Hair Spa Ritual for Dry Hair",
-        "t.hairDry.desc": "Intensive hair treatment to provide deep hydration and restore flexibility and softness to dry hair.",
+        "t.hairDry.desc": "Intensive 1h 10 min hair spa ritual to provide deep hydration and restore flexibility and softness to dry hair. Includes a deep relaxing cranial, neck, and shoulder massage to release accumulated tension and enjoy absolute wellness.",
         "t.hairDry.pre": "Gently detangle hair prior to the session.",
         "t.hairDry.post": "Use nourishing serum on ends and limit the use of flat irons or high-heat dryers.",
 
@@ -1286,6 +1302,10 @@ const translations = {
         "t.mani5.desc": "High-quality structural gel extension and modeling.",
         "t.mani6.name": "Sculpted Gel Manicure (Full Set) - Size L",
         "t.mani6.desc": "High-quality structural gel extension and modeling.",
+        "t.maniParaffin.name": "Hand Paraffin Treatment",
+        "t.maniParaffin.desc": "Thermal bath and intensive hydration with warm paraffin to deeply nourish, repair dry or cracked skin, and restore softness to your hands.",
+        "t.maniParaffinSupp.name": "Add-on: Hand Paraffin Treatment",
+        "t.maniParaffinSupp.desc": "Deep hydration with warm paraffin added as a complement when booking your manicure service.",
         "t.mani7.name": "Supplement: Polygel Nail Repair (Hands)",
         "t.mani7.desc": "Structural repair of damaged or broken hand nail with polygel *(add-on to a primary service)*.",
 
@@ -1295,6 +1315,10 @@ const translations = {
         "t.pedi2.desc": "Relaxing foot soak, callus filing, deep dead cell exfoliation, cuticle and nail work with deep foot and nail nourishment.",
         "t.pedi3.name": "Full Spa Pedicure",
         "t.pedi3.desc": "Comprehensive foot care ritual: foot soak, nail trimming and filing, callus removal, aromatic scrub, polish, and relaxing massage.",
+        "t.pediParaffin.name": "Foot Paraffin Treatment",
+        "t.pediParaffin.desc": "Thermal bath and nourishing warm paraffin wrap to intensely hydrate, soften heels and calluses, and relieve foot fatigue.",
+        "t.pediParaffinSupp.name": "Add-on: Foot Paraffin Treatment",
+        "t.pediParaffinSupp.desc": "Deep hydration with warm paraffin added as a complement when booking your pedicure service.",
         "t.pedi4.name": "Extra / Supplement: Removal & Express Basic Pedicure",
         "t.pedi4.desc": "Quick removal of previous polish and basic express nail conditioning.",
         "t.pedi5.name": "Supplement: Polygel Nail Repair (Feet)",
