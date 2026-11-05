@@ -854,15 +854,19 @@ Book 1 session for yourself + 1 as a gift and get 10% OFF!
             if (!video) return;
             video.muted = true;
             video.playsInline = true;
+            video.preload = 'auto';
 
             const tryPlay = () => {
+                if (!video.closest('.slide-card')?.classList.contains('active')) return;
                 video.muted = true;
                 const p = video.play();
                 if (p !== undefined) {
                     p.catch(err => {
                         console.warn('Autoplay caught:', err);
                         setTimeout(() => {
-                            video.play().catch(() => {});
+                            if (video.closest('.slide-card')?.classList.contains('active')) {
+                                video.play().catch(() => {});
+                            }
                         }, 250);
                     });
                 }
@@ -871,9 +875,12 @@ Book 1 session for yourself + 1 as a gift and get 10% OFF!
             if (video.readyState >= 2) {
                 tryPlay();
             } else {
-                video.load();
+                if (video.error || video.networkState === 0 || video.networkState === 3) {
+                    video.load();
+                }
+                video.addEventListener('loadeddata', tryPlay, { once: true });
                 video.addEventListener('canplay', tryPlay, { once: true });
-                setTimeout(tryPlay, 300);
+                tryPlay();
             }
         }
 
