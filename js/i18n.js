@@ -387,6 +387,8 @@ const translations = {
         // 6. Fotodepilación IPL
         "t.iplW1.name": "Labio",
         "t.iplW2.name": "Mentón",
+        "t.iplW2b.name": "Zona Barba / Mandíbula Completa",
+        "t.iplW2b.desc": "Incluye línea mandibular, mentón, patillas y cuello anterior.",
         "t.iplW3.name": "Línea Alba",
         "t.iplW4.name": "Axilas",
         "t.iplW5.name": "Ingles",
@@ -407,6 +409,8 @@ const translations = {
         "t.iplWP4.name": "Pack Cuerpo Entero Mujer",
         "t.iplWP4.desc": "Tratamiento integral de fotodepilación corporal en todas las zonas requeridas.",
 
+        "t.iplM0.name": "Zona Barba / Mandíbula Completa",
+        "t.iplM0.desc": "Incluye perfilado y zona completa de barba, mandíbula y cuello anterior.",
         "t.iplM1.name": "Axilas",
         "t.iplM2.name": "Pecho",
         "t.iplM3.name": "Abdomen",
@@ -866,6 +870,8 @@ const translations = {
 
         "t.iplW1.name": "Labi",
         "t.iplW2.name": "Mentó",
+        "t.iplW2b.name": "Zona Barba / Mandíbula Completa",
+        "t.iplW2b.desc": "Inclou línia mandibular, mentó, patilles i coll anterior.",
         "t.iplW3.name": "Línia Alba",
         "t.iplW4.name": "Aixelles",
         "t.iplW5.name": "Angles",
@@ -886,6 +892,8 @@ const translations = {
         "t.iplWP4.name": "Pack Cos Sencer Dona",
         "t.iplWP4.desc": "Tractament integral de fotodepilació corporal en totes les zones requerides.",
 
+        "t.iplM0.name": "Zona Barba / Mandíbula Completa",
+        "t.iplM0.desc": "Inclou perfilat i zona completa de barba, mandíbula i coll anterior.",
         "t.iplM1.name": "Aixelles",
         "t.iplM2.name": "Pit",
         "t.iplM3.name": "Abdomen",
@@ -1350,6 +1358,8 @@ const translations = {
 
         "t.iplW1.name": "Upper Lip",
         "t.iplW2.name": "Chin",
+        "t.iplW2b.name": "Beard Area / Full Jawline",
+        "t.iplW2b.desc": "Includes jawline, chin, sideburns, and anterior neck.",
         "t.iplW3.name": "Linea Alba",
         "t.iplW4.name": "Underarms",
         "t.iplW5.name": "Bikini Line",
@@ -1370,6 +1380,8 @@ const translations = {
         "t.iplWP4.name": "Women's Full Body Pack",
         "t.iplWP4.desc": "Comprehensive body IPL treatment on all requested areas.",
 
+        "t.iplM0.name": "Beard Area / Full Jawline",
+        "t.iplM0.desc": "Includes beard shaping and full beard, jawline, and anterior neck area.",
         "t.iplM1.name": "Underarms",
         "t.iplM2.name": "Chest",
         "t.iplM3.name": "Abdomen",
