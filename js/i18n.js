@@ -387,8 +387,6 @@ const translations = {
         // 6. Fotodepilación IPL
         "t.iplW1.name": "Labio",
         "t.iplW2.name": "Mentón",
-        "t.iplW2b.name": "Zona Barba / Mandíbula Completa",
-        "t.iplW2b.desc": "Incluye línea mandibular, mentón, patillas y cuello anterior.",
         "t.iplW3.name": "Línea Alba",
         "t.iplW4.name": "Axilas",
         "t.iplW5.name": "Ingles",
@@ -400,6 +398,8 @@ const translations = {
         "t.iplW11.name": "Medias Piernas",
         "t.iplW12.name": "Piernas Enteras",
 
+        "t.iplWP0.name": "Pack Zona Barba / Mandíbula Completa",
+        "t.iplWP0.desc": "Incluye línea mandibular, mentón, patillas y cuello anterior.",
         "t.iplWP1.name": "Pack Axilas + Ingles + Piernas Enteras",
         "t.iplWP1.desc": "Tratamiento de fotodepilación combinada en axilas, ingles y piernas enteras.",
         "t.iplWP2.name": "Pack Axilas + Ingles + Brazos",
@@ -870,8 +870,6 @@ const translations = {
 
         "t.iplW1.name": "Labi",
         "t.iplW2.name": "Mentó",
-        "t.iplW2b.name": "Zona Barba / Mandíbula Completa",
-        "t.iplW2b.desc": "Inclou línia mandibular, mentó, patilles i coll anterior.",
         "t.iplW3.name": "Línia Alba",
         "t.iplW4.name": "Aixelles",
         "t.iplW5.name": "Angles",
@@ -883,6 +881,8 @@ const translations = {
         "t.iplW11.name": "Mitges Cames",
         "t.iplW12.name": "Cames Senceres",
 
+        "t.iplWP0.name": "Pack Zona Barba / Mandíbula Completa",
+        "t.iplWP0.desc": "Inclou línia mandibular, mentó, patilles i coll anterior.",
         "t.iplWP1.name": "Pack Aixelles + Angles + Cames Senceres",
         "t.iplWP1.desc": "Tractament de fotodepilació combinada en aixelles, angles i cames senceres.",
         "t.iplWP2.name": "Pack Aixelles + Angles + Braços",
@@ -1358,8 +1358,6 @@ const translations = {
 
         "t.iplW1.name": "Upper Lip",
         "t.iplW2.name": "Chin",
-        "t.iplW2b.name": "Beard Area / Full Jawline",
-        "t.iplW2b.desc": "Includes jawline, chin, sideburns, and anterior neck.",
         "t.iplW3.name": "Linea Alba",
         "t.iplW4.name": "Underarms",
         "t.iplW5.name": "Bikini Line",
@@ -1371,6 +1369,8 @@ const translations = {
         "t.iplW11.name": "Half Legs",
         "t.iplW12.name": "Full Legs",
 
+        "t.iplWP0.name": "Beard Area / Full Jawline Pack",
+        "t.iplWP0.desc": "Includes jawline, chin, sideburns, and anterior neck.",
         "t.iplWP1.name": "Underarms + Bikini + Full Legs Pack",
         "t.iplWP1.desc": "Combined IPL hair removal treatment on underarms, bikini line, and full legs.",
         "t.iplWP2.name": "Underarms + Bikini + Arms Pack",
