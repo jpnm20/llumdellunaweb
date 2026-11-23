@@ -6,7 +6,7 @@
 /* Importar módulos CSS */
 @import 'variables.css';
 @import 'base.css?v=2.2';
-@import 'layout.css?v=2.2';
+@import 'layout.css?v=2.3';
 @import 'components.css?v=2.2';
 
 /* ESTILOS DE PÁGINAS ESPECÍFICAS (OPCIONALES / DETALLES ADICIONALES) */

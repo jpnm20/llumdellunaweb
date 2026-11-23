@@ -197,34 +197,57 @@
 }
 
 /* FOOTER */
-.footer {
+.footer,
+.footer.section-padding {
     background-color: var(--color-bg-tertiary);
     border-top: 1px solid rgba(197, 168, 128, 0.12);
     color: var(--color-text-dark);
+    padding: var(--spacing-xl) 0 var(--spacing-md);
 }
 
 .footer-top {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.2fr 1.3fr;
-    gap: var(--spacing-xl);
-    padding-bottom: var(--spacing-xl);
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.9fr) minmax(0, 1.35fr) minmax(0, 1.25fr);
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
     border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.footer-top > * {
+    min-width: 0;
 }
 
 .footer-brand {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--spacing-md);
 }
 
+/* Override .logo height: 100% (used in fixed-height .header) so it doesn't overlap flex siblings in .footer-brand */
+.footer-brand .logo {
+    height: auto;
+    margin-right: 0;
+    padding: 0;
+}
+
+.footer-brand .logo-img {
+    height: auto;
+    max-height: 64px;
+    width: auto;
+}
+
 .footer-brand p {
-    font-size: 0.95rem;
-    max-width: 320px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 360px;
+    margin: 0;
 }
 
 .footer-socials {
     display: flex;
-    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .social-icon {
@@ -253,7 +276,7 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--color-accent);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     font-weight: 600;
 }
 
@@ -275,6 +298,7 @@
 }
 
 .footer-hours-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -285,6 +309,8 @@
 .footer-hours-list li {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
+    gap: var(--spacing-sm);
     border-bottom: 1px dashed rgba(197, 168, 128, 0.15);
     padding-bottom: 4px;
 }
@@ -292,6 +318,8 @@
 .footer-hours-list li span:last-child {
     font-weight: 500;
     color: var(--color-text-dark);
+    text-align: right;
+    white-space: nowrap;
 }
 
 .footer-contact-info {
@@ -317,10 +345,12 @@
 }
 
 .footer-bottom {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: var(--spacing-md);
     font-size: 0.85rem;
     color: var(--color-text-light);
 }
@@ -460,14 +490,24 @@
         padding: 7px;
     }
 
+    .footer,
+    .footer.section-padding {
+        padding: var(--spacing-lg) 0 var(--spacing-md);
+    }
+
     .footer-top {
         grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
+        gap: var(--spacing-lg);
+    }
+
+    .footer-hours-list li span:last-child {
+        white-space: normal;
     }
 
     .footer-bottom {
         flex-direction: column;
         gap: var(--spacing-sm);
         text-align: center;
+        padding-bottom: 1.5rem;
     }
 }
