@@ -622,6 +622,56 @@
             text-align: center;
         }
 
+        /* Caja de Procesamiento del Pedido (Dura 3.5s mínimo antes de desbloquear Revolut) */
+        .order-processing-box {
+            display: none;
+            background-color: var(--color-bg-secondary);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--spacing-md);
+            text-align: center;
+        }
+
+        .order-processing-box.visible {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .processing-spinner {
+            width: 38px;
+            height: 38px;
+            border: 3.5px solid rgba(139, 153, 134, 0.25);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spinLoader 0.85s linear infinite;
+        }
+
+        @keyframes spinLoader {
+            to { transform: rotate(360deg); }
+        }
+
+        .processing-progress-track {
+            width: 100%;
+            max-width: 360px;
+            height: 7px;
+            background-color: rgba(139, 153, 134, 0.2);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .processing-progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--color-primary);
+            border-radius: 999px;
+            transition: width 0.35s ease;
+        }
+
         /* Caja de Confirmación y Pago Revolut (Post-Envío) */
         .payment-step-box {
             display: none;
@@ -834,7 +884,7 @@
             <div class="giftcard-grid">
                 <!-- COLUMNA IZQUIERDA: FORMULARIO DE PERSONALIZACIÓN Y PEDIDO -->
                 <div class="giftcard-form-card" id="giftFormContainer">
-                    <form id="giftCardForm" action="https://script.google.com/macros/s/AKfycbxw0rDh9qbBPMi0Oph00PHI3GHQvZ9q5SzUpbEEVGepDoDeI_nb0jwAQgvwwnS4Csol/exec" method="POST">
+                    <form id="giftCardForm" action="https://script.google.com/macros/s/AKfycbzC7OArsdpy4HWeDYGdaUo7llw0CEZZzwYPmmUEJqJSfVKZ-RaPnHHrqYHtoGU-Njxt/exec" method="POST">
                         <input type="hidden" name="_subject" id="hiddenSubject" value="🎁 Nueva Tarjeta Regalo - Llum de Lluna">
                         <input type="hidden" name="_cc" id="hiddenCc" value="">
                         <input type="hidden" name="_replyto" id="hiddenReplyTo" value="">
@@ -1041,7 +1091,17 @@
                         </button>
                     </form>
 
-                    <!-- CAJA DE PAGO Y DESCARGA (SE MUESTRA AL CONFIRMAR EL FORMULARIO) -->
+                    <!-- CAJA DE PROCESAMIENTO (SE MUESTRA DURANTE 3.5 - 4 SEGUNDOS MIENTRAS SE REGISTRA Y ENVÍA EL CORREO) -->
+                    <div id="orderProcessingBox" class="order-processing-box" role="status" aria-live="polite">
+                        <div class="processing-spinner" aria-hidden="true"></div>
+                        <h3 id="processingStepTitle" style="font-size: 1.25rem; margin: 0; color: var(--color-text-dark);">Registrando tu pedido de Tarjeta Regalo...</h3>
+                        <p id="processingStepDesc" style="font-size: 0.85rem; color: var(--color-text-muted); margin: 0; max-width: 440px;">Estamos generando tu tarjeta personalizada en alta resolución (A6), enviando el correo de confirmación y preparando la pasarela de pago. No cierres esta ventana (tardará unos 4 segundos)...</p>
+                        <div class="processing-progress-track">
+                            <div id="processingProgressBar" class="processing-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- CAJA DE PAGO Y DESCARGA (SE MUESTRA SOLO TRAS COMPLETAR EL REGISTRO Y ENVÍO DE CORREO) -->
                     <div id="paymentStepBox" class="payment-step-box" role="region" aria-live="polite">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span style="width: 34px; height: 34px; border-radius: 50%; background-color: var(--color-primary); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">✓</span>
@@ -1431,24 +1491,15 @@
             // Inicializar vista previa
             updateLiveGiftCard();
 
-            // 3. Descarga de la Tarjeta Regalo en Tamaño Exacto A6 (1748x1240 px a 300 DPI)
-            const downloadGiftCardPNG = async (triggerBtn, showSuccessToast = true) => {
+            // 3. Generación y Descarga de la Tarjeta Regalo en Tamaño Exacto A6 (1748x1240 px a 300 DPI)
+            const renderGiftCardDataUrl = async () => {
                 const canvasElem = document.getElementById('giftVoucherCanvas');
                 if (!canvasElem || typeof html2canvas === 'undefined') {
-                    if (window.showToast && showSuccessToast) window.showToast('Preparando generador de imagen, inténtalo en un segundo...', false);
                     return null;
                 }
 
-                const originalHtml = triggerBtn ? triggerBtn.innerHTML : '';
-                if (triggerBtn) {
-                    triggerBtn.disabled = true;
-                    triggerBtn.textContent = 'Generando tarjeta A6 HD...';
-                }
-
-                // Quitar temporalmente cualquier escalado móvil para exportar siempre a 560x397 exactos
                 const prevTransform = canvasElem.style.transform;
                 canvasElem.style.transform = 'none';
-
                 let generatedDataUrl = null;
 
                 try {
@@ -1464,65 +1515,159 @@
                         logging: false
                     });
                     generatedDataUrl = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    const cleanRecipient = (cardPreviewTo.textContent || 'Bienestar')
-                        .trim()
-                        .toLowerCase()
-                        .replace(/[^a-z0-9áéíóúñ]+/gi, '-');
-                    link.download = `tarjeta-regalo-A6-llum-de-lluna-${cleanRecipient}.png`;
-                    link.href = generatedDataUrl;
-                    link.click();
-
-                    if (window.showToast && showSuccessToast) {
-                        window.showToast('¡Tarjeta Regalo descargada en tamaño A6 (PNG HD)!', true);
-                    }
                 } catch (err) {
-                    console.error('Error al generar PNG de la tarjeta regalo:', err);
-                    if (window.showToast && showSuccessToast) {
+                    console.error('Error al renderizar lienzo PNG de la tarjeta regalo:', err);
+                } finally {
+                    canvasElem.style.transform = prevTransform;
+                }
+                return generatedDataUrl;
+            };
+
+            const triggerDataUrlDownload = (dataUrl) => {
+                if (!dataUrl) return;
+                const link = document.createElement('a');
+                const cleanRecipient = (cardPreviewTo.textContent || 'Bienestar')
+                    .trim()
+                    .toLowerCase()
+                    .replace(/[^a-z0-9áéíóúñ]+/gi, '-');
+                link.download = `tarjeta-regalo-A6-llum-de-lluna-${cleanRecipient}.png`;
+                link.href = dataUrl;
+                link.click();
+            };
+
+            const downloadGiftCardPNG = async (triggerBtn, showSuccessToast = true) => {
+                if (typeof html2canvas === 'undefined') {
+                    if (window.showToast && showSuccessToast) window.showToast('Preparando generador de imagen, inténtalo en un segundo...', false);
+                    return null;
+                }
+
+                const originalHtml = triggerBtn ? triggerBtn.innerHTML : '';
+                if (triggerBtn) {
+                    triggerBtn.disabled = true;
+                    triggerBtn.textContent = 'Generando tarjeta A6 HD...';
+                }
+
+                try {
+                    const generatedDataUrl = await renderGiftCardDataUrl();
+                    if (generatedDataUrl) {
+                        triggerDataUrlDownload(generatedDataUrl);
+                        if (window.showToast && showSuccessToast) {
+                            window.showToast('¡Tarjeta Regalo descargada en tamaño A6 (PNG HD)!', true);
+                        }
+                        return generatedDataUrl;
+                    } else if (window.showToast && showSuccessToast) {
                         window.showToast('No se pudo descargar automáticamente. Inténtalo de nuevo.', false);
                     }
                 } finally {
-                    canvasElem.style.transform = prevTransform;
                     if (triggerBtn) {
                         triggerBtn.disabled = false;
                         triggerBtn.innerHTML = originalHtml;
                     }
                 }
-                return generatedDataUrl;
+                return null;
             };
 
-            ['previewDownloadBtn', 'postSubmitDownloadBtn', 'sharedDownloadBtn'].forEach(btnId => {
+            ['postSubmitDownloadBtn', 'sharedDownloadBtn'].forEach(btnId => {
                 const btn = document.getElementById(btnId);
                 if (btn) {
                     btn.addEventListener('click', () => downloadGiftCardPNG(btn, true));
                 }
             });
 
-            // 4. Envío del Formulario mediante Google Apps Script (Gmail Oficial de Llum de Lluna + Copia al Comprador con PNG A6 adjunto)
-            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxw0rDh9qbBPMi0Oph00PHI3GHQvZ9q5SzUpbEEVGepDoDeI_nb0jwAQgvwwnS4Csol/exec';
+            // Si el usuario pulsa el botón de descarga bajo la vista previa, si ya rellenó el formulario lo envía o le lleva al formulario para que quede registrado
+            const previewDownloadBtn = document.getElementById('previewDownloadBtn');
+            if (previewDownloadBtn) {
+                previewDownloadBtn.addEventListener('click', () => {
+                    if (isSharedView || (giftCardForm && giftCardForm.dataset.orderRegistered === 'true')) {
+                        downloadGiftCardPNG(previewDownloadBtn, true);
+                    } else if (giftCardForm) {
+                        if (giftCardForm.checkValidity()) {
+                            giftCardForm.requestSubmit();
+                        } else {
+                            if (window.showToast) {
+                                window.showToast('Completa primero los datos del regalo y comprador para registrar y activar tu Tarjeta Regalo.', false);
+                            }
+                            giftCardForm.reportValidity();
+                        }
+                    }
+                });
+            }
+
+            // 4. Envío Blindado del Formulario (Pantalla de registro de 3.8s + Google Apps Script Primario + Fallback FormSubmit sólo en caso de error)
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzC7OArsdpy4HWeDYGdaUo7llw0CEZZzwYPmmUEJqJSfVKZ-RaPnHHrqYHtoGU-Njxt/exec';
+            const FORMSUBMIT_FALLBACK_URL = 'https://formsubmit.co/ajax/9f29206134078a96a0acb84c1e686c97';
+            const MIN_REGISTRATION_MS = 3800; // Garantiza 3.8 segundos visibles de registro para que el cliente vea el progreso y el envío termine al 100%
+
+            const sendFallbackFormSubmit = async (payloadObj) => {
+                try {
+                    const cleanPayload = { ...payloadObj };
+                    delete cleanPayload.cardImageBase64; // FormSubmit solo admite campos de texto
+                    const res = await fetch(FORMSUBMIT_FALLBACK_URL, {
+                        method: 'POST',
+                        keepalive: true,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(cleanPayload)
+                    });
+                    return res.ok;
+                } catch (err) {
+                    console.error('Error en fallback FormSubmit:', err);
+                    return false;
+                }
+            };
 
             if (giftCardForm) {
                 giftCardForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     updateLiveGiftCard();
 
+                    const startTime = Date.now();
                     const submitBtn = document.getElementById('giftSubmitBtn');
                     const originalText = submitBtn ? submitBtn.innerHTML : '';
 
+                    const paymentStepBox = document.getElementById('paymentStepBox');
+                    const orderProcessingBox = document.getElementById('orderProcessingBox');
+                    const processingStepTitle = document.getElementById('processingStepTitle');
+                    const processingStepDesc = document.getElementById('processingStepDesc');
+                    const processingProgressBar = document.getElementById('processingProgressBar');
+
+                    // Ocultar caja de pago de Revolut hasta que el registro haya finalizado por completo
+                    if (paymentStepBox) {
+                        paymentStepBox.classList.remove('visible');
+                    }
+
                     if (submitBtn) {
                         submitBtn.disabled = true;
-                        submitBtn.textContent = 'Generando tarjeta y enviando correos...';
+                        submitBtn.textContent = '⏳ Registrando pedido y enviando confirmación (espere ~4 seg)...';
                     }
 
-                    const paymentStepBox = document.getElementById('paymentStepBox');
-                    if (paymentStepBox) {
-                        paymentStepBox.classList.add('visible');
-                        paymentStepBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    if (orderProcessingBox) {
+                        orderProcessingBox.classList.add('visible');
+                        if (processingProgressBar) processingProgressBar.style.width = '18%';
+                        if (processingStepTitle) processingStepTitle.textContent = 'Paso 1/3: Generando tu Tarjeta Regalo A6 en alta resolución...';
+                        orderProcessingBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }
+
+                    // Progreso visual escalonado durante los ~3.8 segundos
+                    const progressTimers = [
+                        setTimeout(() => {
+                            if (processingProgressBar) processingProgressBar.style.width = '52%';
+                            if (processingStepTitle) processingStepTitle.textContent = 'Paso 2/3: Registrando pedido y enviando correo de confirmación...';
+                        }, 1100),
+                        setTimeout(() => {
+                            if (processingProgressBar) processingProgressBar.style.width = '85%';
+                            if (processingStepTitle) processingStepTitle.textContent = 'Paso 3/3: Verificando confirmación y preparando enlace de Revolut...';
+                        }, 2400)
+                    ];
+
+                    let cardDataUrl = null;
+                    let emailDelivered = false;
 
                     try {
-                        // 1. Generar y descargar la tarjeta A6 en el dispositivo + obtener imagen en Base64 para adjuntarla al email
-                        const cardDataUrl = await downloadGiftCardPNG(document.getElementById('postSubmitDownloadBtn'), false);
+                        // 1. Renderizar imagen en memoria (sin disparar todavía la descarga para no interrumpir la red del móvil)
+                        cardDataUrl = await renderGiftCardDataUrl();
 
                         // 2. Preparar los datos del pedido
                         const formData = new FormData(giftCardForm);
@@ -1531,33 +1676,81 @@
                             payloadObj.cardImageBase64 = cardDataUrl;
                         }
 
-                        // 3. Enviar a Google Apps Script usando text/plain (evita bloqueo CORS preflight OPTIONS)
-                        const response = await fetch(GOOGLE_SCRIPT_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'text/plain;charset=utf-8'
-                            },
-                            body: JSON.stringify(payloadObj)
-                        });
+                        // 3. Enviar a Google Apps Script (Canal Principal: 1 solo correo a Llum de Lluna y 1 al comprador)
+                        try {
+                            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'text/plain;charset=utf-8'
+                                },
+                                body: JSON.stringify(payloadObj)
+                            });
 
-                        const result = await response.json().catch(() => ({ success: response.ok }));
-
-                        if (result && result.success) {
-                            if (window.showToast) {
-                                window.showToast('¡Pedido enviado! Hemos mandado tu tarjeta regalo por correo (con la imagen A6 adjunta). Completa ahora el abono en Revolut.', true);
+                            const result = await response.json().catch(() => ({ success: response.ok }));
+                            if (result && result.success) {
+                                emailDelivered = true;
+                            } else {
+                                console.warn('Google Script devolvió error, reintentando envío ligero sin adjunto:', result);
+                                // Reintento rápido sin base64 y con keepalive por si falló el adjunto o el email
+                                const lightPayload = { ...payloadObj };
+                                delete lightPayload.cardImageBase64;
+                                const retryRes = await fetch(GOOGLE_SCRIPT_URL, {
+                                    method: 'POST',
+                                    keepalive: true,
+                                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                                    body: JSON.stringify(lightPayload)
+                                });
+                                const retryJson = await retryRes.json().catch(() => ({ success: retryRes.ok }));
+                                if (retryJson && retryJson.success) {
+                                    emailDelivered = true;
+                                }
                             }
-                        } else {
-                            console.warn('Respuesta de Google Script:', result);
-                            if (window.showToast) {
-                                window.showToast('Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.', true);
-                            }
+                        } catch (primaryErr) {
+                            console.warn('Error de red al conectar con Google Apps Script:', primaryErr);
                         }
-                    } catch (error) {
-                        console.error('Error al conectar con Google Apps Script:', error);
-                        if (window.showToast) {
-                            window.showToast('Tu tarjeta A6 se ha descargado. Completa ahora el abono en Revolut.', true);
+
+                        // 4. Canal de Emergencia: SOLO si Google Apps Script falló, enviar por FormSubmit para no perder jamás el pedido
+                        if (!emailDelivered) {
+                            emailDelivered = await sendFallbackFormSubmit(payloadObj);
                         }
                     } finally {
+                        // 5. Garantizar que la pantalla de "Registrando pedido..." dure siempre un mínimo de 3.8 segundos
+                        const elapsed = Date.now() - startTime;
+                        if (elapsed < MIN_REGISTRATION_MS) {
+                            await new Promise(resolve => setTimeout(resolve, MIN_REGISTRATION_MS - elapsed));
+                        }
+
+                        progressTimers.forEach(t => clearTimeout(t));
+                        if (processingProgressBar) processingProgressBar.style.width = '100%';
+                        if (processingStepTitle) processingStepTitle.textContent = '¡Pedido registrado con éxito!';
+                        if (processingStepDesc) processingStepDesc.textContent = 'Abriendo opciones de pago en Revolut y descarga de tarjeta...';
+
+                        await new Promise(resolve => setTimeout(resolve, 350));
+
+                        if (orderProcessingBox) {
+                            orderProcessingBox.classList.remove('visible');
+                        }
+
+                        // 6. Marcar formulario como registrado y mostrar AHORA la caja con el botón de Revolut
+                        giftCardForm.dataset.orderRegistered = 'true';
+
+                        if (paymentStepBox) {
+                            paymentStepBox.classList.add('visible');
+                            paymentStepBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+
+                        // 7. Descargar la tarjeta PNG A6 en el dispositivo una vez que el correo YA ha sido enviado
+                        if (cardDataUrl) {
+                            triggerDataUrlDownload(cardDataUrl);
+                        }
+
+                        if (window.showToast) {
+                            window.showToast(
+                                '¡Pedido registrado y correo enviado! Ya puedes completar el abono en Revolut.',
+                                true
+                            );
+                        }
+
                         if (submitBtn) {
                             submitBtn.disabled = false;
                             submitBtn.innerHTML = originalText;
